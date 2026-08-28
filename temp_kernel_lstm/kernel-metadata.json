@@ -1,7 +1,7 @@
 {
-  "id": "emanuelembuaijdak/thesis-lstm-v2",
-  "title": "thesis-lstm-v2",
-  "code_file": "02_model_lstm.ipynb",
+  "id": "emanuelembuaijdak/thesis-lstm-indobert",
+  "title": "Thesis LSTM IndoBERT",
+  "code_file": "02_model_lstm_kaggle.ipynb",
   "language": "python",
   "kernel_type": "notebook",
   "is_private": "true",

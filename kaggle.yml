@@ -1,5 +1,5 @@
 project: thesis-lstm-indobert
-kernel_slug: emanuelembuajidak/thesis-lstm-indobert
+kernel_slug: emanuelembuaijdak/thesis-lstm-indobert
 
 code_file: 04_model_indobertweet_lora.ipynb
 
@@ -7,7 +7,8 @@ accelerator: gpu
 internet: true
 privacy: private
 
-datasets: []
+datasets:
+  - emanuelembuaijdak/thesis-indobert-processed-data
 
 outputs:
   download_to: .kaggle-outputs/

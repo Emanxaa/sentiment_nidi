@@ -1,0 +1,37 @@
+[{"stream_name":"stderr","time":6.52843611,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.52851673,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.528528147,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.528530909,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.101382015,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.101421464,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.101429649,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.101435778,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":27.755776955,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":27.755812702,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":27.755819175,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":27.755878545,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":27.756048517,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":27.756299934,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":27.756399455,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":27.756414095,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":27.75643546,"data":"Exception encountered at \"In [2]\":\n"}
+,{"stream_name":"stderr","time":27.756441918,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":27.756447316,"data":"FileNotFoundError                         Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":27.756453395,"data":"/tmp/ipykernel_23/72949073.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":27.756459012,"data":"      7     shutil.copy(f\"{SRC}/split_data.pkl\", \"split_data.pkl\")\n"}
+,{"stream_name":"stderr","time":27.756464311,"data":"      8 \n"}
+,{"stream_name":"stderr","time":27.756469251,"data":"----\u003e 9 with open(\"split_data.pkl\", \"rb\") as file:\n"}
+,{"stream_name":"stderr","time":27.756474711,"data":"     10     split_data = pickle.load(file)\n"}
+,{"stream_name":"stderr","time":27.756479744,"data":"     11 \n"}
+,{"stream_name":"stderr","time":27.756484562,"data":"\n"}
+,{"stream_name":"stderr","time":27.756489492,"data":"FileNotFoundError: [Errno 2] No such file or directory: 'split_data.pkl'\n"}
+,{"stream_name":"stderr","time":27.756494631,"data":"\n"}
+,{"stream_name":"stderr","time":29.954699264,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":29.954738897,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":30.105602548,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":30.105631434,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":30.695599337,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":31.101038795,"data":"[NbConvertApp] Writing 375160 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":33.623292966,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":34.523119554,"data":"[NbConvertApp] Writing 598641 bytes to __results__.html\n"}
+]
