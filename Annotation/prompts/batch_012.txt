@@ -1,0 +1,67 @@
+Anda adalah ahli anotasi sentimen untuk tweet bahasa Indonesia tentang banjir di Sumatra. Klasifikasikan sentimen setiap tweet ke salah satu label: 'negatif', 'netral', atau 'positif'.
+
+Anda akan menerima 50 tweet dalam format JSON (satu objek per baris).
+
+Aturan klasifikasi:
+- "negatif"   : keluhan, kritik, ketakutan, sedih, marah, sarkasme bernada negatif.
+- "netral"    : informasi faktual, laporan, peringatan tanpa emosi kuat.
+- "positif"   : apresiasi, dukungan, doa, harapan, bantuan, semangat.
+- confidence  : bilangan bulat 0-100 seberapa yakin Anda.
+- reason      : satu kalimat singkat dalam bahasa Indonesia menjelaskan alasan.
+
+Tweet:
+{"id": 5060, "text": "DPR Bentuk Panja Alih Fungsi Lahan Usut Penyebab Banjir Sumatra idntimes.com DPR Bentuk Panja Alih Fungsi Lahan Usut Penyebab Banjir Sumatra Komisi IV DPR RI memutuskan untuk membentuk Panitia Kerja Alih Fungsi Lahan guna menindaklanjuti banjir bandang di Sumatra yang mengepung Aceh, Sumatra Utara dan Sumatra Barat. 131"}
+{"id": 5067, "text": "Membalas @wiyokooo Walau gempa besar ini udah diperingatkan oleh BMKG sebelumnya, bencana ini emang gak bisa dihindari jadi mereka berani muncul. Beda sama banjir Sumatra karena penyebab utamanya kerusakan alam yang disebabkan oleh para pejabat dan kroninya yang sekarang masih aktif- 1 1 52 12 rb"}
+{"id": 5069, "text": "Video: Kapolri Akan Bongkar Penyebab Banjir Sumatra Video: Kapolri Akan Bongkar Penyebab Banjir Sumatra Dari cnbcindonesia.com 286"}
+{"id": 5075, "text": "Kapolri Akan Bongkar Sumber Kayu Gelondongan Penyebab Banjir Sumatra cnbcindonesia.com Kapolri Akan Bongkar Sumber Kayu Gelondongan Penyebab Banjir Sumatra Kapolri Listyo Sigit Prabowo akan usut sumber kayu gelondongan penyebab banjir dan longsor di Sumatra. Pelaku akan dihukum! 1 361"}
+{"id": 5084, "text": "Toba Pulp Lestari (TPL) membantah tuduhan sebagai penyebab banjir dahsyat di Sumatra yang menewaskan 604 orang. Begini penjelasan manajemen radarlawu.jawapos.com Kontroversi Memuncak: TPL Hadapi Tuduhan Deforestasi dan Banjir Besar, Begini Jawabannya! - Radar... Toba Pulp Lestari (TPL) membantah tuduhan sebagai penyebab banjir dahsyat di Sumatra yang menewaskan 604 orang. Begini penjelasan manajemen 60"}
+{"id": 5094, "text": "TOTAL KORBAN: 500 Orang Meninggal Akibat Bencana Banjir Sumatra > 500 org meninggal dan ratusan terluka akibat banjir besar yg dipicu hujan siklon di Indonesia. Ribuan warga di Sumatra terisolasi dan kekurangan suplai penting. Penyebab utama: Siklon Tropis Senyar, Tampilkan lebih banyak 4 212 288 65 rb"}
+{"id": 5106, "text": "Fakta hingga penyebab terjadinya banjir Sumatra yang menjadi duka bagi masyarakat Indonesia. insertlive.com Banjir Sumatra, Duka Indonesia Fakta hingga penyebab terjadinya banjir Sumatra yang menjadi duka bagi masyarakat Indonesia. 269"}
+{"id": 5120, "text": "Dampak Banjir Sumatra, Perpamsi: 50 Persen Saluran PDAM Rusak jatim.idntimes.com Dampak Banjir Sumatra, Perpamsi: 50 Persen Saluran PDAM Rusak IDN Times adalah media yang menyajikan berita terkini dan terbaru untuk Gen Z Indonesia. 30"}
+{"id": 5125, "text": "Membalas @Mongvns @beyipuffs dan @tanyarlfes Tujuan gue ngomong bukan bela mereka karna gapernah berasa dampak pemerintah disini, cuma kalian terlalu fokus salahin mereka, kalp mau nuntut tuh minta bantuan buat kita di sumatra yg jelas dari dulu rawan gempa longsor banjir bandang, tsunami bukan salah salahan 2 109"}
+{"id": 5127, "text": "Membalas @cama_latte Bercanda juga tahu tempat dan situasi. Malah pada ngeramein dan ngebercandain banjir dengan dalih beda tempat lah, ini bukan sumatra lah. Kalian ga tahu apa yg bakal terjadi dan apa dampak pada orang2 setempat, tolong mulutnya dijaga. 1 59"}
+{"id": 5128, "text": "update infografis (Jum'at, 5 Desember 2025 Pukul 03.17 WIB) Berkaitan dengan Dampak Bencana Banjir yang melanda Provinsi Aceh, Sumatra Utara dan Sumatra Barat. Terhitung ada 51 Kabupaten/kota yang terdampak 28"}
+{"id": 5133, "text": "Penanganan Dampak Banjir di Sumatra Jadi Prioritas Nasional - Click to see also ☛ Penanganan Dampak Banjir di Sumatra Jadi Prioritas Nasional Dari thinkmedio.com 18"}
+{"id": 5139, "text": "Dampak Banjir Sumatra bagi Mahasiswa Papua 1 32"}
+{"id": 5147, "text": "Membalas @GrowWinID Bencana banjir dan longsor besar di Sumatra diduga kuat dipicu oleh kerusakan hutan dan aktivitas pembalakan liar di hulu sungai. Banyak pihak melaporkan bahwa penebangan liar memperparah dampak banjir, menyebabkan ribuan kayu gelondongan hanyut terbawa arus deras. 1 41"}
+{"id": 5150, "text": "ga kebayang perasaan temen² aku yg keluarganya terkena dampak banjir sumatra :((( 26"}
+{"id": 5184, "text": "Situasi di Tanjung Pura, Kabupaten Langkat, Sumatera Utara, terekam dalam video yang menunjukkan dampak bencana hidrometeorologi yang tengah melanda sejumlah wilayah di Sumatra. Genangan banjir setinggi hampir selutut orang dewasa merendam kawasan tersebut dan menyebabkan akses Tampilkan lebih banyak 3 13 1 rb"}
+{"id": 5190, "text": "Membalas @miyuwmiyaw dan @egaalice Tolong bantu up sampai pemerintah pusat turun tangan untuk mengevakuasi korban bencana banjir sumatra. Jangan sumber daya alam kami saja yang dikeruk, menikmati fasilitasnya, tapi dampak dari ini semua, warga yang menanggung akibatnya #PrayForSumatera 88"}
+{"id": 5192, "text": "Membalas @tanyarlfes Btw ada yg aneh gk sih liat banjir sumatra ni ko banyak bgt potong an kayu loh,gw yakin ini salah satu dampak pemotongan yg berlebihan ,semoga banyak yg selamat ,ya rab berikan keselamatan saudara kami di sumatra amin... 3 37 1 rb"}
+{"id": 5195, "text": "Stop penebangan hutan dengan dalih kalian buka lahan,sekarang Sumatra banjir di mana-mana salah satu dampak hutannya tak lagi seperti dulu. 179"}
+{"id": 5204, "text": "Miniatur banjir bandang di Sumatera, semoga Allah mengganti setiap luka dan kehilangan menjadi kekuatan dan digantikan yang lebih baik Semoga lekas membaik #prayforsumatera #miniature #diorama #AI 1 4 586"}
+{"id": 5205, "text": "1/10 Banjir+longsor Sumatera 2025: korban 961 jiwa, 1 juta+ mengungsi. Estimasi pemulihan? Awalnya Rp51,8 T (BNPB), tapi kalau lengkap + rumah warga + lahan = Rp75-85 T. Thread ringkasan fakta & skenario #PrayForSumatera #stoppembalakanhutan #Prabowo 44"}
+{"id": 5210, "text": "Lanud Adi Soemarmo Salurkan Bantuan Untuk Korban Bencana Alam Di Sumatera #PrayForSumatera 2 81"}
+{"id": 5215, "text": "Kepada yang amat terhormat Presiden RI bpk. @prabowo , apakah sekiranya etis bapak seorang kepala negara yang sedang terjadi bencana hebat di negaranya justru meninggalkan negaranya untuk kunker ke Pakistan? #SumateraPrioritasNasional #PrayForSumatera 1 1 78"}
+{"id": 5224, "text": "Bencana Sumatra itu kayak saat warga Wall Maria pertama lihat Colossal. Tapi yang lebih ngeri bukan yang muncul di depan mata, melainkan sejarah panjang perusakan dan kerakusan di balik itu. #PrayForSumatera 48"}
+{"id": 5225, "text": "Update banjir & longsor Sumatera setakat 7.00 malam: 940 korban meninggal, 276 hilang. Operasi SAR masih berlanjut di Aceh, Sumut & Sumbar. #BanjirSumatera #PrayForSumatera Update 7 Desember Korban Bencana Sumatra: 940 Meninggal, 276 Hilang Dari cnnindonesia.com 66"}
+{"id": 5227, "text": "Membalas @bekalicky dan @tempodotco Paman Gajah lagi kerja bersihkan puing kayu gelondongan banjir bandang dan longsor, malah kedatangan Team Rescue tak guna #PrayForSumatera @sharpandshark @barengwarga 2 5 239"}
+{"id": 5236, "text": "Membalas @ACEH_Foundation Kabupaten Aceh Tamiang menjadi wilayah paling terdampak pascabencana banjir & longsor. Lumpuh Total. #YARAPeduli Posko Donasi Bantuan Bencana Banjir & Longsor #PrayforAceh #PrayForSumatera #banjir #longsor #YARABerbagi Semoga berkah & bermanfaat 2 70"}
+{"id": 5243, "text": "Membalas @chiyokaveyde Bukti penyaluran dana Charity stream kemarin #PrayForSumatera #PrayForIndonesia 1 38"}
+{"id": 5260, "text": "Ferry Irwandi kecewa dengan banyak pihak yang coba memperkeruh situasi bencana. Di lapangan seluruh elemen saling bahu membahu mengatasi bencana Sumatera. #PrayForSumatera #yukgasss 1 1 1 138"}
+{"id": 5280, "text": "Ditengah pedihnya bencana, empati dan kebaikan rakyatpun masih diajak kompetisi dengan angka mata uang. @DPR_RI Anggota kalian sebenarnya mewakili siapa? #PrayForSumatera #10MvsTriliun #NegaraHebat 47"}
+{"id": 5281, "text": "Pemerintah terus memperkuat mitigasi dan mempercepat pemulihan di seluruh daerah terdampak bencana. Evakuasi, logistik, dan perbaikan infrastruktur bergerak sejak hari pertama #PrayForSumatera #SumateraKuat #PelukJauhSumatera #DukaSumateraDukaKita 1 3 32"}
+{"id": 5284, "text": "Kok bisa @RajaJuliAntoni @kemenhut_ri @GakkumKLHK @ListyoSigitP @indo_pol @psi_id #PrayForSumatera @prabowo @Gerindra @DPR_RI @puanmaharani_ri @KemenLHK @Haniffaisol_N #IndonesiaGelap #TolakUUTNI #SupremasiSipil #MariBangunKesadaran #TolakOkupasiTanahRakyat #Desember2025 25"}
+{"id": 5286, "text": "Percaya Ama @ZUL_Hasan Ama kyk percaya Dajjal masuk surga wkwkk #PrayForSumatera Relawan 12.12 Blibli AKUUU MADDYYY Amanda Zahra Senin BPN Update Cilok Filipina. 1 2 296"}
+{"id": 5287, "text": "Biasanya hanya lihat atraksi saat 17an dan lihat seperti ini di Film-film.. Lihat kegiatan ini dikejadian nyata berasa Wow, It's Real... TNI kita Kerenn... @Puspen_TNI @_TNIAU #PrayForSumatera #AllEyesOnSumatera instagram.com INFO BENGKALIS-RIAU (@bengkalisku) • Instagram reel 34"}
+{"id": 5288, "text": "Membalas @ARYAAZABASE Tiap kali buka x lalu baca berita tuh rasanya nyess bgt ya allah... #PrayForSumatera #AllEyesOnSumatera #BENCANANASIONAL #NATIONALDISASTER 28"}
+{"id": 5300, "text": "Indonesia berduka bersama Sumatra. Doa dan bantuan terus mengalir, semoga Bapak Prabowo juga hadir membantu. Sumatra butuh kita. #PrayForSumatera #kitapeduli 41"}
+{"id": 5302, "text": "Membalas @__AnakKolong Ujung² prpyek pengadaan, cuan pun mengalir dgn deras. Mngatasnamakan Rakyat dgn dalil bencana, adlh tindkan MUSANG berbulu domba #PrayForSumatera 1 38"}
+{"id": 5310, "text": "Membalas @__AnakKolong @KemensetnegRI dan 2 lainnya Teknologi canggih manusianya gagap se gagap gagapnya. Balapan gugup se gugup gugupnya. #PrayForSumatera 1 152"}
+{"id": 5317, "text": "Pemerintah saat ini sepertinya hanya ingin \"hadir ketika ada masalah\" bukan untuk \"menyelesaikan masalah\" #PrayForSumatera 1 12"}
+{"id": 5329, "text": "Beda sekali ini kader @PKSejahtera satu ini yg juga Istri Gubernur Sumbar. #PrayForSumatera 148"}
+{"id": 5348, "text": "Miris Siapa yg salah pembantu Presiden atau presiden nya BMKG sdh kasih peringatan 8 hari sebelum bencana, tapi respons pemerintah baru ramai setelah korban berjatuhan. Bukan kurang info yg kurang itu kemauan untuk bergerak cepat. Negara hadirnya selalu telat. #PrayForSumatera 1 3 5 152"}
+{"id": 5351, "text": "TERHARU! Pak Prabowo mencoba makanan di dapur umum Bireun untuk korban bencana #BENCANANASIONAL #prabowo #PrayForSumatera #prayforaceh #bireun 3 60"}
+{"id": 5362, "text": "Korban-korban MD di dalam mobil-mobil #prayforaceh #PrayForSumatera 3 38 74 3 rb"}
+{"id": 5371, "text": "Membalas @ommi_siregar Astaghfirullahaladziim … #PrayForSumatera #StopDeforestation 23"}
+{"id": 5374, "text": "Segenap manajemen PakeDriver menyatakan belasungkawa dan turut berduka atas musibah banjir bandang yang terjadi di wilayah Aceh, Sumut dan Sumbar. Semoga Tuhan YME memberikan ketabahan, kesabaran dan kekuatan bagi korban yang terdampak. #PrayForSumatera 128"}
+{"id": 5390, "text": "Membalas @tempodotco Sempet2 nya dia pidato sawit sawit sawit, ditengah2 kondisi bencana besar gini. Mabok sawit apa gimana sih pak ??! #wargabantuwarga #PrayForSumatera #RIPhatinuranipemerintah 1 4 1 rb"}
+{"id": 5394, "text": "Surabaya, 07/12/25. #PrayForSumatera #AllEyesOnSumatera #arekgerak #LMI #Moedaberkelana #kawanhealing 1 21 56 3 rb"}
+{"id": 5411, "text": "guys yang open donasi buat Sumatera tapi berupa pakaian itu yang paling tepercaya dimana ya? #PrayForSumatera 119"}
+{"id": 5412, "text": "Membalas @_bangagoengDuA dan @prabowo Jancok #OrdeOmonOmon #PrayForSumatera 1 23"}
+{"id": 5429, "text": "Membalas @narkosun @tedy_bambang dan @prabowo Pecat Raja juli #PrayForSumatera #JusticeForSumatra #SaveForestIndonesia 1 1 42"}
+
+Balas HANYA dengan satu objek JSON dengan kunci "annotations" yang berisi array, misalnya:
+{"annotations": [
+  {"id": 1, "label": "negatif", "confidence": 95, "reason": "Keluhan terhadap penanganan banjir."}
+]}

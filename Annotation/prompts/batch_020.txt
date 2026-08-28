@@ -1,0 +1,67 @@
+Anda adalah ahli anotasi sentimen untuk tweet bahasa Indonesia tentang banjir di Sumatra. Klasifikasikan sentimen setiap tweet ke salah satu label: 'negatif', 'netral', atau 'positif'.
+
+Anda akan menerima 50 tweet dalam format JSON (satu objek per baris).
+
+Aturan klasifikasi:
+- "negatif"   : keluhan, kritik, ketakutan, sedih, marah, sarkasme bernada negatif.
+- "netral"    : informasi faktual, laporan, peringatan tanpa emosi kuat.
+- "positif"   : apresiasi, dukungan, doa, harapan, bantuan, semangat.
+- confidence  : bilangan bulat 0-100 seberapa yakin Anda.
+- reason      : satu kalimat singkat dalam bahasa Indonesia menjelaskan alasan.
+
+Tweet:
+{"id": 8244, "text": "Koq kabarnya Wowo nggak mau buka bantuan dari luar takut ketahuan dia punya lahan sawit yg baru dibuka dan paling luas dan jadi penyebab banjir di Aceh. Bener g sih gong?"}
+{"id": 8261, "text": "Kemensos Bantu Perkuat Layanan Penanganan Bencana Aceh, Sumut dan Sumbar Jakarta — Kementerian Sosial RI memperkuat penanganan bencana banjir di Provinsi Aceh, Sumatera Utara, dan Sumatera Barat dengan terus mensuport dan bekerjasama dengan BNPB, TNI, Polri, BPBD, Pemda dan tim"}
+{"id": 8263, "text": "Nantikan Diskusi Interaktif Malam Ini: \"Pemerintah wacanakan terapkan sanksi perdata dan pidana terhadap perusahaan perusak lingkungan hidup usai banjir di Utara Sumatera, apa yang harus diperhatikan?\" Narasumber: Pkl 23.00 ::: Pakar Hukum Pidana - Dosen Fakultas Hukum (FH)"}
+{"id": 8268, "text": "SUMATERA BUTUH STATUS #BENCANANASIONAL #NATIONALDISASTER Btw Guys kalau ada yg mau bantu donasi bisa dm gue ya, dijamin amanah. Karna gue juga terjun langsung sama mahasiswa lain nantinya setelah dana terkumpul ke tempat yg terkena banjir... Btw lokasi gue di Sumatera Barat."}
+{"id": 8286, "text": "Sikat habis hutan, yang menderita rakyat bukan bos. Rumah dimana-mana semua mewah dan bebas banjir."}
+{"id": 8292, "text": "Hutan udah gundul...datengin banjir bandang baru bertindak...telat goblox Nyawa ratusan manusia sdh melayang sia-sia... Rumah harta benda lenyap... Infrastruktur hancur.... Mundur klean kader2 PSI yg nyarang dikemenhut... KERJA GA PECUSSSS...bikin rakyat susah"}
+{"id": 8300, "text": "Yaa Allah… Aceh sudah kehilangan 4 kampung. Dan Aceh Tamiang masih rentan bencana susulan. Yaa Allah timpakan azab pada yang memgundang bencana ini, pada mereka pelaku perusakan alam."}
+{"id": 8311, "text": "Menurut update BNPB pada 6 Desember 2025, korban tewas banjir dan longsor di Sumatera capai 914 jiwa (Aceh 359, Sumut 329, Sumbar 226), hilang 389 orang."}
+{"id": 8348, "text": "Ya, klaim itu benar. Tim Cook mengumumkan di X pada 2 Des 2025 bahwa Apple akan donasi untuk bantuan banjir di Indonesia (termasuk Sumatera) dan negara Asia lain. Sumber: AppleInsider, 9to5Mac, dan postingan Cook sendiri. Bencana ini memang mendapat perhatian internasional."}
+{"id": 8349, "text": "perkataan mereka yg \"mengecilkan\" situasi /kondisi bencana di sumatra memang sangat sangat salah dan tidak ada empati tapi apakah antum pernah ke daerah bencana alam? tidak semudah itu pergerakan dan rescue kita, apalagi bencana longsor dan banjir parah yg menutup akses"}
+{"id": 8350, "text": "banjir di semua daerah ketika musim hujan -- exploitation alam yg parah 🤌"}
+{"id": 8353, "text": "teman² aku minta doanya buat teman aku yang lagi sakit di rumah sakit. sakitnya lumayan parah. kami belum bisa menghubungi keluarga nya karena terdampak banjir sumatra juga. terimakasih dukungan"}
+{"id": 8354, "text": "Aceh Tamiang menjadi wilayah paling parah terdampak banjir bandang. Rumah warga porak-poranda, dan di sejumlah titik seluruh desa rata dengan tanah. Ternak seperti sapi dan kambing mati terkapar di jalan, sementara mayat korban masih tertimbun di bawah lumpur."}
+{"id": 8363, "text": "Mana nih Produsen2 Air Mineral,Indo Mie,Mie Sedappp dan sejenisnya,Minuman Vitamin,GulaKu dan Produsen2 cemilan Ayo....ditunggu partisipasi kalian unt bantu sodara2 kalian yg terkena Bencana Banjir di Aceh Sumut Sumbar"}
+{"id": 8381, "text": "Akses Terputus, Harapan Terhambat Di balik tumpukan rumah yang hancur dan tanah yang terseret banjir, ribuan warga Aceh kini berjuang tanpa kepastian. Bantuan sulit masuk, jalan-jalan terputus, dan pemerintah khawatir jumlah korban akan terus bertambah karena kelaparan dan sedih"}
+{"id": 8382, "text": "Ibu Citra Dewi menjadi Saksi, bahwa belum ada bantuan yang masuk. Hanya PKS yang membantu mereka. Ada 134 orang yang mengungsi di rumah ini sampe H+9 “Tsunami” Banjir Aceh Tamiang. Ada balita, Busui, Bumil. Tamiang, 4 Desember 2025 Dusun Bahagia, Desa Bundar Kab. Aceh Tamiang."}
+{"id": 8388, "text": "Mensesneg Prasetyo Hadi mengatakan Presiden RI Prabowo Subianto menginstruksikan seluruh jajaran untuk memprioritaskan pemulihan akses jalur darat agar tidak lagi ada yang terisolir di tiga provinsi Sumatera yang terdampak banjir dan longsor. #infohotnews #banjir"}
+{"id": 8401, "text": "Traumanya ada bgt… meski dirumahku baru kena dikit, tp kami semua panik karna terbayang rumah2 yg tenggelam jd memilih untuk ngungsi meskipun harus melewati arus air yg deras itu ditengah2 banjir itu di telp sm paman aku nanya keadaan akhirnya aku jawab sambil nangis2 sedih"}
+{"id": 8404, "text": "#PrayForSumatera paham banget karena aku adalah warga yg sering kebanjiran juga. Lihat air banjir yg semakin naik tuh menakutkan. Gak bisa tidur dengan tenang. Cape angkut2 barang ke atas. Udah surut banjir bersihin rumah yg bikin sakit pinggang sampai kaki. sedih"}
+{"id": 8421, "text": "Banjir dikawasan pulau Sumatra, pejabatnya bilang cuaca extrime, ya betul, saking extrime ya hujannya bukan hujan air, tapi hujan kayu gelondongan. Untuk semua pejabat, bikin aja terus kebijakan yg menyesatkan dan merusak. Kita tinggal sama2 hukuman dari Allah berupa bencana."}
+{"id": 8426, "text": "Lok : Desa Blangcut, Pidie Jaya, Aceh Update kondisi terkini Pemukiman warga masih tergenang banjir serta akses jalan masih terputus #PrayForIndonesia #PrayForAceh #PrayForSumatera sedih darurat sedih peringatan"}
+{"id": 8435, "text": "Cepat lah pak, kami di sumatra utara sudah keburu tenggelam nih dalam banjir. Tak banyak yang bisa menolong karena tak tersedia perahu atau rakit sekalipun untuk evakuasi atau sekedar mengantar bekal makanan atau obat2an bagi yg terjebak di rumah2 mereka."}
+{"id": 8439, "text": "Pesawat CN-295 P-4501 Polri Angkut Bantuan Logistik Tiba di Aceh Pesawat angkut Polri jenis CN-295 P-4501 mendarat mulus di Bandara Sultan Iskandar Muda (SIM) membawa berbagai bantuan logistik untuk penanganan musibah banjir di Aceh. Sabtu 29 November 2025"}
+{"id": 8464, "text": "Berarti yang ngebunuhin orang sumbar karena banjir bandang ini si kabau @RajaJuliAntoni biadab ini 😡"}
+{"id": 8476, "text": "Ngeliat banjir di sumatra agak ketar ketir ya, walaupun sumsel masih aman, dan rumahku jauh dari sungai besar sedih"}
+{"id": 8481, "text": "Cukong2 boss kayu dan tambang itu lagi kongkow2 di S'pore, bininya lagi belanja tas di Paris, anaknya lagi nonton NBA di LA.. Kalian para peliharaan lagi nonton tv lihat saudara di Aceh, Sumut dan Sumbar tertimpa bencana.. OTAK KALIAN ADA DIMANA BABIK..?"}
+{"id": 8495, "text": "Pray for Aceh & Sumatera Hati kami hancur melihat cobaan yang menimpa saudara-saudara kita di Aceh dan Sumatera. Duka mereka adalah duka kita bersama. Kami mengirimkan doa terbaik, harapan, dan kekuatan untuk semua yang terdampak. #PrayForAceh #PrayForSumatera #goodybag 🎗️"}
+{"id": 8502, "text": "Bahhh gapernah ngebayangin dia naik air asia beneran kepentok jadwal banget dah sedih"}
+{"id": 8508, "text": "Coba ngomong di depan warga yg rumah nya ancur kebanjiran sana bang,,,ga di timpukin tai juga sukur loe,,,enak aja ngomongin angka, rakyat mah susah gara2 kebijakan pejabat2 korup"}
+{"id": 8513, "text": "Kantor Wilayah Direktorat Jenderal Imigrasi Kepulauan Riau menyampaikan doa dan empati terdalam atas bencana banjir dan longsor di Aceh, Sumut, dan Sumbar. Semoga keadaan segera membaik dan masyarakat dapat kembali beraktivitas dengan aman."}
+{"id": 8517, "text": "Pemerintah keknya emang gapeduli sama sumatera. Jambi langganan banjir dan pernah surutnya nyampe berminggu2 gapernah tuh diperhatiin"}
+{"id": 8534, "text": "Banjir gede gini kalau siklonnya (amit amit) lewat rumah gw yang di sana, udah pasti banjir sampe atep gak keliatan. Ya kan pung Lampung? Sekarang dikit² banjir, kayak mnyed."}
+{"id": 8542, "text": "Pemikiran Cerdas Seorang Warga Saat Diwawancarai Mengenai Banjir dan Longsor “Banjir Bandang Bolehlah Datangnya Dari Hujan, Tapi Gelondongan Kayu Ini Tidak Mungkin Datang Dari Awan. Kalau Bukan Dari Gergaji² Yg Disebabkan Oleh Tangan² Jahil Manusia”"}
+{"id": 8559, "text": "Sebanyak 21 jenazah telah ditemukan di aliran Sungai Batang Anai, Kabupaten Padang Pariaman, Sumatera Barat diduga korban banjir bandang atau galodo di Jembatan Kembar Kota Padang Panjang pada Kamis, 27 November 2025. \"Untuk sementara hingga malam tadi ada 21 jenazah yang telah"}
+{"id": 8561, "text": "Tolong lihat kemari!!!! Sumatera itu bukan provinsi melainkan pulau. Lihat ke ujung Indonesia ini, ada Aceh, Sumatra Utara, Sumatra Barat yang sedang butuh bantuan. Tolong cepat karna kamu bermain dengan seseorang yang tengah berusaha untuk tetap hidup ditengah pilunya!!!"}
+{"id": 8562, "text": "Deathbat Indonesia turut berbelasungkawa kepada korban banjir yang terjadi di Sumatera. Semoga teman-teman di Aceh, Sumatera Utara, Sumatera Barat dan sekitarnya selalu dalam lindungan Tuhan Yang Maha Esa. Foto Latar: Syifa Yulinnas, Antara"}
+{"id": 8567, "text": "Ya, benar. Elon Musk mengumumkan di X bahwa Starlink memberikan layanan internet gratis untuk korban banjir parah di Indonesia, termasuk Sumatra, hingga akhir Desember 2025. Ini kebijakan standar SpaceX untuk tidak mengambil untung dari bencana."}
+{"id": 8576, "text": "BRI respons banjir bandang Sumatra dengan langsung turun ke lapangan dan nyiapin bantuan darurat biar warga bisa tetap bertahan di kondisi yang masih serba terbatas. #CSRBRI #BRIPeduli #qrisbri"}
+{"id": 8578, "text": "Pemerintah Malaysia Sdh Mengirim Bantuan Kemanusiaan Ke Aceh. Sementara Masih Tolol & Dungu Pemerintah Pusat & Daerah Atas Kejadian Banjir Bandang Di Sibolga Sumatra Utara."}
+{"id": 8583, "text": "Ya, banjir Sumatra Utara November 2025 menewaskan >170 jiwa. WALHI tuding deforestasi oleh perusahaan seperti PT TPL picu bencana, dengan kayu gelondongan sebagai bukti. Pemerintah sebut siklon tropis penyebab utama, tapi DPR dan WALHI desak investigasi mendalam. Kemenhut janji"}
+{"id": 8591, "text": "Penyebab banjir dan longsor di Sumatra adalah karena pembalakan liar oleh oligarki dan diijinkan oleh pejabatnya sehingga merusak alam. Mereka memang pki anjing!"}
+{"id": 8593, "text": "and as for bencana banjir... aku baik-baik aja, ortu di Padang juga alhamdulillah daerah nya aman... namun ada beberapa dari keluarga ku daerah mereka kena dampak banjir nya... belum terlalu dapet update juga... semoga mereka aman dan bencana Sumatra cepat selesai... sedih doa"}
+{"id": 8594, "text": "PRAY FOR SUMATRA Bencana banjir bandang telah melanda Sumatera, tepatnya di wilayah Sibolga, Medan, Padang, dan Aceh pada 24–26 November 2025. Hujan deras yang mengguyur selama beberapa hari menyebabkan meluapnya sungai dan merendam pemukiman warga. Dampak yang ditimbulkan 👇 doa"}
+{"id": 8595, "text": "emg nyatanya Jawasentris, yang aku maksud kan pulaunya bukan sukunya, bulan bulan sblmnya juga terjadi banjir hampir di seluruh sumatra tp beritanya sepi banget, vt vt yg di upload sm orang yang terkena dampak gak naik"}
+{"id": 8607, "text": "Posko Utama Penanganan Bencana Banjir dan Tanah Longsoh telah beroperasi di Rumah Dinas Walikota Padang, Sumatra Barat. Posko ini menjadi pusat koordinasi dan seluruh aktivitas penanggulangan bencana di Kota Padang, termasuk pengelolaan data dan pendistribusian logistik."}
+{"id": 8614, "text": "Presiden Prabowo Subianto memerintahkan penanganan serius bencana banjir dan longsor yang melanda Pulau Sumatra meliputi Aceh, Sumatera Utara dan Sumatera Barat."}
+{"id": 8625, "text": "Video ini dari aksi penjarahan di Alfamart di Sibolga dan Tapanuli Tengah, Sumatera Utara, pada 29 November 2025, akibat kepanikan pasca banjir dan longsor yang menyebabkan kekurangan sembako."}
+{"id": 8626, "text": "“Negara berperan besar,” ujar Walhi Sumut. Dan tiap kali banjir bandang menyapu Sibolga–Tapanuli, tubuh-tubuh kayu raksasa ikut hanyut, membawa bukti yang terlalu vulgar untuk ditepis: ada penebangan yang dibiarkan."}
+{"id": 8634, "text": "Gara2 banjir di Sibolga, semua orang menjadi Wahabi. Kecuali yg lagi rebutan tambang."}
+{"id": 8638, "text": "Siaga Penuh! Wali Kota Rico Waas Tetapkan Medan Status Tanggap Darurat Banjir Hingga 11 Desember, 19 Kecamatan Terdampak"}
+
+Balas HANYA dengan satu objek JSON dengan kunci "annotations" yang berisi array, misalnya:
+{"annotations": [
+  {"id": 1, "label": "negatif", "confidence": 95, "reason": "Keluhan terhadap penanganan banjir."}
+]}

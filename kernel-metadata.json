@@ -1,17 +1,15 @@
 {
-  "id": "emanuelembuaijdak/thesis-lstm-indobert",
-  "title": "Thesis LSTM IndoBERT",
+  "id": "emanuelembuaijidak/thesis-indobertweet-lora-v1",
+  "title": "thesis-indobertweet-lora-v1",
   "code_file": "04_model_indobertweet_lora.ipynb",
   "language": "python",
   "kernel_type": "notebook",
   "is_private": "true",
   "enable_gpu": "true",
-  "enable_tpu": "false",
   "enable_internet": "true",
   "dataset_sources": [
-    "emanuelembuaijdak/thesis-dataset"
+    "emanuelembuaijidak/thesis-lstm-indobert-dataset"
   ],
   "competition_sources": [],
-  "kernel_sources": [],
-  "model_sources": []
+  "kernel_sources": []
 }

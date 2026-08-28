@@ -1,0 +1,302 @@
+[
+  {
+    "id": 6172,
+    "label": "negatif",
+    "confidence": 91,
+    "reason": "(dry-run) label simulasi untuk id 6172"
+  },
+  {
+    "id": 6173,
+    "label": "negatif",
+    "confidence": 97,
+    "reason": "(dry-run) label simulasi untuk id 6173"
+  },
+  {
+    "id": 6190,
+    "label": "negatif",
+    "confidence": 70,
+    "reason": "(dry-run) label simulasi untuk id 6190"
+  },
+  {
+    "id": 6203,
+    "label": "negatif",
+    "confidence": 76,
+    "reason": "(dry-run) label simulasi untuk id 6203"
+  },
+  {
+    "id": 6213,
+    "label": "negatif",
+    "confidence": 74,
+    "reason": "(dry-run) label simulasi untuk id 6213"
+  },
+  {
+    "id": 6214,
+    "label": "negatif",
+    "confidence": 60,
+    "reason": "(dry-run) label simulasi untuk id 6214"
+  },
+  {
+    "id": 6215,
+    "label": "netral",
+    "confidence": 70,
+    "reason": "(dry-run) label simulasi untuk id 6215"
+  },
+  {
+    "id": 6217,
+    "label": "negatif",
+    "confidence": 79,
+    "reason": "(dry-run) label simulasi untuk id 6217"
+  },
+  {
+    "id": 6230,
+    "label": "positif",
+    "confidence": 99,
+    "reason": "(dry-run) label simulasi untuk id 6230"
+  },
+  {
+    "id": 6247,
+    "label": "netral",
+    "confidence": 79,
+    "reason": "(dry-run) label simulasi untuk id 6247"
+  },
+  {
+    "id": 6249,
+    "label": "netral",
+    "confidence": 79,
+    "reason": "(dry-run) label simulasi untuk id 6249"
+  },
+  {
+    "id": 6255,
+    "label": "negatif",
+    "confidence": 66,
+    "reason": "(dry-run) label simulasi untuk id 6255"
+  },
+  {
+    "id": 6261,
+    "label": "negatif",
+    "confidence": 96,
+    "reason": "(dry-run) label simulasi untuk id 6261"
+  },
+  {
+    "id": 6262,
+    "label": "positif",
+    "confidence": 70,
+    "reason": "(dry-run) label simulasi untuk id 6262"
+  },
+  {
+    "id": 6264,
+    "label": "netral",
+    "confidence": 81,
+    "reason": "(dry-run) label simulasi untuk id 6264"
+  },
+  {
+    "id": 6267,
+    "label": "netral",
+    "confidence": 85,
+    "reason": "(dry-run) label simulasi untuk id 6267"
+  },
+  {
+    "id": 6270,
+    "label": "negatif",
+    "confidence": 85,
+    "reason": "(dry-run) label simulasi untuk id 6270"
+  },
+  {
+    "id": 6271,
+    "label": "negatif",
+    "confidence": 93,
+    "reason": "(dry-run) label simulasi untuk id 6271"
+  },
+  {
+    "id": 6281,
+    "label": "positif",
+    "confidence": 92,
+    "reason": "(dry-run) label simulasi untuk id 6281"
+  },
+  {
+    "id": 6287,
+    "label": "positif",
+    "confidence": 58,
+    "reason": "(dry-run) label simulasi untuk id 6287"
+  },
+  {
+    "id": 6303,
+    "label": "netral",
+    "confidence": 77,
+    "reason": "(dry-run) label simulasi untuk id 6303"
+  },
+  {
+    "id": 6304,
+    "label": "negatif",
+    "confidence": 97,
+    "reason": "(dry-run) label simulasi untuk id 6304"
+  },
+  {
+    "id": 6311,
+    "label": "positif",
+    "confidence": 84,
+    "reason": "(dry-run) label simulasi untuk id 6311"
+  },
+  {
+    "id": 6330,
+    "label": "netral",
+    "confidence": 84,
+    "reason": "(dry-run) label simulasi untuk id 6330"
+  },
+  {
+    "id": 6332,
+    "label": "negatif",
+    "confidence": 97,
+    "reason": "(dry-run) label simulasi untuk id 6332"
+  },
+  {
+    "id": 6345,
+    "label": "negatif",
+    "confidence": 69,
+    "reason": "(dry-run) label simulasi untuk id 6345"
+  },
+  {
+    "id": 6352,
+    "label": "negatif",
+    "confidence": 61,
+    "reason": "(dry-run) label simulasi untuk id 6352"
+  },
+  {
+    "id": 6362,
+    "label": "positif",
+    "confidence": 81,
+    "reason": "(dry-run) label simulasi untuk id 6362"
+  },
+  {
+    "id": 6373,
+    "label": "negatif",
+    "confidence": 85,
+    "reason": "(dry-run) label simulasi untuk id 6373"
+  },
+  {
+    "id": 6382,
+    "label": "negatif",
+    "confidence": 99,
+    "reason": "(dry-run) label simulasi untuk id 6382"
+  },
+  {
+    "id": 6384,
+    "label": "positif",
+    "confidence": 61,
+    "reason": "(dry-run) label simulasi untuk id 6384"
+  },
+  {
+    "id": 6388,
+    "label": "negatif",
+    "confidence": 65,
+    "reason": "(dry-run) label simulasi untuk id 6388"
+  },
+  {
+    "id": 6399,
+    "label": "positif",
+    "confidence": 82,
+    "reason": "(dry-run) label simulasi untuk id 6399"
+  },
+  {
+    "id": 6402,
+    "label": "negatif",
+    "confidence": 61,
+    "reason": "(dry-run) label simulasi untuk id 6402"
+  },
+  {
+    "id": 6415,
+    "label": "negatif",
+    "confidence": 64,
+    "reason": "(dry-run) label simulasi untuk id 6415"
+  },
+  {
+    "id": 6416,
+    "label": "negatif",
+    "confidence": 66,
+    "reason": "(dry-run) label simulasi untuk id 6416"
+  },
+  {
+    "id": 6420,
+    "label": "negatif",
+    "confidence": 60,
+    "reason": "(dry-run) label simulasi untuk id 6420"
+  },
+  {
+    "id": 6426,
+    "label": "netral",
+    "confidence": 63,
+    "reason": "(dry-run) label simulasi untuk id 6426"
+  },
+  {
+    "id": 6447,
+    "label": "netral",
+    "confidence": 65,
+    "reason": "(dry-run) label simulasi untuk id 6447"
+  },
+  {
+    "id": 6451,
+    "label": "negatif",
+    "confidence": 62,
+    "reason": "(dry-run) label simulasi untuk id 6451"
+  },
+  {
+    "id": 6476,
+    "label": "negatif",
+    "confidence": 83,
+    "reason": "(dry-run) label simulasi untuk id 6476"
+  },
+  {
+    "id": 6485,
+    "label": "netral",
+    "confidence": 84,
+    "reason": "(dry-run) label simulasi untuk id 6485"
+  },
+  {
+    "id": 6489,
+    "label": "negatif",
+    "confidence": 88,
+    "reason": "(dry-run) label simulasi untuk id 6489"
+  },
+  {
+    "id": 6490,
+    "label": "positif",
+    "confidence": 89,
+    "reason": "(dry-run) label simulasi untuk id 6490"
+  },
+  {
+    "id": 6491,
+    "label": "positif",
+    "confidence": 92,
+    "reason": "(dry-run) label simulasi untuk id 6491"
+  },
+  {
+    "id": 6495,
+    "label": "positif",
+    "confidence": 82,
+    "reason": "(dry-run) label simulasi untuk id 6495"
+  },
+  {
+    "id": 6499,
+    "label": "positif",
+    "confidence": 88,
+    "reason": "(dry-run) label simulasi untuk id 6499"
+  },
+  {
+    "id": 6515,
+    "label": "negatif",
+    "confidence": 84,
+    "reason": "(dry-run) label simulasi untuk id 6515"
+  },
+  {
+    "id": 6525,
+    "label": "positif",
+    "confidence": 61,
+    "reason": "(dry-run) label simulasi untuk id 6525"
+  },
+  {
+    "id": 6526,
+    "label": "negatif",
+    "confidence": 93,
+    "reason": "(dry-run) label simulasi untuk id 6526"
+  }
+]

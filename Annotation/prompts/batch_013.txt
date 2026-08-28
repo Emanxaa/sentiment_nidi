@@ -1,0 +1,67 @@
+Anda adalah ahli anotasi sentimen untuk tweet bahasa Indonesia tentang banjir di Sumatra. Klasifikasikan sentimen setiap tweet ke salah satu label: 'negatif', 'netral', atau 'positif'.
+
+Anda akan menerima 50 tweet dalam format JSON (satu objek per baris).
+
+Aturan klasifikasi:
+- "negatif"   : keluhan, kritik, ketakutan, sedih, marah, sarkasme bernada negatif.
+- "netral"    : informasi faktual, laporan, peringatan tanpa emosi kuat.
+- "positif"   : apresiasi, dukungan, doa, harapan, bantuan, semangat.
+- confidence  : bilangan bulat 0-100 seberapa yakin Anda.
+- reason      : satu kalimat singkat dalam bahasa Indonesia menjelaskan alasan.
+
+Tweet:
+{"id": 5431, "text": "Membalas @indepenSumatera Kami MATI Kelaparan #PrayforSUMATERA Kami MATI Kelaparan #PrayforSUMATERA Dari linkedin.com 2 6 2 rb"}
+{"id": 5441, "text": "Akun komentar Syukurlah rakyat kita kuat. Soalnya bantuan resmi biasanya datang setelah fase sabar habis. Bukan begitu kiranya bang @Dandhy_Laksono ? #fakta #PrayForSumatera 42"}
+{"id": 5443, "text": "gambaran laknatnya israel urusan tutup jalur bantuan kemanusiaan buat palestina, ada di negara kita sekarang ini. #PrayForSumatera #PrayForIndonesia 29"}
+{"id": 5444, "text": "Dari Depok-Sleman siap meluncur ke Sumatera. @PKSejahtera @pksdiy @PKSSleman_DIY #pkspeduli #pksdekat #PrayForSumatera 1 1 38"}
+{"id": 5452, "text": "10 tahun dipimpin yang katanya \"sarjana kehutanan UGM\", semua mata tidak melihat ijazahnya tapi melihat 3 provinsi kehilangan hutan dan nyawa. . . Minggu Sumatra Aceh banjir prabowo jokowi anies #PrayForSumatera #prayforsibolga #PrayForTapanuli #indonesia kita bisa 59"}
+{"id": 5455, "text": "Membalas @aqr_community Sumatera sedang berjuang. Jangan berpaling #PrayForSumatera #PrayForAceh #BENCANANASIONAL #NATIONALDISASTER 37"}
+{"id": 5490, "text": "\"Musibah Kali ini Seperti Tsunami Jilid 2\" sambil meneteskan Airmata seperti itulah ungkapan Gubernur Aceh. Reportase tim posko 3 Ma'had At-Tashfiyah Kuala Simpang. Oleh : Abu Atha Lokasi : Aceh Tamiang #PrayForSumatera #prayforaceh #BENCANANASIONAL 2 10 433"}
+{"id": 5494, "text": "Satu lagi kerja penanganan bencana yang perlu diapresiasi nih. Thx to ⁦ @pln_123 ⁩ #prayforsumatera #salingbantu Afrizal Saputra (@afrizal_pby) on Threads Dari threads.com 45"}
+{"id": 5507, "text": "Dulu Marapi alah mambari Pasan.. Kalam Sakuliliang Tanah Data Jo Luhak Agam...... Datang Juo Salamoko..... Nan ditakuikan..... Kini Aie Baluluak Nan Marandam... #PrayForSumatera 1 72"}
+{"id": 5511, "text": "ACEH TAMIANG MASIH BUTUH KITA Aktivasi RSUD Aceh Tamiang adalah tujuan utama untuk akses vital kesehatan. #Acehtamiang #prayforsumatera 2 6 591"}
+{"id": 5512, "text": "Membalas @kompascom Disegerakan Pak proses Evakuasi dan bantuannya... @prabowo @BNPB_Indonesia #PrayForSumatera #AllEyesOnSumatra 304"}
+{"id": 5531, "text": "Katanya \"bukan bencana nasional\", tapi pejabrut pusat nasional dari pucuk sampe bawah mulai datang untuk mencitrakan diri... Dasar somplak! Rakyat bantu rakyat #PrayForSumatera 22"}
+{"id": 5534, "text": "SEMOGA KEADAAN KEMBALI PULIH #PrayForSumatera 2 36"}
+{"id": 5536, "text": "Tim Relawan LAZISKU Distribusikan Bantuan Menyusuri Sungai Wampu Menuju Desa Tapak Kuda yang Terisolir - Ini Kebumen #lazisku #sungaiwampu #PrayForSumatera #desatapakkuda inikebumen.com Tim Relawan LAZISKU Distribusikan Bantuan Menyusuri Sungai Wampu Menuju Desa Tapak Kuda yang... Tim Relawan LAZISKU mendistribusikan bantuan dengan menyusuri Sungai Wampu menuju Desa Tapak Kuda, Tanjung Pura, Langkat, yang Terisolir. 1 44"}
+{"id": 5550, "text": "Lah, pemerintah selama ini kemana aja? Kocak!! Upaya preventif itu lebih penting daripada rehabilitasi! Mundur aja kalian kalau nggak bisa dalam bekerja (fungsi pemerintah itu adalah membuat kebijakan & melakukan pengawasan)! #PrayForSumatera finance.detik.com Menteri LH Stop Operasional 3 Perusahaan Diduga Penyebab Banjir Sumut, Ada BUMN Menteri Lingkungan Hidup menghentikan operasional tiga perusahaan di DAS Batang Toru untuk audit lingkungan. 42"}
+{"id": 5552, "text": "Turut mendoakan untuk teman-teman yang berada di Sumatera dan terdampak bencana banjir. Semoga keadaan lekas pulih.. #PrayForSumatera #BENCANANASIONAL #NATIONALDISASTER 160"}
+{"id": 5555, "text": "Ada yang menyiapkan tataan menyambut tahun 2026, namun sebagian saudara kita menata kehidupan mereka dimulai dari Nol. #sumatra #banjir #PrayForSumatera 1 39"}
+{"id": 5556, "text": "Keadaan terkini banjir di Sumatera (sekitar jam 4:00 petang): Banyak wilayah di Sumatera — terutama Aceh, Sumatera Utara dan Sumatera Barat — masih dilanda banjir bandang dan tanah longsor. # #PrayForSumatera cnnindonesia.com Kondisi Terkini Daerah Terdampak Bencana Sumatra Ribuan orang terdampak bencana banjir bandang dan tanah longsor melanda tiga provinsi di Pulau Sumatra. Berikut update terbaru kondisi bencana tersebut. 77"}
+{"id": 5560, "text": "Siklon Tropis Senyar #PrayForSumatera, #BanjirSumatera, #BanjirAceh Apa sih siklon tropis senyar , yang menyebabkan hujan deras di daerah Sumatera ? Siklon senyar adalah pusaran angin kuat di laut yang memicu : Hujan deras Angin kencang Gelombang tinggi Efeknya Tampilkan lebih banyak 56"}
+{"id": 5562, "text": "Peduli Lindungi Sumatera Yuk bantu saudara kita di Sumatera! Bencana datang tanpa diduga, tapi kebaikan kita bisa datang kapan saja. Sisihkan sedikit rezeki untuk korban bencana Sumatera Dana, Pakaian, Dll Donasi akan disalurkan melalui Yayasan Asar Humanity #PrayForSumatera 2 6 505"}
+{"id": 5567, "text": "Innalillahi wa inna ilaihi raji’un.⁠ ⁠ Kami turut berduka yang sedalam-dalamnya atas musibah banjir bandang yang terjadi di Aceh dan Sumatera.⁠ Semoga Allah memberikan kekuatan, kesabaran, dan perlindungan kepada semua saudara kita yang sedang diuji.⁠ ⁠ #PrayForAcehSumatera 1 40"}
+{"id": 5577, "text": "Bangun tidur dibuat nangis sama korban banjir di aceh ngomong gini. \"Pengen pulang kerumah, tapi rumah kami udah ga ada\" Damnn, bersyukur lah kalian yang masih bisa tidur dirumah 42"}
+{"id": 5583, "text": "Membalas @P3gEl Lemparkan ke mata orang yang ngomong kalau bencana banjir bandang di Aceh itu cuma biasa saja... 2 12 308"}
+{"id": 5588, "text": "Humanis,,relawan yang tergabung dalam Jaringan pendukung Anies Baswedan ukut salurkan bantuan pada korban banjir Aceh dan Sumatera 3 4 440"}
+{"id": 5594, "text": "GUBERNUR ACEH BERSEDIH HATI MELIHAT DARI UDARA KAMPUNG2 YANG HILANG DITELAN BANJIR BANDANG video Ruang Waktu! #TikTok TikTok · Ruang Waktu Dari tiktok.com 1 9 13 461"}
+{"id": 5606, "text": "Anies Mendongeng untuk Anak Korban Banjir di Aceh, Tenda Pengungsian Pecah gelora.co Anies Mendongeng untuk Anak Korban Banjir di Aceh, Tenda Pengungsian Pecah GELORA.CO - Mantan Gubernur DKI Jakarta sekaligus eks Calon Presiden Anies Baswedan mendongeng di tenda pengungsian anak korban banjir Aceh... 3 12 1 rb"}
+{"id": 5608, "text": "Membalas @lalaayeyeyee dan @ridwanadit Fakta menunjukkan MBG tidak memakai dana penanggulangan bencana, tetapi lebih dahulu hadir membawa makanan bagi korban banjir di Aceh sebagai kerja nyata yang nyata manfaatnya #LanjutkanMBG 28"}
+{"id": 5616, "text": "Membalas @riatri_ria Jangan mengELAK ya #EndipatWijaya ktika nanti di #Riau terjadi bencana banjir yg lebih dahsyat dari #Aceh ... Kan anda dan #Menhut juga yg mengeluarkan izin ? #Prabowo #Gerindra 55"}
+{"id": 5628, "text": "Detik-Detik Banjir Bandang Aceh Tengah: Arus Deras Seret Tumpukan Kayu Raksasa! #BanjirBandang #AcehTengah #Takengon #BenerMeriah 1 37"}
+{"id": 5632, "text": "Melihat video Najwa dan Mualem, sesak dan sedihnya berasa sekali Ya Allah, kuatkanlah aceh dan seluruh warga indonesia yg terdampak dr banjir atau bencana lainya 85"}
+{"id": 5640, "text": "Pemulihan pasca banjir dan longsor di Aceh, Sumut, dan Sumbar terus dipercepat. Pemerintah terus bergerak mendistribusikan logistik, mendirikan shelter, serta mengoperasikan dapur umum di wilayah terdampak banjir. Simak selengkapnya di video berikut. 21 9 36 1 rb"}
+{"id": 5643, "text": "Terimakasih Kepada Seluruh Masyarakat Abdya terkhusus nya Bupati Abdya yang telah menyalurkan Bantuan untuk Korban Banjir di Kabupaten Aceh Timur 35"}
+{"id": 5651, "text": "Visualisasi malam di Aceh tampak keliatan dari satelit VIIRS-nya NASA. Banyak wilayah gelap gulita akibat listrik mati. Tapi presidennya masih aja sempat percaya, banjir di Sumatera gak separah seperti aslinya. 7 341 567 22 rb"}
+{"id": 5655, "text": "BRIMOB BAGI-BAGI MASKER KEPADA KORBAN BANJIR DI ACEH TAMIANG 39"}
+{"id": 5659, "text": "Banjir bandang di Aceh, Sumatera Utara, dan Sumatera Barat menimbulkan kerusakan luas. Jalan dan jembatan terputus, rumah bertumpuk di atas rumah, permukiman tertutup lumpur, dan deretan luka lain yang belum seluruhnya terucap. Presiden dan para menteri turun langsung menjejak Tampilkan lebih banyak 1 7 10 6 rb"}
+{"id": 5667, "text": "BRIMOB ACEH GELAR DAPUR LAPANGAN, BANTU MASYARAKAT TERDAMPAK BANJIR 1 14"}
+{"id": 5670, "text": "gw abis liat tiktok, scroll, menemukan konten yg bahas banjir di aceh n sumatra. n yap, buzzer + warga\" tolol itu masih aja ngebelain pemerintah. like? anjayyy, gobloknya uda sampe ke nadi\" anjir 34"}
+{"id": 5681, "text": "Menteri Dalam Negeri Tito Karnavian akhirnya mengambil langkah tegas soal polemik Bupati Aceh Selatan Mirwan MS yang kedapatan umrah di tengah warganya dilanda banjir. Mirwan resmi dinonaktifkan sementara selama tiga bulan karena pergi ke luar negeri tanpa izin. Tito menegaskan, Tampilkan lebih banyak 87"}
+{"id": 5682, "text": "Terungkap! PT THL yang Dituding Pemicu Banjir Aceh Berelasi dengan Bank BSI - Terungkap! PT THL yang Dituding Pemicu Banjir Aceh Berelasi dengan Bank BSI Dari gelora.co 46"}
+{"id": 5690, "text": "Kegagalan empat BUMN strategis @pln_123 , @MyPertaminaID , @TelkomIndonesia , dan @Telkomsel dalam memulihkan layanan di Banda Aceh setelah 14 hari pasca-banjir adalah bukti nyata ketidaksiapan infrastruktur kritis nasional. 1 113"}
+{"id": 5696, "text": "Membalas @IndiraNews Ide ini muncul usai bencana banjir dan longsor melanda Aceh, Sumatera Utara, dan Sumatera Barat. Dalam tanggapannya Puan meminta masyarakat berpusat pada penanganan bencana dan pemulihan warga terdampak musibah alam tersebut. 1 1 1 28"}
+{"id": 5703, "text": "Membalas @BlubluABC @OrterMald dan @ikhwanuddin Tp di aceh sendiri lebih sering sosialisasi gempa dan tsunami drpd bencana longsor dan banjir bandang. Mgkn kajian soal ini bakal lebih banyak dikembangin kedepannya 1 2 128"}
+{"id": 5706, "text": "Mirwan MS Dicopot dari Bupati Aceh Selatan Gegara Umrah Saat Banjir Mirwan MS Dicopot dari Bupati Aceh Selatan Gegara Umrah Saat Banjir - Kabar Fajar Dari kabarfajar.com 17"}
+{"id": 5717, "text": "Netizen Geram Usai Tahu Empat Gajah Dikerahkan Untuk Bantu Bersihkan Tumpukan Kayu Pasca Banjir di Aceh Netizen Geram Usai Tahu Empat Gajah Dikerahkan Untuk Bantu Bersihkan Tumpukan Kayu Pasca Banjir di... Dari viva.co.id 1 1 1 rb"}
+{"id": 5727, "text": "Perbaikan infrastruktur kelistrikan di daerah terdampak banjir bandang dan longsor di Aceh hadapi tantangan berat. #Ekonomi #AdadiKompas kompas.id Masih Banyak Lokasi Terisolasi, Pemulihan Listrik di Aceh Lebih Lama Perbaikan infrastruktur kelistrikan di daerah terdampak banjir bandang dan longsor di Aceh hadapi tantangan berat. 35"}
+{"id": 5734, "text": "Presiden Prabowo setujui subsidi 60juta untuk bangun rumah para korban Banjir di Aceh dan Sumatera --- BNPB Live Update Bencana Shanti Jakarta Pusat 2 443"}
+{"id": 5747, "text": "Doa untuk saudara kita korban bencana banjir sumatera barat sumatra Utara Aceh 26"}
+{"id": 5752, "text": "Setelah melihat langsung kondisi warga terdampak banjir di Aceh, Presiden Prabowo menegaskan arahan: keselamatan rakyat jadi prioritas, bantuan harus tiba tanpa hambatan. 1 9"}
+{"id": 5771, "text": "Membalas @EN538474N6 @prabowo dan @setkabgoid @EN538474N6 Mohon maaf atas ketidaknyamanannya, dalam upaya menjaga keselamatan masyarakat dan pengamanan jaringan listrik, PLN masih melakukan pemadaman listrik di beberapa titik wilayah Sumatera dan Aceh akibat bencana banjir bandang. PLN akan segera mengaktifkan kembali Tampilkan lebih banyak 1 176"}
+{"id": 5797, "text": "Dalam Instagram miliknya, Irish Bella dan suami, Haldy Sabri, menyalurkan bantuan bertahap untuk korban banjir dan longsor di Sumatera dan Aceh. Irish Bella dan Suami Beri Bantuan Bertahap untuk Korban Banjir-Longsor Sumatera Dari hot.detik.com 248"}
+
+Balas HANYA dengan satu objek JSON dengan kunci "annotations" yang berisi array, misalnya:
+{"annotations": [
+  {"id": 1, "label": "negatif", "confidence": 95, "reason": "Keluhan terhadap penanganan banjir."}
+]}

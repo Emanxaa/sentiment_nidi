@@ -1,0 +1,67 @@
+Anda adalah ahli anotasi sentimen untuk tweet bahasa Indonesia tentang banjir di Sumatra. Klasifikasikan sentimen setiap tweet ke salah satu label: 'negatif', 'netral', atau 'positif'.
+
+Anda akan menerima 50 tweet dalam format JSON (satu objek per baris).
+
+Aturan klasifikasi:
+- "negatif"   : keluhan, kritik, ketakutan, sedih, marah, sarkasme bernada negatif.
+- "netral"    : informasi faktual, laporan, peringatan tanpa emosi kuat.
+- "positif"   : apresiasi, dukungan, doa, harapan, bantuan, semangat.
+- confidence  : bilangan bulat 0-100 seberapa yakin Anda.
+- reason      : satu kalimat singkat dalam bahasa Indonesia menjelaskan alasan.
+
+Tweet:
+{"id": 7882, "text": "Langkah cepat Presiden Prabowo Pulihkan PascaBencana banjir Sumatera diwujudkan lewat Pembangunan Rumah Korban Bencana hunian sementara dibangun agar warga segera meninggalkan tenda pengungsian"}
+{"id": 7906, "text": "loh apa salahnya kejar ambisi yg salah itu yg korupsi yg bikin rakyat sengsara spt di aceh .. hutan digunduli akhirnya longsor banjir bandang .. anies berambisi untuk mengakhiri kesengsaraan dgn cara merebut kekuasaan yg disyahkan oleh undang undang yaitu lewat partai politik"}
+{"id": 7921, "text": "Maluuuu wooooi yg dr luar Aceh pada kerja keras membantu para korban di Aceh eeeh kalian demo demo aja Maluuuu woooooi yg di bantu itu orang Aceh asli yg kena musibah itu Aceh Sumut Sumbar, kalian kerjanya demo demo aja"}
+{"id": 7929, "text": "Ribuan keluarga korban banjir dan longsor di Aceh, Sumatera Utara, dan Sumatera Barat memilih bertahan di luar hunian sementara dengan menerima Dana Tunggu Hunian (DTH) dari pemerintah. Badan Nasional Penanggulangan Bencana (BNPB) mencatat, hingga kini sebanyak 16.264 kepala"}
+{"id": 7941, "text": "Apa bakal kejadian lagi tahun baru banjir?"}
+{"id": 7946, "text": "Penanganan Banjir Wilayah Sumatera dan Aceh Terus Berjalan"}
+{"id": 7952, "text": "Dari dulu belim pernah denger BNPB di cek.. coba KPK/OJK/BI cek alur keluaf masuk uang di BNPB"}
+{"id": 7956, "text": "\"Pusat kayaknya tutup mata,\" kata Ismail A Jalil, Bupati Aceh Utara. Dia menyatakan bencana banjir di Aceh 'lebih parah dari tsunami 2004. Dia menjelaskan, desa-desa berubah menjadi muara, dan rumah-rumah hanyut."}
+{"id": 7966, "text": "Brimob Sumut Bantu Pulihkan Sekolah Terdampak Banjir di Tanjung Pura @brimobpoldasumut Tim Produksi Humas Korps Brimob Polri #PrayForSumatra #Polriuntukmasyarakat #BrimobUntukNusadanBangsa #Jiwaragakudemikemanusiaan #humaskorbrimobpolri ©️"}
+{"id": 7967, "text": "Bukanya partai mikir utk bantuan banjir Aceh..Sumut ???"}
+{"id": 7979, "text": "60 KK di Jambo Kajeung Masih Mengungsi, Butuh Bantuan Alat Berat Bersihkan Lumpur Warga terpaksa mengungsi karena rumah mereka mengalami kerusakan serta masih terendam lumpur setebal sekitar 50 sentimeter, baik di halaman maupun di dalam rumah."}
+{"id": 7990, "text": "Butuh bertahun tahun hutan yang sudah si rusak bisa hijau kembali, jika hujan deras maka banjir bandang akan terus seperti ini. Pak pratikno kemarin koar koar mau rekayasa cuaca buktinya mana?? @prabowo @Gerindra @setkabgoid"}
+{"id": 7993, "text": "Ga liat kembang api bikin dia meninggal terus keluarganya keseret banjir bandang kah? Ga punya hati bgt tu orang"}
+{"id": 7997, "text": "Kalau mau bicara sawit mbok yo tunggu penanganan banji sumatra-aceh maksimal dulu kek, hujan masih deras, banjir datang silih berganti, air mata belum kering, masyarakat masih ngungsi, tapi orang satu ini isi kepalanya cuma sawit."}
+{"id": 8004, "text": "Saat rumah terendam harapan dijaga Projo Peduli Bencana bersama rakyat Sumatera Bersama Budi Arie Setiadi Projo Setia Digaris Rakyat mendukung pemulihan dan kerja keras pemerintah"}
+{"id": 8010, "text": "Sama banget Nder, disini hampir tiap malem hujan deres aku selalu kepikiran gimana kalo mereka kehujanan dan kena banjir lagii. Akhirnya nangis lagi, ya Allah berat cobaan saudara saudaraku disanaa"}
+{"id": 8023, "text": "evakuasi korban banjir bikin nangis pagi² sedih"}
+{"id": 8028, "text": "Seskab Teddy mengajak seluruh lapisan masyarakat untuk saling bantu dalam penanganan bencana banjir dan longsor di Sumatera. Teddy menekankan pentingnya gotong royong agar pemulihan berjalan lebih cepat dan menyeluruh."}
+{"id": 8029, "text": "Pempus apa tidak berpikir akan adanya kebangkitan ide separatis krn keterlambatan pempus dlm penanganan bencana dan kelakuan para menteri yg ngehek mengatasi banjir"}
+{"id": 8039, "text": "Dari awal juga bantuannya gak jelas. Mereka buat kebutuhan utama aja kurang, masa mau ditambah biaya listrik buat ngecas becak? Kebiasaan pemerintah, ngasih solusi ngasal, gak bener\" dipikir akar masalahnya apa. Oon"}
+{"id": 8046, "text": "Haru! Detik-detik distribusi bantuan udara untuk warga Sikundo, Aceh Barat yang terisolasi banjir. Akses jalan putus total, bantuan logistik jadi penyambung nyawa. ​Mari luangkan waktu sejenak untuk mendoakan keselamatan mereka. Semoga air segera surut! ​#BanjirAceh #AcehBarat"}
+{"id": 8048, "text": "Salah satunya, yang baru baru ini. Bencana banjir rob di Sumatra, menurut aku sudah sangat sangat parah sekali. Sudah menghasilkan banyak sekali korban jiwa. Idealnya, sebagai pemimpin negara yang benar, pak prabowo harus lebih cepat tanggap akan hal ini. Tetapi???"}
+{"id": 8072, "text": "Muhammadiyah Terima Amanah Salurkan Bantuan Kemanusiaan UEA bagi Korban Banjir Gubernur Sumatera Utara Bobby Nasution memastikan bantuan kemanusiaan berupa beras sebanyak 30 ton dari Uni Emirat Arab (UEA) tetap disalurkan kepada para korban banjir. Bantuan tersebut dipastikan"}
+{"id": 8075, "text": "Lagian jalan lintas juga dari sumatra, sementara ini putus. Tanah longsor juga masih banyak menumpuk. Posisi aceh itu kalau jalur darat hanya bisa datang dri sumut. Kami saja di medan kesulutan ke kuala simpang."}
+{"id": 8083, "text": "Dalam penanggulangan bencana, Pemerintah Hadir dan Pemerintah Bareng Warga dari awal hingga pemulihan. Bersama, Aceh Sumatra Pulih, harapan tumbuh, dan Aceh Sumatra Bangkit lewat komitmen Pemerintah Sigap untuk Aceh Sumatra. #AcehSumateraPulih"}
+{"id": 8094, "text": "Berdasarkan data terkini (Des 2025), bencana utama adalah banjir dan longsor di Sumatera (Aceh, Sumut, Sumbar) dengan korban >1000 jiwa. Belum ada laporan signifikan di Riau, Kalsel, atau Kalbar. Jakarta & Jabar sering banjir musiman, tapi tak ada eskalasi baru. Sumber: BNPB,"}
+{"id": 8098, "text": "Bencana banjir besar dan tanah longsor di Sumatera Barat turut melumpuhkan jalur vital Lembah Anai, urat nadi ekonomi yang menghubungkan Padang dan Riau. Menko Infrastruktur dan Pembangunan Kewilayahan, Agus Harimurti Yudhoyono, hadir langsung meninjau lokasi terdampak,"}
+{"id": 8104, "text": "DPC PDI Perjuangan Tanah Datar bergotong royong menyalurkan bantuan dari DPP PDI Perjuangan untuk korban banjir yang mengungsi di Posko Utama Nagari Sumpur, Batipuh Selatan, Tanah Datar, Sumatera Barat, Minggu (15/12/2025). Kami berharap bantuan yang diberikan bisa sedikit"}
+{"id": 8105, "text": "Banjir besar yang melanda Kecamatan Batang Toru, Kabupaten Tapanuli Selatan, Sumatera Utara, pada akhir November lalu menyisakan kisah keberanian seorang polisi. Aipda Jhon Kennedy Habiahan, Bhabinkamtibmas Polsek Batang Toru, turun langsung membantu warga saat Sungai Batang"}
+{"id": 8108, "text": "Percuma dibantu juga jika ujung-ujungnya kasus ditutup seperti yg terjadi di Lampung ! Jangan ngeprank rakyat lah. Korban meninggal akibat Bencana Banjir Bandang di Sumatera & Aceh itu sdh mencapai 1000an orang lho ! ----- Jajaran Sore Jumat DISKON 100K Pagiii"}
+{"id": 8112, "text": "FK Unila Kirim Tim Medis dan Salurkan Rp60 Juta untuk Banjir Aceh"}
+{"id": 8115, "text": "awal tahun 90an itu ramai2 orang berpindah ke berbagai wilayah, terutama Jambi dan Riau untuk menjadi petani sawit, padahal mereka dulu relokasi dari banjir bandang Lampung akibat bukaan hutan untuk kebun kopi. saya tahu persis, hanya timelinenya sudah tak ingat"}
+{"id": 8122, "text": "aamiin yaaMujiib Semoga dengan mendapatkan emas bisa meringanakan beban sedikit dan buat bahagia yg kena musibah banjir Bandang."}
+{"id": 8128, "text": "orang-orang yang tidak tahu berkata demikian. Tetapi Allah akan menghakimi mereka pada Hari Kiamat mengenai apa yang mereka perselisihkan.\" (2:113) Orang-orang yang tidak tahu, menurut saya, merujuk pada \"banjir besar\" di zaman sekarang."}
+{"id": 8132, "text": "±7.000 korban luka Sedikitnya 523,3 ribu orang mengungsi (-1,2 ribu) | Terbanyak di Aceh Utara (166,9 ribu) | Pengurangan terbanyak di Tapanuli Tengah (-1,2 ribu)"}
+{"id": 8134, "text": "Ditengah tengah masyarakat desa Tapanuli Sumatra Utara kesulitan akan MCK, disitulah Polri hadir untuk mengatasi masalah dengan membuatkan MCK #kamipolisibaik #polseksumowono #polressemarang #poldajateng"}
+{"id": 8139, "text": "Cakap je tak guna Dr. Kena turun padang, masuk mesy tapak diorg ni. Ada site diary tak. Minit mesy tapak mcmana rupa. JKR setakat boleh pantau je la…"}
+{"id": 8140, "text": "Haha, paham guyonnya, piss juga! Soal bantuan 10rb/hari dari Mensos Gus Ipul buat korban banjir Sumatra (usul 3 bulan, sumber Kompas 18 Des 2025), banyak kritik karena dianggap minim (setara 3 Indomie, kata netizen). Link ke hutan/deforestasi: banjir sering karena penebangan"}
+{"id": 8147, "text": "uang buat beli kembang apinya mending di donasikan buat korban banjir bandang Sumatra doa"}
+{"id": 8149, "text": "Pemerintah menyiapkan regulasi terkait pemanfaatan kayu gelondongan yang terbawa banjir bandang dan longsor di Pulau Sumatra guna mendukung percepatan rehabilitasi dan rekonstruksi pascabencana. Aturan tersebut tertuang dalam surat edaran Kementerian Kehutanan (Kemenhut) yang"}
+{"id": 8166, "text": "Untuk warga sumatra plis jgn sambut2 pejabat yg dateng lah, teriakin ajah, kalau bisa lemparin ajah lumpur banjir biar kerjanya bener dikit. Ga usah kita bersikap baik sm mereka tuntut mereka sekencang2nya buat kerja dan bikin penanganan bencana lebih cepat"}
+{"id": 8184, "text": "Di Jakarta dan bbrp Daerah lain tak ada hutan jika hujan lebat banjir di Pandeglang Banten Banyak SAWIT tak ada BANJIR, Antum perlu belajar lagi PENYEBAB Banjir yg Melanda Aceh dan Padang."}
+{"id": 8189, "text": "Gubernur Sumatera Utara Bobby Nasution memastikan bantuan beras sebanyak 30 ton dari Uni Emirat Arab (UEA) tetap akan disalurkan kepada korban banjir di Kota Medan dan tidak dikembalikan ke negara asalnya. “Namun disampaikan Pak Wakil Wali Kota ini (bantuan) dari UEA bukan G2G."}
+{"id": 8192, "text": "Menindaklanjuti instruksi Presiden Prabowo Subianto, Muhammad Rahul mengirimkan 15.000 paket sembako untuk membantu warga yang terdampak bencana banjir bandang di wilayah Sumatera Barat."}
+{"id": 8193, "text": "Sekretaris Kabinet, Teddy Indra Wijaya menyingung berbagai pihak yang terus meminta agar pemerintah menetapkan banjir dan longsor di Sumatera Utara, Sumatera Barat dan Aceh menjadi bencana nasional. . \"Sejak hari pertama tanggal 26, pemerintah pusat sudah melakukan penanganan"}
+{"id": 8218, "text": "Prabowo : \"Kita punya sawit sebagai karunia\" Bencana banjir Sumatra dampak kerugian 70T. Sedangkan hasil sawit 3 provinsi digabung thn 2024 hanya 28T, itupun tak semua masuk ke negara. STOP NORMALISASI SAWIT seolah lebih berharga dari dampaknya peringatan 🛑⚠️📸"}
+{"id": 8221, "text": "Bencana banjir bandang dan tanah longsor Sumatra Utara, Barat, dan Aceh menarik perhatian luas media asing, seperti Associated Press, New York Times, Reuters, hingga ABC Net. Kantor-kantor berita global soroti parahnya dampak bencana, terutama terkait dugaan kuat adanya peran"}
+{"id": 8223, "text": "Prozis Ibnu Abbas memberangkatkan relawan, ambulans & logistik untuk saudara kita yang terdampak banjir di Sumatera. Semoga Allah jaga mereka. Donasi kebaikan: Muamalat 5260014381 BSI 7006271612 Info: 085601095333 #PrayForSumatera #AksiKemanusiaan #ProzisIbnuAbbas #Bencana #Aceh"}
+{"id": 8228, "text": "Nuklir bisa jadi energi terbersih dan efektif, tapi juga bisa merusak lingkungan dengan signifikan jika salah kelola. Jujur saya khawatir, berkaca dari lambatnya respon pemerintah dalam menangani bencana banjir Sumatra, padahal penanganan PLTN membutuhkan respon cepat dan tepat"}
+{"id": 8231, "text": "Dukung penanganan banjir Sumatra"}
+
+Balas HANYA dengan satu objek JSON dengan kunci "annotations" yang berisi array, misalnya:
+{"annotations": [
+  {"id": 1, "label": "negatif", "confidence": 95, "reason": "Keluhan terhadap penanganan banjir."}
+]}

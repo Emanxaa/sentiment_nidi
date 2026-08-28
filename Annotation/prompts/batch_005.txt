@@ -1,0 +1,67 @@
+Anda adalah ahli anotasi sentimen untuk tweet bahasa Indonesia tentang banjir di Sumatra. Klasifikasikan sentimen setiap tweet ke salah satu label: 'negatif', 'netral', atau 'positif'.
+
+Anda akan menerima 50 tweet dalam format JSON (satu objek per baris).
+
+Aturan klasifikasi:
+- "negatif"   : keluhan, kritik, ketakutan, sedih, marah, sarkasme bernada negatif.
+- "netral"    : informasi faktual, laporan, peringatan tanpa emosi kuat.
+- "positif"   : apresiasi, dukungan, doa, harapan, bantuan, semangat.
+- confidence  : bilangan bulat 0-100 seberapa yakin Anda.
+- reason      : satu kalimat singkat dalam bahasa Indonesia menjelaskan alasan.
+
+Tweet:
+{"id": 1887, "text": "Personel Polres Mojokerto memberikan donasi yang akan digunakan membantu korban Bencana Alam Banjir dan Tanah Longsor di pulau Sumatra pada Selasa, 16 Desember 2025. @divisihumaspolri #PolriUntukMasyarakat #PolriPresisi #HumasPolri #HumasPoldaJatim #PoldaJatim #PolriPeduli 2 3 114"}
+{"id": 1889, "text": "Membalas @Iqbal_langdon Presiden Prabowo Subianto memimpin Sidang Kabinet Paripurna di Istana Negara, Jakarta, Senin (15/12/2025), membahas perkembangan strategis nasional dan penanganan bencana banjir serta tanah longsor di Aceh, Sumatra Utara, dan Sumatra Barat. Foto: BPMI Setpres/Laily Rachev 1 141"}
+{"id": 1906, "text": "\"Kemensos berdagang timpanan filantropi salurkan aid logistik korban bangkai dan landslip Kemensos Gandeng Filantropi Salurkan Bantuan Logistik Korban Banjir Sumatra Dari thecuy.com 33"}
+{"id": 1909, "text": "Laporan jumlah korban meninggal dunia pada bencana banjir bandang dan longsor di Aceh, Sumatra Utara, dan Sumatra Barat perhari Jumat, 12 Desember 2025, mencapai 995 jiwa. Jumlah masyarakat yang mengungsi tercatat 884.800 jiwa. Hal terungkap dari data Badan Nasional Tampilkan lebih banyak 77"}
+{"id": 1910, "text": "Presiden Prabowo Subianto melanjutkan agenda peninjauan penanganan bencana banjir ke Kabupaten Langkat, Sumatra Utara, pada Sabtu (13/12/2025). Kunjungan ini dilakukan sehari setelah Kepala Negara menyambangi wilayah terdampak banjir di Provinsi Aceh. Presiden Prabowo yang Tampilkan lebih banyak 1 4 986"}
+{"id": 1911, "text": "Presiden Prabowo Subianto melanjutkan agenda peninjauan penanganan bencana banjir ke Kabupaten Langkat, Sumatra Utara, pada Sabtu (13/12/2025). Kunjungan ini dilakukan sehari setelah Kepala Negara menyambangi wilayah terdampak banjir di Provinsi Aceh. Presiden Prabowo bertolak Tampilkan lebih banyak 928"}
+{"id": 1918, "text": "Prabowo Tanpa Lelah menegaskan pemulihan infrastruktur dan kebutuhan dasar adalah langkah prioritas Pemulihan Pasca Bencana bagi masyarakat yang ingin segera bangkit Prabowo Setujui Bantuan Rp60 Juta per Rumah untuk Korban Banjir Bandang di Aceh & Sumatra ·... Dari ifakta.co 27"}
+{"id": 1933, "text": "Tidak tepat menyalahkan Pemerintahan Presiden Prabowo. WWF Indonesia menilai musibah banjir bandang dan tanah longsor yg melanda Aceh, Sumatra Utara & Sumatra Barat adalah akumulasi dari tata kelola lingkungan yg bermasalah selama bertahun-tahun lampau. WWF Indonesia Sebut Banjir Sumatra Bukan Kesalahan Menhut Sekarang, Ini Alasannya Dari suara.com 2 10 16 805"}
+{"id": 1962, "text": "Intelektual Muda jangan lupa dengerin Info Aktual hari ini, Selasa, 9 Desember 2025, yang akan membahas mengenai Ferry Irwandi yang menghimpun 10M dalam waktu 24 jam untuk korban banjir di Sumatra, barengan sama aku Rista dan Exau #InfoAktual 75"}
+{"id": 1969, "text": "ya Allah, selamatkanlah saudara-saudari kami, ayah ibu kami, kakek nenek kami yang sedang berada dalam kesulitan dan kepayahan menghadapi bencana alam bertubi ini. berikanlah mereka senantiasa perlindungan-Mu, aamiin. #PrayForSumatera #PrayForAceh #PrayForPadang 1 43"}
+{"id": 1981, "text": "gakuat sesegukan baca berita #PrayForSumatera 68"}
+{"id": 1990, "text": "Akun parodi :: Ini foto kenyataan bukan rekayasa AI. #PrayForSumatera #PrayForTapanuli #PrayForAceh #PrayForSibolga #PrayForPrabowo Kerna ulah Oligarki rakyat banyak yg mati. *kapan revolusi.? [aku bertanya dengan hati-hati] •• 1 11 20 511"}
+{"id": 2003, "text": "Membalas @starfess Stay safe teman teman, semoga lekas pulih untuk yang terdampak #AllEyesOnSumatera #PrayForSumatera #PrayForTapanuli #PrayForSibolga #PrayForAceh 41"}
+{"id": 2011, "text": "Membalas @MOQEELFORTRESS SEGERA TETAPKAN JADI BENCANA NASIONAL #AllEyesOnSumatera #PrayForSumatera 1 1 72"}
+{"id": 2015, "text": "Akun parodi Sudah hancur luluh lantah begitu masih juga momonitor. Apa Menunggu IKRAR (Sumatera Merdeka) dulu baru kalian orang pusat peduli. Sadis kalian! #PrayForSumatera 3 6 13 406"}
+{"id": 2017, "text": "Turut berdukacita, Al Fatihah *Bhineka tunggal ika #PrayForSumatera #PrayForAceh #PrayForIndonesia 29"}
+{"id": 2026, "text": "Akun komentar Update lokasi jembatan gunung nago dan lambung bukit #PrayForSumatera #PrayForSumatra #PrayForAceh 1 4 94"}
+{"id": 2028, "text": "Membalas @jyh_xc i don't fucking care masalah pemilu kemarin, 01, 02, 03 TERSERAH tp bisa ga sih otaknya di pake dulu? atleast buat kepedulian dan kemanusiaan aja deh sesama manusia, ga bisa ya? atau gimana? #PrayForSumatera 39"}
+{"id": 2067, "text": "ketika manusia mengambil terlalu banyak dari alam, maka alam akan mengambil bagian yang sama dari manusia #tessonilo #PrayForSumatera #PrayForIndonesia 41"}
+{"id": 2074, "text": "Membalas @txtdrimedia apa yg mau di cek ya bangsat org udh jelas #PrayForSumatera #PrayForTapanuli #PrayForSibolga #PrayForAceh #SaveTessoNilo #SaveOrangutans #PrayForIndonesia 1 41"}
+{"id": 2078, "text": "Mereka lapar Pak Ibu pejabat pengurus negeri... kalian dimana? #PrayForSumatera 85"}
+{"id": 2082, "text": "Membalas @dyahNeZza Bgtulah...hanya celotehan aja. #PrayForSumatera 1 19"}
+{"id": 2083, "text": "Fii amanillah #PrayForSumatera 49"}
+{"id": 2085, "text": "Membalas @MOQEELFORTRESS SEGERA TETAPKAN JADI BENCANA NASIONAL #AllEyesOnSumatera #PrayForSumatera #PrayForTapanuli #PrayForSibolga #PrayForAceh #PrayForPadang 1 396"}
+{"id": 2094, "text": "Akun parodi SEGERA TETAPKAN JADI BENCANA NASIONAL #AllEyesOnSumatera #PrayForSumatera #PrayForTapanuli #PrayForSibolga #PrayForAceh #PrayForPadang 44"}
+{"id": 2098, "text": "Kementerian Kehutanan mengklaim kayu-kayu tersebut adalah pepohonan tua yang tumbang saat diterjang derasnya banjir. Dari menteri kek si @RajaJuliAntoni Sampee anak buahnya PAOK semua..bangsat*ttt #PrayForSumatera 38"}
+{"id": 2104, "text": "Buat Warga Sumatera Utara ; Apakah Terealisasi atau Justru menjadi Petaka ? #PrayForSumatera 66"}
+{"id": 2112, "text": "Kumpulan Video Banjir di Sumatera Barat #PrayForSumatera 1. SMAN 1 banuhampu 3 1 104"}
+{"id": 2119, "text": "Bawaslu Kabupaten Sleman menyampaikan empati dan duka yang mendalam atas terjadinya musibah banjir dan tanah longsor di wilayah Aceh, Sumatera Utara, dan Sumatera Barat. Semoga masyarakat yang terdampak diberikan kekuatan dan keselamatan. . #prayforsumatera 81"}
+{"id": 2128, "text": "bantuan ke sibolga sesedikit itukah??? atau masih blm ada??? di sibolga udh terjadi penjarahan dimana² #PrayForSibolga #PrayForSumatera 1 2 101"}
+{"id": 2131, "text": "Mari panjatkan doa untuk saudara kita yang berada di Sumatera, semoga selalu diberikan perlindungan dan keselamatan.. lekas membaik #PrayForSumatera 9 38 1 rb"}
+{"id": 2132, "text": "Akun komentar @Aceh Aceh Tamiang paska Banjir Aceh tamiang Cyclone Senyar #PrayForAceh #PrayForSumatera 2 7 401"}
+{"id": 2133, "text": "Akun parodi Baru bisa dapat update berita hari ini setelah total 3 hari hujan banjir, mati listrik dan gada signal di Aceh, Alhamdulillah keluarga aman semua, kendalanya sekarang stock pangan menipis, lalu lintas terhambat krn ada jembatan utama yang putus.. #PrayForAceh #PrayForSumatera 61"}
+{"id": 2140, "text": "Membalas @indibiz_sumatra Tantangan infrastruktur yang terdampak bencana mempengaruhi kualitas layanan, namun progress perbaikan terus berjalan. #IndibizSumatera #BanjirSumatera #PrayForSumatera 1 1 75"}
+{"id": 2156, "text": "Waktu itu untuk Maluku. Hari ini untuk Sumatera #PrayForAceh #PrayForSumatera #PrayForIndonesia 5 6 510"}
+{"id": 2160, "text": "Kalian punya mata punya telinga kenapa ga dipake sih? Rakyat kalian itu lg menderita hehh tp bisa\"nya kalian msh yapping soal pencapaian negara yg se bullshit itu kenyataannya #AllEyesOnSumatera #PrayForSumatera #PrayForTapanuli #PrayForSibolga #PrayForAceh 65"}
+{"id": 2162, "text": "Harga diri kita di injak-injak, seakan tidak dianggap ada, pilihan kita hanya dua Diam atau melawan. #PrayForSumatera #SumateraMelawa 17 120 274 4 rb"}
+{"id": 2163, "text": "Bencana Banjir dan Longsor disumatera ini sudah termasuk Bencana dalam skala Besar dan Luas. Harapan yang tinggi adanya Bantuan yang cepat tepat dan tanggap dari dinas terkait dan pemerintahan. Cc Bapak Presiden @prabowo #PrayForSumatera Dari èxceĺ 58"}
+{"id": 2167, "text": "Membalas @ommi_siregar innalillahi wainna ilaihi raji'un #PrayForTapanuli #PrayForSumatera semoga pemerintah, dprd sgr action utk membantu rakyat yg terdampak dan kondisi segera pulih kembali. 1 87"}
+{"id": 2175, "text": "Akun parodi Gerak cepat! Presiden Prabowo instruksikan penanganan banjir Sumatera dan pemulihan infrastruktur secara menyeluruh ROTY Ya Allah #PrayForSumatera #ExploreGalaxyWay #AbracadabraOnViu 2 56"}
+{"id": 2201, "text": "Semoga segera pulih Pulau Sumatera-ku tercinta #PrayForSumatera #PrayForSumateraBarat #PrayForAceh #PrayForSumateraUtara 49"}
+{"id": 2223, "text": "Membalas @Valhallaah PAD Aceh cuma 3T. APBD 11T ditalangi pusat, TDK termasuk dana Otsus 8T, dana bencana banjir 25T. Total 44T. Mau merdeka dimasa bencana? Yg terjadi Aceh bangkrut. Cuma punya duit 3T buat bayar ASN aja kurang. 46"}
+{"id": 2229, "text": "Membalas @lilaccountz Yaallahhh ini udh sebulan lebih gak sih dan beneran belum ada perkembangan yang massive?? gue sampe search banjir sumatera aceh tanggal berapa yaallahhhh nyesek bgtttt 10 686"}
+{"id": 2250, "text": "BNI hadirkan posko kesehatan untuk dukung pemulihan warga terdampak banjir bandang di Aceh Klik untuk baca selengkapnya! BNI Hadirkan Posko Kesehatan untuk Dukung Pemulihan Warga Terdampak Banjir Bandang di Aceh Dari medcom.id 70"}
+{"id": 2274, "text": "Akun parodi Karena mbak Sherly terus bersuara soal banjir Sumatera–Aceh, yang datang bukan bantahan, tapi teror dari para bajingan tolol, mobil dicoret, rumah dilempar telur busuk. . . . . Sepanjang 2025 Atep Anjing dtsen LHKPN Jelang Libur Tahun Baru 2026 #PresidenOmon2Turunlah 7 10 11 1 rb"}
+{"id": 2275, "text": "Selain fokus pada pembersihan lingkungan, PMI juga memberikan perhatian khusus pada sektor pendidikan dengan menyalurkan bantuan buku pelajaran sebanyak 1 juta eksemplar untuk anak-anak sekolah terdampak. PMI Salurkan 1 Juta Buku untuk Anak Sekolah Korban Banjir Sumatera dan Aceh - Serambinews.com Dari aceh.tribunnews.com 64"}
+{"id": 2277, "text": "Prabowo dan Jokowi zionis-zionis Indonesia. Mereka membiarkan korban bencana banjir bandang dan tanah longsor kelaparan. Dapur umum tak lagi beroperasi, warga Pidie Jaya Aceh, kesulitan makanan #PresidenOmon2Turunlah #PresidenOmon2Turunlah 1 147"}
+{"id": 2281, "text": "Banjir yang menghantam Aceh bukanlah ujian bagi masyarakat saja, tetapi juga bagi pemerintah. Dengan sigap, mereka berkoordinasi untuk menyalurkan bantuan dan mendirikan posko darurat demi keselamatan warga #BantuanPemerintah 1 40"}
+{"id": 2284, "text": "Banjir air bisa surut, tapi jangan biarkan \"banjir provokasi\" merusak kerukunan kita.Mari jaga kedamaian dan fokus pulih kembali untuk Aceh tercinta #Negarahadir #Indonesiabaik #sumaterapulih #bersatunegeriku #SemangatLuarBiasa 24"}
+{"id": 2308, "text": "Bos PLN Sebut Kerusakan Listrik Imbas Banjir Aceh Lampaui Tsunami 2004 Bos PLN Sebut Kerusakan Listrik Imbas Banjir Aceh Lampaui Tsunami 2004 Dari cnnindonesia.com 2 1 rb"}
+
+Balas HANYA dengan satu objek JSON dengan kunci "annotations" yang berisi array, misalnya:
+{"annotations": [
+  {"id": 1, "label": "negatif", "confidence": 95, "reason": "Keluhan terhadap penanganan banjir."}
+]}

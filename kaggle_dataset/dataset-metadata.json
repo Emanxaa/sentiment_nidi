@@ -1,9 +1,5 @@
 {
-  "title": "Thesis IndoBERT Processed Data",
-  "id": "emanuelembuaijdak/thesis-indobert-processed-data",
-  "licenses": [
-    {
-      "name": "CC0-1.0"
-    }
-  ]
+  "title": "Thesis LSTM IndoBERT Dataset",
+  "id": "emanuelembuaijidak/thesis-lstm-indobert-dataset",
+  "licenses": [{"name": "CC0-1.0"}]
 }

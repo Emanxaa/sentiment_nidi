@@ -1,0 +1,67 @@
+Anda adalah ahli anotasi sentimen untuk tweet bahasa Indonesia tentang banjir di Sumatra. Klasifikasikan sentimen setiap tweet ke salah satu label: 'negatif', 'netral', atau 'positif'.
+
+Anda akan menerima 50 tweet dalam format JSON (satu objek per baris).
+
+Aturan klasifikasi:
+- "negatif"   : keluhan, kritik, ketakutan, sedih, marah, sarkasme bernada negatif.
+- "netral"    : informasi faktual, laporan, peringatan tanpa emosi kuat.
+- "positif"   : apresiasi, dukungan, doa, harapan, bantuan, semangat.
+- confidence  : bilangan bulat 0-100 seberapa yakin Anda.
+- reason      : satu kalimat singkat dalam bahasa Indonesia menjelaskan alasan.
+
+Tweet:
+{"id": 6, "text": "Masyarakat Aceh terpaksa mengangkut barang dagangan dan kebutuhan lainnya melewati medan berbahaya akibat terputusnya akses jalan dan jembatan. Skala kehancuran infrastruktur di Aceh akibat Banjir Besar Aceh–Sumatra Nov 2025 melampaui bencana Tsunami 2004. Sebanyak 461 ruas Tampilkan lebih banyak 14 561 726 15 rb"}
+{"id": 11, "text": "Kebenaran tentang banjir Sumatra Siklon Tropis pada Tahun 2025 Sumber: Death toll after tropical cyclones hit Indonesia's Sumatra rises to 442 - Nikkei Asia 45"}
+{"id": 13, "text": "Warga Apresiasi Upaya Pemerintah Normalisasi Sungai Batang Kuranji di Sumbar: Bisa Nikmati Jalan Seperti Semula Jakarta - Sungai Batang Kuranji di Padang, Sumatra Barat, meluap hingga menyebabkan banjir bandang pada November 2025 lalu. Warga setempat bernama Asriluju bercerita, Tampilkan lebih banyak 1 493"}
+{"id": 36, "text": "Menutup tahun 2025, Presiden Prabowo Subianto kembali menunjukkan komitmen kepemimpinan yang hadir di tengah rakyat. Presiden Prabowo Subianto melakukan peninjauan ke wilayah terdampak bencana banjir di Pulau Sumatra pada Rabu (31/12/2025). 1 68"}
+{"id": 49, "text": "Membalas @iPopBase Ah baru banjir biasa, Belum bandang ke Sumatra... 6 2 rb"}
+{"id": 81, "text": "Membalas @detikcom Karena retreat di Magelang gagal total hal ini bisa dilihat dari respon masyarakat atas penanganan korban banjir bandang Sumatra Keberhasilan retreat Magelang hanya menciptakan manusia yg patuh thd pencitraan @prabowo dgn sikap penjilatnya Retreat di Hambalang hanya OMON OMON 18"}
+{"id": 85, "text": "PAKAR kebencanaan Universitas Gadjah Mada (UGM) Prof. Dwikorita Karnawati mengapresiasi progres pembangunan hunian sementara (huntara) bagi warga terdampak banjir bandang dan tanah longsor di Aceh, Pakar UGM Ingatkan Aspek Keselamatan dalam Pembangunan Huntara Sumatra Dari mediaindonesia.com 169"}
+{"id": 126, "text": "Membalas @pplpbinu Di tengah situasi yang penuh tantangan, bantuan ini diharapkan dapat memperkuat harapan, menumbuhkan semangat, serta mendukung proses pemulihan masyarakat agar dapat bangkit secara bertahap. #lpbinu #nupeduli #prayforsumatera #prayforaceh 6"}
+{"id": 140, "text": "Membalas @negativisme Pesawat yg baru dibeli langsung ditugaskan ke lokasi bencana. #PrayForSumatera 156"}
+{"id": 143, "text": "Membalas @KangManto123 Menunggu sampai jatuh korban berapa lagi sampai bencana ini di tetapkan sebagai bencana nasional wo @prabowo ???? #PrayForSumatera #BencanaNasional??? 2 2 4 307"}
+{"id": 149, "text": "Kerjain gw, buka fb,buka ig, buka tiktok, lihat akun2 teman gw di kampung, buat tau gimana kondisi disana. Hari ini masih banjir dan hujan pun masih turun tpi alhamdulillahnya ngk setinggi kemarin. Semoga cepat berakhir ujian ini #PrayForSumatera #prayforsumbar 117"}
+{"id": 161, "text": "Pemerintah harus cepat tanggap membantu para korban bencana alam yang ada di seluruh Indonesia, khususnya di pulau Sumatera saat ini. #PrayForSumatera 1 32"}
+{"id": 166, "text": "Akun komentar UPDATE KORBAN JIWA Perkembangan terkini total korban jiwa bencana Sumatera, angka terus bertambah Ayo bangkit sumatera kita pasti bisa #PrayForSumatra #PrayForSumatera #AllEyesOnSumatera #SumateraBangkit 3 6 578"}
+{"id": 189, "text": "Akhirnya Warga Terdampak Banjir di Aceh Tamiang Mulai Menempati Huntara ! Setelah lebih dari sebulan tinggal di tenda, sekarang warga mulai nempatin huntara dari Danantara. Rika Jahara salah satunya yang merasa senang dan bersyukur banget bisa tinggal di huntara. Tampilkan lebih banyak 6 12 52 9 rb"}
+{"id": 196, "text": "Membalas @tijabar Solusi tepat! Warga Aceh Tamiang bisa pilih huntara terpusat atau in-situ, sesuai kebutuhan dan preferensi. Terima kasih, Pak Prabowo, atas perhatian dan prioritas untuk penyediaan hunian! #Prabowo #AcehTamiang #Banjir 87"}
+{"id": 233, "text": "TNI masih bersihkan lumpur sisa banjir di Tapteng Aceh Sumatra Pulih 23"}
+{"id": 236, "text": "Membalas @ekowboy2 270 jembatan bailey? Berarti Ada 270 jembatan yang rusak Karena banjir bandang di Aceh. Sumut Dan Sumbar. Itu sedikit atau banyak ya? 1 191"}
+{"id": 259, "text": "𝐊𝐨𝐫𝐛𝐚𝐧 𝐁𝐚𝐧𝐣𝐢𝐫 𝐀𝐜𝐞𝐡 ‘𝐉𝐚𝐝𝐢 𝐓𝐞𝐧𝐭𝐚𝐫𝐚’ 𝐁𝐞𝐫𝐤𝐚𝐭 𝐃𝐨𝐧𝐚𝐬𝐢 𝐁𝐚𝐣𝐮 𝐃𝐚𝐫𝐢 𝐑𝐞𝐥𝐚𝐰𝐚𝐧 Sebuah momen mengharukan dari wilayah terdampak banjir di Aceh menjadi perhatian warganet. 2 pria korban banjir tampak tersenyum bahagia setelah menerima Tampilkan lebih banyak 94"}
+{"id": 262, "text": "Brimob Aceh BKO Ops Aman Nusa II Bergerak Cepat Pulihkan Permukiman Warga Tamiang Pasca Banjir 1 23"}
+{"id": 271, "text": "Pemerintah terus bekerja keras pulihkan Sumatra pasca bencana banjir, bukti Pemerintah Sigap untuk Aceh Sumatra 1 29"}
+{"id": 277, "text": "*Di Tengah Lumpur dan Harapan, Polri Bersama Warga Buka Akses Jalan Kampung Setie Pascabencana* Bener Meriah — Kepolisian Resor Bener Meriah bersama personel Satuan Brimob Polda Aceh turun langsung membantu masyarakat membersihkan akses jalan yang tertutup material banjir 1 33"}
+{"id": 280, "text": "Jembatan penghubung di Desa Alue Leuhob, Cot Girek, Aceh Utara, rusak parah sejak banjir November 2025. Hingga kini belum ada perbaikan. Anak-anak dan warga terpaksa melewati jalur alternatif dengan arus sungai yang sangat kencang. Baru-baru ini, satu anak terseret Editor: Tampilkan lebih banyak 0:50 1 1 363"}
+{"id": 284, "text": "Lebih dari satu bulan pascabencana banjir melanda sejumlah wilayah di Aceh, duka dan kelelahan masih dirasakan para korban. Banyak keluarga kini harus memulai hidup dari nol setelah rumah, harta benda, dan sumber penghidupan mereka rusak atau hilang. Di tengah keterbatasan dan Tampilkan lebih banyak 1 210"}
+{"id": 285, "text": "Kejagung gercep turunin Satgas PKH buat selidiki kerusakan hutan pemicu banjir di Sumatra. Sinergi TNI, Polri & Kejaksaan ini bukti Pemerintah Sigap untuk Aceh Sumatra. Jangan sampe ada yang main-main sama kelestarian hutan kita lagi! #AcehSumatraPulih 42"}
+{"id": 288, "text": "Pembangunan hunian korban banjir di Sumatera terus dikebut agar masyarakat segera menempati rumah yang layak dan aman. Aceh Sumatera Update 28"}
+{"id": 293, "text": "Kerusakan hutan memperparah risiko banjir bandang Aceh Sumatera Update 25"}
+{"id": 309, "text": "Banjir bandang jadi alarm serius. Aceh Sumatera Update mencatat 12 perusahaan kini disorot terkait kerusakan lingkungan di wilayah Ace 16"}
+{"id": 315, "text": "Satgas PKH ungkap 12 perusahaan perusak lingkungan di Aceh. Perusahaan itu diduga berkontribusi atas banjir bandang di Aceh Aceh Sumatera Update 21"}
+{"id": 319, "text": "Guna meringankan beban masyarakat dan memulihkan roda ekonomi, pemerintah memberikan bantuan uang tunai bagi keluarga korban banjir. Aceh Sumatera Update 25"}
+{"id": 322, "text": "Satgas PKH ungkap 12 perusahaan perusak lingkungan di Aceh, diduga berkontribusi atas banjir bandang, penegak hukum kini menyiapkan sanksi administratif hingga pidana, termasuk pencabutan izin dan penerapan UU Kehutanan. Aceh Sumatera Update 21"}
+{"id": 327, "text": "Video: KemenPU Gerak Cepat Tangani Sungai Meureudu Terdampak Banjir Aceh Video: KemenPU Gerak Cepat Tangani Sungai Meureudu Terdampak Banjir Aceh Dari 20.detik.com 28"}
+{"id": 329, "text": "Warga terdampak banjir dapatkan bantuan logistik dan kebutuhan pokok, distribusi berlangsung lancar. Aceh Sumatera Update 14"}
+{"id": 330, "text": "Pemerintah berkomitmen mengganti semua rumah warga yang terseret oleh banjir Aceh Sumatera Update 25"}
+{"id": 334, "text": "Pemerintah segera tangani warga terdampak banjir, bantuan langsung disalurkan. Pemulihan infrastruktur dimulai. Aceh Sumatera Update 16"}
+{"id": 351, "text": "TNI ikut bantu bangun hunian sementara supaya warga Aceh punya tempat berteduh lagi setelah banjir melanda #GerakCepat 18"}
+{"id": 356, "text": "Kerja bareng pemerintah dan TNI hasilkan pemulihan cepat bagi korban banjir di Aceh #GerakCepat 12"}
+{"id": 363, "text": "Membalas @Ghurem2 Sepertinya cuma jago berpidato terbukti kerja menangani bencana di Sumatera lemotnya kek hilang sinyal Lihat aceh sudah mau dia bulan masih belum bersih juga dari sisa sisa material bencana banjir bandang 29"}
+{"id": 369, "text": "Pemulihan listrik pasca banjir emang gak gampang, apalagi di area fasilitas kesehatan. Tapi PLN berhasil nyiapin langkah-langkah supaya 34 fasilitas kesehatan di Aceh bisa kembali beroperasi. Kerja keras yang patut dihargai 31"}
+{"id": 377, "text": "Menyeberang jalan di Aceh kini mempertaruhkan nyawa . Pasca banjir dan longsor Aceh–Sumatra, ratusan jalan dan jembatan banyak yang rusak dan terputus. Warga diminta ekstra waspada @Prabowo menugaskan TNI, dipimpin KSAD Jenderal Maruli Simanjuntak, untuk percepatan Tampilkan lebih banyak 17 174 273 6 rb"}
+{"id": 378, "text": "Trimakasih pemerintah.. Atas huniannya untuk korban banjir.. Aceh.. 1 85"}
+{"id": 383, "text": "Terjadi Lagi, Banjir Bandang Bawa Kayu Gelondongan Terjang Bener Meriah Aceh | BERUT Terjadi Lagi, Banjir Bandang Bawa Kayu Gelondongan Terjang Bener Meriah Aceh | BERUT Dari kompas.tv 1 1 648"}
+{"id": 387, "text": "Di Tengah Lumpur dan Harapan, Polres Bener Meriah dan Brimob Polda Aceh Bersihkan Jalan Warga Kampung Setie Bener Meriah Sisa lumpur, bebatuan dan kayu masih menutupi badan jalan di Kampung Setie,Kecamatan TimangGajah, pascabencana banjir dan longsor yang melanda wilayah tersebut 30"}
+{"id": 394, "text": "Pemerintah siapkan skema bantuan untuk korban banjir di Aceh 13"}
+{"id": 395, "text": "𝐉𝐞𝐦𝐛𝐚𝐭𝐚𝐧 𝐑𝐮𝐬𝐚𝐤 𝐏𝐢𝐜𝐮 𝐈𝐧𝐬𝐢𝐝𝐞𝐧, 𝐒𝐞𝐨𝐫𝐚𝐧𝐠 𝐖𝐚𝐫𝐠𝐚 𝐍𝐲𝐚𝐫𝐢𝐬 𝐇𝐚𝐧𝐲𝐮𝐭 𝐓𝐞𝐫𝐛𝐚𝐰𝐚 𝐀𝐫𝐮𝐬 𝐒𝐮𝐧𝐠𝐚𝐢 Sebuah Jembatan penghubung antar dua desa di Desa Alue Leuhob, Kecamatan Cot Girek, Kabupaten Aceh Utara, dilaporkan rusak sejak banjir Tampilkan lebih banyak 2 116"}
+{"id": 410, "text": "Membalas @cupang_fish dan @NenkMonica Saya pikir juga seperti itu, saya asli dari aceh, dan kondisi aceh hari ini benar2 memprihatinkan m, ditambah lagi dengan longsor dan banjir susulan yg baru terjadi, tapi media sudah tertutupi dengan isu “Mens rea”. Aceh lagi urgent woi !!! 2 695"}
+{"id": 411, "text": "Ya Allah Aceh banjir lagi 657"}
+{"id": 431, "text": "Akses Jalan Terputus, Sat Brimob Polda Sumbar Bangun Jembatan Alternatif Di Area Terdampak Bencana Banjir Di Padang 25"}
+{"id": 436, "text": "Padang Butuh Rp5,5 Triliun untuk Rehabilitasi dan Rekonstruksi Pascabencana Banjir Bandang Padang Butuh Rp5,5 Triliun untuk Rehabilitasi dan Rekonstruksi Pascabencana Banjir Bandang - Padek... Dari padek.jawapos.com 22"}
+{"id": 450, "text": "Sumatera Utara menargetkan penanaman satu juta pohon sebagai langkah nyata untuk memulihkan lingkungan pascabencana banjir dan tanah longsor yang melanda sejumlah daerah. Mari sama-sama kita cintai alam, rawat hutan, dan hijaukan kembali alam Sumut. #KolaborasiSumutBerkah Tampilkan lebih banyak 3 183"}
+{"id": 453, "text": "Kemenhut mengatakan pengoptimalan kayu hanyutan banjir terus dilakukan di Aceh Utara dan Sumatera Utara sebagai bagian dari strategi pemulihan cepat lingkungan dan penyediaan hunian bagi warga. Kemenhut terus optimalkan kayu banjir bangun huntara di Aceh Utara Dari antaranews.com 271"}
+
+Balas HANYA dengan satu objek JSON dengan kunci "annotations" yang berisi array, misalnya:
+{"annotations": [
+  {"id": 1, "label": "negatif", "confidence": 95, "reason": "Keluhan terhadap penanganan banjir."}
+]}

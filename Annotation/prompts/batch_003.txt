@@ -1,0 +1,67 @@
+Anda adalah ahli anotasi sentimen untuk tweet bahasa Indonesia tentang banjir di Sumatra. Klasifikasikan sentimen setiap tweet ke salah satu label: 'negatif', 'netral', atau 'positif'.
+
+Anda akan menerima 50 tweet dalam format JSON (satu objek per baris).
+
+Aturan klasifikasi:
+- "negatif"   : keluhan, kritik, ketakutan, sedih, marah, sarkasme bernada negatif.
+- "netral"    : informasi faktual, laporan, peringatan tanpa emosi kuat.
+- "positif"   : apresiasi, dukungan, doa, harapan, bantuan, semangat.
+- confidence  : bilangan bulat 0-100 seberapa yakin Anda.
+- reason      : satu kalimat singkat dalam bahasa Indonesia menjelaskan alasan.
+
+Tweet:
+{"id": 1037, "text": "Jangan sampai mau di pecah belah, NKRI Harga Mati!! Aceh Sumatra Pulih 5"}
+{"id": 1051, "text": "IDN Times @IDNTimes · 16j Wakil Gubernur Sumatra Barat (Sumbar), Vasko Ruseimy, mengisahkan pengalaman saat turun langsung ke lapangan melihat kondisi wilayah bencana banjir dan tanah longsor akibat siklon tropis pada November 2025 lalu. Dia mengaku sangat sedih dan miris melihat kondisi warga yang Tampilkan lebih banyak 1:06 192"}
+{"id": 1073, "text": "Pemprov Sumatera Utara Siapkan Rp430 Miliar untuk Pemulihan Pascabencana Pemprov Sumatera Utara Siapkan Rp430 Miliar untuk Pemulihan Pascabencana - Teritorial24 Dari teritorial24.com 3"}
+{"id": 1078, "text": "Alhamdulillah, donasi dari Komunitas, Jamaah, dan Pegawai JIC telah tersalurkan. UPZ Masjid Raya PPIJ telah menyerahkan bantuan bencana alam sebesar Rp30.700.000 melalui BAZNAS BAZIS Provinsi DKI Jakarta untuk saudara-saudara kita yang terdampak bencana di Aceh, Sumatera Utara, Tampilkan lebih banyak 55"}
+{"id": 1080, "text": "Aiptu andar Winarto Bhabinkamtimas Polsek Perbaungan Polres Serdang Bedagai Polda Sumatera Utara melaksanakan kegiatan himbauan Kamtibmas di desa Deli muda kecamatan Perbaungan kabupaten Serdang Bedagai 13"}
+{"id": 1081, "text": "Duduk Bersama Forkopimda Se-Sumatera Utara, Mendagri: Percepatan Pemulihan Pascabencana Prioritas Utama Duduk Bersama Forkopimda Se-Sumatera Utara, Mendagri: Percepatan Pemulihan Pascabencana Prioritas... Dari tintaindependen.com 4"}
+{"id": 1082, "text": "TNI AL KEMBALI KIRIM EXCAVATOR GUNA PERCEPAT PEMULIHAN PASCA BENCANA DI SUMATERA UTARA 1 37"}
+{"id": 1097, "text": "Membalas @wakekefriend 5. Model ini relevan untuk wilayah rawan bencana seperti Aceh, Sumatera Utara, dan Sumatera Barat—di mana masyarakat butuh solusi cepat, bukan janji jangka panjang tanpa hasil nyata. 1 43"}
+{"id": 1100, "text": "Membalas @muhammadiyah 1) Ketua Muhammadiyah Disaster Management Center (MDMC) Pimpinan Pusat Muhammadiyah, Budi Setiawan, meninjau langsung lokasi Hunian Darurat (Huntara) Batu Hula, Kecamatan Batang Toru, Kabupaten Tapanuli Selatan, Sumatera Utara, Jumat (9/1). Kunjungan tersebut dilakukan untuk Tampilkan lebih banyak 1 3 213"}
+{"id": 1106, "text": "Personel Polisi bersama instansi terkait menyalurkan bantuan perlengkapan sekolah kepada siswa di sekolah darurat Kecamatan Tukka, Kabupaten Tapanuli Tengah, Sumatera Utara. #BersamaPulihkanSumatera 14"}
+{"id": 1114, "text": "Kepala Pusat Data, Informasi, dan Komunikasi Kebencanaan BNPB Abdul Muhari menyebut, pemasangan 270 unit jembatan darurat bailey untuk tiga provinsi terdampak bencana di Aceh, Sumatera Utara (Sumut), dan Sumatera Barat (Sumbar) dikebut. @BNPB_Indonesia 1 1 71"}
+{"id": 1134, "text": "Membalas @kemenkumjogja Wilayah terdampak meliputi Provinsi Aceh, Sumatera Utara, dan Sumatera Barat sepanjang tahun 2025. #KementerianHukum #KanwilKemenkumDIY #LayananHukumMakinMudah #Setahunberdampak Kanwil Kemenkum DIY 1 6"}
+{"id": 1144, "text": "Langkah kecil menuju masa depan besar. Di tengah pemulihan pasca bencana, harapan tetap harus berjalan. Pada Rabu, 7 Januari 2026, Satuan Brimob Polda Sumatera Utara hadir di Desa Garoga, Kecamatan Batang Toru, Kabupaten Tapanuli Selatan. 0:39 1 60"}
+{"id": 1146, "text": "Di tengah duka pascabencana, harapan kembali tumbuh di Kecamatan Batang Toru, Kabupaten Tapanuli Selatan. Satuan Brimob Polda Sumatera Utara hadir bukan hanya membawa bantuan, tetapi juga membangun harapan melalui pembuatan hunian sementara bagi masyarakat terdampak bencana. 47"}
+{"id": 1153, "text": "Rombongan relawan asal Banten yang membawa bantuan kemanusiaan ke Aceh menjadi korban pungutan liar saat melintas di depan Terminal Karya Jaya, Palembang, Sumatera Selatan, Rabu (7/1/2026). #RajaTega 81"}
+{"id": 1165, "text": "Bergerak Bersama, Pulihkan Aceh dan Sumatra Kita semua berharap, kehadiran para dapat meringankan beban masyarakat di lokasi terdampak bencana dan mempercepat pemulihan. Aamiin! @kkpgoid @swtrenggono #TarunaKKP #2026KKPGrowStronger 1 20"}
+{"id": 1166, "text": "Kemenhut Bersihakan 1.272 Meter Gelondongan Kayu, Aceh Sumatra Bangkit 1 62"}
+{"id": 1178, "text": "Aceh Sumatra Pulih, bantuan terus berdatangan dari pemerintah dan seluruh masyarakat Indonesia 6"}
+{"id": 1182, "text": "Melalui kerja sama lintas sektor, pemerintah, aparat, relawan, dan warga bahu-membahu menangani dampak bencana di Aceh. Kolaborasi ini menjadi fondasi kuat untuk pemulihan berkelanjutan dan membangun harapan baru. Aceh Sumatra Bangkit. 11"}
+{"id": 1186, "text": "Warga Aceh Tamiang kini mulai menempati rumah sementara pascabencana. Hunian ini menjadi awal pemulihan kehidupan yang lebih aman dan layak, sekaligus bukti kerja nyata pemerintah di lapangan. Aceh Sumatra Pulih. 1 6"}
+{"id": 1198, "text": "Upaya pembersihan kayu ilegal oleh Kemenhut menunjukkan komitmen serius memulihkan kawasan terdampak. Langkah ini menjadi bagian dari proses pemulihan ekosistem dan ekonomi lokal. Aceh Sumatra Pulih lewat kerja nyata, bukan sekadar wacana. 2 3 14"}
+{"id": 1201, "text": "Bergerak Bersama, Pulihkan Aceh dan Sumatra Mari bangkit dan pulih bersama! @kkpgoid @swtrenggono #TarunaKKP #2026KKPGrowStronger #kkpterus5F6HW 6"}
+{"id": 1206, "text": "Kondisi yang menantang di lapangan tak menyurutkan semangat insan Telkom untuk menyalurkan bantuan kemanusiaan dan melakukan aksi sosial. Hal ini menjadi bentuk nyata untuk mendukung pemulihan masyarakat terdampak becana di wilayah Sumatra. Dengan semangat gotong royong dan Tampilkan lebih banyak 3 3 9 329"}
+{"id": 1212, "text": "Berbagai langkah rehabilitasi terus didorong agar Aceh Sumatra Pulih dan aktivitas warga kembali normal 1 16"}
+{"id": 1224, "text": "Tindakan nyata di lapangan ini mencerminkan komitmen bahwa Pemerintah Sigap untuk Aceh Sumatra dalam menghadapi kondisi darurat. 0:38 8"}
+{"id": 1243, "text": "Warga Aceh Tamiang sudah huni rumah sementara, Pemerintah Sigap untuk Aceh Sumatra #Aceh #Sumatra 14"}
+{"id": 1254, "text": "Membalas @bsbsjsnwu784998 Dengan kerja bersama dan gotong royong, Aceh Sumatra Bangkit dari bencana menuju kehidupan yang lebih aman dan tangguh 10"}
+{"id": 1257, "text": "Pemerintah hadir terdepan tangani bencana Aceh sumatra 15"}
+{"id": 1268, "text": "Selain bantuan darurat, pembangunan hunian sementara di Aceh dan Sumatra menjadi prioritas utama kami. #PemerintahHadir #AcehSumatraBangkit #PemerintahBarengWarga #BersamaPulihkanSumutAceh #PemerintahSigapAcehSumatra 1 9"}
+{"id": 1269, "text": "Pulihkan Anak, Bangkitkan Masa Depan, KPAI Kawal Ketat Penanganan Anak Pascabencana di Sumatra Pulihkan Anak, Bangkitkan Masa Depan, KPAI Kawal Ketat Penanganan Anak Pascabencana di Sumatra -... Dari lombokpost.jawapos.com 3"}
+{"id": 1271, "text": "Membalas @beritaKBR Mereka turun ke lokasi, membuka donasi, menyisir titik pengungsian, menembus akses yang cuma bisa dilewati dengan berjalan kaki, motor trail, atau jembatan darurat. Di banyak wilayah Sumatra, banjir dan longsor memutus jalan, jembatan, bahkan harapan. Negara belum sepenuhnya Tampilkan lebih banyak 1 52"}
+{"id": 1272, "text": "Membalas @BobbieTrussell Dari tanggap darurat sampai pemulihan, Pemerintah Sigap untuk Aceh Sumatra demi bangkit lebih kuat. #PemerintahSigap #PemerintahHadir #AcehSumatraBangkit #AcehSumatraPulih #PemerintahBarengWarga 14"}
+{"id": 1280, "text": "Bergerak Bersama, Pulihkan Aceh dan Sumatra Kita semua berharap, kehadiran para dapat meringankan beban masyarakat di lokasi terdampak bencana dan mempercepat pemulihan! @kkpgoid @swtrenggono #TarunaKKP #2026KKPGrowStronger #SaktiWahyuTrenggono #KKPGOID #kkpterus5F31P 2 13"}
+{"id": 1312, "text": "Pendistribusian Genset ke Desa terisolir di Aceh Aceh Sumatra Bangkit 11"}
+{"id": 1319, "text": "Membalas @penjagaharapan Menjaga pasokan pangan ditengah bencana Sumatra itu hal yg bagus 4"}
+{"id": 1333, "text": "Membalas @tekarok007 klo di sumatra penyebab hilang 1000++ nya rame di omongin 7"}
+{"id": 1345, "text": "Bagaimana pun kondisinya, tetap maju ke depan demi warga yang terdampak #aceh #sumatra 4"}
+{"id": 1361, "text": "Pemerintah Sigap untuk bencana Aceh dan Sumatra. #PemerintahHadir #AcehSumatraBangkit #PemerintahBarengWarga #AcehSumatraPulih 1 1 28"}
+{"id": 1362, "text": "Menteri Kesehatan Budi Gunadi Sadikin memastikan rehabilitasi rumah tenaga kesehatan (nakes) korban banjir Sumatra akan dituntaskan sebelum Ramadhan 2026. Pemerintah menargetkan para nakes sudah bisa kembali menempati rumah masing-masing agar pelayanan kesehatan berjalan normal Tampilkan lebih banyak 1 1 293"}
+{"id": 1367, "text": "Membalas @BobbieTrussell Upaya berkelanjutan dalam pemulihan sosial dan ekonomi menunjukkan keseriusan pemerintah. Aceh Sumatra Pulih bukan sekadar slogan, melainkan tujuan bersama 12"}
+{"id": 1377, "text": "Bencana banjir bandang dan tanah longsor yang terjadi akhir November 2025 lalu, menyebabkan banyak alat-alat kesehatan atau Alkes RSUD Langsa terendam air dan lumpur #AlatKesehatanRusak #RSUDLangsa #DampakBanjir Paska Banjir 2025 lalu, Alat Kesehatan di RSUD Langsa Banyak Rusak Terendam Air dan Lumpur -... Dari aceh.tribunnews.com 55"}
+{"id": 1385, "text": "Hujan deras yang mengguyur Kota Bandar Lampung sejak Kamis sore mengakibatkan tujuh kecamatan terdampak banjir. BPBD Kota Bandar Lampung bersama tim gabungan Damkar, Satpol PP, dan Forkopimda melakukan evakuasi di wilayah terdampak. 1 74"}
+{"id": 1389, "text": "Banjir susulan akibat hujan deras merendam lima kecamatan di Aceh Timur setelah sungai meluap, dengan ketinggian air mencapai dada orang dewasa di sejumlah lokasi. BPBD menyiagakan tim pemantauan dan evakuasi serta mengimbau warga tetap waspada. #MERONA4D 19"}
+{"id": 1425, "text": "Antusias warga sambut kehadiran Wakil Presiden Gibran Rakabuming Raka saat Wapres Tinjau BanjirKalsel di Sungai Tabuk turun langsung memastikan kondisi warga dan penanganan berjalan cepat bukti negara hadir di saat rakyat butuh #GibranPeduliRakyat Wapres Gibran tinjau banjir di Sungai Tabuk disambut antusias warga - ANTARA News Kalimantan Selatan Dari kalsel.antaranews.com 20"}
+{"id": 1435, "text": "Membalas @Aceh @humasaceh dan 3 lainnya Motif nya apalagi kalo bukan buat di foto2/dokumentasi ulang saat foto/dokumentasi penyerahan Motif nya sama persis dari jaman covid; masker, obat2an, sanitizer, oksigen dsb,., barang/bantuannya itu2 aja, buat foto dan laporan ke donatur bahwa dana udah di belanjain 5 289"}
+{"id": 1439, "text": "Membalas @Aceh @humasaceh dan 3 lainnya Seburuk-buruknya manusia adalah yang menimbun logistik ketika bencana. Laknat Allah untuk kalian para penimbun. 7 42 1 rb"}
+{"id": 1443, "text": "Banjir Bandang Sitaro Sulut, Komisi VIII Minta BNPB Pastikan Kebutuhan Pengungsi Terpenuhi Banjir Bandang Sitaro Sulut, Komisi VIII Minta BNPB Pastikan Kebutuhan Pengungsi Terpenuhi Dari radarbangsa.com 1 1 209"}
+{"id": 1445, "text": "Percepat Perbaikan Rumah Nakes Terdampak Bencana Sumatera, BNPB Siapkan Skema Reimburse Pemerintah menyediakan Dana Siap Pakai (DSP) untuk membantu perbaikan rumah tenaga kesehatan (nakes) terdampak bencana di Sumatera. Dana tersebut digunakan untuk perbaikan rumah kategori Tampilkan lebih banyak 76"}
+{"id": 1448, "text": "Membalas @kemenkumjabar Sinergi lintas instansi di Aceh membuat gerak Kemenkum lebih efisien. Kami bekerja sama dengan TNI, Polri, dan BNPB untuk memastikan proses pemulihan infrastruktur berjalan selaras dengan rencana besar penanganan bencana. Kemenkum Jabar - Asep Sutandar 1 1 15"}
+{"id": 1467, "text": "Update terbaru nih! BNPB lagi kebut jembatan darurat biar gak ada lagi daerah yang terisolasi pasca bencana. Semangat terus buat tim lapangan. #BNPB #UpdateTerbaru #InfoWarga #JembatanDarurat 15"}
+
+Balas HANYA dengan satu objek JSON dengan kunci "annotations" yang berisi array, misalnya:
+{"annotations": [
+  {"id": 1, "label": "negatif", "confidence": 95, "reason": "Keluhan terhadap penanganan banjir."}
+]}

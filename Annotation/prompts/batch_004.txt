@@ -1,0 +1,67 @@
+Anda adalah ahli anotasi sentimen untuk tweet bahasa Indonesia tentang banjir di Sumatra. Klasifikasikan sentimen setiap tweet ke salah satu label: 'negatif', 'netral', atau 'positif'.
+
+Anda akan menerima 50 tweet dalam format JSON (satu objek per baris).
+
+Aturan klasifikasi:
+- "negatif"   : keluhan, kritik, ketakutan, sedih, marah, sarkasme bernada negatif.
+- "netral"    : informasi faktual, laporan, peringatan tanpa emosi kuat.
+- "positif"   : apresiasi, dukungan, doa, harapan, bantuan, semangat.
+- confidence  : bilangan bulat 0-100 seberapa yakin Anda.
+- reason      : satu kalimat singkat dalam bahasa Indonesia menjelaskan alasan.
+
+Tweet:
+{"id": 1469, "text": "Berdasarkan data BNPB, terdapat puluhan ribu rumah yang terdampak di tiga provinsi Sumatera. Rinciannya: 76.588 rusak ringan, 45.106 rusak sedang, dan 53.432 rusak berat. Penanganan serius terus berjalan! #DataBNPB #Sumatera Semua Rumah Korban Bencana Sumatera akan Diganti Pemerintah Dari kompasiana.com 15"}
+{"id": 1471, "text": "Membalas @albert_morafia @BukeLeadee dan @WeatherMonitors Amiiin Page. kasihan orang, pasien, sawah kebun rumah ternak warga yg terendam. Semua terhalang. Pula bukan kayak di Jawa yg BNPB n BPBD sibuk dan turun. Jangan² malah dianggap rutinitas biasa. Tapi semoga ngga lah dan semoga surut gaceh² 1 1 2 30"}
+{"id": 1478, "text": "Badan Nasional Penanggulangan Bencana (BNPB) mencatat adanya penambahan korban jiwa akibat bencana dalam dua hari terakhir. Kepala Pusat Data, Informasi, dan Komunikasi Kebencanaan BNPB, Abdul Muhari, menyebutkan penambahan korban meninggal berasal dari Aceh Utara sebanyak 1 Tampilkan lebih banyak 356"}
+{"id": 1482, "text": "Badan Nasional Penanggulangan Bencana (BNPB) kembali memperbarui data korban bencana alam yang melanda sejumlah wilayah di Sumatera #BNPB #bencanaalam #sumatera Update Korban Bencana Sumatera: 1.182 Meninggal-145 Hilang, Ratusan Ribu Masih Mengungsi Dari mistar.id 24"}
+{"id": 1497, "text": "Sejak 30 November 2025 hingga 6 Januari 2026, pemerintah telah mendistribusikan 1.788 ton bantuan logistik untuk korban banjir dan longsor di Aceh. Upaya ini dilakukan agar kebutuhan dasar warga terdampak tetap terpenuhi 1 44"}
+{"id": 1499, "text": "Respons cepat pemerintah dengan mendistribusikan 1.780 ton bantuan logistik untuk korban banjir dan longsor di Aceh. 19"}
+{"id": 1510, "text": "Membalas @Aceh @pln_123 dan 3 lainnya Kasihan banget. Moga saudara2ku di Aceh tabah hadapi semua keadaan ini. Maklum pemerintah kita Superman, ga butuh bantuan negara lain. Seandainya terbuka menerima bantuan dan jadikan bencana Sumatera dan Aceh bencana nasional, mgkin sikon di daerah terdampak banjir jauh LBH baik 2 372"}
+{"id": 1514, "text": "Amarah warga terdampak banjir bandang di Kabupaten Aceh Tamiang mencuat setelah muncul dugaan ketidakadilan dalam penyaluran bantuan. Sejumlah ibu-ibu dan warga lainnya mendatangi sebuah posko bantuan untuk menyampaikan protes secara langsung. 1 176"}
+{"id": 1516, "text": "Aktor Nicholas Saputra menyalurkan bantuan kepada anak-anak korban bencana longsor dan banjir di Aceh. Ia datang langsung ke salah satu sekolah di Desa Kelitu, Kecamatan Bintang, Aceh Tengah. Dalam unggahan video di Instagram @leuser .coffee, Nicholas Saputra tampak mengenakan Tampilkan lebih banyak 1 4 563"}
+{"id": 1532, "text": "Pantau Bantuan Banjir Aceh, Megawati Minta Tim Bergerak Cepat Video: Pantau Bantuan Banjir Aceh, Megawati Minta Tim Bergerak Cepat Dari cnbcindonesia.com 394"}
+{"id": 1538, "text": "Membalas @Iunatico_feliz Buat donasi banjir kak, kebetulan pagi tadi baru bagi2 bantuan sembako di sana, yang udah 1 bulanan terendam,, yang dibutuhkan saat ini adalah ibat2an, pembalut, popok.. Sekalian juga perbaikan motor aku yang sering kena banjir karena kerja kurir. Hee 433"}
+{"id": 1547, "text": "Tim SAR Resimen II Pasukan Pelopor BKO Polda Sumatera Barat terus bergerak membantu masyarakat terdampak bencana banjir di wil Sumatera Barat. Pada Jumat, (9/1), tim melaksanakan kegiatan pencarian korban sekaligus penyaluran bantuan kemanusiaan di Kecamatan Palembayan, Kab Agam. 108"}
+{"id": 1573, "text": "Membalas @nzn44_ dan @ARSIPAJA Gk merasakah banjir tiap tahun, saat ini makin parah!!!... Karena kerusakan alam akibat tambang dan pembabatan hutan... Jg dg kebun sawit!!! 1 1 1 rb"}
+{"id": 1578, "text": "banjir pluit bahkan dr jembatan 3 arah empo aj udah parah 1 431"}
+{"id": 1579, "text": "Banjir hari ini lumayan parah, tambah tadi pagi udh hujan + angin nya dingin 246"}
+{"id": 1585, "text": "disini ujan deres, daerah sekitar udh banjir parah jadi listrik dipadamin pln pusat, jadinya ak pulang mana rumahku jauh bgt, ojek ga ada yg ambil, jadinya bareng temenku wkwkwk kerumahnya 7 1 509"}
+{"id": 1590, "text": "445 Hektare Kebun Kopi di Bener Meriah Rusak Parah Akibat Banjir Bandang Banjir Bandang Bener Meriah Hantam Sentra Kopi Gayo Dari punca.co 24"}
+{"id": 1592, "text": "Banjir parah? Tenang! Pemerintah gerak cepat, bantu warga tanpa nunggu lama! 6"}
+{"id": 1599, "text": "Akun parodi MENCEKAMNYA HANYA DI MEDSOS? Pernyataan BNPB Dipertanyakan, Data Korban Justru Meningkat. Kepala BNPB Suharyanto menyebut banjir Sumatra belum menjadi bencana nasional karena kondisi yang \"terlihat mencekam di medsos\" dinilai tidak sepenuhnya sesuai di lapangan. Namun data BNPB Tampilkan lebih banyak 108 208 238 13 rb"}
+{"id": 1602, "text": "Bencana Sumut 2025 jadi pengingat agar TPL konsisten mengelola 46 ribu hektar lahan eukaliptusnya, industri lestari seperti TPL harus didukung, pokoknya terus semangat! Pelajaran dari Banjir Sumatera: Penguatan Lanskap dan Tata Kelola Berbasis Ilmiah Mendesak Dilaku... Dari jawapos.com 39"}
+{"id": 1609, "text": "Banjir dan longsor Sumut jadi pengingat pentingnya pengelolaan hutan yang berkelanjutan. Dalam konteks itu, TPL bisa jadi contoh praktik industri lestari yang perlu terus didukung dan diawasi secara adil. 1:54 24"}
+{"id": 1610, "text": "Ribut soal TPL tapi lupa lihat datanya. Prinsip tebang pilih dan tanam kembali sudah jadi SOP. Sebagai industri lestari, TPL justru bawa manfaat lingkungan & ekonomi. Bencana Banjir Sumut harus jadi evaluasi bersama, bukan kambing hitam. 29"}
+{"id": 1625, "text": "Satgas PKH Temukan 12 Perusahaan Pemicu Banjir Bandang di Aceh, Sumut, dan Sumbar jurnallugas.com Satgas PKH Temukan 12 Perusahaan Pemicu Banjir Bandang di Aceh, Sumut, dan Sumbar Satgas PKH mengungkap 12 perusahaan diduga jadi penyebab banjir bandang di Aceh, Sumut, dan Sumbar. Proses hukum kini berjalan. 22"}
+{"id": 1630, "text": "Membalas @Dyananjani89 Semoga kakak merasakan apa yg dirasakan korban banjir aceh,Sumut,Sumbar. Biar tau, jgn kan setelah berita mereda,setelah 1 thnpun rasa sedih,kehilangan masih sangat kerasa. 1 5 385"}
+{"id": 1634, "text": "Bantu Korban Banjir dan Longsor, TIDAR Sumut dan Tapteng Turun Langsung ke Lokasi Bantu Korban Banjir dan Longsor, TIDAR Sumut dan Tapteng Turun Langsung ke Lokasi Dari fajar.co.id 11"}
+{"id": 1637, "text": "UPDATE DONASI Banjir Aceh, Sumut & Sumbar 7 Januari 2026 | 07.30 WIB Bank bjb 0000017091945 a.n PMI Kabupaten Tangerang Konfirmasi: 0857 1130 9137 Dari Tangerang untuk Pulau Sumatera. Setiap bantuan adalah harapan. 2 249"}
+{"id": 1641, "text": "Membalas @Franken_blues dan @gibran_tweet bagusnya sama kami juga pendamping desa Sumut yg di PHK sepihak setelah kami kena banjir sumut ada sebanyak 1.150 orang di PHK @bpsdmkemendesa akhir 2025 dengan sk no 733 1 1 26"}
+{"id": 1646, "text": "[UPDATE ] Banjir Sumatra: 543 Korban Jiwa di Aceh, 371 di Sumut [UPDATE ] Banjir Sumatra: 543 Korban Jiwa di Aceh, 371 di Sumut Dari sumut.idntimes.com 37"}
+{"id": 1654, "text": "Membalas @msaid_didu Bang Said sudah mengunjungi saudara-saudara kita di Aceh, Sumut & Sumbar yang menjadi Korban Bencana Banjir & Longsor? 20"}
+{"id": 1667, "text": "Sebanyak 100 keluarga korban banjir bandang di Gampong Geunteng diusulkan masuk huntara Pidie Jaya karena rumah rusak berat dan tertimbun lumpur. #gta777aceh #portalberitaacehterkini 100 Keluarga Korban Banjir Masuk Huntara Pidie Jaya Dari gta777aceh.com 33"}
+{"id": 1669, "text": "Banjir Rendam Jalan Perumahan Elite Sunter Banjir Rendam Jalan Perumahan Elite Sunter Dari detik.com 205"}
+{"id": 1682, "text": "Banjir tadi siang, skrg udh masuk ke rumah air nya 1 16"}
+{"id": 1696, "text": "Beneran dah masuk rumah cuiii banjir skrg 68"}
+{"id": 1716, "text": "Ya Allah Banjir lagi .. Hujan Deras Picu Banjir Lagi, Desa-desa di Pidie Jaya Terendam Luapan Sungai 9 254 456 5 rb"}
+{"id": 1720, "text": "Membalas @TaliUdeng dan @AntoniusCDN Lagi-lagi memuji diri sendiri, kasih nilai sendiri. Coba tanyain korban banjir bandang Sumatera, korban tanahnya yg dirampas di PIK-2, Rempang, Galang, Morowali dll, bahagia gak? Apa kalian tanya di gorong-gorong ya? 325"}
+{"id": 1726, "text": "Banjir rob makin sering datang dan dampaknya kian terasa. Jumlah kasus pun terus meningkat bahkan puluhan ribu rumah terendam menjadi korban tiap tahunnya. Yuk simak data pada infografis ini biar tahu separah apa banjir rob yang terjadi di pesisir pantai Indonesia! 1 97"}
+{"id": 1743, "text": "Diguyur hujan terus-menerus. Seiringan udara dingin yang menyerbu kalbu. Banjir mulai tak terkendali. Lekas membaik alam negeriku 61"}
+{"id": 1797, "text": "Pesan Natal Prabowo membawa makna persatuan Presiden Perkuat Solidaritas dengan seruan nyata membantu korban banjir bandang dan longsor di berbagai wilayah Sumatera Pesan Natal 2025, Presiden Prabowo Ajak Gotong Royong untuk Sumatra Dari kabar24.bisnis.com 10"}
+{"id": 1799, "text": "Pesan Natal Prabowo menempatkan kepedulian sebagai nilai utama. Presiden Perkuat Solidaritas dengan mengajak rakyat Indonesia bersatu membantu korban banjir bandang dan longsor di Sumatera. Natal bukan sekadar simbol, tetapi aksi nyata. Pesan Natal 2025, Presiden Prabowo Ajak Gotong Royong untuk Sumatra Dari kabar24.bisnis.com 18"}
+{"id": 1809, "text": "Kejaksaan Agung menyatakan banjir Sumatra disebabkan alih fungsi lahan masif di hulu, bukan semata fenomena alam. Bukan Alam, Jaksa Agung Sebut Bencana Sumatra Akibat Alih Fungsi Hutan Dari suara.com 1 176"}
+{"id": 1813, "text": "Membalas @poconxg Banjir bandang sumatra 2025 10"}
+{"id": 1820, "text": "Pemerintah Provinsi Kalimantan Tengah kembali menyalurkan bantuan kemanusiaan bagi masyarakat terdampak banjir bandang di Sumatra Barat, sebagai kelanjutan dari bantuan yang sebelumnya telah disalurkan ke Aceh dan Sumatra Utara, pada tahun 2025. 0:53 1 40 131"}
+{"id": 1823, "text": "Tim Tanggap Darurat Bencana UM beraksi di Kabupaten Agam. Bantuan kesehatan dan edukasi diberikan kepada masyarakat. #jatim1news #UM #Malang #Jatim #Agam #banjir #Sumatra #nasional JATIM SATU NEWS: Tim Tanggap Darurat Bencana UM Beraksi di Kabupaten Agam: Bantuan Kesehatan dan... Dari jatimsatunews.com 36"}
+{"id": 1827, "text": "Banjir bandang Sumatera 2025: 1.090 tewas, 186 hilang, rugi Rp68,67 T. Deforestasi 1,4 juta ha sawit–tambang picu bencana. Infrastruktur hancur, logistik lumpuh. Tanpa solusi nyata. Pertamina justru sigap suplai BBM, LPG & avtur. #banjirsumatra #sumatra #luhut #svesmtra 171"}
+{"id": 1832, "text": "Pengungsi Banjir Bandang di Sumatra Menurun rakyatterkini.com rakyatterkini.com - info berita, olahraga, politik: Pengungsi Banjir Bandang di Sumatra Menurun Anak-anak korban banjir dan longsor di Sumatra lokasi pengungsian Akademi Maritim Sapta Samudra, Kecamatan Koto Tengah, Kota Padang. Jakarta... 13"}
+{"id": 1836, "text": "CHRISTMAS CHARITY CERIATHON 2025 #JakaCeria #VtuberID #Vtuber #Charity #Ceriathon CERIATHON 2025 KEMBALI LAGI!!! Untuk tahun ini kita akan menyalurkan bantuan ke saudara-saudara kita yang terkena dampak bencana banjir di sumatra, info lebih lanjut di reply~ 1 5 11 1 rb"}
+{"id": 1849, "text": "Membalas @kafirliberal ..membuka akses bantuan internasional.\" Aksi ini muncul setelah banjir bandang dan longsor besar akibat Siklon Senyar akhir November 2025 menewaskan lebih dari 1.000 orang & mengungsikan jutaan warga di Aceh dan wilayah Sumatra. Krisis pangan, air bersih,listrik,serta ancaman.. 17"}
+{"id": 1855, "text": "Kepedulian sosial nasional terus ditingkatkan Budi Arie Setiadi melalui gerakan Projo Peduli Bencana yang fokus pada bantuan sandang pangan bagi korban banjir Sumatra demi menjaga janji Setia Digaris Rakyat Projo: Solidaritas Nasional Kunci Mengatasi Banjir Sumatera Dari rmol.id 34"}
+{"id": 1869, "text": "Budi Arie Setiadi mengajak seluruh komponen bangsa untuk bersatu dalam Projo Peduli Bencana guna mempercepat pemulihan fasilitas umum di Sumatra sebagai bentuk dedikasi yang selalu Setia Digaris Rakyat PROJO Serukan Persatuan Nasional untuk Ringankan Derita Korban Banjir Sumatera Dari news.fin.co.id 103"}
+{"id": 1886, "text": "Kemenag Mencatat Ada 226 Pesantren Terdampak Banjir dan Longsor di Sumatra Kemenag Mencatat Ada 226 Pesantren Terdampak Banjir dan Longsor di Sumatra Dari suarasurabaya.net 1 1 rb"}
+
+Balas HANYA dengan satu objek JSON dengan kunci "annotations" yang berisi array, misalnya:
+{"annotations": [
+  {"id": 1, "label": "negatif", "confidence": 95, "reason": "Keluhan terhadap penanganan banjir."}
+]}
