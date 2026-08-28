@@ -1,302 +1,302 @@
 [
   {
     "id": 4023,
-    "label": "positif",
-    "confidence": 66,
-    "reason": "(dry-run) label simulasi untuk id 4023"
+    "label": "netral",
+    "confidence": 95,
+    "reason": "Informasi faktual tentang upaya BNPB memastikan logistik tidak mengendap."
   },
   {
     "id": 4031,
     "label": "positif",
-    "confidence": 80,
-    "reason": "(dry-run) label simulasi untuk id 4031"
+    "confidence": 90,
+    "reason": "Menunjukkan kepedulian dan penyaluran bantuan yang masif, bernada positif dan semangat."
   },
   {
     "id": 4038,
-    "label": "positif",
-    "confidence": 70,
-    "reason": "(dry-run) label simulasi untuk id 4038"
+    "label": "netral",
+    "confidence": 80,
+    "reason": "Menyampaikan informasi alokasi dana dan bantuan, dengan pertanyaan retoris yang tidak menunjukkan sentimen kuat dari penulis tweet."
   },
   {
     "id": 4053,
-    "label": "positif",
-    "confidence": 95,
-    "reason": "(dry-run) label simulasi untuk id 4053"
+    "label": "negatif",
+    "confidence": 98,
+    "reason": "Mengungkapkan kemarahan dan kritik keras terhadap pemerintah yang dianggap menolak bantuan asing sementara rakyat menderita."
   },
   {
     "id": 4063,
-    "label": "negatif",
-    "confidence": 72,
-    "reason": "(dry-run) label simulasi untuk id 4063"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Mengungkapkan apresiasi dan harapan baik terhadap dedikasi Polri."
   },
   {
     "id": 4073,
     "label": "positif",
-    "confidence": 96,
-    "reason": "(dry-run) label simulasi untuk id 4073"
+    "confidence": 90,
+    "reason": "Melaporkan kegiatan penyaluran bantuan kemanusiaan yang merupakan tindakan positif."
   },
   {
     "id": 4105,
-    "label": "positif",
-    "confidence": 57,
-    "reason": "(dry-run) label simulasi untuk id 4105"
+    "label": "negatif",
+    "confidence": 85,
+    "reason": "Pertanyaan retoris yang menyiratkan kritik bahwa kondisi banjir sangat parah dan tidak layak disebut bencana lokal."
   },
   {
     "id": 4106,
     "label": "negatif",
-    "confidence": 76,
-    "reason": "(dry-run) label simulasi untuk id 4106"
+    "confidence": 98,
+    "reason": "Mengungkapkan kekecewaan dan kemarahan yang mendalam terhadap pemimpin, disertai doa negatif."
   },
   {
     "id": 4130,
     "label": "negatif",
-    "confidence": 87,
-    "reason": "(dry-run) label simulasi untuk id 4130"
+    "confidence": 98,
+    "reason": "Mengandung kata-kata kasar dan kritik keras terhadap presiden terkait penanganan banjir."
   },
   {
     "id": 4133,
     "label": "negatif",
-    "confidence": 99,
-    "reason": "(dry-run) label simulasi untuk id 4133"
+    "confidence": 90,
+    "reason": "Mengungkapkan kekhawatiran dan ketakutan akan keselamatan sahabat yang terdampak banjir parah."
   },
   {
     "id": 4134,
     "label": "negatif",
-    "confidence": 56,
-    "reason": "(dry-run) label simulasi untuk id 4134"
+    "confidence": 90,
+    "reason": "Menyatakan bahwa bantuan tidak cukup dan memberikan data dampak bencana yang parah, menyiratkan kritik atau keprihatinan."
   },
   {
     "id": 4160,
     "label": "negatif",
-    "confidence": 73,
-    "reason": "(dry-run) label simulasi untuk id 4160"
+    "confidence": 95,
+    "reason": "Mengkritik deforestasi sebagai penyebab banjir dan menyalahkan pengusaha serta pemerintah."
   },
   {
     "id": 4162,
-    "label": "negatif",
-    "confidence": 56,
-    "reason": "(dry-run) label simulasi untuk id 4162"
+    "label": "positif",
+    "confidence": 90,
+    "reason": "Melaporkan penyaluran bantuan untuk korban bencana, yang merupakan tindakan positif."
   },
   {
     "id": 4167,
-    "label": "netral",
-    "confidence": 63,
-    "reason": "(dry-run) label simulasi untuk id 4167"
+    "label": "negatif",
+    "confidence": 95,
+    "reason": "Mengkritik keterlibatan Prabowo dalam HTI yang dianggap berkontribusi pada kerusakan ekologi dan banjir."
   },
   {
     "id": 4181,
-    "label": "negatif",
-    "confidence": 73,
-    "reason": "(dry-run) label simulasi untuk id 4181"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Memberikan informasi faktual tentang banjir susulan dan upaya pemerintah menyalurkan bantuan."
   },
   {
     "id": 4183,
-    "label": "negatif",
-    "confidence": 66,
-    "reason": "(dry-run) label simulasi untuk id 4183"
+    "label": "netral",
+    "confidence": 85,
+    "reason": "Melaporkan desakan atau usulan kepada pemerintah, yang merupakan informasi faktual tanpa emosi kuat."
   },
   {
     "id": 4209,
     "label": "positif",
-    "confidence": 63,
-    "reason": "(dry-run) label simulasi untuk id 4209"
+    "confidence": 90,
+    "reason": "Memberikan informasi tentang relaksasi pembiayaan oleh OJK yang bertujuan membantu pemulihan ekonomi."
   },
   {
     "id": 4226,
     "label": "netral",
-    "confidence": 65,
-    "reason": "(dry-run) label simulasi untuk id 4226"
+    "confidence": 95,
+    "reason": "Menyajikan perbandingan data dampak bencana secara faktual."
   },
   {
     "id": 4233,
     "label": "negatif",
-    "confidence": 82,
-    "reason": "(dry-run) label simulasi untuk id 4233"
+    "confidence": 80,
+    "reason": "Menyiratkan kritik atau pertanyaan skeptis terhadap tindakan Kapolri di tengah bencana."
   },
   {
     "id": 4247,
-    "label": "netral",
-    "confidence": 69,
-    "reason": "(dry-run) label simulasi untuk id 4247"
+    "label": "negatif",
+    "confidence": 90,
+    "reason": "Pertanyaan retoris yang menunjukkan ketidakpuasan atau kritik terhadap pemerintah pusat yang belum menetapkan status bencana nasional."
   },
   {
     "id": 4249,
     "label": "positif",
-    "confidence": 89,
-    "reason": "(dry-run) label simulasi untuk id 4249"
+    "confidence": 95,
+    "reason": "Melaporkan kehadiran dan ketersediaan bantuan serta menegaskan kehadiran negara, bernada positif."
   },
   {
     "id": 4254,
     "label": "negatif",
-    "confidence": 76,
-    "reason": "(dry-run) label simulasi untuk id 4254"
+    "confidence": 98,
+    "reason": "Mengungkapkan kemarahan dan kritik keras terhadap pemerintah yang dianggap tidak memperhatikan bencana di Sumatera."
   },
   {
     "id": 4265,
     "label": "negatif",
-    "confidence": 91,
-    "reason": "(dry-run) label simulasi untuk id 4265"
+    "confidence": 95,
+    "reason": "Mengungkapkan kekesalan dengan kata umpatan karena motor mogok."
   },
   {
     "id": 4267,
     "label": "negatif",
-    "confidence": 80,
-    "reason": "(dry-run) label simulasi untuk id 4267"
+    "confidence": 98,
+    "reason": "Mengungkapkan kemarahan dan sumpah serapah terhadap bengkel yang curang."
   },
   {
     "id": 4271,
-    "label": "positif",
-    "confidence": 63,
-    "reason": "(dry-run) label simulasi untuk id 4271"
+    "label": "netral",
+    "confidence": 95,
+    "reason": "Melaporkan kejadian banjir rob dan dampaknya secara faktual."
   },
   {
     "id": 4276,
     "label": "negatif",
-    "confidence": 61,
-    "reason": "(dry-run) label simulasi untuk id 4276"
+    "confidence": 90,
+    "reason": "Mengungkapkan kekesalan dan frustrasi karena motor sering mogok."
   },
   {
     "id": 4281,
-    "label": "positif",
-    "confidence": 76,
-    "reason": "(dry-run) label simulasi untuk id 4281"
+    "label": "negatif",
+    "confidence": 95,
+    "reason": "Mengungkapkan kekesalan dan frustrasi yang mendalam karena motor rewel dan mogok."
   },
   {
     "id": 4283,
     "label": "negatif",
-    "confidence": 70,
-    "reason": "(dry-run) label simulasi untuk id 4283"
+    "confidence": 90,
+    "reason": "Mengungkapkan kekesalan dan frustrasi karena motor mogok."
   },
   {
     "id": 4287,
-    "label": "negatif",
-    "confidence": 84,
-    "reason": "(dry-run) label simulasi untuk id 4287"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Mengapresiasi dedikasi relawan yang terus membantu di tengah kesulitan."
   },
   {
     "id": 4289,
-    "label": "netral",
-    "confidence": 74,
-    "reason": "(dry-run) label simulasi untuk id 4289"
+    "label": "positif",
+    "confidence": 90,
+    "reason": "Melaporkan tindakan bantuan oleh anggota Polri, menunjukkan dukungan dan pelayanan."
   },
   {
     "id": 4295,
-    "label": "negatif",
-    "confidence": 99,
-    "reason": "(dry-run) label simulasi untuk id 4295"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Melaporkan komitmen dan tindakan pemerintah untuk membangun hunian bagi korban bencana, bernada positif."
   },
   {
     "id": 4297,
     "label": "netral",
-    "confidence": 84,
-    "reason": "(dry-run) label simulasi untuk id 4297"
+    "confidence": 70,
+    "reason": "Menggambarkan skenario hipotetis terkait dampak banjir dan lokasi geografis, lebih bersifat informatif/narasi."
   },
   {
     "id": 4311,
     "label": "negatif",
-    "confidence": 78,
-    "reason": "(dry-run) label simulasi untuk id 4311"
+    "confidence": 98,
+    "reason": "Mengkritik keras tindakan pemimpin yang meninggalkan rakyat saat bencana dan mendukung teguran presiden."
   },
   {
     "id": 4315,
     "label": "netral",
-    "confidence": 58,
-    "reason": "(dry-run) label simulasi untuk id 4315"
+    "confidence": 90,
+    "reason": "Memberikan informasi faktual tentang kondisi cuaca dan riwayat banjir di suatu lokasi."
   },
   {
     "id": 4337,
     "label": "negatif",
-    "confidence": 63,
-    "reason": "(dry-run) label simulasi untuk id 4337"
+    "confidence": 90,
+    "reason": "Mengungkapkan keterkejutan dan kekhawatiran atas kondisi teman yang harus mengungsi akibat banjir."
   },
   {
     "id": 4366,
-    "label": "netral",
-    "confidence": 91,
-    "reason": "(dry-run) label simulasi untuk id 4366"
+    "label": "negatif",
+    "confidence": 98,
+    "reason": "Mengungkapkan keluhan dan keputusasaan atas kondisi banjir yang parah, kurangnya perhatian pemerintah, dan isolasi."
   },
   {
     "id": 4369,
     "label": "netral",
-    "confidence": 66,
-    "reason": "(dry-run) label simulasi untuk id 4369"
+    "confidence": 80,
+    "reason": "Memberikan informasi tentang kondisi keluarga yang aman namun tetap waspada, serta kesulitan mendapatkan informasi."
   },
   {
     "id": 4379,
-    "label": "positif",
-    "confidence": 81,
-    "reason": "(dry-run) label simulasi untuk id 4379"
+    "label": "negatif",
+    "confidence": 90,
+    "reason": "Mengungkapkan rasa tidak tega dan keprihatinan mendalam terhadap korban banjir, serta desakan untuk terus menyuarakan bencana."
   },
   {
     "id": 4382,
-    "label": "negatif",
+    "label": "netral",
     "confidence": 85,
-    "reason": "(dry-run) label simulasi untuk id 4382"
+    "reason": "Memberikan informasi tentang kondisi keluarga yang aman setelah mengungsi, namun juga melaporkan kondisi sulit."
   },
   {
     "id": 4395,
-    "label": "negatif",
-    "confidence": 79,
-    "reason": "(dry-run) label simulasi untuk id 4395"
+    "label": "netral",
+    "confidence": 85,
+    "reason": "Memberikan informasi tentang kurangnya update berita karena gangguan internet."
   },
   {
     "id": 4399,
-    "label": "positif",
-    "confidence": 61,
-    "reason": "(dry-run) label simulasi untuk id 4399"
+    "label": "negatif",
+    "confidence": 98,
+    "reason": "Mengungkapkan keluhan dan penderitaan yang dialami akibat banjir, termasuk kerugian dan ketidaknyamanan."
   },
   {
     "id": 4422,
-    "label": "negatif",
-    "confidence": 80,
-    "reason": "(dry-run) label simulasi untuk id 4422"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Memberikan informasi peringatan dan saran persiapan menghadapi banjir."
   },
   {
     "id": 4450,
     "label": "negatif",
-    "confidence": 60,
-    "reason": "(dry-run) label simulasi untuk id 4450"
+    "confidence": 95,
+    "reason": "Mengeluhkan bantuan yang tidak memadai meskipun rumah terendam parah."
   },
   {
     "id": 4455,
-    "label": "negatif",
-    "confidence": 55,
-    "reason": "(dry-run) label simulasi untuk id 4455"
+    "label": "netral",
+    "confidence": 95,
+    "reason": "Melaporkan kondisi kerusakan dan pengungsian akibat banjir bandang secara faktual."
   },
   {
     "id": 4461,
     "label": "positif",
-    "confidence": 78,
-    "reason": "(dry-run) label simulasi untuk id 4461"
+    "confidence": 90,
+    "reason": "Mengajak berdonasi dan menyampaikan doa serta harapan baik untuk korban bencana."
   },
   {
     "id": 4471,
     "label": "negatif",
-    "confidence": 96,
-    "reason": "(dry-run) label simulasi untuk id 4471"
+    "confidence": 98,
+    "reason": "Mengkritik pemerintah yang dianggap hanya bicara tanpa tindakan nyata dan 'ngeles' di tengah banyaknya korban."
   },
   {
     "id": 4475,
     "label": "netral",
-    "confidence": 81,
-    "reason": "(dry-run) label simulasi untuk id 4475"
+    "confidence": 90,
+    "reason": "Memberikan tips keselamatan yang bersifat informatif dan peringatan."
   },
   {
     "id": 4506,
-    "label": "negatif",
-    "confidence": 83,
-    "reason": "(dry-run) label simulasi untuk id 4506"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Melaporkan kejadian banjir dan dampaknya secara faktual, disertai tagar doa yang tidak mengubah sentimen utama."
   },
   {
     "id": 4510,
     "label": "netral",
-    "confidence": 78,
-    "reason": "(dry-run) label simulasi untuk id 4510"
+    "confidence": 95,
+    "reason": "Memberikan informasi faktual tentang pemantauan dan dampak banjir terhadap fasilitas kesehatan."
   },
   {
     "id": 4519,
     "label": "netral",
-    "confidence": 60,
-    "reason": "(dry-run) label simulasi untuk id 4519"
+    "confidence": 90,
+    "reason": "Memberikan tips keselamatan yang bersifat informatif dan peringatan."
   }
 ]

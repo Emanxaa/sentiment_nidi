@@ -1,6 +1,7 @@
 """Utilitas bersama: IO aman, pembersihan teks, deteksi near-duplicate."""
 from __future__ import annotations
 
+import os
 import re
 import unicodedata
 from pathlib import Path
@@ -17,9 +18,16 @@ MATH_ALNUM = frozenset(chr(cp) for cp in range(0x1D400, 0x1D800))
 
 
 def load_csv(path, **kwargs):
-    """Muat CSV dengan fallback encoding (utf-8-sig, utf-8, latin-1)."""
+    """Muat CSV dengan fallback encoding (utf-8-sig, utf-8, cp1252, latin-1).
+
+    - cp1252 menangani file yang disimpan ulang oleh Excel Windows.
+    - Delimiter dideteksi otomatis (Excel Windows sering memakai ';').
+    """
     p = Path(path)
-    for enc in ("utf-8-sig", "utf-8", "latin-1"):
+    if "sep" not in kwargs:
+        first = p.read_bytes().split(b"\n", 1)[0]
+        kwargs["sep"] = ";" if first.count(b";") > first.count(b",") else ","
+    for enc in ("utf-8-sig", "utf-8", "cp1252", "latin-1"):
         try:
             return pd.read_csv(p, encoding=enc, **kwargs)
         except (UnicodeDecodeError, UnicodeError):
@@ -33,6 +41,29 @@ def write_csv(df, path, **kwargs):
     p.parent.mkdir(parents=True, exist_ok=True)
     df.to_csv(p, index=False, encoding="utf-8", **kwargs)
     return p
+
+
+def load_dotenv(path=None):
+    """Muat variabel KEY=VALUE dari file .env (tanpa dependensi eksternal).
+
+    Tidak menimpa variabel yang sudah ada di environment.
+    """
+    if path is None:
+        from quality_pipeline import config as C
+        path = C.ROOT / ".env"
+    p = Path(path)
+    if not p.exists():
+        return False
+    for line in p.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if not line or line.startswith("#") or "=" not in line:
+            continue
+        key, _, value = line.partition("=")
+        key = key.strip()
+        value = value.strip().strip('"').strip("'")
+        if key and key not in os.environ:
+            os.environ[key] = value
+    return True
 
 
 def safe_str(x) -> str:

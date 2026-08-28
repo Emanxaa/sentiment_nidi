@@ -1,302 +1,302 @@
 [
   {
     "id": 454,
-    "label": "positif",
-    "confidence": 91,
-    "reason": "(dry-run) label simulasi untuk id 454"
+    "label": "netral",
+    "confidence": 95,
+    "reason": "Memberikan informasi faktual tentang bantuan pemerintah berupa hunian tetap bagi warga terdampak."
   },
   {
     "id": 481,
-    "label": "positif",
-    "confidence": 66,
-    "reason": "(dry-run) label simulasi untuk id 481"
+    "label": "netral",
+    "confidence": 95,
+    "reason": "Memberikan informasi faktual tentang penetapan tersangka kasus pembalakan liar."
   },
   {
     "id": 514,
-    "label": "positif",
-    "confidence": 62,
-    "reason": "(dry-run) label simulasi untuk id 514"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Menyampaikan informasi faktual mengenai jumlah korban meninggal akibat bencana."
   },
   {
     "id": 520,
-    "label": "negatif",
-    "confidence": 62,
-    "reason": "(dry-run) label simulasi untuk id 520"
+    "label": "netral",
+    "confidence": 95,
+    "reason": "Memberikan informasi faktual tentang peninjauan kesiapan bantuan alat berat oleh gubernur."
   },
   {
     "id": 529,
     "label": "positif",
-    "confidence": 73,
-    "reason": "(dry-run) label simulasi untuk id 529"
+    "confidence": 98,
+    "reason": "Mengajak untuk mendukung korban banjir dan memberikan semangat."
   },
   {
     "id": 542,
-    "label": "positif",
-    "confidence": 85,
-    "reason": "(dry-run) label simulasi untuk id 542"
+    "label": "netral",
+    "confidence": 95,
+    "reason": "Memberikan informasi faktual tentang operasi evakuasi warga terdampak banjir oleh Brimob."
   },
   {
     "id": 557,
-    "label": "netral",
-    "confidence": 73,
-    "reason": "(dry-run) label simulasi untuk id 557"
+    "label": "negatif",
+    "confidence": 90,
+    "reason": "Menyatakan kecemasan warga akan potensi banjir bandang yang kembali menerjang."
   },
   {
     "id": 559,
-    "label": "positif",
-    "confidence": 96,
-    "reason": "(dry-run) label simulasi untuk id 559"
+    "label": "netral",
+    "confidence": 95,
+    "reason": "Memberikan informasi faktual tentang rencana pembangunan kembali fasilitas publik yang rusak."
   },
   {
     "id": 580,
     "label": "positif",
-    "confidence": 73,
-    "reason": "(dry-run) label simulasi untuk id 580"
+    "confidence": 98,
+    "reason": "Berisi doa dan seruan untuk tidak meninggalkan saudara yang membutuhkan bantuan."
   },
   {
     "id": 593,
-    "label": "negatif",
-    "confidence": 55,
-    "reason": "(dry-run) label simulasi untuk id 593"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Memberikan informasi faktual tentang bencana dan bantuan kemanusiaan yang disalurkan oleh Polri."
   },
   {
     "id": 609,
-    "label": "positif",
-    "confidence": 78,
-    "reason": "(dry-run) label simulasi untuk id 609"
+    "label": "netral",
+    "confidence": 95,
+    "reason": "Memberikan informasi faktual tentang layanan gratis yang disediakan Polri untuk warga terdampak bencana."
   },
   {
     "id": 615,
     "label": "negatif",
-    "confidence": 98,
-    "reason": "(dry-run) label simulasi untuk id 615"
+    "confidence": 85,
+    "reason": "Menyampaikan informasi faktual tentang banjir berulang dan mengkritisi pembiaran kerusakan lingkungan sebagai penyebabnya."
   },
   {
     "id": 626,
-    "label": "negatif",
-    "confidence": 84,
-    "reason": "(dry-run) label simulasi untuk id 626"
+    "label": "netral",
+    "confidence": 95,
+    "reason": "Memberikan informasi faktual berupa peringatan potensi hujan lebat dari BMKG."
   },
   {
     "id": 628,
-    "label": "negatif",
-    "confidence": 58,
-    "reason": "(dry-run) label simulasi untuk id 628"
+    "label": "netral",
+    "confidence": 95,
+    "reason": "Memberikan informasi faktual tentang cuaca ekstrem dan banjir di Jakarta."
   },
   {
     "id": 637,
     "label": "netral",
-    "confidence": 64,
-    "reason": "(dry-run) label simulasi untuk id 637"
+    "confidence": 95,
+    "reason": "Memberikan informasi faktual tentang penetapan status siaga banjir oleh walikota."
   },
   {
     "id": 642,
-    "label": "negatif",
-    "confidence": 98,
-    "reason": "(dry-run) label simulasi untuk id 642"
+    "label": "netral",
+    "confidence": 95,
+    "reason": "Memberikan informasi faktual tentang kegiatan kurvei pasca banjir dan longsor."
   },
   {
     "id": 662,
     "label": "negatif",
-    "confidence": 67,
-    "reason": "(dry-run) label simulasi untuk id 662"
+    "confidence": 95,
+    "reason": "Mengungkapkan kritik dan rasa sedih atas kondisi pendidikan di Aceh yang terdampak banjir, membandingkannya dengan janji di Jakarta."
   },
   {
     "id": 682,
     "label": "negatif",
-    "confidence": 84,
-    "reason": "(dry-run) label simulasi untuk id 682"
+    "confidence": 90,
+    "reason": "Menyatakan kerusakan akibat banjir dan mengaitkannya dengan penyebab negatif yaitu hutan gundul."
   },
   {
     "id": 683,
-    "label": "positif",
-    "confidence": 67,
-    "reason": "(dry-run) label simulasi untuk id 683"
+    "label": "netral",
+    "confidence": 85,
+    "reason": "Memberikan informasi faktual tentang kegiatan pasca banjir dengan sedikit sentimen positif melalui hashtag."
   },
   {
     "id": 696,
     "label": "negatif",
-    "confidence": 81,
-    "reason": "(dry-run) label simulasi untuk id 696"
+    "confidence": 80,
+    "reason": "Mengungkapkan kebutuhan akan solusi yang signifikan untuk mengurangi banjir, menyiratkan ketidakpuasan."
   },
   {
     "id": 706,
     "label": "negatif",
-    "confidence": 75,
-    "reason": "(dry-run) label simulasi untuk id 706"
+    "confidence": 95,
+    "reason": "Mengeluh tentang banjir yang masih terjadi, pembatalan layanan, dan harga yang tidak masuk akal."
   },
   {
     "id": 745,
     "label": "netral",
-    "confidence": 74,
-    "reason": "(dry-run) label simulasi untuk id 745"
+    "confidence": 95,
+    "reason": "Memberikan informasi faktual tentang prakiraan cuaca di Riau."
   },
   {
     "id": 764,
     "label": "positif",
-    "confidence": 99,
-    "reason": "(dry-run) label simulasi untuk id 764"
+    "confidence": 90,
+    "reason": "Menyatakan harapan akan adanya koordinasi dan solusi untuk masalah banjir."
   },
   {
     "id": 770,
     "label": "negatif",
-    "confidence": 80,
-    "reason": "(dry-run) label simulasi untuk id 770"
+    "confidence": 95,
+    "reason": "Menggambarkan kisah pilu dan bencana besar dengan situasi darurat yang menyedihkan."
   },
   {
     "id": 773,
-    "label": "negatif",
-    "confidence": 88,
-    "reason": "(dry-run) label simulasi untuk id 773"
+    "label": "netral",
+    "confidence": 85,
+    "reason": "Memberikan informasi faktual tentang upaya pemulihan pendidikan pasca banjir dengan efisiensi anggaran."
   },
   {
     "id": 791,
     "label": "positif",
-    "confidence": 69,
-    "reason": "(dry-run) label simulasi untuk id 791"
+    "confidence": 95,
+    "reason": "Menyatakan dukungan moral dan solidaritas serta bantuan nyata untuk pegawai terdampak banjir."
   },
   {
     "id": 828,
-    "label": "negatif",
-    "confidence": 64,
-    "reason": "(dry-run) label simulasi untuk id 828"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Memberikan informasi faktual tentang kondisi rumah yang aman dari banjir setelah pembangunan waduk."
   },
   {
     "id": 830,
     "label": "negatif",
-    "confidence": 95,
-    "reason": "(dry-run) label simulasi untuk id 830"
+    "confidence": 80,
+    "reason": "Mengaitkan penebangan pohon besar dengan potensi banjir dan longsor, menyiratkan dampak negatif."
   },
   {
     "id": 835,
-    "label": "negatif",
-    "confidence": 76,
-    "reason": "(dry-run) label simulasi untuk id 835"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Memberikan informasi faktual tentang kejadian banjir bandang yang membawa kayu gelondongan."
   },
   {
     "id": 838,
-    "label": "negatif",
-    "confidence": 87,
-    "reason": "(dry-run) label simulasi untuk id 838"
+    "label": "positif",
+    "confidence": 85,
+    "reason": "Menggambarkan dampak negatif banjir namun diakhiri dengan pesan harapan dan bantuan dari berbagai pihak."
   },
   {
     "id": 862,
     "label": "positif",
-    "confidence": 71,
-    "reason": "(dry-run) label simulasi untuk id 862"
+    "confidence": 98,
+    "reason": "Mengapresiasi aksi nyata dan menyatakan harapan untuk pemulihan hutan serta semangat kebangkitan."
   },
   {
     "id": 870,
-    "label": "netral",
-    "confidence": 74,
-    "reason": "(dry-run) label simulasi untuk id 870"
+    "label": "positif",
+    "confidence": 98,
+    "reason": "Mengapresiasi kehadiran negara dan memberikan semangat untuk kebangkitan Aceh dan Sumatera."
   },
   {
     "id": 871,
     "label": "positif",
-    "confidence": 91,
-    "reason": "(dry-run) label simulasi untuk id 871"
+    "confidence": 98,
+    "reason": "Mengungkapkan apresiasi dan salut atas kepahlawanan dalam membantu korban bencana."
   },
   {
     "id": 872,
-    "label": "negatif",
-    "confidence": 72,
-    "reason": "(dry-run) label simulasi untuk id 872"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Memberikan informasi faktual tentang wilayah dengan kehilangan tutupan pohon terluas."
   },
   {
     "id": 896,
-    "label": "netral",
-    "confidence": 67,
-    "reason": "(dry-run) label simulasi untuk id 896"
+    "label": "positif",
+    "confidence": 98,
+    "reason": "Mengapresiasi kecepatan dan efektivitas Polri dalam membantu warga."
   },
   {
     "id": 902,
     "label": "positif",
-    "confidence": 70,
-    "reason": "(dry-run) label simulasi untuk id 902"
+    "confidence": 98,
+    "reason": "Mengapresiasi kerja cepat dan nyata BNPB dalam membantu warga."
   },
   {
     "id": 903,
     "label": "positif",
-    "confidence": 69,
-    "reason": "(dry-run) label simulasi untuk id 903"
+    "confidence": 98,
+    "reason": "Menyatakan harapan untuk pemulihan, berterima kasih kepada pemerintah, dan optimisme."
   },
   {
     "id": 914,
     "label": "positif",
-    "confidence": 84,
-    "reason": "(dry-run) label simulasi untuk id 914"
+    "confidence": 98,
+    "reason": "Menyatakan dukungan, solidaritas, dan doa untuk Aceh dan Sumatera."
   },
   {
     "id": 940,
     "label": "positif",
-    "confidence": 74,
-    "reason": "(dry-run) label simulasi untuk id 940"
+    "confidence": 98,
+    "reason": "Mengapresiasi kerja keras pemerintah dan relawan dalam pemulihan kondisi."
   },
   {
     "id": 950,
-    "label": "netral",
-    "confidence": 65,
-    "reason": "(dry-run) label simulasi untuk id 950"
+    "label": "negatif",
+    "confidence": 90,
+    "reason": "Memberikan informasi faktual tentang banjir berulang dan potensi dampak negatif seperti longsor baru."
   },
   {
     "id": 960,
     "label": "positif",
-    "confidence": 62,
-    "reason": "(dry-run) label simulasi untuk id 960"
+    "confidence": 98,
+    "reason": "Menyatakan kondisi damai dan kerjasama yang solid membawa kebaikan."
   },
   {
     "id": 962,
     "label": "positif",
-    "confidence": 76,
-    "reason": "(dry-run) label simulasi untuk id 962"
+    "confidence": 98,
+    "reason": "Menyatakan kedamaian dan mengajak untuk menjaga harmoni serta mendukung pembangunan."
   },
   {
     "id": 965,
     "label": "positif",
-    "confidence": 91,
-    "reason": "(dry-run) label simulasi untuk id 965"
+    "confidence": 98,
+    "reason": "Mengapresiasi kemajuan signifikan dalam penanganan bencana dan kerja keras pemerintah."
   },
   {
     "id": 974,
     "label": "netral",
-    "confidence": 60,
-    "reason": "(dry-run) label simulasi untuk id 974"
+    "confidence": 90,
+    "reason": "Mengajukan pertanyaan faktual untuk mencari informasi tentang frekuensi bencana."
   },
   {
     "id": 978,
     "label": "positif",
-    "confidence": 72,
-    "reason": "(dry-run) label simulasi untuk id 978"
+    "confidence": 98,
+    "reason": "Menyatakan kedamaian, mengajak bersyukur, dan memberikan semangat persatuan."
   },
   {
     "id": 984,
-    "label": "positif",
-    "confidence": 82,
-    "reason": "(dry-run) label simulasi untuk id 984"
+    "label": "netral",
+    "confidence": 95,
+    "reason": "Memberikan informasi faktual tentang penanganan cepat pasca banjir oleh Kementerian PU."
   },
   {
     "id": 989,
     "label": "positif",
-    "confidence": 55,
-    "reason": "(dry-run) label simulasi untuk id 989"
+    "confidence": 98,
+    "reason": "Mengapresiasi penanganan bencana yang efektif dan mengajak untuk mendukung keberlanjutan."
   },
   {
     "id": 1010,
     "label": "positif",
-    "confidence": 56,
-    "reason": "(dry-run) label simulasi untuk id 1010"
+    "confidence": 98,
+    "reason": "Mengapresiasi kehadiran dan konsistensi pemerintah dalam memastikan pemulihan Aceh dan Sumatera."
   },
   {
     "id": 1028,
     "label": "negatif",
-    "confidence": 63,
-    "reason": "(dry-run) label simulasi untuk id 1028"
+    "confidence": 95,
+    "reason": "Mengungkapkan kemarahan atas komentar negatif dan kekhawatiran mendalam terhadap anggota keluarga."
   },
   {
     "id": 1035,
     "label": "positif",
-    "confidence": 93,
-    "reason": "(dry-run) label simulasi untuk id 1035"
+    "confidence": 95,
+    "reason": "Mengajak untuk tidak saling fitnah dan membantu agar Aceh dan Sumatera bangkit."
   }
 ]

@@ -13,6 +13,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import time
 from pathlib import Path
 
@@ -62,20 +63,76 @@ def annotate_batch_dry(rows: list[dict], batch_index: int) -> list[dict]:
 
 
 # ---------------------------------------------------------------------------
-# Annotator nyata (OpenAI)
+# Annotator nyata (provider: openai | gemini)
 # ---------------------------------------------------------------------------
 def _openai_client():
     try:
         from openai import OpenAI
     except ImportError as e:  # pragma: no cover
         raise SystemExit(
-            "Package 'openai' belum terinstall. Jalankan: pip install openai"
+            "Package 'openai' belum terinstall. Jalankan: python -m pip install openai"
         ) from e
+    from quality_pipeline.utils import load_dotenv
+
+    load_dotenv()  # baca .env di root proyek bila ada
+    if not os.environ.get("OPENAI_API_KEY"):
+        raise SystemExit(
+            "OPENAI_API_KEY belum diset. Isi file .env di root proyek "
+            "(lihat .env.example) atau set environment variable."
+        )
     return OpenAI()
 
 
-def _call_batch(rows: list[dict], model: str, client) -> list[dict]:
+def _gemini_client():
+    try:
+        from google import genai
+    except ImportError as e:  # pragma: no cover
+        raise SystemExit(
+            "Package 'google-genai' belum terinstall. Jalankan: python -m pip install google-genai"
+        ) from e
+    from quality_pipeline.utils import load_dotenv
+
+    load_dotenv()
+    key = os.environ.get("GEMINI_API_KEY") or os.environ.get("GOOGLE_API_KEY")
+    if not key:
+        raise SystemExit(
+            "GEMINI_API_KEY belum diset. Isi file .env di root proyek "
+            "(lihat .env.example) atau set environment variable."
+        )
+    return genai.Client(api_key=key)
+
+
+def _make_client(provider: str):
+    if provider == "gemini":
+        return _gemini_client()
+    if provider == "openai":
+        return _openai_client()
+    raise SystemExit(f"Provider tidak dikenal: {provider} (pilihan: openai, gemini)")
+
+
+def _parse_annotations(content: str) -> list[dict]:
+    data = json.loads(content)
+    anns = data.get("annotations")
+    if not isinstance(anns, list):
+        raise ValueError("Respons LLM tidak mengandung kunci 'annotations' array.")
+    return anns
+
+
+def _call_batch(rows: list[dict], model: str, client, provider: str) -> list[dict]:
     system, user = build_batch_prompt(rows)
+    if provider == "gemini":
+        from google.genai import types
+
+        resp = client.models.generate_content(
+            model=model,
+            contents=user,
+            config=types.GenerateContentConfig(
+                system_instruction=system,
+                temperature=0,
+                response_mime_type="application/json",
+            ),
+        )
+        return _parse_annotations(resp.text)
     resp = client.chat.completions.create(
         model=model,
         temperature=0,
@@ -85,25 +142,21 @@ def _call_batch(rows: list[dict], model: str, client) -> list[dict]:
             {"role": "user", "content": user},
         ],
     )
-    content = resp.choices[0].message.content
-    data = json.loads(content)
-    anns = data.get("annotations")
-    if not isinstance(anns, list):
-        raise ValueError("Respons LLM tidak mengandung kunci 'annotations' array.")
-    return anns
+    return _parse_annotations(resp.choices[0].message.content)
 
 
-def annotate_batch_real(rows: list[dict], model: str, client, max_retries: int = 3) -> list[dict]:
+def annotate_batch_real(rows: list[dict], model: str, client, provider: str,
+                        max_retries: int = 3) -> list[dict]:
     """Panggil LLM dgn retry; jika gagal, pecah menjadi chunk 10."""
     for attempt in range(1, max_retries + 1):
         try:
-            return _call_batch(rows, model, client)
+            return _call_batch(rows, model, client, provider)
         except Exception as e:  # noqa: BLE001
             if attempt == max_retries:
                 print(f"    batch gagal {attempt}x; pecah jadi chunk 10. Error: {e}")
                 merged = []
                 for chunk in make_batches(rows, 10):
-                    merged.extend(_call_batch(chunk, model, client))
+                    merged.extend(_call_batch(chunk, model, client, provider))
                 return merged
             wait = 2 ** attempt
             print(f"    retry {attempt}/{max_retries} dalam {wait}s ({e})")
@@ -146,8 +199,8 @@ def _merge_annotations(rows: list[dict], anns: list[dict]) -> list[dict]:
     return records
 
 
-def run(dry_run: bool = False, model: str = C.LLM_MODEL, only_batch: int | None = None,
-        force: bool = False) -> None:
+def run(dry_run: bool = False, model: str | None = None, only_batch: int | None = None,
+        force: bool = False, provider: str | None = None) -> None:
     print("Phase 3 — LLM Re-Annotation")
     gold_path = C.ANNOTATION_DIR / "gold_dataset_1000.csv"
     if not gold_path.exists():
@@ -156,9 +209,15 @@ def run(dry_run: bool = False, model: str = C.LLM_MODEL, only_batch: int | None 
     rows = _rows_to_records(gold)
     batches = make_batches(rows)
 
-    client = None if dry_run else _openai_client()
+    provider = provider or C.LLM_PROVIDER
+    if model is None:
+        model = C.GEMINI_MODEL if provider == "gemini" else C.LLM_MODEL
+
+    client = None if dry_run else _make_client(provider)
     if dry_run:
         print("  Mode DRY-RUN: annotator simulasi (tanpa API).")
+    else:
+        print(f"  Provider: {provider} · model: {model}")
 
     C.RESULTS_DIR.mkdir(parents=True, exist_ok=True)
     C.PROMPTS_DIR.mkdir(parents=True, exist_ok=True)
@@ -178,7 +237,7 @@ def run(dry_run: bool = False, model: str = C.LLM_MODEL, only_batch: int | None 
         if dry_run:
             anns = annotate_batch_dry(batch, bi)
         else:
-            anns = annotate_batch_real(batch, model, client)
+            anns = annotate_batch_real(batch, model, client, provider)
         records = _merge_annotations(batch, anns)
         write_csv(pd.DataFrame(records, columns=OUTPUT_COLUMNS), out_csv)
 
@@ -193,13 +252,15 @@ def run(dry_run: bool = False, model: str = C.LLM_MODEL, only_batch: int | None 
 
 
 def main() -> None:
-    ap = argparse.ArgumentParser(description="Phase 3 — LLM Re-Annotation (OpenAI GPT-4o-mini)")
+    ap = argparse.ArgumentParser(description="Phase 3 — LLM Re-Annotation")
     ap.add_argument("--dry-run", action="store_true", help="Annotator simulasi tanpa API")
-    ap.add_argument("--model", default=C.LLM_MODEL)
+    ap.add_argument("--model", default=None, help=f"Model LLM (default: {C.GEMINI_MODEL} untuk gemini, {C.LLM_MODEL} untuk openai)")
+    ap.add_argument("--provider", default=C.LLM_PROVIDER, choices=("openai", "gemini"))
     ap.add_argument("--only-batch", type=int, default=None, help="Proses satu batch saja")
     ap.add_argument("--force", action="store_true", help="Timpa batch yang sudah ada")
     args = ap.parse_args()
-    run(dry_run=args.dry_run, model=args.model, only_batch=args.only_batch, force=args.force)
+    run(dry_run=args.dry_run, model=args.model, only_batch=args.only_batch,
+        force=args.force, provider=args.provider)
 
 
 if __name__ == "__main__":

@@ -2,301 +2,301 @@
   {
     "id": 1037,
     "label": "positif",
-    "confidence": 87,
-    "reason": "(dry-run) label simulasi untuk id 1037"
+    "confidence": 90,
+    "reason": "Mengandung semangat persatuan dan harapan untuk pemulihan Aceh dan Sumatra."
   },
   {
     "id": 1051,
     "label": "negatif",
-    "confidence": 78,
-    "reason": "(dry-run) label simulasi untuk id 1051"
+    "confidence": 95,
+    "reason": "Mengungkapkan perasaan sedih dan miris terhadap kondisi warga terdampak bencana."
   },
   {
     "id": 1073,
     "label": "netral",
-    "confidence": 77,
-    "reason": "(dry-run) label simulasi untuk id 1073"
+    "confidence": 90,
+    "reason": "Menyampaikan informasi faktual mengenai anggaran pemulihan pascabencana."
   },
   {
     "id": 1078,
     "label": "positif",
-    "confidence": 80,
-    "reason": "(dry-run) label simulasi untuk id 1078"
+    "confidence": 95,
+    "reason": "Melaporkan penyaluran bantuan bencana dengan nada syukur."
   },
   {
     "id": 1080,
     "label": "netral",
-    "confidence": 90,
-    "reason": "(dry-run) label simulasi untuk id 1080"
+    "confidence": 80,
+    "reason": "Laporan kegiatan rutin kepolisian yang tidak secara langsung terkait bencana banjir."
   },
   {
     "id": 1081,
-    "label": "positif",
-    "confidence": 79,
-    "reason": "(dry-run) label simulasi untuk id 1081"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Menyampaikan informasi faktual tentang prioritas percepatan pemulihan pascabencana."
   },
   {
     "id": 1082,
     "label": "positif",
-    "confidence": 85,
-    "reason": "(dry-run) label simulasi untuk id 1082"
+    "confidence": 90,
+    "reason": "Melaporkan pengiriman bantuan untuk mempercepat pemulihan pascabencana."
   },
   {
     "id": 1097,
     "label": "negatif",
-    "confidence": 87,
-    "reason": "(dry-run) label simulasi untuk id 1097"
+    "confidence": 85,
+    "reason": "Mengkritik janji tanpa hasil nyata dan menekankan kebutuhan solusi cepat."
   },
   {
     "id": 1100,
     "label": "netral",
-    "confidence": 80,
-    "reason": "(dry-run) label simulasi untuk id 1100"
+    "confidence": 90,
+    "reason": "Laporan faktual mengenai kunjungan peninjauan lokasi hunian darurat."
   },
   {
     "id": 1106,
     "label": "positif",
-    "confidence": 98,
-    "reason": "(dry-run) label simulasi untuk id 1106"
+    "confidence": 90,
+    "reason": "Melaporkan penyaluran bantuan dan mengandung semangat pemulihan."
   },
   {
     "id": 1114,
-    "label": "positif",
-    "confidence": 93,
-    "reason": "(dry-run) label simulasi untuk id 1114"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Menyampaikan informasi faktual tentang upaya pembangunan jembatan darurat."
   },
   {
     "id": 1134,
     "label": "netral",
-    "confidence": 93,
-    "reason": "(dry-run) label simulasi untuk id 1134"
+    "confidence": 90,
+    "reason": "Menyampaikan informasi faktual mengenai wilayah terdampak bencana."
   },
   {
     "id": 1144,
     "label": "positif",
-    "confidence": 57,
-    "reason": "(dry-run) label simulasi untuk id 1144"
+    "confidence": 90,
+    "reason": "Mengandung harapan dan semangat untuk pemulihan pascabencana."
   },
   {
     "id": 1146,
-    "label": "negatif",
-    "confidence": 73,
-    "reason": "(dry-run) label simulasi untuk id 1146"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Mengandung harapan dan melaporkan upaya pembangunan hunian sementara."
   },
   {
     "id": 1153,
     "label": "negatif",
-    "confidence": 86,
-    "reason": "(dry-run) label simulasi untuk id 1153"
+    "confidence": 95,
+    "reason": "Melaporkan kejadian pungutan liar yang merugikan relawan bantuan."
   },
   {
     "id": 1165,
     "label": "positif",
-    "confidence": 91,
-    "reason": "(dry-run) label simulasi untuk id 1165"
+    "confidence": 95,
+    "reason": "Mengandung harapan dan doa untuk meringankan beban serta mempercepat pemulihan."
   },
   {
     "id": 1166,
     "label": "positif",
-    "confidence": 73,
-    "reason": "(dry-run) label simulasi untuk id 1166"
+    "confidence": 90,
+    "reason": "Melaporkan upaya pembersihan dan mengandung semangat kebangkitan."
   },
   {
     "id": 1178,
     "label": "positif",
-    "confidence": 79,
-    "reason": "(dry-run) label simulasi untuk id 1178"
+    "confidence": 90,
+    "reason": "Melaporkan bantuan yang terus berdatangan dan harapan pemulihan."
   },
   {
     "id": 1182,
     "label": "positif",
-    "confidence": 59,
-    "reason": "(dry-run) label simulasi untuk id 1182"
+    "confidence": 95,
+    "reason": "Mengapresiasi kolaborasi dan membangun harapan baru untuk pemulihan."
   },
   {
     "id": 1186,
     "label": "positif",
-    "confidence": 93,
-    "reason": "(dry-run) label simulasi untuk id 1186"
+    "confidence": 95,
+    "reason": "Melaporkan pemulihan warga dan mengapresiasi kerja nyata pemerintah."
   },
   {
     "id": 1198,
     "label": "positif",
-    "confidence": 62,
-    "reason": "(dry-run) label simulasi untuk id 1198"
+    "confidence": 95,
+    "reason": "Mengapresiasi komitmen dan kerja nyata pemerintah dalam pemulihan."
   },
   {
     "id": 1201,
     "label": "positif",
-    "confidence": 74,
-    "reason": "(dry-run) label simulasi untuk id 1201"
+    "confidence": 90,
+    "reason": "Mengandung ajakan dan semangat untuk bangkit dan pulih bersama."
   },
   {
     "id": 1206,
-    "label": "netral",
-    "confidence": 88,
-    "reason": "(dry-run) label simulasi untuk id 1206"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Mengapresiasi semangat dan dukungan untuk pemulihan masyarakat terdampak."
   },
   {
     "id": 1212,
     "label": "positif",
-    "confidence": 71,
-    "reason": "(dry-run) label simulasi untuk id 1212"
+    "confidence": 90,
+    "reason": "Mengandung harapan dan dorongan agar Aceh Sumatra pulih."
   },
   {
     "id": 1224,
     "label": "positif",
-    "confidence": 71,
-    "reason": "(dry-run) label simulasi untuk id 1224"
+    "confidence": 95,
+    "reason": "Mengapresiasi komitmen dan kesigapan pemerintah dalam menghadapi kondisi darurat."
   },
   {
     "id": 1243,
     "label": "positif",
-    "confidence": 64,
-    "reason": "(dry-run) label simulasi untuk id 1243"
+    "confidence": 90,
+    "reason": "Melaporkan pemulihan warga dan mengapresiasi kesigapan pemerintah."
   },
   {
     "id": 1254,
-    "label": "netral",
-    "confidence": 71,
-    "reason": "(dry-run) label simulasi untuk id 1254"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Mengandung harapan dan semangat kebangkitan melalui kerja sama dan gotong royong."
   },
   {
     "id": 1257,
     "label": "positif",
-    "confidence": 94,
-    "reason": "(dry-run) label simulasi untuk id 1257"
+    "confidence": 90,
+    "reason": "Mengapresiasi kehadiran dan penanganan pemerintah dalam bencana."
   },
   {
     "id": 1268,
     "label": "positif",
-    "confidence": 64,
-    "reason": "(dry-run) label simulasi untuk id 1268"
+    "confidence": 90,
+    "reason": "Menyampaikan prioritas pembangunan dan mengandung semangat kebangkitan."
   },
   {
     "id": 1269,
-    "label": "netral",
-    "confidence": 87,
-    "reason": "(dry-run) label simulasi untuk id 1269"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Mengandung harapan pemulihan dan pengawalan ketat untuk masa depan anak-anak pascabencana."
   },
   {
     "id": 1271,
-    "label": "netral",
-    "confidence": 87,
-    "reason": "(dry-run) label simulasi untuk id 1271"
+    "label": "negatif",
+    "confidence": 85,
+    "reason": "Mengungkapkan kondisi sulit dan kritik terhadap kehadiran negara yang belum sepenuhnya."
   },
   {
     "id": 1272,
     "label": "positif",
-    "confidence": 91,
-    "reason": "(dry-run) label simulasi untuk id 1272"
+    "confidence": 95,
+    "reason": "Mengapresiasi kesigapan pemerintah dan mengandung harapan untuk bangkit lebih kuat."
   },
   {
     "id": 1280,
     "label": "positif",
-    "confidence": 91,
-    "reason": "(dry-run) label simulasi untuk id 1280"
+    "confidence": 95,
+    "reason": "Mengandung harapan dan doa untuk meringankan beban serta mempercepat pemulihan."
   },
   {
     "id": 1312,
-    "label": "negatif",
-    "confidence": 83,
-    "reason": "(dry-run) label simulasi untuk id 1312"
+    "label": "positif",
+    "confidence": 90,
+    "reason": "Melaporkan pendistribusian bantuan dan mengandung semangat kebangkitan."
   },
   {
     "id": 1319,
-    "label": "netral",
-    "confidence": 69,
-    "reason": "(dry-run) label simulasi untuk id 1319"
+    "label": "positif",
+    "confidence": 90,
+    "reason": "Mengapresiasi upaya menjaga pasokan pangan di tengah bencana."
   },
   {
     "id": 1333,
     "label": "negatif",
-    "confidence": 94,
-    "reason": "(dry-run) label simulasi untuk id 1333"
+    "confidence": 85,
+    "reason": "Menyampaikan informasi negatif tentang banyaknya korban hilang."
   },
   {
     "id": 1345,
-    "label": "netral",
-    "confidence": 82,
-    "reason": "(dry-run) label simulasi untuk id 1345"
+    "label": "positif",
+    "confidence": 90,
+    "reason": "Mengandung semangat untuk terus maju demi warga terdampak."
   },
   {
     "id": 1361,
     "label": "positif",
-    "confidence": 71,
-    "reason": "(dry-run) label simulasi untuk id 1361"
+    "confidence": 95,
+    "reason": "Mengapresiasi kesigapan pemerintah dan mengandung semangat kebangkitan serta pemulihan."
   },
   {
     "id": 1362,
-    "label": "netral",
-    "confidence": 78,
-    "reason": "(dry-run) label simulasi untuk id 1362"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Menyampaikan komitmen pemerintah untuk rehabilitasi dan pemulihan layanan kesehatan."
   },
   {
     "id": 1367,
-    "label": "negatif",
-    "confidence": 75,
-    "reason": "(dry-run) label simulasi untuk id 1367"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Mengapresiasi keseriusan pemerintah dan tujuan bersama untuk pemulihan."
   },
   {
     "id": 1377,
     "label": "negatif",
-    "confidence": 85,
-    "reason": "(dry-run) label simulasi untuk id 1377"
+    "confidence": 95,
+    "reason": "Melaporkan kerusakan alat kesehatan yang signifikan akibat banjir."
   },
   {
     "id": 1385,
     "label": "netral",
-    "confidence": 77,
-    "reason": "(dry-run) label simulasi untuk id 1385"
+    "confidence": 90,
+    "reason": "Laporan faktual mengenai dampak banjir dan upaya evakuasi."
   },
   {
     "id": 1389,
     "label": "netral",
-    "confidence": 56,
-    "reason": "(dry-run) label simulasi untuk id 1389"
+    "confidence": 90,
+    "reason": "Laporan faktual mengenai banjir susulan dan imbauan kewaspadaan."
   },
   {
     "id": 1425,
     "label": "positif",
-    "confidence": 83,
-    "reason": "(dry-run) label simulasi untuk id 1425"
+    "confidence": 95,
+    "reason": "Mengapresiasi kehadiran dan kepedulian wakil presiden terhadap warga terdampak."
   },
   {
     "id": 1435,
     "label": "negatif",
-    "confidence": 87,
-    "reason": "(dry-run) label simulasi untuk id 1435"
+    "confidence": 90,
+    "reason": "Mengandung kritik dan sarkasme negatif terhadap motif penyaluran bantuan."
   },
   {
     "id": 1439,
     "label": "negatif",
-    "confidence": 65,
-    "reason": "(dry-run) label simulasi untuk id 1439"
+    "confidence": 95,
+    "reason": "Mengungkapkan kemarahan dan kutukan terhadap penimbun logistik saat bencana."
   },
   {
     "id": 1443,
     "label": "netral",
-    "confidence": 95,
-    "reason": "(dry-run) label simulasi untuk id 1443"
+    "confidence": 90,
+    "reason": "Laporan faktual mengenai permintaan untuk memastikan kebutuhan pengungsi terpenuhi."
   },
   {
     "id": 1445,
     "label": "positif",
-    "confidence": 78,
-    "reason": "(dry-run) label simulasi untuk id 1445"
+    "confidence": 90,
+    "reason": "Menyampaikan upaya percepatan perbaikan rumah dan bantuan pemerintah."
   },
   {
     "id": 1448,
     "label": "positif",
-    "confidence": 76,
-    "reason": "(dry-run) label simulasi untuk id 1448"
+    "confidence": 95,
+    "reason": "Mengapresiasi sinergi dan kerja sama antar instansi dalam pemulihan infrastruktur."
   },
   {
     "id": 1467,
     "label": "positif",
-    "confidence": 71,
-    "reason": "(dry-run) label simulasi untuk id 1467"
+    "confidence": 95,
+    "reason": "Menyampaikan informasi upaya BNPB dan memberikan semangat kepada tim lapangan."
   }
 ]

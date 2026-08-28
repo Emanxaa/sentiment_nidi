@@ -2,301 +2,301 @@
   {
     "id": 8244,
     "label": "negatif",
-    "confidence": 80,
-    "reason": "(dry-run) label simulasi untuk id 8244"
+    "confidence": 90,
+    "reason": "Tweet ini menyiratkan tuduhan negatif dan kritik terhadap seseorang yang diduga menyembunyikan penyebab banjir."
   },
   {
     "id": 8261,
-    "label": "netral",
-    "confidence": 88,
-    "reason": "(dry-run) label simulasi untuk id 8261"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Tweet ini melaporkan upaya bantuan dan dukungan dari Kementerian Sosial untuk penanganan bencana."
   },
   {
     "id": 8263,
-    "label": "negatif",
-    "confidence": 60,
-    "reason": "(dry-run) label simulasi untuk id 8263"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Tweet ini adalah pengumuman diskusi faktual tentang wacana sanksi tanpa menunjukkan emosi kuat."
   },
   {
     "id": 8268,
-    "label": "netral",
-    "confidence": 64,
-    "reason": "(dry-run) label simulasi untuk id 8268"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Tweet ini berisi ajakan donasi dan niat untuk membantu korban banjir."
   },
   {
     "id": 8286,
-    "label": "positif",
-    "confidence": 70,
-    "reason": "(dry-run) label simulasi untuk id 8286"
+    "label": "negatif",
+    "confidence": 95,
+    "reason": "Tweet ini mengkritik keras perusakan hutan dan ketidakadilan sosial terkait dampak banjir."
   },
   {
     "id": 8292,
     "label": "negatif",
-    "confidence": 92,
-    "reason": "(dry-run) label simulasi untuk id 8292"
+    "confidence": 95,
+    "reason": "Tweet ini menunjukkan kemarahan, kritik tajam, dan kekecewaan terhadap pemerintah atas penanganan dan penyebab banjir."
   },
   {
     "id": 8300,
-    "label": "positif",
-    "confidence": 55,
-    "reason": "(dry-run) label simulasi untuk id 8300"
+    "label": "negatif",
+    "confidence": 90,
+    "reason": "Tweet ini mengungkapkan kesedihan atas dampak bencana dan doa negatif/kutukan terhadap pelaku perusakan alam."
   },
   {
     "id": 8311,
-    "label": "negatif",
-    "confidence": 67,
-    "reason": "(dry-run) label simulasi untuk id 8311"
+    "label": "netral",
+    "confidence": 95,
+    "reason": "Tweet ini adalah laporan faktual mengenai jumlah korban bencana."
   },
   {
     "id": 8348,
     "label": "positif",
-    "confidence": 68,
-    "reason": "(dry-run) label simulasi untuk id 8348"
+    "confidence": 95,
+    "reason": "Tweet ini melaporkan adanya donasi dan bantuan dari pihak internasional."
   },
   {
     "id": 8349,
     "label": "negatif",
-    "confidence": 71,
-    "reason": "(dry-run) label simulasi untuk id 8349"
+    "confidence": 85,
+    "reason": "Tweet ini mengkritik pihak yang meremehkan situasi bencana dan menunjukkan kesulitan dalam penanganan."
   },
   {
     "id": 8350,
     "label": "negatif",
-    "confidence": 83,
-    "reason": "(dry-run) label simulasi untuk id 8350"
+    "confidence": 90,
+    "reason": "Tweet ini mengeluh tentang banjir dan menyalahkan eksploitasi alam yang parah."
   },
   {
     "id": 8353,
     "label": "positif",
-    "confidence": 83,
-    "reason": "(dry-run) label simulasi untuk id 8353"
+    "confidence": 80,
+    "reason": "Tweet ini berisi permintaan doa dan dukungan, meskipun ada konteks kesulitan akibat banjir."
   },
   {
     "id": 8354,
-    "label": "positif",
-    "confidence": 69,
-    "reason": "(dry-run) label simulasi untuk id 8354"
+    "label": "negatif",
+    "confidence": 95,
+    "reason": "Tweet ini menggambarkan kondisi kerusakan parah dan korban jiwa akibat banjir, menimbulkan kesedihan."
   },
   {
     "id": 8363,
-    "label": "netral",
-    "confidence": 78,
-    "reason": "(dry-run) label simulasi untuk id 8363"
+    "label": "positif",
+    "confidence": 90,
+    "reason": "Tweet ini adalah ajakan untuk berpartisipasi dalam bantuan bagi korban banjir."
   },
   {
     "id": 8381,
     "label": "negatif",
-    "confidence": 56,
-    "reason": "(dry-run) label simulasi untuk id 8381"
+    "confidence": 95,
+    "reason": "Tweet ini menggambarkan kondisi yang menyedihkan, kesulitan, dan kekhawatiran akan dampak buruk banjir."
   },
   {
     "id": 8382,
     "label": "negatif",
-    "confidence": 85,
-    "reason": "(dry-run) label simulasi untuk id 8382"
+    "confidence": 90,
+    "reason": "Tweet ini mengeluhkan kurangnya bantuan dari pihak lain dan menggambarkan kondisi pengungsian yang sulit."
   },
   {
     "id": 8388,
-    "label": "netral",
-    "confidence": 83,
-    "reason": "(dry-run) label simulasi untuk id 8388"
+    "label": "positif",
+    "confidence": 90,
+    "reason": "Tweet ini melaporkan instruksi presiden untuk penanganan dan pemulihan akses, menunjukkan upaya positif."
   },
   {
     "id": 8401,
     "label": "negatif",
-    "confidence": 67,
-    "reason": "(dry-run) label simulasi untuk id 8401"
+    "confidence": 95,
+    "reason": "Tweet ini mengungkapkan trauma, kepanikan, dan kesedihan akibat banjir."
   },
   {
     "id": 8404,
-    "label": "positif",
-    "confidence": 90,
-    "reason": "(dry-run) label simulasi untuk id 8404"
+    "label": "negatif",
+    "confidence": 95,
+    "reason": "Tweet ini mengungkapkan ketakutan, kecemasan, dan kesedihan akibat pengalaman banjir."
   },
   {
     "id": 8421,
-    "label": "positif",
-    "confidence": 63,
-    "reason": "(dry-run) label simulasi untuk id 8421"
+    "label": "negatif",
+    "confidence": 95,
+    "reason": "Tweet ini berisi sarkasme negatif dan kritik tajam terhadap pejabat serta kebijakan yang merusak lingkungan."
   },
   {
     "id": 8426,
-    "label": "netral",
-    "confidence": 73,
-    "reason": "(dry-run) label simulasi untuk id 8426"
+    "label": "negatif",
+    "confidence": 90,
+    "reason": "Tweet ini melaporkan kondisi buruk akibat banjir dan mengungkapkan kesedihan."
   },
   {
     "id": 8435,
-    "label": "positif",
-    "confidence": 86,
-    "reason": "(dry-run) label simulasi untuk id 8435"
+    "label": "negatif",
+    "confidence": 95,
+    "reason": "Tweet ini adalah keluhan dan permohonan bantuan yang mendesak karena kondisi darurat dan kurangnya pertolongan."
   },
   {
     "id": 8439,
     "label": "positif",
     "confidence": 95,
-    "reason": "(dry-run) label simulasi untuk id 8439"
+    "reason": "Tweet ini melaporkan kedatangan bantuan logistik untuk korban banjir."
   },
   {
     "id": 8464,
     "label": "negatif",
-    "confidence": 59,
-    "reason": "(dry-run) label simulasi untuk id 8464"
+    "confidence": 95,
+    "reason": "Tweet ini berisi tuduhan dan kemarahan yang sangat kuat terhadap seseorang yang dianggap bertanggung jawab atas korban banjir."
   },
   {
     "id": 8476,
-    "label": "positif",
-    "confidence": 67,
-    "reason": "(dry-run) label simulasi untuk id 8476"
+    "label": "negatif",
+    "confidence": 90,
+    "reason": "Tweet ini mengungkapkan perasaan khawatir dan sedih melihat kondisi banjir."
   },
   {
     "id": 8481,
     "label": "negatif",
     "confidence": 95,
-    "reason": "(dry-run) label simulasi untuk id 8481"
+    "reason": "Tweet ini menunjukkan kemarahan dan kritik tajam terhadap pihak-pihak yang dianggap tidak peduli terhadap penderitaan korban banjir."
   },
   {
     "id": 8495,
     "label": "positif",
-    "confidence": 71,
-    "reason": "(dry-run) label simulasi untuk id 8495"
+    "confidence": 95,
+    "reason": "Tweet ini berisi doa, harapan, dan dukungan moral untuk korban banjir."
   },
   {
     "id": 8502,
     "label": "netral",
-    "confidence": 58,
-    "reason": "(dry-run) label simulasi untuk id 8502"
+    "confidence": 70,
+    "reason": "Tweet ini tidak secara langsung terkait dengan banjir di Sumatra dan lebih merupakan ekspresi pribadi yang tidak memiliki sentimen kuat terkait bencana."
   },
   {
     "id": 8508,
     "label": "negatif",
-    "confidence": 77,
-    "reason": "(dry-run) label simulasi untuk id 8508"
+    "confidence": 95,
+    "reason": "Tweet ini menunjukkan kemarahan dan kritik keras terhadap pejabat yang dianggap tidak peduli dan korup."
   },
   {
     "id": 8513,
-    "label": "netral",
-    "confidence": 96,
-    "reason": "(dry-run) label simulasi untuk id 8513"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Tweet ini berisi doa dan harapan positif untuk pemulihan kondisi pasca bencana."
   },
   {
     "id": 8517,
     "label": "negatif",
-    "confidence": 98,
-    "reason": "(dry-run) label simulasi untuk id 8517"
+    "confidence": 95,
+    "reason": "Tweet ini mengkritik pemerintah yang dianggap tidak peduli terhadap masalah banjir di Sumatera."
   },
   {
     "id": 8534,
     "label": "negatif",
-    "confidence": 75,
-    "reason": "(dry-run) label simulasi untuk id 8534"
+    "confidence": 90,
+    "reason": "Tweet ini mengungkapkan kekhawatiran dan keluhan tentang frekuensi banjir."
   },
   {
     "id": 8542,
     "label": "negatif",
-    "confidence": 62,
-    "reason": "(dry-run) label simulasi untuk id 8542"
+    "confidence": 90,
+    "reason": "Tweet ini menyiratkan kritik terhadap penyebab banjir yang diakibatkan oleh aktivitas manusia (penebangan liar)."
   },
   {
     "id": 8559,
-    "label": "negatif",
-    "confidence": 62,
-    "reason": "(dry-run) label simulasi untuk id 8559"
+    "label": "netral",
+    "confidence": 95,
+    "reason": "Tweet ini adalah laporan faktual mengenai penemuan jenazah korban banjir."
   },
   {
     "id": 8561,
     "label": "negatif",
-    "confidence": 78,
-    "reason": "(dry-run) label simulasi untuk id 8561"
+    "confidence": 95,
+    "reason": "Tweet ini adalah seruan mendesak yang menunjukkan kemarahan dan keputusasaan atas kurangnya perhatian terhadap korban banjir."
   },
   {
     "id": 8562,
-    "label": "negatif",
+    "label": "positif",
     "confidence": 95,
-    "reason": "(dry-run) label simulasi untuk id 8562"
+    "reason": "Tweet ini berisi ucapan belasungkawa dan doa positif untuk korban banjir."
   },
   {
     "id": 8567,
-    "label": "negatif",
-    "confidence": 58,
-    "reason": "(dry-run) label simulasi untuk id 8567"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Tweet ini melaporkan adanya bantuan layanan internet gratis untuk korban banjir."
   },
   {
     "id": 8576,
-    "label": "netral",
-    "confidence": 60,
-    "reason": "(dry-run) label simulasi untuk id 8576"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Tweet ini melaporkan respons dan bantuan dari BRI untuk korban banjir."
   },
   {
     "id": 8578,
-    "label": "positif",
-    "confidence": 92,
-    "reason": "(dry-run) label simulasi untuk id 8578"
+    "label": "negatif",
+    "confidence": 95,
+    "reason": "Tweet ini mengkritik keras pemerintah pusat dan daerah yang dianggap lambat dan tidak kompeten dalam menangani banjir."
   },
   {
     "id": 8583,
-    "label": "netral",
-    "confidence": 72,
-    "reason": "(dry-run) label simulasi untuk id 8583"
+    "label": "negatif",
+    "confidence": 90,
+    "reason": "Tweet ini melaporkan korban jiwa dan tudingan deforestasi sebagai penyebab banjir, serta desakan investigasi."
   },
   {
     "id": 8591,
     "label": "negatif",
-    "confidence": 91,
-    "reason": "(dry-run) label simulasi untuk id 8591"
+    "confidence": 95,
+    "reason": "Tweet ini menyalahkan pembalakan liar dan pejabat korup sebagai penyebab banjir dengan bahasa yang sangat kasar dan marah."
   },
   {
     "id": 8593,
-    "label": "netral",
-    "confidence": 56,
-    "reason": "(dry-run) label simulasi untuk id 8593"
+    "label": "positif",
+    "confidence": 85,
+    "reason": "Meskipun ada konteks dampak banjir, tweet ini fokus pada harapan dan doa positif untuk keselamatan keluarga dan penyelesaian bencana."
   },
   {
     "id": 8594,
-    "label": "netral",
-    "confidence": 92,
-    "reason": "(dry-run) label simulasi untuk id 8594"
+    "label": "positif",
+    "confidence": 90,
+    "reason": "Tweet ini berisi seruan doa dan informasi faktual tentang bencana, dengan fokus pada dukungan moral."
   },
   {
     "id": 8595,
-    "label": "netral",
-    "confidence": 71,
-    "reason": "(dry-run) label simulasi untuk id 8595"
+    "label": "negatif",
+    "confidence": 90,
+    "reason": "Tweet ini mengkritik kurangnya perhatian media terhadap banjir di Sumatera, menunjukkan kekecewaan."
   },
   {
     "id": 8607,
     "label": "netral",
-    "confidence": 60,
-    "reason": "(dry-run) label simulasi untuk id 8607"
+    "confidence": 95,
+    "reason": "Tweet ini adalah laporan faktual mengenai operasional posko penanganan bencana."
   },
   {
     "id": 8614,
-    "label": "netral",
-    "confidence": 68,
-    "reason": "(dry-run) label simulasi untuk id 8614"
+    "label": "positif",
+    "confidence": 90,
+    "reason": "Tweet ini melaporkan perintah presiden untuk penanganan serius bencana, menunjukkan upaya positif dari pemerintah."
   },
   {
     "id": 8625,
     "label": "negatif",
-    "confidence": 91,
-    "reason": "(dry-run) label simulasi untuk id 8625"
+    "confidence": 90,
+    "reason": "Tweet ini melaporkan insiden penjarahan akibat kepanikan dan kekurangan sembako pasca banjir, menunjukkan situasi negatif."
   },
   {
     "id": 8626,
     "label": "negatif",
-    "confidence": 64,
-    "reason": "(dry-run) label simulasi untuk id 8626"
+    "confidence": 95,
+    "reason": "Tweet ini mengkritik peran negara dan menyalahkan penebangan liar yang dibiarkan sebagai penyebab banjir."
   },
   {
     "id": 8634,
     "label": "negatif",
-    "confidence": 79,
-    "reason": "(dry-run) label simulasi untuk id 8634"
+    "confidence": 85,
+    "reason": "Tweet ini menggunakan sarkasme negatif dan kritik terhadap situasi pasca banjir, menyiratkan konflik kepentingan."
   },
   {
     "id": 8638,
-    "label": "negatif",
-    "confidence": 58,
-    "reason": "(dry-run) label simulasi untuk id 8638"
+    "label": "netral",
+    "confidence": 95,
+    "reason": "Tweet ini adalah laporan faktual mengenai penetapan status tanggap darurat banjir."
   }
 ]

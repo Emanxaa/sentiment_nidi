@@ -1,0 +1,9 @@
+# API key & secret (jangan pernah dikomit)
+.env
+
+# Python
+__pycache__/
+*.py[cod]
+
+# Jupyter
+.ipynb_checkpoints/

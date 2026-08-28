@@ -1,302 +1,302 @@
 [
   {
     "id": 2638,
-    "label": "negatif",
-    "confidence": 93,
-    "reason": "(dry-run) label simulasi untuk id 2638"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Tweet berisi janji bantuan dan pemulihan yang memberikan harapan bagi korban."
   },
   {
     "id": 2642,
-    "label": "negatif",
-    "confidence": 81,
-    "reason": "(dry-run) label simulasi untuk id 2642"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Tweet melaporkan janji bantuan pribadi dan tindakan cepat untuk korban bencana."
   },
   {
     "id": 2643,
-    "label": "negatif",
-    "confidence": 95,
-    "reason": "(dry-run) label simulasi untuk id 2643"
+    "label": "positif",
+    "confidence": 90,
+    "reason": "Tweet melaporkan janji peningkatan pasokan pangan untuk korban banjir."
   },
   {
     "id": 2645,
-    "label": "netral",
-    "confidence": 84,
-    "reason": "(dry-run) label simulasi untuk id 2645"
+    "label": "positif",
+    "confidence": 90,
+    "reason": "Tweet menyatakan janji bantuan sebagai bentuk pembayaran hutang moral untuk mengembalikan kehidupan korban."
   },
   {
     "id": 2658,
     "label": "negatif",
-    "confidence": 68,
-    "reason": "(dry-run) label simulasi untuk id 2658"
+    "confidence": 85,
+    "reason": "Tweet berisi kritik dan tuduhan politik terkait penyebab banjir, dengan nada sarkasme."
   },
   {
     "id": 2659,
-    "label": "negatif",
-    "confidence": 99,
-    "reason": "(dry-run) label simulasi untuk id 2659"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Tweet melaporkan penyaluran bantuan uang dan logistik untuk korban banjir."
   },
   {
     "id": 2677,
-    "label": "negatif",
-    "confidence": 66,
-    "reason": "(dry-run) label simulasi untuk id 2677"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Tweet berisi pesan yang menguatkan, menyerukan solidaritas, dan ajakan membantu korban."
   },
   {
     "id": 2686,
     "label": "negatif",
     "confidence": 95,
-    "reason": "(dry-run) label simulasi untuk id 2686"
+    "reason": "Tweet berisi kritik keras dan kemarahan terhadap janji penanganan banjir yang dianggap omong kosong."
   },
   {
     "id": 2687,
     "label": "positif",
-    "confidence": 89,
-    "reason": "(dry-run) label simulasi untuk id 2687"
+    "confidence": 95,
+    "reason": "Tweet menunjukkan apresiasi terhadap respons cepat pemerintah dalam evakuasi warga."
   },
   {
     "id": 2711,
-    "label": "netral",
-    "confidence": 68,
-    "reason": "(dry-run) label simulasi untuk id 2711"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Tweet melaporkan penyerahan donasi bantuan untuk penyintas banjir."
   },
   {
     "id": 2717,
     "label": "positif",
-    "confidence": 80,
-    "reason": "(dry-run) label simulasi untuk id 2717"
+    "confidence": 90,
+    "reason": "Tweet menyoroti kisah keberanian seorang polisi yang membantu warga saat banjir."
   },
   {
     "id": 2730,
     "label": "negatif",
-    "confidence": 84,
-    "reason": "(dry-run) label simulasi untuk id 2730"
+    "confidence": 95,
+    "reason": "Tweet melaporkan jumlah korban meninggal dan hilang yang tinggi akibat bencana, serta permintaan maaf presiden."
   },
   {
     "id": 2736,
     "label": "negatif",
     "confidence": 90,
-    "reason": "(dry-run) label simulasi untuk id 2736"
+    "reason": "Tweet melaporkan adanya tersangka pembalakan liar yang memperparah banjir."
   },
   {
     "id": 2737,
     "label": "positif",
-    "confidence": 72,
-    "reason": "(dry-run) label simulasi untuk id 2737"
+    "confidence": 95,
+    "reason": "Tweet melaporkan kegiatan sholawat akbar untuk mendoakan korban banjir."
   },
   {
     "id": 2766,
-    "label": "positif",
-    "confidence": 64,
-    "reason": "(dry-run) label simulasi untuk id 2766"
+    "label": "negatif",
+    "confidence": 95,
+    "reason": "Tweet berisi kritik keras terhadap bupati yang tidak hadir saat bencana dan tuntutan tindakan tegas."
   },
   {
     "id": 2784,
-    "label": "netral",
-    "confidence": 71,
-    "reason": "(dry-run) label simulasi untuk id 2784"
+    "label": "negatif",
+    "confidence": 95,
+    "reason": "Tweet melaporkan pemecatan bupati sebagai konsekuensi dari ketidakpedulian saat bencana."
   },
   {
     "id": 2787,
-    "label": "positif",
-    "confidence": 96,
-    "reason": "(dry-run) label simulasi untuk id 2787"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Tweet melaporkan kunjungan wakil presiden untuk meninjau wilayah terdampak bencana."
   },
   {
     "id": 2794,
-    "label": "positif",
-    "confidence": 70,
-    "reason": "(dry-run) label simulasi untuk id 2794"
+    "label": "netral",
+    "confidence": 85,
+    "reason": "Tweet melaporkan wakil presiden mencatat keluhan korban banjir."
   },
   {
     "id": 2796,
     "label": "positif",
-    "confidence": 66,
-    "reason": "(dry-run) label simulasi untuk id 2796"
+    "confidence": 90,
+    "reason": "Tweet mengakui tantangan akibat bencana namun menekankan kerjasama dan harapan untuk pemulihan."
   },
   {
     "id": 2805,
     "label": "positif",
-    "confidence": 75,
-    "reason": "(dry-run) label simulasi untuk id 2805"
+    "confidence": 95,
+    "reason": "Tweet melaporkan kedatangan bantuan dan pergerakan relawan ke lokasi banjir."
   },
   {
     "id": 2808,
     "label": "positif",
-    "confidence": 57,
-    "reason": "(dry-run) label simulasi untuk id 2808"
+    "confidence": 95,
+    "reason": "Tweet melaporkan pengiriman bantuan dalam jumlah besar untuk provinsi terdampak banjir."
   },
   {
     "id": 2810,
-    "label": "negatif",
-    "confidence": 59,
-    "reason": "(dry-run) label simulasi untuk id 2810"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Tweet melaporkan rencana pengiriman bantuan dalam jumlah besar untuk korban banjir."
   },
   {
     "id": 2820,
     "label": "positif",
-    "confidence": 64,
-    "reason": "(dry-run) label simulasi untuk id 2820"
+    "confidence": 90,
+    "reason": "Tweet berisi doa dan dukungan untuk Sumatera Barat yang terdampak bencana."
   },
   {
     "id": 2827,
-    "label": "netral",
-    "confidence": 79,
-    "reason": "(dry-run) label simulasi untuk id 2827"
+    "label": "negatif",
+    "confidence": 90,
+    "reason": "Tweet menggambarkan dampak kehancuran akibat banjir bandang."
   },
   {
     "id": 2839,
     "label": "negatif",
-    "confidence": 71,
-    "reason": "(dry-run) label simulasi untuk id 2839"
+    "confidence": 95,
+    "reason": "Tweet melaporkan data korban meninggal, hilang, luka-luka, dan terdampak yang sangat tinggi."
   },
   {
     "id": 2842,
-    "label": "netral",
-    "confidence": 85,
-    "reason": "(dry-run) label simulasi untuk id 2842"
+    "label": "negatif",
+    "confidence": 90,
+    "reason": "Tweet melaporkan dampak negatif banjir berupa kelangkaan komoditas bawang merah."
   },
   {
     "id": 2844,
-    "label": "netral",
-    "confidence": 83,
-    "reason": "(dry-run) label simulasi untuk id 2844"
+    "label": "negatif",
+    "confidence": 90,
+    "reason": "Tweet melaporkan pengakuan kaget atas besarnya bencana dan permintaan maaf, menunjukkan situasi negatif."
   },
   {
     "id": 2851,
     "label": "negatif",
-    "confidence": 99,
-    "reason": "(dry-run) label simulasi untuk id 2851"
+    "confidence": 95,
+    "reason": "Tweet menggambarkan kondisi pemukiman warga yang porak-poranda akibat banjir bandang."
   },
   {
     "id": 2861,
     "label": "negatif",
-    "confidence": 88,
-    "reason": "(dry-run) label simulasi untuk id 2861"
+    "confidence": 90,
+    "reason": "Tweet melaporkan kerusakan meluas dan jumlah korban meninggal yang tinggi akibat banjir bandang."
   },
   {
     "id": 2872,
     "label": "positif",
-    "confidence": 68,
-    "reason": "(dry-run) label simulasi untuk id 2872"
+    "confidence": 95,
+    "reason": "Tweet berisi ungkapan duka, empati, doa, dan harapan untuk pemulihan korban bencana."
   },
   {
     "id": 2875,
     "label": "positif",
-    "confidence": 73,
-    "reason": "(dry-run) label simulasi untuk id 2875"
+    "confidence": 90,
+    "reason": "Tweet melaporkan upaya pemerintah kota untuk mengantisipasi dan mengendalikan banjir."
   },
   {
     "id": 2879,
-    "label": "positif",
-    "confidence": 68,
-    "reason": "(dry-run) label simulasi untuk id 2879"
+    "label": "negatif",
+    "confidence": 85,
+    "reason": "Tweet menggambarkan dampak banjir yang membawa kayu gelondongan, mengindikasikan kerusakan lingkungan."
   },
   {
     "id": 2892,
-    "label": "negatif",
-    "confidence": 82,
-    "reason": "(dry-run) label simulasi untuk id 2892"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Tweet berisi ungkapan duka cita dan doa untuk wilayah yang dilanda bencana."
   },
   {
     "id": 2895,
     "label": "netral",
-    "confidence": 89,
-    "reason": "(dry-run) label simulasi untuk id 2895"
+    "confidence": 90,
+    "reason": "Tweet melaporkan kejadian bencana dan langkah penanganan darurat yang diambil."
   },
   {
     "id": 2898,
-    "label": "negatif",
-    "confidence": 58,
-    "reason": "(dry-run) label simulasi untuk id 2898"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Tweet hanya melaporkan fakta terjadinya banjir bandang."
   },
   {
     "id": 2900,
-    "label": "positif",
-    "confidence": 92,
-    "reason": "(dry-run) label simulasi untuk id 2900"
+    "label": "negatif",
+    "confidence": 90,
+    "reason": "Tweet melaporkan gangguan layanan telekomunikasi sebagai dampak negatif bencana."
   },
   {
     "id": 2907,
     "label": "negatif",
-    "confidence": 83,
-    "reason": "(dry-run) label simulasi untuk id 2907"
+    "confidence": 95,
+    "reason": "Tweet melaporkan bencana yang meluas, korban meninggal, dan lumpuhnya akses jalan serta komunikasi."
   },
   {
     "id": 2928,
     "label": "negatif",
-    "confidence": 74,
-    "reason": "(dry-run) label simulasi untuk id 2928"
+    "confidence": 95,
+    "reason": "Tweet menggambarkan penderitaan, ketakutan, dan kondisi mengerikan yang dialami korban banjir."
   },
   {
     "id": 2943,
-    "label": "netral",
-    "confidence": 81,
-    "reason": "(dry-run) label simulasi untuk id 2943"
+    "label": "negatif",
+    "confidence": 85,
+    "reason": "Tweet melaporkan adanya banjir susulan dan upaya pembersihan lumpur, menunjukkan dampak negatif yang berulang."
   },
   {
     "id": 2963,
     "label": "negatif",
-    "confidence": 82,
-    "reason": "(dry-run) label simulasi untuk id 2963"
+    "confidence": 90,
+    "reason": "Tweet menjelaskan dampak negatif pendangkalan sungai yang memperburuk risiko banjir."
   },
   {
     "id": 2969,
     "label": "positif",
-    "confidence": 99,
-    "reason": "(dry-run) label simulasi untuk id 2969"
+    "confidence": 95,
+    "reason": "Tweet melaporkan penanganan darurat yang sigap dan berkelanjutan untuk memastikan keamanan dan kebutuhan warga."
   },
   {
     "id": 2971,
-    "label": "negatif",
-    "confidence": 67,
-    "reason": "(dry-run) label simulasi untuk id 2971"
+    "label": "netral",
+    "confidence": 80,
+    "reason": "Tweet hanya menyatakan fakta terjadinya banjir di malam hari tanpa emosi."
   },
   {
     "id": 2980,
-    "label": "netral",
-    "confidence": 74,
-    "reason": "(dry-run) label simulasi untuk id 2980"
+    "label": "positif",
+    "confidence": 90,
+    "reason": "Tweet memberikan apresiasi kepada perusahaan yang konsisten menjadi industri lestari sebagai pengingat pasca banjir."
   },
   {
     "id": 2981,
     "label": "positif",
-    "confidence": 77,
-    "reason": "(dry-run) label simulasi untuk id 2981"
+    "confidence": 95,
+    "reason": "Tweet memberikan apresiasi tinggi terhadap perusahaan dan harapan agar bencana tidak terulang."
   },
   {
     "id": 2997,
-    "label": "netral",
-    "confidence": 79,
-    "reason": "(dry-run) label simulasi untuk id 2997"
+    "label": "negatif",
+    "confidence": 90,
+    "reason": "Tweet mengkritik ketidakpedulian beberapa pihak, termasuk keluarga oligarki, terhadap bencana banjir."
   },
   {
     "id": 2998,
     "label": "negatif",
-    "confidence": 64,
-    "reason": "(dry-run) label simulasi untuk id 2998"
+    "confidence": 95,
+    "reason": "Tweet menceritakan kondisi warga yang bertahan di atap dalam kegelapan dan berteriak minta tolong."
   },
   {
     "id": 3002,
     "label": "negatif",
-    "confidence": 98,
-    "reason": "(dry-run) label simulasi untuk id 3002"
+    "confidence": 95,
+    "reason": "Tweet berisi kritik keras terhadap kelambanan negara dalam mengatasi bencana berulang dan serangan pribadi terhadap pejabat."
   },
   {
     "id": 3011,
     "label": "negatif",
-    "confidence": 72,
-    "reason": "(dry-run) label simulasi untuk id 3011"
+    "confidence": 90,
+    "reason": "Tweet menyatakan duka cita atas bencana banjir dan mengenang tragedi dahsyat masa lalu."
   },
   {
     "id": 3034,
     "label": "positif",
-    "confidence": 91,
-    "reason": "(dry-run) label simulasi untuk id 3034"
+    "confidence": 95,
+    "reason": "Tweet melaporkan bantuan yang terus mengalir dan diberikan untuk korban bencana."
   },
   {
     "id": 3039,
-    "label": "netral",
-    "confidence": 83,
-    "reason": "(dry-run) label simulasi untuk id 3039"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Tweet melaporkan pengiriman personel Brimob untuk membantu pemulihan pascabencana."
   }
 ]

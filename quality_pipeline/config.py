@@ -31,7 +31,9 @@ LABEL_MAP = {"negatif": 0, "netral": 1, "positif": 2}
 LABEL_NAMES = {0: "negatif", 1: "netral", 2: "positif"}
 
 # Phase 3 (LLM)
-LLM_MODEL = "gpt-4o-mini"
+LLM_PROVIDER = "gemini"  # "openai" | "gemini"
+LLM_MODEL = "gpt-4o-mini"  # openai
+GEMINI_MODEL = "gemini-2.5-flash"  # gemini
 CONFIDENCE_THRESHOLD = 80
 
 # Phase 1 — audit

@@ -1,302 +1,302 @@
 [
   {
     "id": 5431,
-    "label": "positif",
-    "confidence": 94,
-    "reason": "(dry-run) label simulasi untuk id 5431"
+    "label": "negatif",
+    "confidence": 95,
+    "reason": "Mengungkapkan penderitaan dan kelaparan yang ekstrem."
   },
   {
     "id": 5441,
-    "label": "positif",
+    "label": "negatif",
     "confidence": 90,
-    "reason": "(dry-run) label simulasi untuk id 5441"
+    "reason": "Mengandung sarkasme dan kritik terhadap lambatnya bantuan resmi."
   },
   {
     "id": 5443,
-    "label": "positif",
-    "confidence": 65,
-    "reason": "(dry-run) label simulasi untuk id 5443"
+    "label": "negatif",
+    "confidence": 95,
+    "reason": "Mengkritik keras situasi bantuan kemanusiaan dengan perbandingan negatif."
   },
   {
     "id": 5444,
     "label": "positif",
-    "confidence": 77,
-    "reason": "(dry-run) label simulasi untuk id 5444"
+    "confidence": 95,
+    "reason": "Menunjukkan kesiapan untuk memberikan bantuan dan kepedulian."
   },
   {
     "id": 5452,
-    "label": "positif",
+    "label": "negatif",
     "confidence": 90,
-    "reason": "(dry-run) label simulasi untuk id 5452"
+    "reason": "Mengkritik kepemimpinan yang menyebabkan kerusakan hutan dan korban jiwa."
   },
   {
     "id": 5455,
-    "label": "positif",
-    "confidence": 58,
-    "reason": "(dry-run) label simulasi untuk id 5455"
+    "label": "netral",
+    "confidence": 80,
+    "reason": "Menyatakan kondisi perjuangan dan seruan untuk tidak berpaling, lebih ke informasi dan ajakan."
   },
   {
     "id": 5490,
     "label": "negatif",
-    "confidence": 72,
-    "reason": "(dry-run) label simulasi untuk id 5490"
+    "confidence": 95,
+    "reason": "Menggambarkan tingkat keparahan musibah dan kesedihan yang mendalam."
   },
   {
     "id": 5494,
     "label": "positif",
-    "confidence": 82,
-    "reason": "(dry-run) label simulasi untuk id 5494"
+    "confidence": 95,
+    "reason": "Mengungkapkan apresiasi terhadap upaya penanganan bencana."
   },
   {
     "id": 5507,
-    "label": "netral",
-    "confidence": 86,
-    "reason": "(dry-run) label simulasi untuk id 5507"
+    "label": "negatif",
+    "confidence": 90,
+    "reason": "Mengungkapkan ketakutan dan kenyataan bencana banjir yang merendam."
   },
   {
     "id": 5511,
-    "label": "negatif",
-    "confidence": 99,
-    "reason": "(dry-run) label simulasi untuk id 5511"
+    "label": "netral",
+    "confidence": 85,
+    "reason": "Menyatakan kebutuhan mendesak akan bantuan dan akses kesehatan."
   },
   {
     "id": 5512,
-    "label": "positif",
-    "confidence": 81,
-    "reason": "(dry-run) label simulasi untuk id 5512"
+    "label": "negatif",
+    "confidence": 90,
+    "reason": "Menuntut percepatan proses evakuasi dan bantuan, mengindikasikan ketidakpuasan atau urgensi."
   },
   {
     "id": 5531,
-    "label": "positif",
-    "confidence": 71,
-    "reason": "(dry-run) label simulasi untuk id 5531"
+    "label": "negatif",
+    "confidence": 95,
+    "reason": "Mengungkapkan kemarahan dan kritik terhadap pejabat yang dianggap tidak tulus."
   },
   {
     "id": 5534,
     "label": "positif",
-    "confidence": 79,
-    "reason": "(dry-run) label simulasi untuk id 5534"
+    "confidence": 95,
+    "reason": "Mengungkapkan harapan dan doa untuk pemulihan kondisi."
   },
   {
     "id": 5536,
-    "label": "positif",
-    "confidence": 78,
-    "reason": "(dry-run) label simulasi untuk id 5536"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Laporan faktual tentang distribusi bantuan ke daerah terisolir."
   },
   {
     "id": 5550,
     "label": "negatif",
-    "confidence": 80,
-    "reason": "(dry-run) label simulasi untuk id 5550"
+    "confidence": 95,
+    "reason": "Mengungkapkan kritik keras dan kemarahan terhadap kinerja pemerintah."
   },
   {
     "id": 5552,
     "label": "positif",
-    "confidence": 68,
-    "reason": "(dry-run) label simulasi untuk id 5552"
+    "confidence": 95,
+    "reason": "Mengungkapkan doa dan harapan untuk pemulihan korban bencana."
   },
   {
     "id": 5555,
-    "label": "netral",
-    "confidence": 86,
-    "reason": "(dry-run) label simulasi untuk id 5555"
+    "label": "negatif",
+    "confidence": 90,
+    "reason": "Menyoroti dampak parah bencana yang membuat korban harus memulai hidup dari nol."
   },
   {
     "id": 5556,
     "label": "netral",
-    "confidence": 62,
-    "reason": "(dry-run) label simulasi untuk id 5556"
+    "confidence": 95,
+    "reason": "Memberikan informasi faktual mengenai kondisi terkini bencana banjir."
   },
   {
     "id": 5560,
     "label": "netral",
-    "confidence": 70,
-    "reason": "(dry-run) label simulasi untuk id 5560"
+    "confidence": 95,
+    "reason": "Memberikan informasi dan penjelasan faktual tentang siklon tropis sebagai penyebab hujan deras."
   },
   {
     "id": 5562,
-    "label": "negatif",
-    "confidence": 70,
-    "reason": "(dry-run) label simulasi untuk id 5562"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Mengajak untuk berdonasi dan menunjukkan semangat membantu."
   },
   {
     "id": 5567,
-    "label": "negatif",
-    "confidence": 56,
-    "reason": "(dry-run) label simulasi untuk id 5567"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Mengungkapkan belasungkawa, empati, dan doa untuk korban."
   },
   {
     "id": 5577,
     "label": "negatif",
-    "confidence": 92,
-    "reason": "(dry-run) label simulasi untuk id 5577"
+    "confidence": 95,
+    "reason": "Mengungkapkan kesedihan mendalam dan kehilangan rumah akibat bencana."
   },
   {
     "id": 5583,
     "label": "negatif",
-    "confidence": 73,
-    "reason": "(dry-run) label simulasi untuk id 5583"
+    "confidence": 90,
+    "reason": "Mengungkapkan kemarahan terhadap pihak yang meremehkan bencana."
   },
   {
     "id": 5588,
-    "label": "negatif",
-    "confidence": 67,
-    "reason": "(dry-run) label simulasi untuk id 5588"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Laporan faktual tentang penyaluran bantuan oleh relawan."
   },
   {
     "id": 5594,
     "label": "negatif",
-    "confidence": 87,
-    "reason": "(dry-run) label simulasi untuk id 5594"
+    "confidence": 95,
+    "reason": "Menggambarkan kesedihan dan kehancuran desa akibat banjir bandang."
   },
   {
     "id": 5606,
-    "label": "negatif",
-    "confidence": 57,
-    "reason": "(dry-run) label simulasi untuk id 5606"
+    "label": "positif",
+    "confidence": 90,
+    "reason": "Menggambarkan tindakan positif berupa hiburan dan dukungan moral untuk anak-anak korban banjir."
   },
   {
     "id": 5608,
     "label": "positif",
-    "confidence": 88,
-    "reason": "(dry-run) label simulasi untuk id 5608"
+    "confidence": 90,
+    "reason": "Memuji tindakan nyata dan bermanfaat dalam memberikan bantuan kepada korban banjir."
   },
   {
     "id": 5616,
     "label": "negatif",
-    "confidence": 92,
-    "reason": "(dry-run) label simulasi untuk id 5616"
+    "confidence": 95,
+    "reason": "Mengandung kritik dan tuduhan terhadap pihak yang dianggap bertanggung jawab atas potensi bencana."
   },
   {
     "id": 5628,
-    "label": "negatif",
-    "confidence": 63,
-    "reason": "(dry-run) label simulasi untuk id 5628"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Memberikan deskripsi faktual tentang kejadian banjir bandang."
   },
   {
     "id": 5632,
-    "label": "netral",
-    "confidence": 97,
-    "reason": "(dry-run) label simulasi untuk id 5632"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Mengungkapkan kesedihan, empati, dan doa untuk kekuatan bagi korban bencana."
   },
   {
     "id": 5640,
-    "label": "positif",
-    "confidence": 57,
-    "reason": "(dry-run) label simulasi untuk id 5640"
+    "label": "netral",
+    "confidence": 95,
+    "reason": "Memberikan informasi faktual tentang upaya pemulihan dan bantuan pemerintah."
   },
   {
     "id": 5643,
-    "label": "negatif",
-    "confidence": 70,
-    "reason": "(dry-run) label simulasi untuk id 5643"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Mengungkapkan terima kasih atas penyaluran bantuan kepada korban banjir."
   },
   {
     "id": 5651,
     "label": "negatif",
-    "confidence": 67,
-    "reason": "(dry-run) label simulasi untuk id 5651"
+    "confidence": 95,
+    "reason": "Mengkritik presiden yang dianggap meremehkan tingkat keparahan bencana."
   },
   {
     "id": 5655,
-    "label": "negatif",
-    "confidence": 92,
-    "reason": "(dry-run) label simulasi untuk id 5655"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Laporan faktual tentang pembagian masker kepada korban banjir."
   },
   {
     "id": 5659,
     "label": "negatif",
-    "confidence": 98,
-    "reason": "(dry-run) label simulasi untuk id 5659"
+    "confidence": 90,
+    "reason": "Menggambarkan kerusakan luas dan dampak parah akibat banjir bandang."
   },
   {
     "id": 5667,
-    "label": "positif",
-    "confidence": 88,
-    "reason": "(dry-run) label simulasi untuk id 5667"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Laporan faktual tentang bantuan dapur lapangan untuk masyarakat terdampak banjir."
   },
   {
     "id": 5670,
     "label": "negatif",
-    "confidence": 68,
-    "reason": "(dry-run) label simulasi untuk id 5670"
+    "confidence": 95,
+    "reason": "Mengungkapkan kemarahan dan kritik keras terhadap pembelaan pemerintah di tengah bencana."
   },
   {
     "id": 5681,
-    "label": "negatif",
-    "confidence": 59,
-    "reason": "(dry-run) label simulasi untuk id 5681"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Laporan faktual tentang tindakan disipliner terhadap pejabat terkait bencana."
   },
   {
     "id": 5682,
-    "label": "negatif",
-    "confidence": 95,
-    "reason": "(dry-run) label simulasi untuk id 5682"
+    "label": "netral",
+    "confidence": 85,
+    "reason": "Memberikan informasi faktual tentang tuduhan penyebab banjir."
   },
   {
     "id": 5690,
     "label": "negatif",
-    "confidence": 71,
-    "reason": "(dry-run) label simulasi untuk id 5690"
+    "confidence": 95,
+    "reason": "Mengkritik kegagalan BUMN dan ketidaksiapan infrastruktur pasca-banjir."
   },
   {
     "id": 5696,
-    "label": "positif",
-    "confidence": 78,
-    "reason": "(dry-run) label simulasi untuk id 5696"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Laporan faktual tentang pernyataan yang meminta fokus pada penanganan dan pemulihan bencana."
   },
   {
     "id": 5703,
     "label": "netral",
-    "confidence": 77,
-    "reason": "(dry-run) label simulasi untuk id 5703"
+    "confidence": 85,
+    "reason": "Memberikan observasi faktual dan saran untuk pengembangan kajian bencana di masa depan."
   },
   {
     "id": 5706,
-    "label": "negatif",
-    "confidence": 63,
-    "reason": "(dry-run) label simulasi untuk id 5706"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Laporan faktual tentang pencopotan jabatan bupati terkait bencana."
   },
   {
     "id": 5717,
     "label": "negatif",
-    "confidence": 63,
-    "reason": "(dry-run) label simulasi untuk id 5717"
+    "confidence": 90,
+    "reason": "Mengungkapkan kemarahan publik terhadap penggunaan gajah dalam penanganan pasca-banjir."
   },
   {
     "id": 5727,
-    "label": "negatif",
-    "confidence": 71,
-    "reason": "(dry-run) label simulasi untuk id 5727"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Memberikan informasi faktual tentang tantangan dalam pemulihan infrastruktur listrik."
   },
   {
     "id": 5734,
-    "label": "negatif",
-    "confidence": 66,
-    "reason": "(dry-run) label simulasi untuk id 5734"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Memberikan informasi positif tentang persetujuan subsidi untuk pembangunan rumah korban banjir."
   },
   {
     "id": 5747,
-    "label": "negatif",
-    "confidence": 80,
-    "reason": "(dry-run) label simulasi untuk id 5747"
+    "label": "positif",
+    "confidence": 95,
+    "reason": "Mengungkapkan doa dan dukungan untuk korban bencana."
   },
   {
     "id": 5752,
     "label": "netral",
-    "confidence": 87,
-    "reason": "(dry-run) label simulasi untuk id 5752"
+    "confidence": 90,
+    "reason": "Laporan faktual tentang arahan presiden mengenai prioritas penanganan bencana."
   },
   {
     "id": 5771,
     "label": "netral",
-    "confidence": 63,
-    "reason": "(dry-run) label simulasi untuk id 5771"
+    "confidence": 90,
+    "reason": "Memberikan penjelasan faktual tentang pemadaman listrik dan rencana pemulihan."
   },
   {
     "id": 5797,
-    "label": "negatif",
-    "confidence": 70,
-    "reason": "(dry-run) label simulasi untuk id 5797"
+    "label": "netral",
+    "confidence": 90,
+    "reason": "Laporan faktual tentang penyaluran bantuan oleh figur publik."
   }
 ]
