@@ -1,5 +1,7 @@
 # Plan Pasca Re-run Kaggle — thesis-indobertweet-lora-v1
 
+**Status (30/08):** re-run v5 sudah **COMPLETE**; hasil ditarik dan tercatat di `docs/P0_VERIFIKASI_EVALUASI.md` §2.1 (Macro F1 test **0.636**, selisih -0.097 vs kanonik 0.733 → **belum lolos gate V1**, diagnosa dulu sebelum lanjut E1–E3).
+
 Rencana kerja setelah run `emanuelembuaijdak/thesis-indobertweet-lora-v1` (notebook LoRA yang sudah diperbaiki P0) selesai di Kaggle. Prinsip: **angka baru dipakai untuk keputusan setelah lolos verifikasi** (Fase V1).
 
 ---
@@ -32,7 +34,7 @@ Setelah tarik, cukup bilang "hasil sudah ditarik" — sisanya dibaca dan dikerja
 
 1. **Kolom kanonik** — sel-2 mencetak `BERT: 'text_bert'` (bukan fallback `clean_text`).
 2. **Log bersih** — tidak ada exception di bagian empiris; sanity check tiap sel jalan.
-3. **Tuning sehat** — tabel 6 trial: best val macro F1 di kisaran 0.68–0.72 dan **semua trial jauh di atas baseline mayoritas 0.239** (tidak ada trial collapse).
+3. **Tuning sehat** — tabel 6 trial: best val macro F1 di kisaran 0.68–0.72 dan **semua trial jauh di atas baseline mayoritas 0.239** (tidak ada trial collapse). *(Aktual v5: best 0.6326, semua trial sehat — tapi di bawah kisaran 0.68–0.72)*.
 4. **Evaluasi final konsisten** — sel-24 (classification report) dan sel-27 (ringkasan) identik dengan sel-29 (bukan 0.4587 lagi); distribusi prediksi tercetak.
 5. **Rekonstruksi harness**:
    ```cmd
@@ -42,7 +44,7 @@ Setelah tarik, cukup bilang "hasil sudah ditarik" — sisanya dibaca dan dikerja
 6. **Perbandingan tiga angka**:
    - Kanonik `04` (`text_bert`, Colab): acc 0.795376 / Macro F1 0.732810
    - v1 lama (`clean_text`, superseded): acc 0.779769 / Macro F1 0.699401
-   - Toleransi: |Δ Macro F1| ≤ 0.02 terhadap kanonik `04` (variasi seed wajar). Lebih dari itu → diagnosa (bagian 5), jangan lanjut.
+   - Re-run v5 (30/08): acc 0.725434 / Macro F1 0.636004 — **selisih -0.097 vs kanonik, TIDAK lolos toleransi ±0.02** → diagnosa (bagian 5), jangan lanjut.
 
 **Gate V1:** lulus semua → angka final **dikunci**, `P0_VERIFIKASI_EVALUASI.md` §2 diupdate, lanjut Fase V2. Gagal → berhenti, diagnosa.
 
@@ -77,6 +79,7 @@ Catatan: perbaikan LSTM yang collapse tetap follow-up terpisah, tidak menghalang
 
 | Gejala | Kemungkinan | Tindakan |
 |---|---|---|
+| `ImportError: ... torchao ... only versions above 0.16.0 are supported` (mati ±47 detik, saat build model) | torchao 0.10.0 di image Kaggle tidak kompatibel dengan peft | Pastikan sel `!pip uninstall -y torchao` **aktif** (uncommented) sebelum sel build model — sudah difix; push ulang |
 | Status `error`, log berhenti di awal | Dataset tidak attach / CSV berubah | Cek `dataset_sources` di kernel-metadata.json & kolom CSV di log |
 | Angka jauh dari kanonik (>0.02) | Versi dataset / seed / kolom beda | Bandingkan distribusi train/test di log vs `04`; cek cetakan kolom sel-2 |
 | Report parsial tapi notebook selesai | Sebagian seksi crash (simulasi/class-weight) | Baca log lokasi crash; bagian empiris tetap dipakai kalau lulus cek 1–6 |

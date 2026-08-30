@@ -41,6 +41,38 @@ Kolom kanonik untuk input BERT: **`text_bert`** (sesuai notebook utama `04_model
 
 > Angka 0.779769/0.699401 yang sempat dipakai berasal dari run Kaggle v1 yang **diam-diam memakai `clean_text`** (representasi LSTM), karena auto-deteksi kolom BERT tidak menemukan `text_bert` dan silent fallback ke kolom LSTM. Run ini sudah diperbaiki di P0 (lihat §4).
 
+### 2.1 Hasil re-run Kaggle v5 (30/08) — angka terbaru
+
+Sumber: `results/thesis-indobertweet-lora-v1.ipynb` (notebook hasil run COMPLETE, 69 sel, kolom `text_bert`). Test set n=1730.
+
+**Tuning 6 trial (validation macro F1, terbaik → terendah):**
+
+| Trial | batch_size | dropout | lr | r | α | Acc | Prec | Rec | **F1 macro** |
+|---|---|---|---|---|---|---|---|---|---|
+| **4** | 16 | 0.3 | 2e-4 | 16 | 32 | 0.7211 | 0.6462 | 0.6280 | **0.6326** |
+| 2 | 16 | 0.2 | 1e-4 | 8 | 16 | 0.7110 | 0.6265 | 0.5965 | 0.5878 |
+| 5 | 32 | 0.2 | 1e-4 | 16 | 32 | 0.7095 | 0.6427 | 0.5714 | 0.5341 |
+| 3 | 16 | 0.3 | 1e-4 | 16 | 32 | 0.6922 | 0.5184 | 0.5494 | 0.5036 |
+| 1 | 16 | 0.2 | 5e-5 | 8 | 16 | 0.6416 | 0.4139 | 0.5126 | 0.4559 |
+| 6 | 32 | 0.3 | 1e-4 | 16 | 32 | 0.6329 | 0.4134 | 0.5194 | 0.4531 |
+
+**Evaluasi test (retrain trial-4, empiris):**
+
+| Metrik (test, n=1730) | Re-run v5 (30/08) | Kanonik `04` | v1 lama (`clean_text`) |
+|---|---|---|---|
+| Accuracy | **0.725434** | 0.795376 | 0.779769 |
+| Precision Macro | **0.651853** | 0.745009 | 0.729263 |
+| Recall Macro | **0.633793** | 0.725157 | 0.692936 |
+| Macro F1 | **0.636004** | 0.732810 | 0.699401 |
+| Negatif (P/R/F1) | 0.8055 / 0.8421 / 0.8234 | 0.85 / 0.89 / 0.87 | 0.84 / 0.89 / 0.86 |
+| Netral (P/R/F1) | 0.4948 / 0.3242 / 0.3918 | 0.62 / 0.50 / 0.55 | 0.64 / 0.39 / 0.48 |
+| Positif (P/R/F1) | 0.6552 / 0.7350 / 0.6928 | 0.76 / 0.78 / 0.77 | 0.71 / 0.81 / 0.75 |
+
+> ⚠️ **Gap vs kanonik:** Macro F1 v5 = 0.636 vs kanonik `04` = 0.733 → selisih **-0.097**, jauh melewati toleransi V1 (±0.02). Belum lolos gate verifikasi; perlu diagnosa (kemungkinan: beda versi dataset, seed/struktur notebook, atau `text_bert` vs kolom lain). Jangan kunci angka ini sebagai final sebelum Fase V1 tuntas.
+
+**Class weight (test):** Accuracy 0.7145 · Prec macro 0.6363 · Rec macro 0.6329 · **Macro F1 0.6326** — tidak lebih baik dari empiris (0.636).
+**Skenario simulasi:** 1:1:1 → F1 0.5908 · 6:3:1 → F1 0.4911 · 8:1:1 → F1 0.4591 — semua kalah dari baseline empiris.
+
 ---
 
 ## 3. Harness verifikasi: `quality_pipeline/verify_metrics.py`
@@ -143,7 +175,7 @@ COLLAPSE      : YA
 - [x] Simpan prediction & label — `compute_metrics` HF menghitung dari logits+labels tiap epoch; CSV prediksi test kini disimpan dari `trainer_best` (bukan trainer salah).
 - [x] Hitung ulang F1 dari prediksi mentah — `verify_metrics.py` menghitung ulang dari CSV.
 - [x] Deteksi collapse — sanity check inline di grid search LSTM + flag di harness.
-- [ ] Re-run `results/thesis-indobertweet-lora-v1.ipynb` di Kaggle → verifikasi angka kanonik (`text_bert`).
+- [ ] Re-run `results/thesis-indobertweet-lora-v1.ipynb` di Kaggle → verifikasi angka kanonik (`text_bert`). *(30/08: re-run v5 sudah COMPLETE — hasil 0.636 belum lolos gate ±0.02 vs kanonik 0.733, diagnosa berjalan)*
 
 ---
 

@@ -17,7 +17,8 @@ Proyek membandingkan tiga arsitektur klasifikasi sentimen 3 kelas (negatif/netra
 | **F0 — Data & preprocessing** | Scraping tweet banjir, pembersihan, ekspansi emoticon, split stratified 80:20 (`split_data.pkl`) | `Data/`, `01_preprocessing.ipynb`, `eman_prepo.ipynb`, `Preprocessing/` |
 | **F1 — Pipeline kualitas data** | Audit duplikat/noise/stopword kritis/negasi, anotasi LLM (Gemini), Cohen's Kappa, label-flip analysis | `quality_pipeline/phase0–6`, `reports/`, `Annotation/`, `docs/PRD_DATA_QUALITY_PIPELINE.md`, `docs/GUIDE_DATA_QUALITY_PIPELINE.md` |
 | **F2 — Modeling** | Grid search LSTM (120 eksperimen × 5 strategi imbalance), BiLSTM, IndoBERTweet-LoRA (6 trial tuning + simulasi rasio + class weight) | `02_model_lstm.ipynb`, `03_model_bilstm.ipynb`, `04_model_indobertweet_lora.ipynb`, `results/`, `percobaan_dengan_bilstm (2).ipynb` |
-| **F3 — P0 Verifikasi evaluasi** *(sesi terkini)* | Diagnosis inkonsistensi 0.2393 vs 0.70 → root cause + bug fix + harness verifikasi + sanity check + dokumentasi + siap re-run Kaggle | Lihat deliverables di §3; detail di `docs/P0_VERIFIKASI_EVALUASI.md` |
+| **F3 — P0 Verifikasi evaluasi** | Diagnosis inkonsistensi 0.2393 vs 0.70 → root cause + bug fix + harness verifikasi + sanity check + dokumentasi + siap re-run Kaggle | Lihat deliverables di §3; detail di `docs/P0_VERIFIKASI_EVALUASI.md` |
+| **F4 — Re-run Kaggle v5 (hasil terbaru)** *(sesi terkini)* | Kernel `thesis-indobertweet-lora-v1` v5 selesai COMPLETE (30/08). Notebook hasil di `results/thesis-indobertweet-lora-v1.ipynb` (69 sel tereksekusi penuh, memakai `text_bert` + `/kaggle/input`). Hasil tuning 6 trial, retrain trial-4, skenario 1:1:1/6:3:1/8:1:1, dan class weight. Angka final lihat §2.1 di bawah. | `results/thesis-indobertweet-lora-v1.ipynb`, `.kaggle-outputs/`, `temp_kernel_lora/` |
 
 ### Temuan kunci F3 (penting untuk memahami angka-angka lama)
 
@@ -25,6 +26,43 @@ Proyek membandingkan tiga arsitektur klasifikasi sentimen 3 kelas (negatif/netra
 - **Angka LoRA lama (acc 0.7797 / Macro F1 0.6994) ternyata dievaluasi di kolom teks yang salah** (`clean_text`, representasi LSTM) akibat silent fallback. Kolom kanonik BERT: **`text_bert`**.
 - **Angka kanonik LoRA** (notebook `04`): **acc 0.7954, Macro F1 0.7328** (netral 0.62/0.50/0.55 = bottleneck utama).
 - Dua bug nyata di notebook LoRA Kaggle (v1) sudah diperbaiki: sel-29 memakai trainer salah (trial terburuk) dan fallback kolom.
+
+### Temuan kunci F4 (hasil re-run v5 — angka terbaru)
+
+Sumber: `results/thesis-indobertweet-lora-v1.ipynb` (69 sel, run COMPLETE 30/08). Semua angka dari test set n=1730.
+
+**1. Tuning 6 trial (validasi, diurutkan dari terbaik):**
+
+| Trial | batch_size | dropout | lr | r | α | Acc val | Prec macro | Rec macro | **F1 macro val** |
+|---|---|---|---|---|---|---|---|---|---|
+| **4** | 16 | 0.3 | 2e-4 | 16 | 32 | 0.7211 | 0.6462 | 0.6280 | **0.6326** |
+| 2 | 16 | 0.2 | 1e-4 | 8 | 16 | 0.7110 | 0.6265 | 0.5965 | 0.5878 |
+| 5 | 32 | 0.2 | 1e-4 | 16 | 32 | 0.7095 | 0.6427 | 0.5714 | 0.5341 |
+| 3 | 16 | 0.3 | 1e-4 | 16 | 32 | 0.6922 | 0.5184 | 0.5494 | 0.5036 |
+| 1 | 16 | 0.2 | 5e-5 | 8 | 16 | 0.6416 | 0.4139 | 0.5126 | 0.4559 |
+| 6 | 32 | 0.3 | 1e-4 | 16 | 32 | 0.6329 | 0.4134 | 0.5194 | 0.4531 |
+
+Trial **4** menang di semua metrik → `best_params` hardcode di sel-22/64 sudah sesuai hasil terbaik.
+
+**2. Retrain trial-4 (empiris, tanpa balancing) — test:**
+- Accuracy **0.7254** · Precision macro 0.6519 · Recall macro 0.6338 · **Macro F1 0.6360**
+- Per kelas (P/R/F1): negatif 0.8055/0.8421/0.8234 · netral 0.4948/0.3242/0.3918 · positif 0.6552/0.7350/0.6928
+- Distribusi prediksi: 1013/192/525 (aktual 969/293/468) → netral tetap bottleneck.
+
+**3. Skenario simulasi (ablation balancing):**
+
+| Skenario | Accuracy | Prec macro | Rec macro | Macro F1 |
+|---|---|---|---|---|
+| 1:1:1 | 0.6341 | 0.5896 | 0.6189 | 0.5908 |
+| 6:3:1 | 0.6931 | 0.4472 | 0.5454 | 0.4911 |
+| 8:1:1 | 0.6711 | 0.6134 | 0.4882 | 0.4591 |
+
+Semua skenario **kalah** dari baseline empiris 0.636 → konsisten dengan temuan F2 bahwa balancing tidak membantu.
+
+**4. Class weight (test):**
+- Accuracy **0.7145** · Precision macro 0.6363 · Recall macro 0.6329 · **Macro F1 0.6326** — hampir sama dengan empiris (0.636), tidak lebih baik.
+
+> ⚠️ **Catatan konsistensi:** tabel perbandingan di sel-68 (`perbandingan_class_weight.csv`) memuat angka berbeda — LoRA tanpa CW 0.733 / dengan CW 0.735 — yang **tidak cocok** dengan hasil sel-28 (0.636) dan sel-67 (0.633) di notebook yang sama. Jangan pakai angka sel-68 untuk laporan sebelum diverifikasi asal-usulnya.
 
 ---
 
@@ -45,13 +83,14 @@ Proyek membandingkan tiga arsitektur klasifikasi sentimen 3 kelas (negatif/netra
 
 ## 4. Status sekarang & agenda terbuka
 
-**Sedang menunggu:** re-run Kaggle `thesis-indobertweet-lora-v1` (notebook hasil perbaikan). Setelah COMPLETE → tarik dengan `kaggle kernels output ... -p .kaggle-outputs\` → jalankan **Fase V1** di `docs/PLAN_PASCA_RERUN.md` (gate verifikasi) → angka final dikunci.
+**Status terbaru (30/08):** re-run Kaggle `thesis-indobertweet-lora-v1` v5 sudah **COMPLETE** dan hasilnya ditarik (angka final lihat §2.1). Langkah berikutnya: jalankan **Fase V1** di `docs/PLAN_PASCA_RERUN.md` (gate verifikasi) → angka final dikunci.
 
 **Agenda berikutnya (urut prioritas):**
-1. Fase V1–V2: verifikasi + analisis hasil re-run (gate: |Δ Macro F1| ≤ 0.02 vs kanonik 0.7328).
-2. E1 Label Smoothing → E2 Adaptive LS → E3 Threshold Calibration (gate: acc ≥ 0.80, netral recall ≥ 0.60, Macro F1 ≥ 0.76; ideal Macro F1 ≥ 0.80).
-3. Perbaikan training LSTM yang collapse (baseline pembanding di tesis belum jujur sampai ini selesai).
-4. Imbalance (class-weight ablation) hanya jika netral recall < 0.55 setelah E1–E3 — bukti eksperimen yang ada: semua perlakuan balancing kalah dari baseline 0.733.
+1. Fase V1: verifikasi hasil re-run (gate: |Δ Macro F1| ≤ 0.02 vs kanonik 0.7328 — catatan: hasil v5 saat ini 0.636, selisih 0.097, perlu diagnosa dulu).
+2. Fase V2: analisis delta per-kelas + distribusi prediksi (netral tetap bottleneck).
+3. E1 Label Smoothing → E2 Adaptive LS → E3 Threshold Calibration (gate: acc ≥ 0.80, netral recall ≥ 0.60, Macro F1 ≥ 0.76; ideal Macro F1 ≥ 0.80).
+4. Perbaikan training LSTM yang collapse (baseline pembanding di tesis belum jujur sampai ini selesai).
+5. Imbalance (class-weight ablation) hanya jika netral recall < 0.55 setelah E1–E3 — bukti eksperimen yang ada: semua perlakuan balancing kalah dari baseline 0.733.
 
 ---
 

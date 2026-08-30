@@ -22,6 +22,7 @@ Contoh:
 from __future__ import annotations
 
 import argparse
+import math
 
 import numpy as np
 import pandas as pd
@@ -145,6 +146,99 @@ def sanity_flags(
     }
 
 
+def mcnemar_exact(
+    y_true: np.ndarray, y_pred_a: np.ndarray, y_pred_b: np.ndarray
+) -> dict:
+    """Uji McNemar exact (binomial dua sisi) untuk membandingkan dua model
+    pada test set yang sama.
+
+    b = jumlah sampel yang A benar & B salah; c = A salah & B benar.
+    H0: kedua model setara. p < 0.05 = perbedaan signifikan.
+    """
+    yt = np.asarray(y_true)
+    a_ok = np.asarray(y_pred_a) == yt
+    b_ok = np.asarray(y_pred_b) == yt
+    b = int(np.sum(a_ok & ~b_ok))
+    c = int(np.sum(~a_ok & b_ok))
+    n = b + c
+    if n == 0:
+        p = 1.0
+    else:
+        tail = sum(math.comb(n, i) for i in range(max(b, c), n + 1)) / (2 ** n)
+        p = min(1.0, 2 * tail)
+    return {
+        "b_a_right_b_wrong": b,
+        "c_a_wrong_b_right": c,
+        "n_disagreements": n,
+        "p_value": p,
+        "significant_0.05": bool(p < 0.05),
+    }
+
+
+def run_compare(
+    preds_csv: str,
+    compare_csv: str,
+    y_true_col: str,
+    y_pred_col: str,
+    y_pred_col_b: str | None,
+    label_names: list[str],
+    dry_run: bool = False,
+) -> dict:
+    """Bandingkan dua CSV prediksi pada test set yang sama: metrik + McNemar exact."""
+    df_a = load_csv(preds_csv)
+    df_b = load_csv(compare_csv)
+    col_b = y_pred_col_b or y_pred_col
+    for df, path, cols in (
+        (df_a, preds_csv, (y_true_col, y_pred_col)),
+        (df_b, compare_csv, (y_true_col, col_b)),
+    ):
+        for col in cols:
+            if col not in df.columns:
+                raise ValueError(
+                    f"Kolom '{col}' tidak ada di {path}. Kolom tersedia: {df.columns.tolist()}"
+                )
+    if len(df_a) != len(df_b):
+        raise ValueError(
+            f"Jumlah baris beda ({len(df_a)} vs {len(df_b)}) - test set tidak sejajar."
+        )
+    yt = df_a[y_true_col].astype(int).values
+    if not np.array_equal(yt, df_b[y_true_col].astype(int).values):
+        print("PERINGATAN: urutan/isi label aktual kedua file berbeda - pastikan baris sejajar!")
+    pa = df_a[y_pred_col].astype(int).values
+    pb = df_b[col_b].astype(int).values
+
+    ma = full_metrics(yt, pa, label_names)
+    mb = full_metrics(yt, pb, label_names)
+    mc = mcnemar_exact(yt, pa, pb)
+
+    print(f"=== PERBANDINGAN MODEL (McNemar exact) ===")
+    print(f"A: {preds_csv}")
+    print(f"B: {compare_csv}")
+    print(f"Accuracy : A={ma['accuracy']:.4f}  B={mb['accuracy']:.4f}")
+    print(f"Macro F1 : A={ma['f1_macro']:.4f}  B={mb['f1_macro']:.4f}")
+    print(f"Beda     : A benar & B salah = {mc['b_a_right_b_wrong']}, "
+          f"A salah & B benar = {mc['c_a_wrong_b_right']}")
+    print(f"p-value  : {mc['p_value']:.6f} "
+          f"({'SIGNIFIKAN' if mc['significant_0.05'] else 'tidak signifikan'} @ 0.05)")
+
+    if not dry_run:
+        out = C.REPORTS_DIR / "perbandingan_mcnemar.md"
+        out.parent.mkdir(parents=True, exist_ok=True)
+        out.write_text(
+            "# Perbandingan Model (McNemar exact)\n\n"
+            f"- A: `{preds_csv}` (acc {ma['accuracy']:.6f}, macro F1 {ma['f1_macro']:.6f})\n"
+            f"- B: `{compare_csv}` (acc {mb['accuracy']:.6f}, macro F1 {mb['f1_macro']:.6f})\n"
+            f"- b (A benar, B salah) = {mc['b_a_right_b_wrong']}; "
+            f"c (A salah, B benar) = {mc['c_a_wrong_b_right']}\n"
+            f"- p-value = **{mc['p_value']:.6f}** "
+            f"({'signifikan' if mc['significant_0.05'] else 'tidak signifikan'} @ 0.05)\n",
+            encoding="utf-8",
+        )
+        print(f"Laporan -> {out}")
+
+    return {"metrics_a": ma, "metrics_b": mb, "mcnemar": mc}
+
+
 def _format_cm(cm: np.ndarray, label_names: list[str] | None) -> str:
     headers = label_names or [str(i) for i in range(cm.shape[0])]
     lines = ["| | " + " | ".join(headers) + " |", "|---|" + "---|" * cm.shape[0]]
@@ -256,11 +350,21 @@ def run(
 
 def main() -> None:
     ap = argparse.ArgumentParser(
-        description="P0 — Verifikasi metrik evaluasi model (deteksi collapse/label mapping)."
+        description="P0 — Verifikasi metrik evaluasi model (deteksi collapse/label mapping) + McNemar."
     )
     ap.add_argument("--preds", required=True, help="CSV berisi label aktual & prediksi.")
     ap.add_argument("--y-true", required=True, help="Nama kolom label aktual.")
     ap.add_argument("--y-pred", required=True, help="Nama kolom label prediksi.")
+    ap.add_argument(
+        "--compare",
+        default=None,
+        help="CSV kedua untuk perbandingan McNemar (baris harus sejajar dengan --preds).",
+    )
+    ap.add_argument(
+        "--y-pred-b",
+        default=None,
+        help="Nama kolom prediksi di CSV kedua (default: sama dengan --y-pred).",
+    )
     ap.add_argument(
         "--label-names",
         default="negatif,netral,positif",
@@ -271,6 +375,17 @@ def main() -> None:
     args = ap.parse_args()
 
     label_names = [n.strip() for n in args.label_names.split(",") if n.strip()]
+    if args.compare:
+        run_compare(
+            args.preds,
+            args.compare,
+            args.y_true,
+            args.y_pred,
+            args.y_pred_b,
+            label_names,
+            dry_run=args.dry_run,
+        )
+        return
     run(
         args.preds,
         args.y_true,

@@ -1,7 +1,7 @@
 {
-  "id": "emanuelembuaijdak/thesis-indobertweet-lora-v1",
-  "title": "thesis-indobertweet-lora-v1",
-  "code_file": "thesis-indobertweet-lora-v1.ipynb",
+  "id": "emanuelembuaijdak/thesis-lora-e1-label-smoothing",
+  "title": "Thesis LoRA E1 Label Smoothing",
+  "code_file": "thesis-lora-e1-label-smoothing.ipynb",
   "language": "python",
   "kernel_type": "notebook",
   "is_private": "true",

@@ -93,6 +93,23 @@ Artinya: dari root proyek, `kaggle kernels push` membaca `kernel-metadata.json`,
 meng-upload notebook `code_file`, lalu **langsung menjalankannya** di GPU
 (enable_gpu, enable_internet, is_private sesuai metadata).
 
+### Memilih accelerator (GPU T4 x2, P100, TPU)
+
+Tambahkan field `machine_shape` di `kernel-metadata.json` (CLI 2.x) — nilai valid
+menurut dokumentasi resmi: `NvidiaTeslaT4` (= opsi "GPU T4 x2" di UI),
+`NvidiaTeslaP100`, `Tpu1VmV38`. Bisa juga via `kaggle kernels push --accelerator <nilai>`.
+Nilai tidak divalidasi klien — nilai salah baru ditolak saat runtime.
+
+| Field | Nilai | Catatan |
+|---|---|---|
+| `machine_shape` | `NvidiaTeslaT4` | **Yang dipakai proyek ini** (= "GPU T4 x2" di UI Kaggle) |
+| `machine_shape` | `NvidiaTeslaP100` | **Hindari** — image default Kaggle (torch cu128) tidak punya kernel Pascal (sm_60): `torch.cuda.is_available()` `True` tapi CUDA op pertama gagal `cudaErrorNoKernelImageForDevice` |
+| `machine_shape` | `Tpu1VmV38` | TPU (tidak dipakai) |
+
+Jangan mengisi nilai selain tiga di atas — server menerimanya lalu gagal saat run
+(kasus versi 7: fallback ke P100 → `AcceleratorError: CUDA error: no kernel image
+is available`).
+
 Buka notebook di browser (untuk lihat log/output live):
 
 ```

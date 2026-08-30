@@ -1,51 +1,219 @@
-[{"stream_name":"stderr","time":6.914220942,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
-,{"stream_name":"stderr","time":6.914271009,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
-,{"stream_name":"stderr","time":6.914275735,"data":"0.00s - to python to disable frozen modules.\n"}
-,{"stream_name":"stderr","time":6.914278499,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
-,{"stream_name":"stderr","time":7.514282022,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
-,{"stream_name":"stderr","time":7.51433796,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
-,{"stream_name":"stderr","time":7.51434546,"data":"0.00s - to python to disable frozen modules.\n"}
-,{"stream_name":"stderr","time":7.514350616,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
-,{"stream_name":"stderr","time":9.858409264,"data":"Traceback (most recent call last):\n"}
-,{"stream_name":"stderr","time":9.858441811,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
-,{"stream_name":"stderr","time":9.858448612,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
-,{"stream_name":"stderr","time":9.858593111,"data":"    raise_for_execution_errors(nb, output_path)\n"}
-,{"stream_name":"stderr","time":9.85861515,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
-,{"stream_name":"stderr","time":9.858794075,"data":"    raise error\n"}
-,{"stream_name":"stderr","time":9.859110782,"data":"papermill.exceptions.PapermillExecutionError: \n"}
-,{"stream_name":"stderr","time":9.859131063,"data":"---------------------------------------------------------------------------\n"}
-,{"stream_name":"stderr","time":9.859137879,"data":"Exception encountered at \"In [1]\":\n"}
-,{"stream_name":"stderr","time":9.859143574,"data":"---------------------------------------------------------------------------\n"}
-,{"stream_name":"stderr","time":9.859149013,"data":"FileNotFoundError                         Traceback (most recent call last)\n"}
-,{"stream_name":"stderr","time":9.85915422,"data":"/tmp/ipykernel_25/1930615565.py in \u003ccell line: 0\u003e()\n"}
-,{"stream_name":"stderr","time":9.85915986,"data":"      3 import pandas as pd\n"}
-,{"stream_name":"stderr","time":9.859167613,"data":"      4 \n"}
-,{"stream_name":"stderr","time":9.859172791,"data":"----\u003e 5 data_new = pd.read_pickle(\"data_preprocessed_with_emoticon.pkl\")\n"}
-,{"stream_name":"stderr","time":9.859178219,"data":"      6 with open(\"split_data.pkl\", \"rb\") as file:\n"}
-,{"stream_name":"stderr","time":9.859183706,"data":"      7     split_data = pickle.load(file)\n"}
-,{"stream_name":"stderr","time":9.859195675,"data":"\n"}
-,{"stream_name":"stderr","time":9.85919988,"data":"/usr/local/lib/python3.12/dist-packages/pandas/io/pickle.py in read_pickle(filepath_or_buffer, compression, storage_options)\n"}
-,{"stream_name":"stderr","time":9.859203885,"data":"    183     \"\"\"\n"}
-,{"stream_name":"stderr","time":9.859207678,"data":"    184     excs_to_catch = (AttributeError, ImportError, ModuleNotFoundError, TypeError)\n"}
-,{"stream_name":"stderr","time":9.859211468,"data":"--\u003e 185     with get_handle(\n"}
-,{"stream_name":"stderr","time":9.859215275,"data":"    186         filepath_or_buffer,\n"}
-,{"stream_name":"stderr","time":9.859218898,"data":"    187         \"rb\",\n"}
-,{"stream_name":"stderr","time":9.859239305,"data":"\n"}
-,{"stream_name":"stderr","time":9.859243457,"data":"/usr/local/lib/python3.12/dist-packages/pandas/io/common.py in get_handle(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)\n"}
-,{"stream_name":"stderr","time":9.859246425,"data":"    880         else:\n"}
-,{"stream_name":"stderr","time":9.859249067,"data":"    881             # Binary mode\n"}
-,{"stream_name":"stderr","time":9.859251754,"data":"--\u003e 882             handle = open(handle, ioargs.mode)\n"}
-,{"stream_name":"stderr","time":9.859254577,"data":"    883         handles.append(handle)\n"}
-,{"stream_name":"stderr","time":9.859257252999999,"data":"    884 \n"}
-,{"stream_name":"stderr","time":9.859259838,"data":"\n"}
-,{"stream_name":"stderr","time":9.859262486,"data":"FileNotFoundError: [Errno 2] No such file or directory: 'data_preprocessed_with_emoticon.pkl'\n"}
-,{"stream_name":"stderr","time":9.859265333,"data":"\n"}
-,{"stream_name":"stderr","time":12.156724181,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
-,{"stream_name":"stderr","time":12.156760492,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
-,{"stream_name":"stderr","time":12.309935991,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
-,{"stream_name":"stderr","time":12.309966283,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
-,{"stream_name":"stderr","time":12.939693116,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
-,{"stream_name":"stderr","time":13.351360044,"data":"[NbConvertApp] Writing 440019 bytes to __notebook__.ipynb\n"}
-,{"stream_name":"stderr","time":15.854640209,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
-,{"stream_name":"stderr","time":16.898350141,"data":"[NbConvertApp] Writing 728314 bytes to __results__.html\n"}
+[{"stream_name":"stderr","time":6.388276521,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.388355508,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.388361916,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.38836618,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":6.949787873,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.949815651,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.949820213,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.949828709,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":9.049698126,"data":"Daftar Kolom di CSV:\n"}
+,{"stream_name":"stdout","time":9.049745724,"data":"['text', 'clean_text', 'created_at', 'keyword', 'processed_text', 'sentimen', 'label', 'emoticon', 'text_with_emoticon_raw', 'text_with_emoticon', 'clean_text_lstm', 'text_bert']\n"}
+,{"stream_name":"stdout","time":10.742867378,"data":"Kolom terpilih -\u003e LSTM: 'clean_text', BERT: 'text_bert', Label: 'label'\n"}
+,{"stream_name":"stdout","time":10.742916409,"data":"Berhasil! Train set: 6918 | Test set: 1730\n"}
+,{"stream_name":"stdout","time":34.402911656,"data":"GPU tersedia: True\n"}
+,{"stream_name":"stdout","time":34.493590549,"data":"Distribusi train final:\n"}
+,{"stream_name":"stdout","time":34.493616997,"data":"0    3486\n"}
+,{"stream_name":"stdout","time":34.493622672,"data":"1    1055\n"}
+,{"stream_name":"stdout","time":34.493627292,"data":"2    1685\n"}
+,{"stream_name":"stdout","time":34.493631422,"data":"Name: count, dtype: int64\n"}
+,{"stream_name":"stdout","time":34.493635667,"data":"\n"}
+,{"stream_name":"stdout","time":34.493639977,"data":"Distribusi validation:\n"}
+,{"stream_name":"stdout","time":34.493644286,"data":"0    388\n"}
+,{"stream_name":"stdout","time":34.493648581,"data":"1    117\n"}
+,{"stream_name":"stdout","time":34.493652736,"data":"2    187\n"}
+,{"stream_name":"stdout","time":34.493656797,"data":"Name: count, dtype: int64\n"}
+,{"stream_name":"stdout","time":34.493661258,"data":"\n"}
+,{"stream_name":"stdout","time":34.493665392,"data":"Distribusi test:\n"}
+,{"stream_name":"stdout","time":34.493669796,"data":"0    969\n"}
+,{"stream_name":"stdout","time":34.493673964,"data":"1    293\n"}
+,{"stream_name":"stdout","time":34.493678532,"data":"2    468\n"}
+,{"stream_name":"stdout","time":34.493683051,"data":"Name: count, dtype: int64\n"}
+,{"stream_name":"stderr","time":34.741771798,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":34.741819551,"data":"\n"}
+,{"stream_name":"stderr","time":34.741825653,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":37.075013637,"data":"Found existing installation: torchao 0.10.0\r\n"}
+,{"stream_name":"stdout","time":37.125687352,"data":"Uninstalling torchao-0.10.0:\r\n"}
+,{"stream_name":"stdout","time":37.429825868,"data":"  Successfully uninstalled torchao-0.10.0\r\n"}
+,{"stream_name":"stderr","time":44.807022101,"data":"BertForSequenceClassification LOAD REPORT from: indolem/indobertweet-base-uncased\n"}
+,{"stream_name":"stderr","time":44.807064873,"data":"Key                                        | Status     | \n"}
+,{"stream_name":"stderr","time":44.807070665,"data":"-------------------------------------------+------------+-\n"}
+,{"stream_name":"stderr","time":44.807074143,"data":"cls.predictions.transform.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":44.807077428,"data":"cls.predictions.decoder.weight             | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":44.807081045,"data":"cls.predictions.transform.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":44.807084423,"data":"cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":44.807087967,"data":"cls.predictions.transform.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":44.80709141,"data":"cls.predictions.bias                       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":44.80709507,"data":"cls.predictions.decoder.bias               | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":44.807098564,"data":"classifier.weight                          | MISSING    | \n"}
+,{"stream_name":"stderr","time":44.807101956,"data":"classifier.bias                            | MISSING    | \n"}
+,{"stream_name":"stderr","time":44.807105082,"data":"\n"}
+,{"stream_name":"stderr","time":44.807108488,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":44.807111882,"data":"- UNEXPECTED\t:can be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":44.807115972,"data":"- MISSING\t:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stderr","time":44.807119465,"data":"\n"}
+,{"stream_name":"stderr","time":44.80712276,"data":"BertForSequenceClassification LOAD REPORT from: indolem/indobertweet-base-uncased\n"}
+,{"stream_name":"stderr","time":44.807126293,"data":"Key                                        | Status     | \n"}
+,{"stream_name":"stderr","time":44.80712985,"data":"-------------------------------------------+------------+-\n"}
+,{"stream_name":"stderr","time":44.80713333,"data":"cls.predictions.transform.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":44.807137,"data":"cls.predictions.decoder.weight             | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":44.807140505,"data":"cls.predictions.transform.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":44.807144083,"data":"cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":44.807147678,"data":"cls.predictions.transform.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":44.80715116,"data":"cls.predictions.bias                       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":44.807154552,"data":"cls.predictions.decoder.bias               | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":44.807157987,"data":"classifier.weight                          | MISSING    | \n"}
+,{"stream_name":"stderr","time":44.807161433,"data":"classifier.bias                            | MISSING    | \n"}
+,{"stream_name":"stderr","time":44.807164837,"data":"\n"}
+,{"stream_name":"stderr","time":44.807168025,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":44.807171423,"data":"- UNEXPECTED\t:can be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":44.807175327,"data":"- MISSING\t:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":44.81343493,"data":"trainable params: 297,219 || all params: 110,857,734 || trainable%: 0.2681\n"}
+,{"stream_name":"stdout","time":44.895239354,"data":"Dataset objek berhasil dibuat!\n"}
+,{"stream_name":"stdout","time":44.89526302,"data":"Train samples: 6226 | Val samples: 692 | Test samples: 1730\n"}
+,{"stream_name":"stdout","time":45.09543912,"data":"\n"}
+,{"stream_name":"stdout","time":45.095461643,"data":"=====================================================\n"}
+,{"stream_name":"stdout","time":45.095471248,"data":"Percobaan ke-1\n"}
+,{"stream_name":"stdout","time":45.095474277,"data":"{'batch_size': 16, 'dropout': 0.2, 'learning_rate': 5e-05, 'r': 8, 'alpha': 16}\n"}
+,{"stream_name":"stdout","time":45.095476925,"data":"=====================================================\n"}
+,{"stream_name":"stderr","time":46.251529874,"data":"BertForSequenceClassification LOAD REPORT from: indolem/indobertweet-base-uncased\n"}
+,{"stream_name":"stderr","time":46.251565652,"data":"Key                                        | Status     | \n"}
+,{"stream_name":"stderr","time":46.251570992,"data":"-------------------------------------------+------------+-\n"}
+,{"stream_name":"stderr","time":46.251575799,"data":"cls.predictions.transform.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":46.251580735,"data":"cls.predictions.decoder.weight             | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":46.251585734,"data":"cls.predictions.transform.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":46.251591009,"data":"cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":46.251596082,"data":"cls.predictions.transform.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":46.251601089,"data":"cls.predictions.bias                       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":46.25160626,"data":"cls.predictions.decoder.bias               | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":46.251611263,"data":"classifier.weight                          | MISSING    | \n"}
+,{"stream_name":"stderr","time":46.251616202,"data":"classifier.bias                            | MISSING    | \n"}
+,{"stream_name":"stderr","time":46.251621022,"data":"\n"}
+,{"stream_name":"stderr","time":46.251625875,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":46.251630773,"data":"- UNEXPECTED\t:can be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":46.25163592,"data":"- MISSING\t:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stderr","time":46.251640886,"data":"\n"}
+,{"stream_name":"stderr","time":46.251645637,"data":"BertForSequenceClassification LOAD REPORT from: indolem/indobertweet-base-uncased\n"}
+,{"stream_name":"stderr","time":46.251650736,"data":"Key                                        | Status     | \n"}
+,{"stream_name":"stderr","time":46.251655218,"data":"-------------------------------------------+------------+-\n"}
+,{"stream_name":"stderr","time":46.251660063,"data":"cls.predictions.transform.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":46.251665447,"data":"cls.predictions.decoder.weight             | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":46.251670037,"data":"cls.predictions.transform.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":46.251674956,"data":"cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":46.251696386,"data":"cls.predictions.transform.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":46.251702166,"data":"cls.predictions.bias                       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":46.25170735,"data":"cls.predictions.decoder.bias               | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":46.251712377,"data":"classifier.weight                          | MISSING    | \n"}
+,{"stream_name":"stderr","time":46.251716688,"data":"classifier.bias                            | MISSING    | \n"}
+,{"stream_name":"stderr","time":46.251721175,"data":"\n"}
+,{"stream_name":"stderr","time":46.251725625,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":46.251729839,"data":"- UNEXPECTED\t:can be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":46.251734946,"data":"- MISSING\t:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stderr","time":46.370879823,"data":"/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:435: UserWarning: \n"}
+,{"stream_name":"stderr","time":46.370905602,"data":"    Found GPU0 Tesla P100-PCIE-16GB which is of cuda capability 6.0.\n"}
+,{"stream_name":"stderr","time":46.37091088,"data":"    Minimum and Maximum cuda capability supported by this version of PyTorch is\n"}
+,{"stream_name":"stderr","time":46.370915766,"data":"    (7.0) - (12.0)\n"}
+,{"stream_name":"stderr","time":46.370919949,"data":"    \n"}
+,{"stream_name":"stderr","time":46.370924159,"data":"  queued_call()\n"}
+,{"stream_name":"stderr","time":46.370928211,"data":"/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:435: UserWarning: \n"}
+,{"stream_name":"stderr","time":46.370932468,"data":"    Please install PyTorch with a following CUDA\n"}
+,{"stream_name":"stderr","time":46.370936803,"data":"    configurations:  12.6 following instructions at\n"}
+,{"stream_name":"stderr","time":46.370941194,"data":"    https://pytorch.org/get-started/locally/\n"}
+,{"stream_name":"stderr","time":46.370945203,"data":"    \n"}
+,{"stream_name":"stderr","time":46.370949086,"data":"  queued_call()\n"}
+,{"stream_name":"stderr","time":46.370953323,"data":"/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:435: UserWarning: \n"}
+,{"stream_name":"stderr","time":46.370957867,"data":"Tesla P100-PCIE-16GB with CUDA capability sm_60 is not compatible with the current PyTorch installation.\n"}
+,{"stream_name":"stderr","time":46.370962254,"data":"The current PyTorch install supports CUDA capabilities sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120.\n"}
+,{"stream_name":"stderr","time":46.370966637,"data":"If you want to use the Tesla P100-PCIE-16GB GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/\n"}
+,{"stream_name":"stderr","time":46.370971301,"data":"\n"}
+,{"stream_name":"stderr","time":46.370975328,"data":"  queued_call()\n"}
+,{"stream_name":"stderr","time":46.370979785,"data":"\n"}
+,{"stream_name":"stderr","time":46.370983814,"data":"/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:435: UserWarning: \n"}
+,{"stream_name":"stderr","time":46.370988101,"data":"    Found GPU0 Tesla P100-PCIE-16GB which is of cuda capability 6.0.\n"}
+,{"stream_name":"stderr","time":46.370992416,"data":"    Minimum and Maximum cuda capability supported by this version of PyTorch is\n"}
+,{"stream_name":"stderr","time":46.370996916,"data":"    (7.0) - (12.0)\n"}
+,{"stream_name":"stderr","time":46.371009672,"data":"    \n"}
+,{"stream_name":"stderr","time":46.371013956,"data":"  queued_call()\n"}
+,{"stream_name":"stderr","time":46.371017913,"data":"/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:435: UserWarning: \n"}
+,{"stream_name":"stderr","time":46.371022361,"data":"    Please install PyTorch with a following CUDA\n"}
+,{"stream_name":"stderr","time":46.371026344,"data":"    configurations:  12.6 following instructions at\n"}
+,{"stream_name":"stderr","time":46.371030728,"data":"    https://pytorch.org/get-started/locally/\n"}
+,{"stream_name":"stderr","time":46.371034603,"data":"    \n"}
+,{"stream_name":"stderr","time":46.371038484,"data":"  queued_call()\n"}
+,{"stream_name":"stderr","time":46.371042358,"data":"/usr/local/lib/python3.12/dist-packages/torch/cuda/__init__.py:435: UserWarning: \n"}
+,{"stream_name":"stderr","time":46.371046636,"data":"Tesla P100-PCIE-16GB with CUDA capability sm_60 is not compatible with the current PyTorch installation.\n"}
+,{"stream_name":"stderr","time":46.371051518,"data":"The current PyTorch install supports CUDA capabilities sm_70 sm_75 sm_80 sm_86 sm_90 sm_100 sm_120.\n"}
+,{"stream_name":"stderr","time":46.371055583,"data":"If you want to use the Tesla P100-PCIE-16GB GPU with PyTorch, please check the instructions at https://pytorch.org/get-started/locally/\n"}
+,{"stream_name":"stderr","time":46.37106017,"data":"\n"}
+,{"stream_name":"stderr","time":46.371064189,"data":"  queued_call()\n"}
+,{"stream_name":"stderr","time":46.371963258,"data":"`logging_dir` is deprecated and will be removed in v5.2. Please set `TENSORBOARD_LOGGING_DIR` instead.\n"}
+,{"stream_name":"stderr","time":46.37198264,"data":"\n"}
+,{"stream_name":"stderr","time":46.371987511,"data":"`logging_dir` is deprecated and will be removed in v5.2. Please set `TENSORBOARD_LOGGING_DIR` instead.\n"}
+,{"stream_name":"stderr","time":50.068377567,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":50.068401527,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":50.068406798,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":50.06857211,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":50.068582645,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":50.068782329,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":50.069034405,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":50.069043845,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":50.069048006,"data":"Exception encountered at \"In [15]\":\n"}
+,{"stream_name":"stderr","time":50.069051422,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":50.06905507,"data":"AcceleratorError                          Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":50.069058763,"data":"/tmp/ipykernel_23/3312809529.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":50.069062645,"data":"     63     )\n"}
+,{"stream_name":"stderr","time":50.069075318,"data":"     64 \n"}
+,{"stream_name":"stderr","time":50.069079015,"data":"---\u003e 65     trainer.train()\n"}
+,{"stream_name":"stderr","time":50.069082592,"data":"     66 \n"}
+,{"stream_name":"stderr","time":50.069085767,"data":"     67     eval_result = trainer.evaluate()\n"}
+,{"stream_name":"stderr","time":50.069098463,"data":"\n"}
+,{"stream_name":"stderr","time":50.069101922,"data":"/usr/local/lib/python3.12/dist-packages/transformers/trainer.py in train(self, resume_from_checkpoint, trial, ignore_keys_for_eval)\n"}
+,{"stream_name":"stderr","time":50.069105459,"data":"   2172                 hf_hub_utils.enable_progress_bars()\n"}
+,{"stream_name":"stderr","time":50.069109182,"data":"   2173         else:\n"}
+,{"stream_name":"stderr","time":50.069112183,"data":"-\u003e 2174             return inner_training_loop(\n"}
+,{"stream_name":"stderr","time":50.06911549,"data":"   2175                 args=args,\n"}
+,{"stream_name":"stderr","time":50.069118748,"data":"   2176                 resume_from_checkpoint=resume_from_checkpoint,\n"}
+,{"stream_name":"stderr","time":50.069122437,"data":"\n"}
+,{"stream_name":"stderr","time":50.069125562,"data":"/usr/local/lib/python3.12/dist-packages/transformers/trainer.py in _inner_training_loop(self, batch_size, args, resume_from_checkpoint, trial, ignore_keys_for_eval)\n"}
+,{"stream_name":"stderr","time":50.069129412,"data":"   2478                 update_step += 1\n"}
+,{"stream_name":"stderr","time":50.06913275,"data":"   2479                 num_batches = args.gradient_accumulation_steps if update_step != (total_updates - 1) else remainder\n"}
+,{"stream_name":"stderr","time":50.06914472,"data":"-\u003e 2480                 batch_samples, num_items_in_batch = self.get_batch_samples(epoch_iterator, num_batches, args.device)\n"}
+,{"stream_name":"stderr","time":50.069148718,"data":"   2481                 # Store the number of batches for current gradient accumulation\n"}
+,{"stream_name":"stderr","time":50.069152694,"data":"   2482                 # This is used to correctly scale the loss when the last accumulation step has fewer batches\n"}
+,{"stream_name":"stderr","time":50.069156659,"data":"\n"}
+,{"stream_name":"stderr","time":50.069160083,"data":"/usr/local/lib/python3.12/dist-packages/transformers/trainer.py in get_batch_samples(self, epoch_iterator, num_batches, device)\n"}
+,{"stream_name":"stderr","time":50.069163695,"data":"   5247                 break\n"}
+,{"stream_name":"stderr","time":50.069167319,"data":"   5248 \n"}
+,{"stream_name":"stderr","time":50.069170808,"data":"-\u003e 5249         num_items_in_batch = self._get_num_items_in_batch(batch_samples, device)\n"}
+,{"stream_name":"stderr","time":50.069174992,"data":"   5250         return batch_samples, num_items_in_batch\n"}
+,{"stream_name":"stderr","time":50.069182043,"data":"   5251 \n"}
+,{"stream_name":"stderr","time":50.069185861,"data":"\n"}
+,{"stream_name":"stderr","time":50.069189107,"data":"/usr/local/lib/python3.12/dist-packages/transformers/trainer.py in _get_num_items_in_batch(self, batch_samples, device)\n"}
+,{"stream_name":"stderr","time":50.069193316,"data":"   5208             # For now we don't support object detection\n"}
+,{"stream_name":"stderr","time":50.069197094,"data":"   5209             try:\n"}
+,{"stream_name":"stderr","time":50.069202094,"data":"-\u003e 5210                 num_items_in_batch = sum((batch[\"labels\"].ne(-100)).sum() for batch in batch_samples)\n"}
+,{"stream_name":"stderr","time":50.069206197,"data":"   5211             except (TypeError, AttributeError):\n"}
+,{"stream_name":"stderr","time":50.069210087,"data":"   5212                 pass\n"}
+,{"stream_name":"stderr","time":50.069213488,"data":"\n"}
+,{"stream_name":"stderr","time":50.069217374,"data":"/usr/local/lib/python3.12/dist-packages/transformers/trainer.py in \u003cgenexpr\u003e(.0)\n"}
+,{"stream_name":"stderr","time":50.069237921,"data":"   5208             # For now we don't support object detection\n"}
+,{"stream_name":"stderr","time":50.069247816,"data":"   5209             try:\n"}
+,{"stream_name":"stderr","time":50.069252219,"data":"-\u003e 5210                 num_items_in_batch = sum((batch[\"labels\"].ne(-100)).sum() for batch in batch_samples)\n"}
+,{"stream_name":"stderr","time":50.069256915,"data":"   5211             except (TypeError, AttributeError):\n"}
+,{"stream_name":"stderr","time":50.069261104,"data":"   5212                 pass\n"}
+,{"stream_name":"stderr","time":50.069272708,"data":"\n"}
+,{"stream_name":"stderr","time":50.069276847,"data":"AcceleratorError: CUDA error: no kernel image is available for execution on the device\n"}
+,{"stream_name":"stderr","time":50.069281257,"data":"Search for `cudaErrorNoKernelImageForDevice' in https://docs.nvidia.com/cuda/cuda-runtime-api/group__CUDART__TYPES.html for more information.\n"}
+,{"stream_name":"stderr","time":50.069286231,"data":"CUDA kernel errors might be asynchronously reported at some other API call, so the stacktrace below might be incorrect.\n"}
+,{"stream_name":"stderr","time":50.06929088,"data":"For debugging consider passing CUDA_LAUNCH_BLOCKING=1\n"}
+,{"stream_name":"stderr","time":50.069295176,"data":"Compile with `TORCH_USE_CUDA_DSA` to enable device-side assertions.\n"}
+,{"stream_name":"stderr","time":50.069299673,"data":"\n"}
+,{"stream_name":"stderr","time":50.069303782,"data":"\n"}
+,{"stream_name":"stderr","time":52.124168421,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":52.124295035,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":52.269834014,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":52.269861003,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":52.84122275,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":53.183430731,"data":"[NbConvertApp] Writing 223835 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":55.437021911,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":56.402376061,"data":"[NbConvertApp] Writing 574307 bytes to __results__.html\n"}
 ]
