@@ -1,0 +1,31 @@
+# Eksperimen B3 — BiLSTM v2 (label corrected)
+exp_id: exp_bilstm_v2
+family: keras_bilstm
+title: "Thesis BiLSTM v2"
+description: "B3 - Re-run BiLSTM empiris label corrected (lr 1e-3, BiLSTM 64, EarlyStopping patience 3) + class weight"
+params:
+  max_words: 10000
+  max_len: 50
+  embedding_dim: 128
+  epochs: 20
+variants:
+  - name: empiris_lr1e3
+    learning_rate: 0.001
+    units: 64
+    dropout: 0.3
+    batch_size: 32
+    patience: 5
+    restore_best_weights: true
+    reduce_lr: true
+    class_weight: false
+  - name: class_weight_lr1e3
+    learning_rate: 0.001
+    units: 64
+    dropout: 0.3
+    batch_size: 32
+    patience: 5
+    restore_best_weights: true
+    reduce_lr: true
+    class_weight: true
+dataset_sources:
+  - emanuelembuaijdak/thesis-indobert-processed-data

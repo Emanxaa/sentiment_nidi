@@ -1,0 +1,49 @@
+# Eksperimen B1 — Diagnosa collapse LSTM (label corrected)
+exp_id: exp_debug_lstm
+family: keras_lstm
+title: "Thesis Debug LSTM Collapse"
+description: "B1 - Diagnosa collapse: 4 konfigurasi singkat (lr/patience/reduce_lr) untuk menemukan konfigurasi yang belajar"
+params:
+  max_words: 10000
+  max_len: 50
+  embedding_dim: 128
+  epochs: 10
+variants:
+  - name: kontrol_lama
+    learning_rate: 0.0002
+    units: 64
+    dropout: 0.3
+    batch_size: 32
+    patience: 3
+    restore_best_weights: true
+    reduce_lr: false
+    class_weight: false
+  - name: lr_1e3_patience5
+    learning_rate: 0.001
+    units: 64
+    dropout: 0.3
+    batch_size: 32
+    patience: 5
+    restore_best_weights: true
+    reduce_lr: false
+    class_weight: false
+  - name: lr_5e4_patience5
+    learning_rate: 0.0005
+    units: 64
+    dropout: 0.3
+    batch_size: 32
+    patience: 5
+    restore_best_weights: true
+    reduce_lr: false
+    class_weight: false
+  - name: lr_1e3_plateau
+    learning_rate: 0.001
+    units: 64
+    dropout: 0.3
+    batch_size: 32
+    patience: 7
+    restore_best_weights: true
+    reduce_lr: true
+    class_weight: false
+dataset_sources:
+  - emanuelembuaijdak/thesis-indobert-processed-data

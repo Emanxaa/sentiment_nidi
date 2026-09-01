@@ -1,0 +1,67 @@
+# Eksperimen B2 — LSTM v2 (label corrected, grid dipangkas dari diagnosa)
+exp_id: exp_lstm_v2
+family: keras_lstm
+title: "Thesis LSTM v2"
+description: "B2 - Re-run LSTM empiris label corrected, Baseline + Class Weight, EarlyStopping diperbaiki"
+params:
+  max_words: 10000
+  max_len: 50
+  embedding_dim: 128
+  epochs: 20
+variants:
+  - name: baseline_1e3_u64_d03
+    learning_rate: 0.001
+    units: 64
+    dropout: 0.3
+    batch_size: 32
+    patience: 7
+    restore_best_weights: true
+    reduce_lr: true
+    class_weight: false
+  - name: baseline_5e4_u64_d03
+    learning_rate: 0.0005
+    units: 64
+    dropout: 0.3
+    batch_size: 32
+    patience: 7
+    restore_best_weights: true
+    reduce_lr: true
+    class_weight: false
+  - name: baseline_1e3_u32_d02
+    learning_rate: 0.001
+    units: 32
+    dropout: 0.2
+    batch_size: 32
+    patience: 7
+    restore_best_weights: true
+    reduce_lr: true
+    class_weight: false
+  - name: cw_1e3_u64_d03
+    learning_rate: 0.001
+    units: 64
+    dropout: 0.3
+    batch_size: 32
+    patience: 7
+    restore_best_weights: true
+    reduce_lr: true
+    class_weight: true
+  - name: cw_5e4_u64_d03
+    learning_rate: 0.0005
+    units: 64
+    dropout: 0.3
+    batch_size: 32
+    patience: 7
+    restore_best_weights: true
+    reduce_lr: true
+    class_weight: true
+  - name: cw_1e3_u32_d02
+    learning_rate: 0.001
+    units: 32
+    dropout: 0.2
+    batch_size: 32
+    patience: 7
+    restore_best_weights: true
+    reduce_lr: true
+    class_weight: true
+dataset_sources:
+  - emanuelembuaijdak/thesis-indobert-processed-data
