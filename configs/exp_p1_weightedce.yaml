@@ -1,0 +1,18 @@
+# Eksperimen P1 — Class-Weighted CrossEntropy (replikasi dari 07_e4_focal_loss.ipynb)
+exp_id: exp_p1_weightedce
+title: "Thesis LoRA Weighted CE"
+description: "P1 - Class-Weighted CrossEntropy (0.75/1.32/1.03), label corrected"
+loss: weighted_ce
+class_weight: [0.75, 1.32, 1.03]
+gamma: 2.0
+params:
+  learning_rate: 0.0002
+  batch_size: 16
+  epochs: 5
+  weight_decay: 0.01
+  dropout: 0.3
+  lora_r: 16
+  lora_alpha: 32
+  max_length: 128
+dataset_sources:
+  - emanuelembuaijdak/thesis-indobert-processed-data
