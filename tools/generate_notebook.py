@@ -83,6 +83,11 @@ SEED_CELL = """\
 # =====================================================
 # SET SEED
 # =====================================================
+import random
+import numpy as np
+import torch
+from transformers import set_seed
+
 seed = 42
 set_seed(seed)
 np.random.seed(seed)
@@ -139,6 +144,9 @@ SEED_CELL_KERAS = """\
 # SET SEED
 # =====================================================
 import random
+import numpy as np
+import tensorflow as tf
+
 seed = 42
 np.random.seed(seed)
 random.seed(seed)

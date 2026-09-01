@@ -1,0 +1,189 @@
+[{"stream_name":"stderr","time":8.12720416,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.127269411,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.127306139,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.127310883,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.753082934,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.753118006,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.753122796,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.75312835,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":11.411198195,"data":"Found existing installation: torchao 0.10.0\r\n"}
+,{"stream_name":"stdout","time":11.512813497,"data":"Uninstalling torchao-0.10.0:\r\n"}
+,{"stream_name":"stdout","time":11.868375562,"data":"  Successfully uninstalled torchao-0.10.0\r\n"}
+,{"stream_name":"stdout","time":13.859838007,"data":"Collecting transformers==4.46.3\r\n"}
+,{"stream_name":"stdout","time":13.910795576,"data":"  Downloading transformers-4.46.3-py3-none-any.whl.metadata (44 kB)\r\n"}
+,{"stream_name":"stdout","time":13.910822578,"data":"\u001b[?25l     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/44.1 kB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m44.1/44.1 kB\u001b[0m \u001b[31m2.1 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":14.063035388,"data":"\u001b[?25hCollecting peft==0.13.2\r\n"}
+,{"stream_name":"stdout","time":14.06306156,"data":"  Downloading peft-0.13.2-py3-none-any.whl.metadata (13 kB)\r\n"}
+,{"stream_name":"stdout","time":14.417672619,"data":"Collecting tokenizers==0.20.3\r\n"}
+,{"stream_name":"stdout","time":14.417698728,"data":"  Downloading tokenizers-0.20.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)\r\n"}
+,{"stream_name":"stdout","time":14.569904435,"data":"Collecting huggingface-hub==0.26.5\r\n"}
+,{"stream_name":"stdout","time":14.569931306,"data":"  Downloading huggingface_hub-0.26.5-py3-none-any.whl.metadata (13 kB)\r\n"}
+,{"stream_name":"stdout","time":14.620794746,"data":"Downloading transformers-4.46.3-py3-none-any.whl (10.0 MB)\r\n"}
+,{"stream_name":"stdout","time":14.723568243999999,"data":"\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/10.0 MB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━\u001b[0m\u001b[90m╺\u001b[0m\u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m2.8/10.0 MB\u001b[0m \u001b[31m84.8 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[91m╸\u001b[0m \u001b[32m10.0/10.0 MB\u001b[0m \u001b[31m152.5 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[91m╸\u001b[0m \u001b[32m10.0/10.0 MB\u001b[0m \u001b[31m152.5 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m10.0/10.0 MB\u001b[0m \u001b[31m89.3 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":14.723631457,"data":"\u001b[?25hDownloading peft-0.13.2-py3-none-any.whl (320 kB)\r\n"}
+,{"stream_name":"stdout","time":14.774222214,"data":"\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/320.7 kB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m320.7/320.7 kB\u001b[0m \u001b[31m17.0 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":14.774252853,"data":"\u001b[?25hDownloading tokenizers-0.20.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)\r\n"}
+,{"stream_name":"stdout","time":14.825182797,"data":"\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/3.0 MB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m3.0/3.0 MB\u001b[0m \u001b[31m104.7 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":14.825211971,"data":"\u001b[?25hDownloading huggingface_hub-0.26.5-py3-none-any.whl (447 kB)\r\n"}
+,{"stream_name":"stdout","time":14.825217508,"data":"\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/447.8 kB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m447.8/447.8 kB\u001b[0m \u001b[31m27.3 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":14.8753687,"data":"\u001b[?25hInstalling collected packages: transformers, tokenizers, peft, huggingface-hub\r\n"}
+,{"stream_name":"stdout","time":14.875386178,"data":"  Attempting uninstall: transformers\r\n"}
+,{"stream_name":"stdout","time":15.179623868,"data":"    Found existing installation: transformers 5.0.0\r\n"}
+,{"stream_name":"stdout","time":15.534679946,"data":"    Uninstalling transformers-5.0.0:\r\n"}
+,{"stream_name":"stdout","time":17.455394845,"data":"      Successfully uninstalled transformers-5.0.0\r\n"}
+,{"stream_name":"stdout","time":23.834001516,"data":"  Attempting uninstall: tokenizers\r\n"}
+,{"stream_name":"stdout","time":24.086673795,"data":"    Found existing installation: tokenizers 0.22.2\r\n"}
+,{"stream_name":"stdout","time":24.137319676,"data":"    Uninstalling tokenizers-0.22.2:\r\n"}
+,{"stream_name":"stdout","time":24.188126423,"data":"      Successfully uninstalled tokenizers-0.22.2\r\n"}
+,{"stream_name":"stdout","time":24.289265124,"data":"  Attempting uninstall: peft\r\n"}
+,{"stream_name":"stdout","time":24.54150251,"data":"    Found existing installation: peft 0.19.1\r\n"}
+,{"stream_name":"stdout","time":24.592320847,"data":"    Uninstalling peft-0.19.1:\r\n"}
+,{"stream_name":"stdout","time":24.744999523,"data":"      Successfully uninstalled peft-0.19.1\r\n"}
+,{"stream_name":"stdout","time":24.998386458,"data":"  Attempting uninstall: huggingface-hub\r\n"}
+,{"stream_name":"stdout","time":25.150469849,"data":"    Found existing installation: huggingface_hub 1.11.0\r\n"}
+,{"stream_name":"stdout","time":25.200852894,"data":"    Uninstalling huggingface_hub-1.11.0:\r\n"}
+,{"stream_name":"stdout","time":25.353477859,"data":"      Successfully uninstalled huggingface_hub-1.11.0\r\n"}
+,{"stream_name":"stdout","time":25.606878373,"data":"Successfully installed huggingface-hub-0.26.5 peft-0.13.2 tokenizers-0.20.3 transformers-4.46.3\r\n"}
+,{"stream_name":"stdout","time":25.885998771,"data":"CUDA_VISIBLE_DEVICES = 0\n"}
+,{"stream_name":"stdout","time":57.89782083,"data":"python        : 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]\n"}
+,{"stream_name":"stdout","time":57.89785648,"data":"torch         : 2.10.0+cu128\n"}
+,{"stream_name":"stdout","time":57.897860575,"data":"transformers  : 4.46.3\n"}
+,{"stream_name":"stdout","time":57.89786362,"data":"peft          : 0.13.2\n"}
+,{"stream_name":"stdout","time":57.897866522,"data":"cuda available: True\n"}
+,{"stream_name":"stdout","time":57.897869719,"data":"gpu count     : 1\n"}
+,{"stream_name":"stdout","time":59.52391072,"data":"{\n"}
+,{"stream_name":"stdout","time":59.523940993,"data":"  \"exp_id\": \"exp_p1_ft_sweep\",\n"}
+,{"stream_name":"stdout","time":59.523947744,"data":"  \"family\": \"hf_lora_sweep\",\n"}
+,{"stream_name":"stdout","time":59.523952632,"data":"  \"title\": \"Thesis LoRA - P1 Fine-Tuning Sweep\",\n"}
+,{"stream_name":"stdout","time":59.523957489,"data":"  \"description\": \"P1 Pareto Workflow - Hyperparameter Sweep pada Data Label Corrected\",\n"}
+,{"stream_name":"stdout","time":59.523963119,"data":"  \"target_gate\": 0.77,\n"}
+,{"stream_name":"stdout","time":59.523968265,"data":"  \"variants\": [\n"}
+,{"stream_name":"stdout","time":59.523973938,"data":"    {\n"}
+,{"stream_name":"stdout","time":59.523978976,"data":"      \"name\": \"t1_lr1e5_ep5_wm0_wd0_len128\",\n"}
+,{"stream_name":"stdout","time":59.523984946,"data":"      \"learning_rate\": 1e-05,\n"}
+,{"stream_name":"stdout","time":59.523990107,"data":"      \"epochs\": 5,\n"}
+,{"stream_name":"stdout","time":59.523995082,"data":"      \"warmup_ratio\": 0.0,\n"}
+,{"stream_name":"stdout","time":59.52399961,"data":"      \"weight_decay\": 0.0,\n"}
+,{"stream_name":"stdout","time":59.524004414,"data":"      \"max_length\": 128,\n"}
+,{"stream_name":"stdout","time":59.524009064,"data":"      \"batch_size\": 16\n"}
+,{"stream_name":"stdout","time":59.524013757,"data":"    },\n"}
+,{"stream_name":"stdout","time":59.524026919,"data":"    {\n"}
+,{"stream_name":"stdout","time":59.524031966,"data":"      \"name\": \"t2_lr2e5_ep5_wm10_wd001_len128\",\n"}
+,{"stream_name":"stdout","time":59.524040832,"data":"      \"learning_rate\": 2e-05,\n"}
+,{"stream_name":"stdout","time":59.524045397,"data":"      \"epochs\": 5,\n"}
+,{"stream_name":"stdout","time":59.524049903,"data":"      \"warmup_ratio\": 0.1,\n"}
+,{"stream_name":"stdout","time":59.524055966,"data":"      \"weight_decay\": 0.01,\n"}
+,{"stream_name":"stdout","time":59.524060676,"data":"      \"max_length\": 128,\n"}
+,{"stream_name":"stdout","time":59.524066957,"data":"      \"batch_size\": 16\n"}
+,{"stream_name":"stdout","time":59.524072069,"data":"    },\n"}
+,{"stream_name":"stdout","time":59.524077091,"data":"    {\n"}
+,{"stream_name":"stdout","time":59.524083034,"data":"      \"name\": \"t3_lr3e5_ep8_wm10_wd001_len128\",\n"}
+,{"stream_name":"stdout","time":59.524088258,"data":"      \"learning_rate\": 3e-05,\n"}
+,{"stream_name":"stdout","time":59.524107297,"data":"      \"epochs\": 8,\n"}
+,{"stream_name":"stdout","time":59.524111545,"data":"      \"warmup_ratio\": 0.1,\n"}
+,{"stream_name":"stdout","time":59.524115102,"data":"      \"weight_decay\": 0.01,\n"}
+,{"stream_name":"stdout","time":59.524118578,"data":"      \"max_length\": 128,\n"}
+,{"stream_name":"stdout","time":59.524122075,"data":"      \"batch_size\": 16\n"}
+,{"stream_name":"stdout","time":59.524125865,"data":"    },\n"}
+,{"stream_name":"stdout","time":59.524129201,"data":"    {\n"}
+,{"stream_name":"stdout","time":59.524132661,"data":"      \"name\": \"t4_lr5e5_ep8_wm10_wd001_len128\",\n"}
+,{"stream_name":"stdout","time":59.524136388,"data":"      \"learning_rate\": 5e-05,\n"}
+,{"stream_name":"stdout","time":59.524139963,"data":"      \"epochs\": 8,\n"}
+,{"stream_name":"stdout","time":59.524143787,"data":"      \"warmup_ratio\": 0.1,\n"}
+,{"stream_name":"stdout","time":59.524148429,"data":"      \"weight_decay\": 0.01,\n"}
+,{"stream_name":"stdout","time":59.524152251,"data":"      \"max_length\": 128,\n"}
+,{"stream_name":"stdout","time":59.524155948,"data":"      \"batch_size\": 16\n"}
+,{"stream_name":"stdout","time":59.524160112,"data":"    },\n"}
+,{"stream_name":"stdout","time":59.524163492,"data":"    {\n"}
+,{"stream_name":"stdout","time":59.524167098,"data":"      \"name\": \"t5_lr1e4_ep8_wm10_wd001_len128\",\n"}
+,{"stream_name":"stdout","time":59.524171366,"data":"      \"learning_rate\": 0.0001,\n"}
+,{"stream_name":"stdout","time":59.524176043,"data":"      \"epochs\": 8,\n"}
+,{"stream_name":"stdout","time":59.524180709,"data":"      \"warmup_ratio\": 0.1,\n"}
+,{"stream_name":"stdout","time":59.524184991,"data":"      \"weight_decay\": 0.01,\n"}
+,{"stream_name":"stdout","time":59.524189723,"data":"      \"max_length\": 128,\n"}
+,{"stream_name":"stdout","time":59.524193376,"data":"      \"batch_size\": 16\n"}
+,{"stream_name":"stdout","time":59.524196878,"data":"    },\n"}
+,{"stream_name":"stdout","time":59.524200531,"data":"    {\n"}
+,{"stream_name":"stdout","time":59.524204781,"data":"      \"name\": \"t6_lr2e4_ep8_wm10_wd001_len128_base\",\n"}
+,{"stream_name":"stdout","time":59.524208829,"data":"      \"learning_rate\": 0.0002,\n"}
+,{"stream_name":"stdout","time":59.524212396,"data":"      \"epochs\": 8,\n"}
+,{"stream_name":"stdout","time":59.524216397000004,"data":"      \"warmup_ratio\": 0.1,\n"}
+,{"stream_name":"stdout","time":59.524220151,"data":"      \"weight_decay\": 0.01,\n"}
+,{"stream_name":"stdout","time":59.524223769,"data":"      \"max_length\": 128,\n"}
+,{"stream_name":"stdout","time":59.524227497,"data":"      \"batch_size\": 16\n"}
+,{"stream_name":"stdout","time":59.524231447,"data":"    },\n"}
+,{"stream_name":"stdout","time":59.524235951,"data":"    {\n"}
+,{"stream_name":"stdout","time":59.524239936,"data":"      \"name\": \"t7_lr3e5_ep10_wm10_wd001_len128\",\n"}
+,{"stream_name":"stdout","time":59.524244866,"data":"      \"learning_rate\": 3e-05,\n"}
+,{"stream_name":"stdout","time":59.524249153,"data":"      \"epochs\": 10,\n"}
+,{"stream_name":"stdout","time":59.524252923,"data":"      \"warmup_ratio\": 0.1,\n"}
+,{"stream_name":"stdout","time":59.524256302,"data":"      \"weight_decay\": 0.01,\n"}
+,{"stream_name":"stdout","time":59.524259871,"data":"      \"max_length\": 128,\n"}
+,{"stream_name":"stdout","time":59.524263367,"data":"      \"batch_size\": 16\n"}
+,{"stream_name":"stdout","time":59.524266947,"data":"    },\n"}
+,{"stream_name":"stdout","time":59.524286436,"data":"    {\n"}
+,{"stream_name":"stdout","time":59.524300146,"data":"      \"name\": \"t8_lr2e4_ep10_wm10_wd001_len128\",\n"}
+,{"stream_name":"stdout","time":59.524304097,"data":"      \"learning_rate\": 0.0002,\n"}
+,{"stream_name":"stdout","time":59.524307678,"data":"      \"epochs\": 10,\n"}
+,{"stream_name":"stdout","time":59.524311232,"data":"      \"warmup_ratio\": 0.1,\n"}
+,{"stream_name":"stdout","time":59.524314779,"data":"      \"weight_decay\": 0.01,\n"}
+,{"stream_name":"stdout","time":59.524318783,"data":"      \"max_length\": 128,\n"}
+,{"stream_name":"stdout","time":59.524322543,"data":"      \"batch_size\": 16\n"}
+,{"stream_name":"stdout","time":59.52432632,"data":"    },\n"}
+,{"stream_name":"stdout","time":59.524329657,"data":"    {\n"}
+,{"stream_name":"stdout","time":59.52433286,"data":"      \"name\": \"t9_lr3e5_ep8_wm10_wd001_len64\",\n"}
+,{"stream_name":"stdout","time":59.524336242,"data":"      \"learning_rate\": 3e-05,\n"}
+,{"stream_name":"stdout","time":59.524343379,"data":"      \"epochs\": 8,\n"}
+,{"stream_name":"stdout","time":59.524347074,"data":"      \"warmup_ratio\": 0.1,\n"}
+,{"stream_name":"stdout","time":59.52435076,"data":"      \"weight_decay\": 0.01,\n"}
+,{"stream_name":"stdout","time":59.524354905,"data":"      \"max_length\": 64,\n"}
+,{"stream_name":"stdout","time":59.524358382,"data":"      \"batch_size\": 16\n"}
+,{"stream_name":"stdout","time":59.524362013,"data":"    },\n"}
+,{"stream_name":"stdout","time":59.524365278,"data":"    {\n"}
+,{"stream_name":"stdout","time":59.524368581,"data":"      \"name\": \"t10_lr2e4_ep8_wm10_wd001_len64\",\n"}
+,{"stream_name":"stdout","time":59.524372088,"data":"      \"learning_rate\": 0.0002,\n"}
+,{"stream_name":"stdout","time":59.524376327,"data":"      \"epochs\": 8,\n"}
+,{"stream_name":"stdout","time":59.524380061,"data":"      \"warmup_ratio\": 0.1,\n"}
+,{"stream_name":"stdout","time":59.524383761,"data":"      \"weight_decay\": 0.01,\n"}
+,{"stream_name":"stdout","time":59.524387192,"data":"      \"max_length\": 64,\n"}
+,{"stream_name":"stdout","time":59.524391104,"data":"      \"batch_size\": 16\n"}
+,{"stream_name":"stdout","time":59.52439449,"data":"    }\n"}
+,{"stream_name":"stdout","time":59.524397836,"data":"  ],\n"}
+,{"stream_name":"stdout","time":59.524401398,"data":"  \"params\": {\n"}
+,{"stream_name":"stdout","time":59.524404989,"data":"    \"dropout\": 0.3,\n"}
+,{"stream_name":"stdout","time":59.524408613,"data":"    \"lora_r\": 16,\n"}
+,{"stream_name":"stdout","time":59.524412247,"data":"    \"lora_alpha\": 32\n"}
+,{"stream_name":"stdout","time":59.524415829,"data":"  },\n"}
+,{"stream_name":"stdout","time":59.524419307,"data":"  \"dataset_sources\": [\n"}
+,{"stream_name":"stdout","time":59.52442346,"data":"    \"emanuelembuaijdak/thesis-indobert-processed-data\"\n"}
+,{"stream_name":"stdout","time":59.52442749,"data":"  ]\n"}
+,{"stream_name":"stdout","time":59.524431062,"data":"}\n"}
+,{"stream_name":"stderr","time":62.36639804,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":62.366422276,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":62.366427673,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":62.366587347,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":62.366598264,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":62.366770765,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":62.366825947,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":62.366840736,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":62.366844872,"data":"Exception encountered at \"In [5]\":\n"}
+,{"stream_name":"stderr","time":62.366848474,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":62.366852139,"data":"NameError                                 Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":62.3668556,"data":"/tmp/ipykernel_24/1638427361.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":62.366859421,"data":"      3 # =====================================================\n"}
+,{"stream_name":"stderr","time":62.366862899,"data":"      4 seed = 42\n"}
+,{"stream_name":"stderr","time":62.366866131,"data":"----\u003e 5 set_seed(seed)\n"}
+,{"stream_name":"stderr","time":62.366869536,"data":"      6 np.random.seed(seed)\n"}
+,{"stream_name":"stderr","time":62.366872841,"data":"      7 random.seed(seed)\n"}
+,{"stream_name":"stderr","time":62.366876067,"data":"\n"}
+,{"stream_name":"stderr","time":62.36687936,"data":"NameError: name 'set_seed' is not defined\n"}
+,{"stream_name":"stderr","time":62.366883476,"data":"\n"}
+,{"stream_name":"stderr","time":64.436051742,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":64.436082603,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":64.596744672,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":64.5967907,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":65.227070732,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":65.521556397,"data":"[NbConvertApp] Writing 46647 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":67.851775153,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":68.73245769,"data":"[NbConvertApp] Writing 399947 bytes to __results__.html\n"}
+]
