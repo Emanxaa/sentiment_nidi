@@ -23,10 +23,28 @@ Status: 🟡 berjalan · ✅ selesai · ❌ gagal dihentikan
 
 ### PROSES
 - v6 (fix torchao) di-cancel oleh push v7 (probe accelerator dengan nilai invalid → fallback P100 → `AcceleratorError`) — pelajaran terdokumentasi di `GUIDE_KAGGLE_CLI.md`.
-- v8 di-push dengan `machine_shape: NvidiaTeslaT4` + internet on → RUNNING, dipantau otomatis.
+- v8 di-push dengan `machine_shape: NvidiaTeslaT4` + internet on → berjalan ±57 menit, menuntaskan tuning + evaluasi empiris + sebagian simulasi, lalu **ERROR di sel class-weight**.
 
-### PASCA
-- *(menunggu run selesai)*
+### PASCA (parsial — verifikasi angka empiris v8)
+
+**Hasil verifikasi (harness, `reports/verifikasi_e0_v8.md`):**
+
+| Metrik (test, n=1730) | v8 (Kaggle T4 x2) | Kanonik `04` (Colab 1 GPU) | Δ |
+|---|---|---|---|
+| Accuracy | 0.725434 | 0.795376 | −0.070 |
+| Macro F1 | 0.636004 | 0.732810 | −0.097 |
+
+- Harness: COLLAPSE **TIDAK**, distribusi pred 1013/192/525, tabel tuning sehat (trial 4 tetap terbaik, urutan ranking sama).
+- **Gate V1 GAGAL pada angka** (Δ −0.097 ≫ toleransi 0.02) → E0 belum terkunci.
+
+**Root cause (bukti forensik):**
+1. `trainer_state.json` trial-4: `train_batch_size: 32`, `max_steps: 975` — **DataParallel (2 GPU) menggandakan batch efektif 16→32** sehingga jumlah update optimizer tinggal setengah (975 vs 1950 pada run kanonik) → undertrained (train loss masih ~1.35 di epoch 4 vs 0.64 kanonik). Run v1 lama menunjukkan pola sama (975 step, loss 1.457).
+2. Error sel-59 (class-weight): `AttributeError: 'DataParallel' object has no attribute 'config'` — konfirmasi Trainer membungkus model dengan DP di image ini.
+3. Gap sudah terlihat di validation (best val F1 0.6326 vs 0.7233) → masalah training, bukan test set.
+
+**Tindakan (P0.1):** sel `CUDA_VISIBLE_DEVICES=0` sebagai sel kode pertama di notebook v1 dan notebook E1 → protokol identik dengan run kanonik (1 GPU, batch 16, 1950 step); sekaligus memperbaiki crash WeightedTrainer. Semua artefak diperbarui (`results/`, `temp_kernel_lora/`, `06_e1_…`, `temp_kernel_e1/`), tervalidasi nbformat.
+
+**Keputusan iterasi:** verifikasi E0 + E1 digabung dalam satu run — ε=0 pada notebook E1 adalah replikasi single-GPU dari baseline (jika mencapai ±0.73 → akar masalah terkonfirmasi + E0 terkunci). Notebook v1 full re-run menyusul untuk artefak final.
 
 ---
 
@@ -40,7 +58,9 @@ Status: 🟡 berjalan · ✅ selesai · ❌ gagal dihentikan
 - **Risiko**: (1) smoothing merusak kelas mayoritas → deteksi via per-kelas metrik; (2) perbedaan seed antar-run Kaggle → toleransi ±0.02, McNemar sebagai hakim; (3) 4 pelatihan dalam satu run → ±2× waktu baseline.
 
 ### PROSES
-- *(belum di-push — menunggu E0 terkunci)*
+- **Push v1** (sekaligus verifikasi E0 via ε=0): gagal 43 detik — dataset tidak ter-mount (`FileNotFoundError /kaggle/input/.../data_preprocessed_with_emoticon.csv`) padahal metadata server benar & dataset status `ready`. Diagnosis: transient mount pada kernel baru.
+- **Cek lingkungan run v1 (berhasil terekam)**: python 3.12.13, torch 2.10.0+cu128, transformers **5.0.0**, peft 0.19.1, `gpu count: 1` (fix `CUDA_VISIBLE_DEVICES=0` **terbukti bekerja**), torchao uninstall OK.
+- **Push v2**: RUNNING ulang (melewati titik gagal v1).
 
 ### PASCA
 - *(menunggu)*

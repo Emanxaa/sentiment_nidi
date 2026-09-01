@@ -79,6 +79,8 @@ Catatan: perbaikan LSTM yang collapse tetap follow-up terpisah, tidak menghalang
 
 | Gejala | Kemungkinan | Tindakan |
 |---|---|---|
+| Metrik jauh di bawah kanonik (Δ > 0.02) + `train_batch_size: 32` di `trainer_state.json` (batch 16 × 2 GPU) | **DataParallel T4 x2**: batch efektif digandakan → update optimizer separuh → undertrained | Paksa 1 GPU: sel `CUDA_VISIBLE_DEVICES=0` sebagai sel kode pertama (sudah diterapkan di semua notebook) |
+| `'DataParallel' object has no attribute 'config'` di custom Trainer | Trainer membungkus model dengan DP (2 GPU) | Sama: paksa 1 GPU, atau akses via `model.module.config` |
 | `ImportError: ... torchao ... only versions above 0.16.0 are supported` (mati ±47 detik, saat build model) | torchao 0.10.0 di image Kaggle tidak kompatibel dengan peft | Pastikan sel `!pip uninstall -y torchao` **aktif** (uncommented) sebelum sel build model — sudah difix; push ulang |
 | Status `error`, log berhenti di awal | Dataset tidak attach / CSV berubah | Cek `dataset_sources` di kernel-metadata.json & kolom CSV di log |
 | Angka jauh dari kanonik (>0.02) | Versi dataset / seed / kolom beda | Bandingkan distribusi train/test di log vs `04`; cek cetakan kolom sel-2 |

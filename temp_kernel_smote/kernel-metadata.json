@@ -1,0 +1,14 @@
+{
+  "id": "emanuelembuaijdak/thesis-smote-llm-augmentation",
+  "title": "Thesis SMOTE LLM Augmentation",
+  "code_file": "smote-llm-augmentation.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_internet": "true",
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": [
+    "emanuelembuaijdak/thesis-indobert-processed-data"
+  ]
+}
