@@ -1,0 +1,15 @@
+{
+  "id": "emanuelembuaijdak/baseline-b01-lstm",
+  "title": "baseline-b01-lstm",
+  "code_file": "02_model_lstm.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_internet": "true",
+  "dataset_sources": [
+    "emanuelembuaijdak/thesis-indobert-processed-data"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}

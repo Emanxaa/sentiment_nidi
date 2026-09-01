@@ -1,0 +1,2 @@
+model,experiment_id,strategy,batch_size,dropout,learning_rate,units,val_f1_macro,accuracy,precision_macro,recall_macro,f1_macro
+LSTM,B01,Class Weight,16,0.2,0.0002,64,0.6819978375928812,0.7265895953757225,0.6811508547405486,0.7083648834697275,0.6899887218721723

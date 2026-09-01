@@ -1,0 +1,16 @@
+pipeline:
+  - id: audit
+    input: Data/raw/banjir.csv
+    output: Data/interim/audit.csv
+
+  - id: llm_completion
+    input: Data/interim/audit.csv
+    output: Data/interim/llm_completed.csv
+
+  - id: regex
+    input: Data/interim/llm_completed.csv
+    output: Data/interim/regex_clean.csv
+
+  - id: alay
+    input: Data/interim/regex_clean.csv
+    output: Data/processed/banjir_processed_v2.csv

@@ -1,0 +1,16 @@
+
+Data/**
+Output/**
+__pycache__/**
+.ipynb_checkpoints/**
+
+*.parquet
+*.feather
+*.xlsx
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.pt
+*.pth
+*.ckpt
