@@ -1,0 +1,33 @@
+# Eksperimen P1 — Fine-Tuning Sweep (Pareto Decision Tree)
+# Target: Menguji apakah hyperparameter training dasar (LR, Epoch, Warmup, Weight Decay, Max Length)
+#         masih menahan performa representasi IndoBERTweet-LoRA sebelum masuk ke tahap TAPT (P2).
+
+exp_id: exp_p1_ft_sweep
+family: hf_lora
+title: "Thesis LoRA - P1 Fine-Tuning Sweep"
+description: "P1 Pareto Workflow - Hyperparameter Sweep (LR, Epoch, Warmup, Weight Decay) pada Data Label Corrected"
+
+loss: cross_entropy
+target_gate: 0.77  # Jika >= 0.77 lanjut Polishing; jika < 0.77 lanjut P2 (TAPT)
+
+sweep_grid:
+  learning_rates: [0.00005, 0.0001, 0.0002, 0.0003]
+  epochs: [5, 8, 10]
+  warmup_ratios: [0.0, 0.1]
+  weight_decays: [0.0, 0.01]
+  max_lengths: [64, 128]
+
+params:
+  learning_rate: 0.0002
+  batch_size: 16
+  epochs: 8
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  dropout: 0.3
+  lora_r: 16
+  lora_alpha: 32
+  max_length: 128
+  metric_for_best_model: "eval_f1_macro"
+
+dataset_sources:
+  - emanuelembuaijdak/thesis-indobert-processed-data
