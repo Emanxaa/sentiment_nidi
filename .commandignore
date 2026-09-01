@@ -1,0 +1,12 @@
+Data/**/*.csv
+Data/**/*.pkl
+Data/**/*.parquet
+
+**/*backup*
+
+__pycache__/
+.venv/
+.git/
+
+*.pt
+*.pth
