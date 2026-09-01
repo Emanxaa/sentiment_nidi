@@ -1,7 +1,7 @@
 {
-  "id": "emanuelembuaijdak/thesis-lora-p1-fine-tuning-sweep",
-  "title": "Thesis LoRA - P1 Fine-Tuning Sweep",
-  "code_file": "exp_p1_ft_sweep.ipynb",
+  "id": "emanuelembuaijdak/thesis-lora-p2-task-adaptive-pretraining",
+  "title": "Thesis LoRA - P2 Task Adaptive Pretraining",
+  "code_file": "exp_p2_tapt_mlm.ipynb",
   "language": "python",
   "kernel_type": "notebook",
   "is_private": "true",

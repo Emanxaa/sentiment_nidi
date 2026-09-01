@@ -1,0 +1,80 @@
+[{"stream_name":"stderr","time":7.409935951,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.410006497,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.410013685,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.410017902,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.049866477,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.04990707,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.049911374,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.049914414,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":10.5943398,"data":"Found existing installation: torchao 0.10.0\r\n"}
+,{"stream_name":"stdout","time":10.695892327,"data":"Uninstalling torchao-0.10.0:\r\n"}
+,{"stream_name":"stdout","time":11.106737255,"data":"  Successfully uninstalled torchao-0.10.0\r\n"}
+,{"stream_name":"stdout","time":13.147673863,"data":"Collecting transformers==4.46.3\r\n"}
+,{"stream_name":"stdout","time":13.198596645,"data":"  Downloading transformers-4.46.3-py3-none-any.whl.metadata (44 kB)\r\n"}
+,{"stream_name":"stdout","time":13.198642826,"data":"\u001b[?25l     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/44.1 kB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m44.1/44.1 kB\u001b[0m \u001b[31m1.8 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":13.351661115,"data":"\u001b[?25hCollecting peft==0.13.2\r\n"}
+,{"stream_name":"stdout","time":13.402459851,"data":"  Downloading peft-0.13.2-py3-none-any.whl.metadata (13 kB)\r\n"}
+,{"stream_name":"stdout","time":13.757668397,"data":"Collecting tokenizers==0.20.3\r\n"}
+,{"stream_name":"stdout","time":13.808724941,"data":"  Downloading tokenizers-0.20.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)\r\n"}
+,{"stream_name":"stdout","time":13.961433363,"data":"Collecting huggingface-hub==0.26.5\r\n"}
+,{"stream_name":"stdout","time":14.01278571,"data":"  Downloading huggingface_hub-0.26.5-py3-none-any.whl.metadata (13 kB)\r\n"}
+,{"stream_name":"stdout","time":14.01282179,"data":"Downloading transformers-4.46.3-py3-none-any.whl (10.0 MB)\r\n"}
+,{"stream_name":"stdout","time":14.165536505,"data":"\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/10.0 MB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[91m━━━━━\u001b[0m\u001b[90m╺\u001b[0m\u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m1.3/10.0 MB\u001b[0m \u001b[31m37.8 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[90m╺\u001b[0m\u001b[90m━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m5.9/10.0 MB\u001b[0m \u001b[31m86.1 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[91m╸\u001b[0m \u001b[32m10.0/10.0 MB\u001b[0m \u001b[31m115.3 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m10.0/10.0 MB\u001b[0m \u001b[31m73.4 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":14.165599732,"data":"\u001b[?25hDownloading peft-0.13.2-py3-none-any.whl (320 kB)\r\n"}
+,{"stream_name":"stdout","time":14.217197699,"data":"\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/320.7 kB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m320.7/320.7 kB\u001b[0m \u001b[31m21.3 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":14.217237071,"data":"\u001b[?25hDownloading tokenizers-0.20.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)\r\n"}
+,{"stream_name":"stdout","time":14.268009384,"data":"\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/3.0 MB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[91m╸\u001b[0m \u001b[32m3.0/3.0 MB\u001b[0m \u001b[31m243.6 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m3.0/3.0 MB\u001b[0m \u001b[31m82.4 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":14.268047132,"data":"\u001b[?25hDownloading huggingface_hub-0.26.5-py3-none-any.whl (447 kB)\r\n"}
+,{"stream_name":"stdout","time":14.318953262,"data":"\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/447.8 kB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m447.8/447.8 kB\u001b[0m \u001b[31m28.9 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":14.369764873,"data":"\u001b[?25hInstalling collected packages: transformers, tokenizers, peft, huggingface-hub\r\n"}
+,{"stream_name":"stdout","time":14.369795884,"data":"  Attempting uninstall: transformers\r\n"}
+,{"stream_name":"stdout","time":14.674560934,"data":"    Found existing installation: transformers 5.0.0\r\n"}
+,{"stream_name":"stdout","time":15.080692202,"data":"    Uninstalling transformers-5.0.0:\r\n"}
+,{"stream_name":"stdout","time":16.95638245,"data":"      Successfully uninstalled transformers-5.0.0\r\n"}
+,{"stream_name":"stdout","time":24.120180098,"data":"  Attempting uninstall: tokenizers\r\n"}
+,{"stream_name":"stdout","time":24.426420865,"data":"    Found existing installation: tokenizers 0.22.2\r\n"}
+,{"stream_name":"stdout","time":24.426452496,"data":"    Uninstalling tokenizers-0.22.2:\r\n"}
+,{"stream_name":"stdout","time":24.477225133,"data":"      Successfully uninstalled tokenizers-0.22.2\r\n"}
+,{"stream_name":"stdout","time":24.578750814,"data":"  Attempting uninstall: peft\r\n"}
+,{"stream_name":"stdout","time":24.884369548,"data":"    Found existing installation: peft 0.19.1\r\n"}
+,{"stream_name":"stdout","time":24.935029362,"data":"    Uninstalling peft-0.19.1:\r\n"}
+,{"stream_name":"stdout","time":25.087518596,"data":"      Successfully uninstalled peft-0.19.1\r\n"}
+,{"stream_name":"stdout","time":25.342183777,"data":"  Attempting uninstall: huggingface-hub\r\n"}
+,{"stream_name":"stdout","time":25.545403796,"data":"    Found existing installation: huggingface_hub 1.11.0\r\n"}
+,{"stream_name":"stdout","time":25.596631669,"data":"    Uninstalling huggingface_hub-1.11.0:\r\n"}
+,{"stream_name":"stdout","time":25.748902294,"data":"      Successfully uninstalled huggingface_hub-1.11.0\r\n"}
+,{"stream_name":"stdout","time":26.053941309,"data":"Successfully installed huggingface-hub-0.26.5 peft-0.13.2 tokenizers-0.20.3 transformers-4.46.3\r\n"}
+,{"stream_name":"stdout","time":26.257040348,"data":"CUDA_VISIBLE_DEVICES = 0\n"}
+,{"stream_name":"stdout","time":45.521685992,"data":"python : 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]\n"}
+,{"stream_name":"stdout","time":45.521727531,"data":"tf     : 2.20.0\n"}
+,{"stream_name":"stdout","time":45.521733722,"data":"gpus   : [PhysicalDevice(name='/physical_device:GPU:0', device_type='GPU')]\n"}
+,{"stream_name":"stdout","time":45.937776402,"data":"GPU tersedia: True\n"}
+,{"stream_name":"stderr","time":49.616505329,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":49.616549199,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":49.616556684,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":49.616725854,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":49.616783789,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":49.616931229,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":49.617012911,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":49.617025744,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":49.617031383,"data":"Exception encountered at \"In [5]\":\n"}
+,{"stream_name":"stderr","time":49.617036476,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":49.617041627,"data":"NameError                                 Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":49.617046838,"data":"/tmp/ipykernel_24/4271485971.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":49.617052864,"data":"      3 # =====================================================\n"}
+,{"stream_name":"stderr","time":49.617057938,"data":"      4 d = load_lstm_data(\n"}
+,{"stream_name":"stderr","time":49.61706274,"data":"----\u003e 5     max_words=CONFIG[\"params\"][\"max_words\"],\n"}
+,{"stream_name":"stderr","time":49.617070263,"data":"      6     max_len=CONFIG[\"params\"][\"max_len\"],\n"}
+,{"stream_name":"stderr","time":49.61707902,"data":"      7     test_size=0.2,\n"}
+,{"stream_name":"stderr","time":49.617082876,"data":"\n"}
+,{"stream_name":"stderr","time":49.61708613,"data":"NameError: name 'CONFIG' is not defined\n"}
+,{"stream_name":"stderr","time":49.617089715,"data":"\n"}
+,{"stream_name":"stderr","time":52.081873265,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":52.081901231,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":52.25353438,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":52.253566863,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":52.915487074,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":53.259832252,"data":"[NbConvertApp] Writing 35624 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":55.932271786,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":56.908102319,"data":"[NbConvertApp] Writing 371797 bytes to __results__.html\n"}
+]

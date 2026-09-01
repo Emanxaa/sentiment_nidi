@@ -29,9 +29,12 @@ def load_config(path: str | Path) -> dict[str, Any]:
     return json.loads(text)
 
 
+import pprint
+
+
 def config_repr(cfg: dict[str, Any]) -> str:
-    """Representasi Python literal (json.dumps) untuk dibenamkan di sel notebook."""
-    return json.dumps(cfg, indent=4, ensure_ascii=False)
+    """Representasi Python literal (pprint.pformat) untuk dibenamkan di sel notebook."""
+    return pprint.pformat(cfg, indent=4, sort_dicts=False)
 
 
 def config_snippet(cfg: dict[str, Any], var_name: str = "CONFIG") -> str:

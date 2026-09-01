@@ -225,4 +225,35 @@ Dari probs baseline label corrected (`hasil_e1_test_baseline.csv` v9):
 - McNemar holdout: b=24, c=15, p=0.20 (tidak signifikan).
 - **Temuan**: bobot terbaik hasil kalibrasi ulang = w=[1, 1.5, 1] — **persis sama dengan baseline terkunci**. Artinya baseline sudah pada titik optimal kalibrasi; grid 1.2–1.6 tidak memberi keuntungan tambahan.
 
-**Gate P3 — GAGAL** (0.7325 < 0.79). Kesimpulan lintas eksperimen: P1 (weighted CE) ≈ baseline, P2 (focal) jauh lebih buruk, P3 tidak menambah. **Bottleneck bukan pada keputusan/loss — model-level dengan data yang ada mentok di Macro F1 ≈ 0.73–0.74.** Satu-satunya jalur tersisa di roadmap: **P4 — active learning / re-annotasi sampel sulit** (300–500 sampel netral yang salah klasifikasi + fine-tune).
+**Gate P3 — GAGAL** (0.7325 < 0.79). Kesimpulan lintas eksperimen: P1 (weighted CE) ≈ baseline, P2 (focal) jauh lebih buruk, P3 tidak menambah. **Bottleneck bukan pada keputusan/loss — model-level dengan data yang ada mentok di Macro F1 ≈ 0.73–0.74.**
+
+---
+
+## Phase 2: Representation Enhancement — P1 (Fine-Tuning Sweep)  🟡 siap run
+
+### PRA (ditulis sebelum push)
+- **Kondisi**: Baseline terkunci (label corrected + threshold calibration $w=[1, 1.5, 1]$) menghasilkan Acc 0.7746 / Macro F1 **0.7394** / Netral Recall 0.669 / F1 0.601. Eksperimen loss (Class Weight, Focal Loss, Label Smoothing, Resampling) terbukti tidak mampu melampaui ceiling 0.74.
+- **Apa yang diubah**: Notebook baru `notebooks/exp_p1_ft_sweep.ipynb` (`temp_kernel/exp_p1_ft_sweep/`) yang menjalankan sweep 10 varian kombinasi hyperparameter training:
+  - *Learning Rate*: $1\times 10^{-5}, 2\times 10^{-5}, 3\times 10^{-5}, 5\times 10^{-5}, 1\times 10^{-4}, 2\times 10^{-4}$
+  - *Epochs*: 5, 8, 10
+  - *Warmup Ratio*: 0.0, 0.1
+  - *Weight Decay*: 0.0, 0.01
+  - *Max Length*: 64, 128
+- **Ekspektasi**: Memastikan IndoBERTweet tidak tersandera oleh hyperparameter dasar. Target gate: Macro F1 $\ge 0.77$.
+- **Cara ukur**: Evaluasi validation macro F1 per varian $\rightarrow$ model terbaik dievaluasi di test set ($n=1.730$) + simpan `exp_p1_ft_sweep_val.csv` dan `exp_p1_ft_sweep_test.csv`.
+- **Decision Gate**:
+  - Jika Macro F1 $\ge 0.77 \rightarrow$ Lanjut Polishing/Ensemble.
+  - Jika Macro F1 $< 0.77 \rightarrow$ **Langsung eksekusi P2 (TAPT)** sebagai prioritas utama.
+
+---
+
+## Phase 2: Representation Enhancement — P2 (Task-Adaptive Pretraining / TAPT)  ⚪ antrean
+
+### PRA (desain metodologis)
+- **Kondisi**: Jika P1 sweep selesai dan membuktikan hyperparameter bukan bottleneck utama, kapasitas representasi bahasa menjadi satu-satunya jalur peningkatan performa menuju Macro F1 $\ge 0.80$.
+- **Apa yang diubah**: Notebook `notebooks/exp_p2_tapt_mlm.ipynb` (`temp_kernel/exp_p2_tapt_mlm/`):
+  1. *Tahap 1 (Self-Supervised)*: Masked Language Modeling (MLM 15% mask) pada seluruh korpus 8.648 tweet bencana banjir selama 3 epoch (LR $5\times 10^{-5}$, evaluasi perplexity pada 10% holdout korpus).
+  2. *Tahap 2 (Supervised Fine-Tuning)*: Checkpoint domain-adapted TAPT dipasangi LoRA ($r=16, \alpha=32$) dan dilatih pada dataset sentimen terkoreksi (`text_bert`).
+- **Ekspektasi**: Model menginternalisasi konteks semantik lokal bencana banjir (nama sungai, istilah debit, singkatan darurat), mendorong Macro F1 $\ge 0.77 - 0.80$.
+- **Cara ukur**: Test classification report, confusion matrix, threshold calibration ($w=[1, 1.5, 1]$), dan uji signifikansi statistik McNemar vs baseline.
+

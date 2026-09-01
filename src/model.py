@@ -18,10 +18,11 @@ def build_indobertweet_lora(
     r: int = 16,
     lora_alpha: int = 32,
     num_labels: int = 3,
+    pretrained_model_name_or_path: str = MODEL_NAME,
 ):
     """Bangun model IndoBERTweet + LoRA (r, alpha, dropout) dengan classifier baru."""
     config = AutoConfig.from_pretrained(
-        MODEL_NAME,
+        pretrained_model_name_or_path,
         num_labels=num_labels,
         id2label=ID2LABEL,
         label2id=LABEL2ID,
@@ -29,7 +30,7 @@ def build_indobertweet_lora(
         attention_probs_dropout_prob=dropout,
     )
     model = AutoModelForSequenceClassification.from_pretrained(
-        MODEL_NAME, config=config, ignore_mismatched_sizes=True
+        pretrained_model_name_or_path, config=config, ignore_mismatched_sizes=True
     )
     model.config.id2label = ID2LABEL
     model.config.label2id = LABEL2ID

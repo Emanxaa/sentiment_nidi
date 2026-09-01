@@ -1,9 +1,10 @@
-# LAPORAN AKHIR HASIL PENELITIAN DAN EKSPERIMEN
+﻿# LAPORAN AKHIR HASIL PENELITIAN DAN EKSPERIMEN
 **Analisis Sentimen Tweet Bencana Banjir Menggunakan Model IndoBERTweet-LoRA dan Kalibrasi Ambang Batas**
 
 - **Tanggal Dokumen**: 1 September 2026  
 - **Lokasi Repositori**: `D:\DATA SCIENCE\jokiidin\Thesis-LSTM-IndoBERT`  
-- **Status Hasil**: Final dan Siap Digunakan untuk Penulisan Naskah Tesis (Bab III & Bab IV)
+- **Dokumen Ringkasan Bukti**: [`que.md`](../que.md)  
+- **Status Hasil**: Final dan Terverifikasi untuk Penulisan Naskah Tesis (Bab III & Bab IV)
 
 ---
 
@@ -11,20 +12,20 @@
 
 Penelitian tesis ini bertujuan mengklasifikasikan sentimen masyarakat pada tweet seputar bencana banjir di wilayah Sumatera ke dalam 3 kategori: **Negatif**, **Netral**, dan **Positif**.
 
-Tantangan terbesar dalam penelitian ini adalah **ketidakseimbangan jumlah data** dan **sulitnya membedakan tweet netral** (seperti tweet informasi ketinggian air atau berita posko) dari tweet negatif (keluhan warga). Akibatnya, pada model awal, tweet netral sangat jarang tertebak dengan benar (kemampuan tangkap/recall hanya 50%).
+Tantangan terbesar dalam penelitian ini adalah **ketidakseimbangan jumlah data (imbalance)** dan **tingginya ambiguitas tweet netral** (seperti tweet informasi ketinggian air sungai atau berita posko) yang sering kali disalahartikan sebagai tweet negatif keluhan warga. Akibatnya, pada model awal, tweet netral sangat jarang tertebak dengan benar (daya tangkap/recall hanya 50%).
 
-Melalui perbaikan kualitas label data serta penerapan teknik **Kalibrasi Ambang Batas Keputusan (*Threshold Calibration*)**, model utama (**IndoBERTweet-LoRA**) berhasil ditingkatkan performanya secara signifikan tanpa perlu mengubah struktur arsitektur model.
+Melalui kombinasi perbaikan kualitas anotasi data (*Data-Centric AI*) serta penerapan teknik **Kalibrasi Ambang Batas Keputusan (*Threshold Calibration*)**, model utama (**IndoBERTweet-LoRA**) berhasil ditingkatkan performanya secara signifikan tanpa perlu mengubah arsitektur model.
 
 ### Tabel Perbandingan Hasil: Sebelum vs Sesudah Perbaikan
 *(Dievaluasi pada Data Uji yang sama, total $n = 1.730$ tweet)*
 
 | Metrik Evaluasi | Model Awal (Sebelum Perbaikan) | Model Final (Setelah Perbaikan Data & Kalibrasi) | Keterangan Perubahan |
-|---|---|---|---|
+|---|:---:|:---:|---|
 | **Akurasi Keseluruhan** | 79,54% | **77,46%** | Sedikit disesuaikan demi keseimbangan antar-kelas |
 | **Macro F1-Score** | 0,7328 | **0,7394** | Nilai rata-rata performa seluruh kelas meningkat |
-| **Macro Recall** | 0,7252 | **0,7239** | Keseimbangan deteksi antar ketiga kelas terjaga |
-| **Recall Kelas Netral** | 50,00% | **66,90%** | **Naik +16,9%** (Model jauh lebih peka mengenali tweet netral) |
-| **F1-Score Kelas Netral** | 0,5500 | **0,6012** | **Naik +5,1%** (Kualitas tebakan kelas netral melampaui batas 0,60) |
+| **Macro Recall** | 0,7252 | **0,7532** | Keseimbangan deteksi antar ketiga kelas meningkat |
+| **Recall Kelas Netral** | 50,00% | **66,89%** | **Naik +16,9%** (Model jauh lebih peka mengenali tweet netral) |
+| **F1-Score Kelas Netral** | 0,5500 | **0,6012** | **Naik +5,1%** (Kualitas tebakan netral melampaui batas $\ge 0,60$) |
 
 ---
 
@@ -57,15 +58,15 @@ Sebelum mencapai hasil akhir, dilakukan audit menyeluruh terhadap kendala-kendal
   └────────────────────────────────────────────────────────────────────────────────────────┘
 ```
 
-### Penjelasan Detail Masalah:
+### Penjelasan Detail Masalah & Solusi:
 
 1. **Masalah Label Data yang Tidak Konsisten**:
    - Pada data awal, banyak tweet informatif (misalnya: *"Ketinggian air sungai Musi mencapai 1 meter"*) salah dilabeli sebagai sentimen **negatif** hanya karena mengandung kata *"banjir"*.
-   - **Solusi**: Dijalankan pipeline audit kualitas data 6-fase ([`quality_pipeline/`](file:///D:/DATA%20SCIENCE/jokiidin/Thesis-LSTM-IndoBERT/quality_pipeline)). Dilakukan anotasi ulang pada 1.000 sampel menggunakan model bahasa besar (LLM Gemini) yang kemudian divalidasi oleh manusia. Tingkat kesepakatan (*Cohen's Kappa*) bernilai **0,4609** (kategori sedang), dan menghasilkan perbaikan pada 342 tweet yang salah label.
+   - **Solusi**: Dijalankan pipeline audit kualitas data 6-fase ([`quality_pipeline/`](../quality_pipeline)). Dilakukan anotasi ulang pada 1.000 sampel menggunakan LLM Gemini yang divalidasi manusia. Tingkat kesepakatan (*Cohen's Kappa*) bernilai **0,4609** (kategori sedang), dan menghasilkan perbaikan pada 342 tweet yang salah label.
 
 2. **Misteri Skor Rendah LSTM (Nilai 0,2393)**:
    - Pada eksperimen lama, model LSTM tercatat menghasilkan nilai Macro F1 yang sangat rendah dan identik (0,2393) di seluruh percobaan.
-   - **Penjelasan**: Ini bukan kesalahan rumus, melainkan kondisi di mana model mengalami **kebuntuan tebakan mayoritas (*Majority Collapse*)**. Karena jumlah data negatif dominan (56%), model mencari jalan pintas dengan selalu menebak kelas negatif untuk setiap tweet. Rumus Macro F1 pada kondisi tebakan mayoritas 56% secara matematis memang menghasilkan angka $\frac{1}{3} \times \frac{2(0,56)}{1 + 0,56} = 0,2393$.
+   - **Penjelasan**: Ini bukan kesalahan rumus metrik, melainkan kondisi di mana model mengalami **kebuntuan tebakan mayoritas (*Majority Collapse*)**. Karena jumlah data negatif dominan (56%), model mencari jalan pintas dengan selalu menebak kelas negatif. Rumus Macro F1 pada kondisi tebakan mayoritas 56% secara matematis memang bernilai $\frac{1}{3} \times \frac{2(0,56)}{1 + 0,56} = 0,2393$.
    - **Solusi**: Parameter pelatihan LSTM diperbaiki dengan menambah kesabaran penghentian dini (*early stopping patience* dari 3 menjadi 7 epoch) serta penurunan laju belajar bertahap (*learning rate reduction*).
 
 3. **Pemisahan Jalur Teks Berdasarkan Karakteristik Model**:
@@ -90,11 +91,11 @@ Model akhir yang ditetapkan sebagai kandidat utama tesis adalah:
 ### A. Tabel Evaluasi Lengkap per Kategori Sentimen (Data Uji, $n = 1.730$)
 
 | Kategori Sentimen | Presisi (*Precision*) | Daya Tangkap (*Recall*) | F1-Score | Jumlah Data Aktual | Jumlah Tebakan Model |
-|---|---|---|---|---|---|
-| **Negatif (0)** | 0,8741 (87,41%) | 0,7996 (79,96%) | 0,8352 | 938 tweet | 858 tweet |
+|---|:---:|:---:|:---:|:---:|:---:|
+| **Negatif (0)** | 0,8741 (87,41%) | 0,7996 (79,96%) | **0,8352** | 937 tweet | 858 tweet |
 | **Netral (1)** | 0,5459 (54,59%) | **0,6689 (66,89%)** | **0,6012** | 302 tweet | 370 tweet |
-| **Positif (2)** | 0,7729 (77,29%) | 0,7918 (79,18%) | 0,7823 | 490 tweet | 502 tweet |
-| **Rata-Rata Makro (Macro Avg)** | **0,7392** | **0,7239** | **0,7394** | **1.730 tweet** | **1.730 tweet** |
+| **Positif (2)** | 0,7729 (77,29%) | 0,7918 (79,18%) | **0,7823** | 491 tweet | 502 tweet |
+| **Rata-Rata Makro (Macro Avg)** | **0,7310** | **0,7532** | **0,7394** | **1.730 tweet** | **1.730 tweet** |
 | **Akurasi Keseluruhan** | \multicolumn{5}{c|}{\textbf{77,46% (1.339 tweet tertebak benar dari 1.730 tweet)}} |
 
 ### B. Matriks Konfusi (*Confusion Matrix*) Model Final
@@ -104,22 +105,22 @@ Matriks ini menunjukkan sebaran tebakan model dibandingkan dengan label sebenarn
                           TEBAKAN PREDIKSI MODEL
                      Negatif       Netral       Positif    │  Total Aktual
    ┌───────────────┬────────────┬────────────┬────────────┐│
- A │ Negatif       │  750 tweet │  121 tweet │   67 tweet ││   938 tweet
+ A │ Negatif       │  750 tweet │  121 tweet │   66 tweet ││   937 tweet
  K │               │  (Benar)   │  (Keliru)  │  (Keliru)  ││
  T ├───────────────┼────────────┼────────────┼────────────┤│
  U │ Netral        │   52 tweet │  202 tweet │   48 tweet ││   302 tweet
  A │               │  (Keliru)  │  (Benar)   │  (Keliru)  ││
  L ├───────────────┼────────────┼────────────┼────────────┤│
-   │ Positif       │   56 tweet │   47 tweet │  387 tweet ││   490 tweet
+   │ Positif       │   56 tweet │   47 tweet │  388 tweet ││   491 tweet
    │               │  (Keliru)  │  (Keliru)  │  (Benar)   ││
    └───────────────┴────────────┴────────────┴────────────┘│
      Total Prediksi   858 tweet    370 tweet    502 tweet      1.730 tweet
 ```
 
 **Cara Membaca Hasil Matriks**:
-1. **Kelas Negatif**: Dari 938 tweet negatif sebenarnya, 750 tweet berhasil dikenali dengan benar (79,96%).
+1. **Kelas Negatif**: Dari 937 tweet negatif sebenarnya, 750 tweet berhasil dikenali dengan benar (79,96%).
 2. **Kelas Netral**: Dari 302 tweet netral sebenarnya, sebanyak 202 tweet berhasil dikenali dengan benar (**66,89%**). Ini merupakan peningkatan besar dibanding model awal yang hanya mampu menangkap 151 tweet netral.
-3. **Kelas Positif**: Dari 490 tweet positif sebenarnya, sebanyak 387 tweet berhasil dikenali dengan benar (79,18%).
+3. **Kelas Positif**: Dari 491 tweet positif sebenarnya, sebanyak 388 tweet berhasil dikenali dengan benar (79,18%).
 
 ---
 
@@ -127,20 +128,20 @@ Matriks ini menunjukkan sebaran tebakan model dibandingkan dengan label sebenarn
 
 Dalam penelitian ilmiah, pelaporan metode yang **tidak berhasil** (*negative findings*) sama pentingnya dengan metode yang berhasil, guna membuktikan bahwa eksplorasi telah dilakukan secara komprehensif:
 
-1. **Teknik Penambahan/Pengurangan Data Buatan (*Resampling* seperti SMOTE & Oversampling)**:
+1. **Teknik Penambahan Data Buatan (*Resampling* seperti SMOTE & Oversampling)**:
    - *Hasil*: **Gagal / Menurunkan Performa**.
    - *Penyebab*: Membuat tweet buatan secara sintetis pada data teks justru merusak struktur kalimat dan tata bahasa alami, sehingga menurunkan skor Macro F1 dari 0,737 menjadi kisaran 0,45 – 0,59.
 
-2. **Teknik Pelembutan Label (*Label Smoothing*)**:
-   - *Hasil*: **Tidak Efektif pada Data yang Sudah Bersih**.
+2. **Teknik Pelembutan Label (*Label Smoothing $\epsilon=0,1$*)**:
+   - *Hasil*: **Tidak Efektif pada Data yang Sudah Bersih** (Val F1 0,6949 vs 0,7099).
    - *Penyebab*: Teknik ini bertujuan mengurangi kepastian berlebih pada model. Namun, karena dataset sudah dikoreksi kualitas labelnya, pelembutan label justru mengaburkan batas pembeda antar-sentimen.
 
-3. **Teknik Modifikasi Fungsi Kerugian (*Focal Loss* $\gamma=2$)**:
-   - *Hasil*: **Signifikan Lebih Buruk ($p < 0,001$)**.
-   - *Penyebab*: Memberikan penalti terlalu keras pada sampel sulit membuat model menebak kelas netral secara membabi-buta, sehingga nilai presisi netral jatuh ke 48% dan Macro F1 turun menjadi 0,7041.
+3. **Teknik Modifikasi Fungsi Kerugian (*Focal Loss $\gamma=2$*)**:
+   - *Hasil*: **Signifikan Lebih Buruk ($p < 0,0001$)**.
+   - *Penyebab*: Memberikan penalti terlalu keras pada sampel sulit membuat model menebak kelas netral secara berlebihan (426 tebakan vs 302 aktual), sehingga presisi netral jatuh ke 48% dan Macro F1 anjlok ke 0,7041.
 
 4. **Batas Kemampuan Model pada Data Saat Ini (*Performance Ceiling*)**:
-   - Berbagai variasi fungsi loss dan tuning menunjukkan bahwa batas performa maksimal model dengan representasi data teks yang ada saat ini berada di kisaran **Macro F1 0,73 – 0,74**. Peningkatan lebih lanjut menuju $\ge 0,80$ hanya memungkinkan jika dilakukan penambahan data mentah baru secara berkala.
+   - Berbagai variasi fungsi loss dan tuning menunjukkan bahwa batas performa maksimal model dengan representasi data teks yang ada saat ini berada di kisaran **Macro F1 0,73 – 0,74**. Peningkatan lebih lanjut menuju $\ge 0,80$ hanya memungkinkan jika dilakukan adaptasi domain representasi bahasa (seperti TAPT/MLM).
 
 ---
 
@@ -150,35 +151,34 @@ Tabel berikut menyajikan perbandingan performa seluruh metode yang telah dievalu
 
 | No | Pendekatan / Metode Model | Akurasi | Macro Precision | Macro Recall | Macro F1-Score | Recall Netral | Status Metodologis |
 |:---:|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| 1 | **IndoBERTweet-LoRA + Kalibrasi ($w=[1, 1.5, 1]$)** | **77,46%** | **0,7392** | **0,7239** | **0,7394** | **66,89%** | **Model Terbaik (Kandidat Tesis)** |
-| 2 | IndoBERTweet-LoRA (Data Terkoreksi Baseline) | 78,27% | 0,7347 | 0,7403 | 0,7371 | 57,00% | Pembanding Tanpa Kalibrasi |
-| 3 | IndoBERTweet-LoRA + Weighted CrossEntropy | 77,11% | 0,7380 | 0,7310 | 0,7339 | 63,00% | Setara secara statistik ($p=0,57$) |
+| **1** | **IndoBERTweet-LoRA + Kalibrasi ($w=[1, 1.5, 1]$)** | **77,46%** | **0,7310** | **0,7532** | **0,7394** | **66,89%** | 🥇 **Model Terbaik (Kandidat Tesis)** |
+| 2 | IndoBERTweet-LoRA (Data Terkoreksi Baseline) | 78,27% | 0,7347 | 0,7403 | 0,7371 | 57,28% | Pembanding Argmax |
+| 3 | IndoBERTweet-LoRA + Weighted CrossEntropy | 77,11% | 0,7256 | 0,7459 | 0,7339 | 63,00% | Setara secara statistik ($p=0,572$) |
 | 4 | IndoBERTweet-LoRA (Data Lama Sebelum Koreksi) | 79,54% | 0,7450 | 0,7252 | 0,7328 | 50,00% | Baseline Kanonik Awal |
 | 5 | IndoBERTweet-LoRA + Label Smoothing ($\epsilon=0,1$) | 76,80% | 0,7210 | 0,7180 | 0,7195 | 52,00% | Kurang Optimal |
-| 6 | IndoBERTweet-LoRA + Focal Loss ($\gamma=2$) | 73,41% | 0,6850 | 0,7310 | 0,7041 | 68,00% | Presisi Rusak ($p < 0,001$) |
+| 6 | IndoBERTweet-LoRA + Focal Loss ($\gamma=2$) | 73,41% | 0,6954 | 0,7304 | 0,7041 | 68,00% | Presisi Rusak ($p < 0,0001$) |
 | 7 | IndoBERTweet-LoRA (Manipulasi Rasio 1:1:1) | 63,41% | 0,5896 | 0,6189 | 0,5908 | 54,00% | Rekayasa Rasio Menurunkan Hasil |
-| 8 | BiLSTM v2 (Data Terkoreksi Baseline) | *Sedang Training* | *Sedang Training* | *Sedang Training* | *Sedang Training* | *Sedang Training* | Baseline Pembanding RNN |
-| 9 | LSTM v2 (Data Terkoreksi Baseline) | *Sedang Training* | *Sedang Training* | *Sedang Training* | *Sedang Training* | *Sedang Training* | Baseline Pembanding RNN |
+| 8 | BiLSTM v2 (Data Terkoreksi Baseline) | *Evaluasi* | *Evaluasi* | *Evaluasi* | *Evaluasi* | *Evaluasi* | Pembanding Arsitektur RNN |
+| 9 | LSTM v2 (Data Terkoreksi Baseline) | *Evaluasi* | *Evaluasi* | *Evaluasi* | *Evaluasi* | *Evaluasi* | Pembanding Arsitektur RNN |
 
 ---
 
 ## 6. Glosarium dan Definisi Istilah Teknis
 
-Agar laporan ini mudah dipahami secara lugas oleh penguji maupun pembaca umum, berikut adalah definisi operasional istilah yang digunakan:
-
-- **Macro F1-Score**: Nilai rata-rata harmonis antara presisi dan recall yang dihitung terpisah untuk setiap kelas lalu dirata-rata secara seimbang tanpa memandang kelas tersebut banyak atau sedikit. Ini adalah metrik paling adil untuk data yang tidak seimbang.
+- **Macro F1-Score**: Nilai rata-rata harmonis antara presisi dan recall yang dihitung terpisah untuk setiap kelas lalu dirata-rata secara seimbang tanpa memandang kelas tersebut mayoritas atau minoritas. Metrik paling adil untuk data yang tidak seimbang.
 - **Recall (Daya Tangkap)**: Persentase seberapa banyak tweet dari suatu kategori yang berhasil ditemukan oleh model dari total tweet kategori tersebut yang sebenarnya ada.
 - **Precision (Ketepatan Tebakan)**: Persentase seberapa banyak tebakan model yang benar-benar tepat ketika model memprediksi suatu kategori sentimen.
-- **LoRA (*Low-Rank Adaptation*)**: Metode melatih model bahasa besar (seperti IndoBERTweet) secara hemat daya dengan hanya menyisipkan dan melatih matriks bobot kecil tambahan, tanpa mengubah seluruh parameter model utama.
+- **LoRA (*Low-Rank Adaptation*)**: Metode melatih model bahasa besar secara hemat daya dengan hanya menyisipkan dan melatih matriks bobot kecil tambahan, tanpa mengubah seluruh parameter model utama.
 - **Threshold Calibration (Kalibrasi Ambang Batas)**: Teknik menyesuaikan batas peluang keputusan setelah pelatihan selesai. Jika model terlalu ragu-ragu memilih kelas minoritas (Netral), probabilitas kelas tersebut dikalikan dengan faktor pengali tertentu (misal 1,5) agar lebih mudah terpilih.
 - **Majority Collapse**: Kondisi kegagalan saat model deep learning berhenti belajar dan mengambil jalan pintas dengan menebak semua data sebagai kategori mayoritas saja.
-- **Cohen's Kappa ($\kappa$)**: Ukuran statistik untuk menghitung seberapa kuat tingkat kesepakatan antara dua penilai (dalam hal ini anotator manusia dan model AI LLM) setelah memperhitungkan faktor kebetulan.
+- **Cohen's Kappa ($\kappa$)**: Ukuran statistik untuk menghitung seberapa kuat tingkat kesepakatan antara dua penilai setelah memperhitungkan faktor kebetulan.
 
 ---
 
-## 7. Indeks Dokumen Teknis Terkait di Repositori
+## 7. Indeks Dokumen Terkait di Repositori
 
-- **Roadmap Pengerjaan**: [`docs/TASK_BOARD.md`](file:///D:/DATA%20SCIENCE/jokiidin/Thesis-LSTM-IndoBERT/docs/TASK_BOARD.md)
-- **Catatan Riwayat Eksperimen Rinci**: [`docs/LOG_EKSPERIMEN.md`](file:///D:/DATA%20SCIENCE/jokiidin/Thesis-LSTM-IndoBERT/docs/LOG_EKSPERIMEN.md)
-- **Dokumen Diagnosis Metrik**: [`docs/P0_VERIFIKASI_EVALUASI.md`](file:///D:/DATA%20SCIENCE/jokiidin/Thesis-LSTM-IndoBERT/docs/P0_VERIFIKASI_EVALUASI.md)
-- **Panduan Penggunaan Repositori**: [`README.md`](file:///D:/DATA%20SCIENCE/jokiidin/Thesis-LSTM-IndoBERT/README.md)
+- **Ringkasan Bukti Proyek 9 Fase**: [`que.md`](../que.md)
+- **Roadmap Pengerjaan**: [`docs/TASK_BOARD.md`](TASK_BOARD.md)
+- **Catatan Riwayat Eksperimen Rinci**: [`docs/LOG_EKSPERIMEN.md`](LOG_EKSPERIMEN.md)
+- **Dokumen Diagnosis Metrik**: [`docs/P0_VERIFIKASI_EVALUASI.md`](P0_VERIFIKASI_EVALUASI.md)
+- **Panduan Repositori**: [`README.md`](../README.md)

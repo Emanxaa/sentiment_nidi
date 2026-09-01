@@ -1,33 +1,99 @@
-# Eksperimen P1 — Fine-Tuning Sweep (Pareto Decision Tree)
-# Target: Menguji apakah hyperparameter training dasar (LR, Epoch, Warmup, Weight Decay, Max Length)
-#         masih menahan performa representasi IndoBERTweet-LoRA sebelum masuk ke tahap TAPT (P2).
+﻿# Eksperimen P1 — Fine-Tuning Sweep (Pareto Decision Tree)
+# Target: Menguji parameter training dasar (LR, Epoch, Warmup, Weight Decay, Max Length)
+#         untuk memastikan kapasitas representasi IndoBERTweet tidak tertahan oleh hyperparameter.
 
 exp_id: exp_p1_ft_sweep
-family: hf_lora
+family: hf_lora_sweep
 title: "Thesis LoRA - P1 Fine-Tuning Sweep"
-description: "P1 Pareto Workflow - Hyperparameter Sweep (LR, Epoch, Warmup, Weight Decay) pada Data Label Corrected"
+description: "P1 Pareto Workflow - Hyperparameter Sweep pada Data Label Corrected"
 
-loss: cross_entropy
 target_gate: 0.77  # Jika >= 0.77 lanjut Polishing; jika < 0.77 lanjut P2 (TAPT)
 
-sweep_grid:
-  learning_rates: [0.00005, 0.0001, 0.0002, 0.0003]
-  epochs: [5, 8, 10]
-  warmup_ratios: [0.0, 0.1]
-  weight_decays: [0.0, 0.01]
-  max_lengths: [64, 128]
+variants:
+  - name: "t1_lr1e5_ep5_wm0_wd0_len128"
+    learning_rate: 0.00001
+    epochs: 5
+    warmup_ratio: 0.0
+    weight_decay: 0.0
+    max_length: 128
+    batch_size: 16
+
+  - name: "t2_lr2e5_ep5_wm10_wd001_len128"
+    learning_rate: 0.00002
+    epochs: 5
+    warmup_ratio: 0.1
+    weight_decay: 0.01
+    max_length: 128
+    batch_size: 16
+
+  - name: "t3_lr3e5_ep8_wm10_wd001_len128"
+    learning_rate: 0.00003
+    epochs: 8
+    warmup_ratio: 0.1
+    weight_decay: 0.01
+    max_length: 128
+    batch_size: 16
+
+  - name: "t4_lr5e5_ep8_wm10_wd001_len128"
+    learning_rate: 0.00005
+    epochs: 8
+    warmup_ratio: 0.1
+    weight_decay: 0.01
+    max_length: 128
+    batch_size: 16
+
+  - name: "t5_lr1e4_ep8_wm10_wd001_len128"
+    learning_rate: 0.00010
+    epochs: 8
+    warmup_ratio: 0.1
+    weight_decay: 0.01
+    max_length: 128
+    batch_size: 16
+
+  - name: "t6_lr2e4_ep8_wm10_wd001_len128_base"
+    learning_rate: 0.00020
+    epochs: 8
+    warmup_ratio: 0.1
+    weight_decay: 0.01
+    max_length: 128
+    batch_size: 16
+
+  - name: "t7_lr3e5_ep10_wm10_wd001_len128"
+    learning_rate: 0.00003
+    epochs: 10
+    warmup_ratio: 0.1
+    weight_decay: 0.01
+    max_length: 128
+    batch_size: 16
+
+  - name: "t8_lr2e4_ep10_wm10_wd001_len128"
+    learning_rate: 0.00020
+    epochs: 10
+    warmup_ratio: 0.1
+    weight_decay: 0.01
+    max_length: 128
+    batch_size: 16
+
+  - name: "t9_lr3e5_ep8_wm10_wd001_len64"
+    learning_rate: 0.00003
+    epochs: 8
+    warmup_ratio: 0.1
+    weight_decay: 0.01
+    max_length: 64
+    batch_size: 16
+
+  - name: "t10_lr2e4_ep8_wm10_wd001_len64"
+    learning_rate: 0.00020
+    epochs: 8
+    warmup_ratio: 0.1
+    weight_decay: 0.01
+    max_length: 64
+    batch_size: 16
 
 params:
-  learning_rate: 0.0002
-  batch_size: 16
-  epochs: 8
-  warmup_ratio: 0.1
-  weight_decay: 0.01
   dropout: 0.3
   lora_r: 16
   lora_alpha: 32
-  max_length: 128
-  metric_for_best_model: "eval_f1_macro"
 
 dataset_sources:
   - emanuelembuaijdak/thesis-indobert-processed-data

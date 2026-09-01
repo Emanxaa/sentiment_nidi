@@ -1,14 +1,15 @@
 """Generator notebook eksperimen: config YAML -> notebook 10-sel + temp_kernel/<exp>/.
 
 Prinsip:
-- Sumber kebenaran ada di `src/` — source modul-modulnya DISUNTIK ke sel notebook
-  (karena di Kaggle tidak bisa import `src/`), sehingga notebook self-contained
+- Sumber kebenaran ada di src/ - source modul-modulnya DISUNTIK ke sel notebook
+  (karena di Kaggle tidak bisa import src/), sehingga notebook self-contained
   dan template sel identik untuk semua eksperimen.
-- Setiap eksperimen hanya berbeda file config di `configs/<exp_id>.yaml`.
-- Keluaran: `notebooks/<exp_id>.ipynb` + `temp_kernel/<exp_id>/` (siap `kaggle kernels push`).
+- Setiap eksperimen hanya berbeda file config di configs/<exp_id>.yaml.
+- Keluaran: notebooks/<exp_id>.ipynb + temp_kernel/<exp_id>/ (siap kaggle kernels push).
 
 Cara pakai:
-    python tools/generate_notebook.py --config configs/exp_p1_weightedce.yaml
+    python tools/generate_notebook.py --config configs/exp_p1_ft_sweep.yaml
+    python tools/generate_notebook.py --config configs/exp_p2_tapt_mlm.yaml
 """
 from __future__ import annotations
 
@@ -19,7 +20,7 @@ import sys
 from pathlib import Path
 
 import nbformat
-from nbformat.v4 import new_code_cell, new_markdown_cell, new_notebook
+from nbformat.v4 import new_code_cell, new_notebook
 
 ROOT = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT))
@@ -35,13 +36,12 @@ OWNER = "emanuelembuaijdak"
 # Modul src yang disuntik per family (urutan penting: dependencies dulu)
 SRC_MODULES_BY_FAMILY = {
     "hf_lora": ["config.py", "data.py", "model.py", "metrics.py", "trainer_factory.py", "summary.py"],
+    "hf_lora_sweep": ["config.py", "data.py", "model.py", "metrics.py", "trainer_factory.py", "summary.py"],
+    "hf_tapt_lora": ["config.py", "data.py", "model.py", "metrics.py", "trainer_factory.py", "summary.py"],
     "keras_lstm": ["config.py", "keras_data.py", "keras_model.py", "metrics.py", "summary.py"],
     "keras_bilstm": ["config.py", "keras_data.py", "keras_model.py", "metrics.py", "summary.py"],
 }
-SRC_MODULES = SRC_MODULES_BY_FAMILY["hf_lora"]  # default (backward compat)
 
-# Environment pin — family Keras butuh tensorflow (image sudah ada), tetap pin transformers
-# tidak wajib untuk Keras; sel ini disesuaikan per family di bawah.
 PIN_CELL_HF = """\
 # P0.3 (replikasi): pin stack era 4.x (transformers 5.0 menurunkan performa).
 # torchao 0.10 tidak kompatibel dengan peft -> uninstall dulu.
@@ -50,8 +50,7 @@ PIN_CELL_HF = """\
 """
 
 PIN_CELL_KERAS = """\
-# P0.3 (replikasi): pin stack era 4.x — transformers tidak dipakai family Keras,
-# tapi pip pin tetap untuk konsistensi environment jika sel import menyentuh HF.
+# P0.3 (replikasi): pin stack era 4.x.
 !pip uninstall -y torchao
 !pip install --force-reinstall --no-deps "transformers==4.46.3" "peft==0.13.2" "tokenizers==0.20.3" "huggingface-hub==0.26.5"
 """
@@ -101,10 +100,11 @@ DATASET_CELL = """\
 df = load_dataframe()
 split = split_data(df, test_size=0.2, val_size=0.1, random_state=seed)
 
+max_len = CONFIG.get("params", {}).get("max_length", 128) if isinstance(CONFIG.get("params"), dict) else 128
 tokenizer = load_tokenizer()
-train_dataset = SentimenDataset(split["X_train"], split["y_train"], tokenizer, max_length=CONFIG["max_length"])
-val_dataset = SentimenDataset(split["X_val"], split["y_val"], tokenizer, max_length=CONFIG["max_length"])
-test_dataset = SentimenDataset(split["X_test"], split["y_test"], tokenizer, max_length=CONFIG["max_length"])
+train_dataset = SentimenDataset(split["X_train"], split["y_train"], tokenizer, max_length=max_len)
+val_dataset = SentimenDataset(split["X_val"], split["y_val"], tokenizer, max_length=max_len)
+test_dataset = SentimenDataset(split["X_test"], split["y_test"], tokenizer, max_length=max_len)
 print(f"Train {len(train_dataset)} | Val {len(val_dataset)} | Test {len(test_dataset)}")
 """
 
@@ -112,17 +112,15 @@ MODEL_CELL = """\
 # =====================================================
 # MODEL (build LoRA dari CONFIG)
 # =====================================================
+p = CONFIG.get("params", {})
 model = build_indobertweet_lora(
-    dropout=CONFIG["dropout"],
-    r=CONFIG["lora_r"],
-    lora_alpha=CONFIG["lora_alpha"],
+    dropout=p.get("dropout", 0.3),
+    r=p.get("lora_r", 16),
+    lora_alpha=p.get("lora_alpha", 32),
 )
 model.print_trainable_parameters()
 """
 
-# ---------------------------------------------------------------------------
-# Sel-sel family Keras (LSTM/BiLSTM)
-# ---------------------------------------------------------------------------
 GPU_CELL_KERAS = """\
 # P0.1 (replikasi): paksa 1 GPU.
 import os
@@ -177,13 +175,7 @@ def make_model(variant):
     )
 """
 
-
 def _training_keras_cell(config: dict) -> str:
-    """Loop variants (grid/debug) -> latih tiap konfigurasi -> pilih best by val macro F1.
-
-    Setiap variant diset seed ulang; sanity check collapse per variant.
-    Hasil val disimpan ke `<exp_id>_val.csv`; model terbaik dipertahankan.
-    """
     exp_id = config["exp_id"]
     return f"""\
 # =====================================================
@@ -247,7 +239,6 @@ for v in variants:
         d["y_val"], y_val_pred, average="macro", zero_division=0
     )
 
-    # --- Sanity check (P0): deteksi collapse ---
     maj = pd.Series(d["y_val"]).mode()[0]
     p_maj = float((d["y_val"] == maj).mean())
     f1_maj = (2 * p_maj / (1 + p_maj)) / 3
@@ -280,7 +271,6 @@ df_val.to_csv("{exp_id}_val.csv", index=False)
 print("Best variant (val macro F1):", best_variant, "| F1:", round(best_f1, 4))
 """
 
-
 def _eval_keras_cell(config: dict) -> str:
     exp_id = config["exp_id"]
     return f"""\
@@ -291,7 +281,7 @@ import matplotlib.pyplot as plt
 import seaborn as sns
 from sklearn.metrics import classification_report, confusion_matrix, accuracy_score, precision_recall_fscore_support
 
-P = best_model.predict(d["X_test_pad"], verbose=0)  # Keras softmax -> proba per kelas
+P = best_model.predict(d["X_test_pad"], verbose=0)
 y_pred_test = np.argmax(P, axis=1)
 
 print(classification_report(d["y_test"], y_pred_test, target_names=LABEL_NAMES, zero_division=0))
@@ -323,35 +313,26 @@ plt.ylabel("Actual")
 plt.show()
 """
 
-
 def _src_cell(family: str) -> str:
-    """Gabungkan source modul src/ menjadi satu sel (self-contained di Kaggle).
-
-    - `from __future__` hanya boleh di baris pertama file/sel -> dipindah ke atas.
-    - `if __name__ == "__main__"` guard dibuang.
-    """
-    parts = ["from __future__ import annotations",  # wajib baris pertama
+    parts = ["from __future__ import annotations",
              "# =====================================================",
              "# SUMBER KEBENARAN: src/ (disuntik oleh tools/generate_notebook.py)",
              "# Jangan edit langsung di notebook - edit src/ lalu generate ulang.",
              "# ====================================================="]
-    for name in SRC_MODULES_BY_FAMILY[family]:
+    module_key = family if family in SRC_MODULES_BY_FAMILY else "hf_lora"
+    for name in SRC_MODULES_BY_FAMILY[module_key]:
         text = (SRC / name).read_text(encoding="utf-8")
-        # buang baris from __future__ (sudah disediakan di atas)
         text = "\n".join(
             ln for ln in text.splitlines()
             if not ln.strip().startswith("from __future__ import")
         )
-        # potong bagian main guard bila ada
         if "__main__" in text:
             text = text.split('if __name__ == "__main__":')[0]
         parts.append(f"\n# --- src/{name} ---\n{text}")
     return "\n".join(parts)
 
-
 def _config_cell(config: dict) -> str:
     return f"# =====================================================\n# CONFIG (dibenamkan dari configs/{config['exp_id']}.yaml)\n# =====================================================\nCONFIG = {cfg_mod.config_repr(config)}\nprint(json.dumps(CONFIG, indent=2))"
-
 
 def _training_cell(config: dict) -> str:
     p = config["params"]
@@ -371,6 +352,7 @@ training_args = TrainingArguments(
     per_device_eval_batch_size={p['batch_size']!r},
     num_train_epochs={p['epochs']!r},
     weight_decay={p.get('weight_decay', 0.01)!r},
+    warmup_ratio={p.get('warmup_ratio', 0.0)!r},
     eval_strategy="epoch",
     save_strategy="epoch",
     load_best_model_at_end=True,
@@ -407,6 +389,239 @@ status = "COLLAPSE" if eval_result["eval_f1_macro"] <= f1_maj + 1e-6 else "OK"
 print("STATUS:", status)
 """
 
+def _training_hf_sweep_cell(config: dict) -> str:
+    exp_id = config["exp_id"]
+    return f"""\
+# =====================================================
+# TRAINING SWEEP (loop variants: LR, Epoch, Warmup, Weight Decay, MaxLen)
+# =====================================================
+from transformers import TrainingArguments
+
+variants = CONFIG["variants"]
+val_results = []
+best_val_f1 = -1.0
+best_variant = None
+best_trainer = None
+best_test_dataset = test_dataset
+
+for v in variants:
+    name = v["name"]
+    lr = v["learning_rate"]
+    ep = v["epochs"]
+    wm = v.get("warmup_ratio", 0.0)
+    wd = v.get("weight_decay", 0.0)
+    max_len = v.get("max_length", 128)
+    bs = v.get("batch_size", 16)
+
+    print("\\n" + "=" * 65)
+    print(f"VARIANT: {{name}}")
+    print(f"LR: {{lr}} | Epochs: {{ep}} | Warmup: {{wm}} | WD: {{wd}} | MaxLen: {{max_len}} | Batch: {{bs}}")
+    print("=" * 65)
+
+    tok = load_tokenizer()
+    v_train_ds = SentimenDataset(split["X_train"], split["y_train"], tok, max_length=max_len)
+    v_val_ds = SentimenDataset(split["X_val"], split["y_val"], tok, max_length=max_len)
+    v_test_ds = SentimenDataset(split["X_test"], split["y_test"], tok, max_length=max_len)
+
+    torch.cuda.empty_cache()
+    p = CONFIG.get("params", {{}})
+    v_model = build_indobertweet_lora(
+        dropout=p.get("dropout", 0.3),
+        r=p.get("lora_r", 16),
+        lora_alpha=p.get("lora_alpha", 32),
+    )
+
+    training_args = TrainingArguments(
+        output_dir=f"./results_{{name}}",
+        learning_rate=lr,
+        per_device_train_batch_size=bs,
+        per_device_eval_batch_size=bs,
+        num_train_epochs=ep,
+        warmup_ratio=wm,
+        weight_decay=wd,
+        eval_strategy="epoch",
+        save_strategy="epoch",
+        load_best_model_at_end=True,
+        metric_for_best_model="f1_macro",
+        greater_is_better=True,
+        logging_steps=50,
+        report_to="none",
+        save_total_limit=1,
+    )
+
+    trainer_v = build_trainer(
+        loss="cross_entropy",
+        model=v_model,
+        args=training_args,
+        train_dataset=v_train_ds,
+        eval_dataset=v_val_ds,
+        compute_metrics=compute_metrics,
+    )
+    trainer_v.train()
+    eval_result = trainer_v.evaluate()
+    val_f1 = eval_result["eval_f1_macro"]
+    val_acc = eval_result["eval_accuracy"]
+    print(f"Validation -> Acc: {{val_acc:.4f}} | Macro F1: {{val_f1:.4f}}")
+
+    preds_val = trainer_v.predict(v_val_ds)
+    y_val_pred = np.argmax(preds_val.predictions, axis=1)
+    maj = pd.Series(split["y_val"]).mode()[0]
+    p_maj = float((split["y_val"] == maj).mean())
+    f1_maj = (2 * p_maj / (1 + p_maj)) / 3
+    status = "COLLAPSE" if val_f1 <= f1_maj + 1e-6 else "OK"
+    print("STATUS:", status)
+
+    val_results.append({{
+        "name": name,
+        "learning_rate": lr,
+        "epochs": ep,
+        "warmup_ratio": wm,
+        "weight_decay": wd,
+        "max_length": max_len,
+        "val_accuracy": val_acc,
+        "val_macro_f1": val_f1,
+        "status": status,
+    }})
+
+    if val_f1 > best_val_f1:
+        best_val_f1 = val_f1
+        best_variant = name
+        best_trainer = trainer_v
+        best_test_dataset = v_test_ds
+
+df_val = pd.DataFrame(val_results).sort_values("val_macro_f1", ascending=False)
+print("\\n=== RINGKASAN VALIDATION SWEEP P1 ===")
+print(df_val.to_string(index=False))
+df_val.to_csv("{exp_id}_val.csv", index=False)
+print(f"\\nBest Variant: {{best_variant}} dengan Val Macro F1: {{best_val_f1:.4f}}")
+
+trainer = best_trainer
+test_dataset = best_test_dataset
+"""
+
+def _tapt_cell(config: dict) -> str:
+    p = config["params"]
+    return f"""\
+# =====================================================
+# TAHAP 1: TASK-ADAPTIVE PRETRAINING (MLM Domain Adaptation)
+# =====================================================
+import math
+from transformers import (
+    AutoModelForMaskedLM,
+    DataCollatorForLanguageModeling,
+    Trainer as HFTrainer,
+    TrainingArguments,
+)
+from torch.utils.data import Dataset
+
+print("Memulai Tahap 1: Masked Language Modeling pada Korpus Banjir...")
+
+raw_texts = df[COL_TEXT].dropna().tolist()
+print(f"Total tweet korpus untuk TAPT: {{len(raw_texts)}}")
+
+class MLMTextDataset(Dataset):
+    def __init__(self, texts, tokenizer, max_length=128):
+        self.encodings = tokenizer(
+            texts,
+            truncation=True,
+            padding="max_length",
+            max_length=max_length,
+            return_tensors="pt",
+        )
+    def __len__(self):
+        return len(self.encodings["input_ids"])
+    def __getitem__(self, idx):
+        return {{{{key: val[idx] for key, val in self.encodings.items()}}}}
+
+train_texts, val_texts = train_test_split(raw_texts, test_size=0.1, random_state=42)
+mlm_train_ds = MLMTextDataset(train_texts, tokenizer, max_length={p.get('max_length', 128)})
+mlm_val_ds = MLMTextDataset(val_texts, tokenizer, max_length={p.get('max_length', 128)})
+
+mlm_model = AutoModelForMaskedLM.from_pretrained(MODEL_NAME)
+data_collator = DataCollatorForLanguageModeling(
+    tokenizer=tokenizer,
+    mlm=True,
+    mlm_probability={p.get('mlm_probability', 0.15)},
+)
+
+mlm_args = TrainingArguments(
+    output_dir="./tapt_mlm_checkpoints",
+    num_train_epochs={p.get('mlm_epochs', 3)},
+    learning_rate={p.get('mlm_learning_rate', 5e-5)},
+    per_device_train_batch_size={p.get('mlm_batch_size', 16)},
+    per_device_eval_batch_size={p.get('mlm_batch_size', 16)},
+    weight_decay={p.get('mlm_weight_decay', 0.01)},
+    eval_strategy="epoch",
+    save_strategy="epoch",
+    save_total_limit=1,
+    logging_steps=50,
+    report_to="none",
+)
+
+mlm_trainer = HFTrainer(
+    model=mlm_model,
+    args=mlm_args,
+    train_dataset=mlm_train_ds,
+    eval_dataset=mlm_val_ds,
+    data_collator=data_collator,
+)
+
+print("\\n[MLM Training] Menjalankan adaptasi domain TAPT...")
+mlm_trainer.train()
+eval_mlm = mlm_trainer.evaluate()
+perplexity = math.exp(eval_mlm["eval_loss"])
+print(f"\\nTAPT Selesai! Eval Loss: {{eval_mlm['eval_loss']:.4f}} | Perplexity: {{perplexity:.4f}}")
+
+TAPT_DIR = "./tapt_domain_checkpoint"
+mlm_trainer.save_model(TAPT_DIR)
+tokenizer.save_pretrained(TAPT_DIR)
+print(f"Checkpoint TAPT tersimpan di: {{TAPT_DIR}}")
+
+# =====================================================
+# TAHAP 2: DOWNSTREAM LoRA CLASSIFICATION (dari TAPT Checkpoint)
+# =====================================================
+print("\\nMemulai Tahap 2: Supervised LoRA Fine-Tuning pada Checkpoint TAPT...")
+
+torch.cuda.empty_cache()
+model = build_indobertweet_lora(
+    dropout={p.get('dropout', 0.3)},
+    r={p.get('lora_r', 16)},
+    lora_alpha={p.get('lora_alpha', 32)},
+    pretrained_model_name_or_path=TAPT_DIR,
+)
+model.print_trainable_parameters()
+
+training_args = TrainingArguments(
+    output_dir="./results_tapt_lora",
+    learning_rate={p.get('ft_learning_rate', 2e-4)},
+    per_device_train_batch_size={p.get('ft_batch_size', 16)},
+    per_device_eval_batch_size={p.get('ft_batch_size', 16)},
+    num_train_epochs={p.get('ft_epochs', 8)},
+    warmup_ratio={p.get('ft_warmup_ratio', 0.1)},
+    weight_decay={p.get('ft_weight_decay', 0.01)},
+    eval_strategy="epoch",
+    save_strategy="epoch",
+    load_best_model_at_end=True,
+    metric_for_best_model="f1_macro",
+    greater_is_better=True,
+    logging_steps=50,
+    report_to="none",
+    save_total_limit=1,
+)
+
+trainer = build_trainer(
+    loss="cross_entropy",
+    model=model,
+    args=training_args,
+    train_dataset=train_dataset,
+    eval_dataset=val_dataset,
+    compute_metrics=compute_metrics,
+)
+
+trainer.train()
+eval_result = trainer.evaluate()
+print("\\nHasil validation downstream LoRA:", eval_result)
+"""
 
 def _eval_cell(config: dict) -> str:
     exp_id = config["exp_id"]
@@ -446,16 +661,12 @@ plt.ylabel("Actual")
 plt.show()
 """
 
-
 def _summary_cell(config: dict) -> str:
     exp_id = config["exp_id"]
-    commit = "GENERATED_"  # diisi generator di bawah
     return f"""\
 # =====================================================
 # SAVE ARTIFACT + AUTO EXPERIMENT SUMMARY
 # =====================================================
-import json
-
 metrics = {{
     "accuracy": accuracy,
     "precision_macro": precision_macro,
@@ -466,11 +677,10 @@ summary = experiment_summary(
     exp_id={exp_id!r},
     config=CONFIG,
     metrics=metrics,
-    csv_path="{exp_id}_test.csv",
-    out_path="{exp_id}_summary.json",
+    csv_path=\"{exp_id}_test.csv\",
+    out_path=\"{exp_id}_summary.json\",
 )
 """
-
 
 def build_notebook(config: dict) -> nbformat.NotebookNode:
     family = config.get("family", "hf_lora")
@@ -485,6 +695,30 @@ def build_notebook(config: dict) -> nbformat.NotebookNode:
             new_code_cell(MODEL_CELL_KERAS),
             new_code_cell(_training_keras_cell(config)),
             new_code_cell(_eval_keras_cell(config)),
+            new_code_cell(_summary_cell(config)),
+        ]
+    elif family == "hf_lora_sweep":
+        cells = [
+            new_code_cell(PIN_CELL_HF),
+            new_code_cell(GPU_CELL),
+            new_code_cell(_src_cell(family)),
+            new_code_cell(_config_cell(config)),
+            new_code_cell(SEED_CELL),
+            new_code_cell(DATASET_CELL),
+            new_code_cell(_training_hf_sweep_cell(config)),
+            new_code_cell(_eval_cell(config)),
+            new_code_cell(_summary_cell(config)),
+        ]
+    elif family == "hf_tapt_lora":
+        cells = [
+            new_code_cell(PIN_CELL_HF),
+            new_code_cell(GPU_CELL),
+            new_code_cell(_src_cell(family)),
+            new_code_cell(_config_cell(config)),
+            new_code_cell(SEED_CELL),
+            new_code_cell(DATASET_CELL),
+            new_code_cell(_tapt_cell(config)),
+            new_code_cell(_eval_cell(config)),
             new_code_cell(_summary_cell(config)),
         ]
     else:
@@ -506,15 +740,12 @@ def build_notebook(config: dict) -> nbformat.NotebookNode:
     })
     return nb
 
-
 def _slugify(title: str) -> str:
-    """Slug Kaggle dari judul: huruf kecil, spasi -> dash, buang karakter non-alnum."""
     import re
-
     s = title.strip().lower()
     s = re.sub(r"[^a-z0-9\s-]", "", s)
-    return re.sub(r"\s+", "-", s)
-
+    s = re.sub(r"[\s-]+", "-", s)
+    return s.strip("-")
 
 def write_kernel_meta(config: dict, out_dir: Path) -> None:
     title = config.get("title", config["exp_id"])
@@ -534,15 +765,9 @@ def write_kernel_meta(config: dict, out_dir: Path) -> None:
             ["emanuelembuaijdak/thesis-indobert-processed-data"],
         ),
     }
-    if slug != config["exp_id"]:
-        print(
-            f"[INFO] slug kernel '{slug}' != exp_id '{config['exp_id']}' "
-            "(slug diambil dari judul, sesuai perilaku Kaggle)."
-        )
     (out_dir / "kernel-metadata.json").write_text(
         json.dumps(meta, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
-
 
 def generate(config_path: str) -> None:
     config = cfg_mod.load_config(config_path)
@@ -560,15 +785,13 @@ def generate(config_path: str) -> None:
     kernel_dir.mkdir(parents=True)
     shutil.copy(nb_path, kernel_dir / f"{exp_id}.ipynb")
     write_kernel_meta(config, kernel_dir)
-    print(f"[OK] temp_kernel: {kernel_dir} (siap `kaggle kernels push -p temp_kernel/{exp_id}`)")
-
+    print(f"[OK] temp_kernel: {kernel_dir} (siap kaggle kernels push -p temp_kernel/{exp_id})")
 
 def main() -> None:
     ap = argparse.ArgumentParser(description="Generate notebook eksperimen dari config YAML.")
     ap.add_argument("--config", required=True, help="Path config YAML (configs/<exp_id>.yaml)")
     args = ap.parse_args()
     generate(args.config)
-
 
 if __name__ == "__main__":
     main()
