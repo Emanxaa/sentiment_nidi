@@ -60,10 +60,39 @@ Status: 🟡 berjalan · ✅ selesai · ❌ gagal dihentikan
 ### PROSES
 - **Push v1** (sekaligus verifikasi E0 via ε=0): gagal 43 detik — dataset tidak ter-mount (`FileNotFoundError /kaggle/input/.../data_preprocessed_with_emoticon.csv`) padahal metadata server benar & dataset status `ready`. Diagnosis: transient mount pada kernel baru.
 - **Cek lingkungan run v1 (berhasil terekam)**: python 3.12.13, torch 2.10.0+cu128, transformers **5.0.0**, peft 0.19.1, `gpu count: 1` (fix `CUDA_VISIBLE_DEVICES=0` **terbukti bekerja**), torchao uninstall OK.
-- **Push v2**: RUNNING ulang (melewati titik gagal v1).
+- **Push v2**: ERROR sama (mount tetap kosong di path lama) → masalah sistematis, bukan transient.
+- **Push v3 (+ diagnostik `os.walk('/kaggle/input')`)**: **AKAR MASALAH KETEMU** — dataset TER-MOUNT, tapi di path baru CLI 2.x: `/kaggle/input/datasets/<owner>/<slug>/`, bukan `/kaggle/input/<slug>/` (skema lama yang dipakai kernel v1 yang dulu di-attach via UI). `DATASET_DIR` hardcode tidak pernah cocok.
+- **Fix P0.2**: sel load-data kini mencari CSV dari daftar mount (kompatibel kedua skema). Notebook sumber + salinan push diperbarui, tervalidasi.
+- **Push v4**: COMPLETE (±36 menit: 4×training ~530s + evaluasi).
+- **Hasil v4**: baseline ε=0 val macro F1 **0.6551** / test **0.6643**; ε={0.05,0.10,0.15} semuanya DI BAWAH baseline (0.6500/0.6454/0.6439) → label smoothing tidak membantu pada stack ini. Catatan teknis: karena baseline terbaik, sel evaluasi test mengevaluasi baseline dua kali (bug kecil notebook, tidak memengaruhi kesimpulan; diperbaiki di versi berikutnya).
+- **Analisis v4**: single-GPU terbukti (gpu count 1), 1950 step benar (best checkpoint 1170 = epoch 3 × 390 step), data identik dengan run kanonik (test 969/293/468 = label lama; cek silang pickle-vs-CSV lokal: split identik per baris) — tetapi val F1 masih −0.068 dari kanonik 0.7233. Tersangka tersisa: **stack library** (run ini: transformers **5.0.0** / torch 2.10.0 / peft 0.19.1; run kanonik era transformers 4.x).
+- **Temuan sampingan penting (data lineage)**: `Data/data_preprocessed_with_emoticon.csv` (MD5 f36594…) berisi **label versi baru** (4686/1510/2452 — hasil koreksi pipeline anotasi) dan pickle `Data/split_data.pkl` sudah regenerasi ke label baru; sedangkan dataset Kaggle (upload 25/08) masih **label lama** (4843/1465/2340) = yang dipakai run kanonik `04` dan semua run Kaggle sejauh ini. → Konsekuensi: angka `04` kanonik dan E1 sebanding (label sama), tapi ke depan harus diputuskan pakai label lama vs label baru (keputusan penelitian, bukan teknis).
+- **Push v5 (uji penentu P0.3)**: ERROR — instalasi campur: `pip install` di atas 5.0 meninggalkan file sisa (ImportError TFPreTrainedModel dari file campur 5.0+4.46).
+- **Push v6 (uninstall dulu, lalu install)**: ERROR sama — `pip uninstall` tidak bersih; file `import_utils.py` tetap versi 5.0. Ditambah **bug orde eksekusi**: sel versi-print di awal sudah `import transformers 5.0` → modul ter-cache di sys.modules sepanjang sesi, jadi reinstall di sel berikutnya tidak pernah benar-benar dipakai.
+- **Push v7 (fix komplet)**: (1) `--force-reinstall --no-deps` + pin dependensi eksplisit (tokenizers 0.20.3, huggingface-hub 0.26.5) — menghindari resolver gagal; (2) Sel versi-print & guard `assert` DIPINDAHKAN SETELAH sel pin, sehingga import memakai stack yang SUDAH dipin; (3) guard `from transformers import TFPreTrainedModel` membuktikan tidak ada file campur 5.0. → COMPLETE ±36 menit, stack 4.46.3 aktif dikonfirmasi.
 
 ### PASCA
-- *(menunggu)*
+
+**Hasil v7 (stack 4.46.3, label lama, single GPU):**
+
+| ε | Val Macro F1 | Test Acc | Test Macro F1 | Netral F1 |
+|---|---|---|---|---|
+| 0 (baseline) | 0.7166 | 0.7763 | **0.7216** | 0.57 |
+| **0.10** | **0.7207** | **0.7902** | **0.7295** | 0.55 |
+
+- Harness: kolom `text_bert` terkonfirmasi, distribusi pred wajar, COLLAPSE TIDAK.
+- Baseline Δ −0.011 vs kanonik `04` (0.7328) → **dalam toleransi ±0.02 — pin versi terbukti menyelesaikan gap.**
+- McNemar eps10 vs baseline: b=14, c=38, **p=0.0012 (signifikan)** — Label Smoothing secara statistik berbeda, tapi efek sangat kecil (+0.008 Macro F1). Netral F1 justru turun (0.57 → 0.55).
+
+**Gate E1** — GAGAL: netral recall ≪ 0.60, Macro F1 ≪ 0.76.
+
+### Analisis ceiling E3 (threshold calibration, offline)
+
+Dari probs eps10 yang tersimpan: bobot netral bisa dipaksa ekstrem ([1, 20, 1] → netral recall **0.942**), tapi Macro F1 terjun ke **0.517** (model hampir selalu menebak netral). Sweet spot terbaik: w=[1, 1.75, 1] → Macro F1 0.726, netral F1 0.557 — hanya ±0.005 dari baseline. McNemar tidak signifikan.
+
+**Kesimpulan E1+E3**: bukan masalah keputusan threshold — **probabilitas model sendiri tidak membedakan netral dari negatif/positif dengan baik.** Netral F1 mentok di ~0.56 bahkan dengan Label Smoothing. Calibration/decision-level fixes tidak akan menembus 0.60.
+
+**Rekomendasi**: fokus ke **kualitas ground truth & embedding**, bukan keputusan — pertimbangkan: (1) bandingkan ulang baseline dengan label baru/corrected (hasil pipeline anotasi — label 4686/1510/2452 vs label lama 4843/1465/2340 yang dipakai semua run sejauh ini); (2) augmentasi data yang tidak sekadar smoothing atau threshold, tapi perubahan kualitatif pada training signal (focal loss, weighted sampling per confidence, atau data augmentation targeted).
 
 ---
 

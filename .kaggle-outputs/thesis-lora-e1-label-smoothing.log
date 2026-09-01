@@ -1,84 +1,52 @@
-[{"stream_name":"stderr","time":6.988064923,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
-,{"stream_name":"stderr","time":6.9881311440000005,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
-,{"stream_name":"stderr","time":6.988135853,"data":"0.00s - to python to disable frozen modules.\n"}
-,{"stream_name":"stderr","time":6.988138719,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
-,{"stream_name":"stderr","time":7.571832265,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
-,{"stream_name":"stderr","time":7.571868097,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
-,{"stream_name":"stderr","time":7.57187342,"data":"0.00s - to python to disable frozen modules.\n"}
-,{"stream_name":"stderr","time":7.57187699,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
-,{"stream_name":"stdout","time":8.631220288,"data":"CUDA_VISIBLE_DEVICES = 0\n"}
-,{"stream_name":"stdout","time":36.127905489,"data":"python        : 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]\n"}
-,{"stream_name":"stdout","time":36.127936845,"data":"torch         : 2.10.0+cu128\n"}
-,{"stream_name":"stdout","time":36.127943708,"data":"transformers  : 5.0.0\n"}
-,{"stream_name":"stdout","time":36.127948544,"data":"peft          : 0.19.1\n"}
-,{"stream_name":"stdout","time":36.127952836,"data":"cuda available: True\n"}
-,{"stream_name":"stdout","time":36.127957227,"data":"gpu count     : 1\n"}
-,{"stream_name":"stdout","time":36.127961492,"data":"gpu name      : Tesla T4\n"}
-,{"stream_name":"stdout","time":37.285748181,"data":"Found existing installation: torchao 0.10.0\r\n"}
-,{"stream_name":"stdout","time":37.3868758,"data":"Uninstalling torchao-0.10.0:\r\n"}
-,{"stream_name":"stdout","time":37.691399444,"data":"  Successfully uninstalled torchao-0.10.0\r\n"}
-,{"stream_name":"stdout","time":39.924238508,"data":"GPU tersedia: True\n"}
-,{"stream_name":"stderr","time":43.176653926,"data":"Traceback (most recent call last):\n"}
-,{"stream_name":"stderr","time":43.176694977,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
-,{"stream_name":"stderr","time":43.176703223,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
-,{"stream_name":"stderr","time":43.176708761,"data":"    raise_for_execution_errors(nb, output_path)\n"}
-,{"stream_name":"stderr","time":43.176717637,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
-,{"stream_name":"stderr","time":43.176888551,"data":"    raise error\n"}
-,{"stream_name":"stderr","time":43.177204416,"data":"papermill.exceptions.PapermillExecutionError: \n"}
-,{"stream_name":"stderr","time":43.177217049,"data":"---------------------------------------------------------------------------\n"}
-,{"stream_name":"stderr","time":43.177222581,"data":"Exception encountered at \"In [6]\":\n"}
-,{"stream_name":"stderr","time":43.177227305,"data":"---------------------------------------------------------------------------\n"}
-,{"stream_name":"stderr","time":43.177232268,"data":"FileNotFoundError                         Traceback (most recent call last)\n"}
-,{"stream_name":"stderr","time":43.177241904,"data":"/tmp/ipykernel_24/3780121318.py in \u003ccell line: 0\u003e()\n"}
-,{"stream_name":"stderr","time":43.177264652,"data":"      6 \n"}
-,{"stream_name":"stderr","time":43.177271942,"data":"      7 DATASET_DIR = \"/kaggle/input/thesis-indobert-processed-data\"\n"}
-,{"stream_name":"stderr","time":43.177294266,"data":"----\u003e 8 df = pd.read_csv(f\"{DATASET_DIR}/data_preprocessed_with_emoticon.csv\")\n"}
-,{"stream_name":"stderr","time":43.177298489,"data":"      9 \n"}
-,{"stream_name":"stderr","time":43.177301908,"data":"     10 # P0: kolom BERT eksplisit (text_bert) - tidak ada fallback diam-diam\n"}
-,{"stream_name":"stderr","time":43.177306029,"data":"\n"}
-,{"stream_name":"stderr","time":43.17731275,"data":"/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py in read_csv(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)\n"}
-,{"stream_name":"stderr","time":43.177323707,"data":"   1024     kwds.update(kwds_defaults)\n"}
-,{"stream_name":"stderr","time":43.177326164,"data":"   1025 \n"}
-,{"stream_name":"stderr","time":43.177328553,"data":"-\u003e 1026     return _read(filepath_or_buffer, kwds)\n"}
-,{"stream_name":"stderr","time":43.17733101,"data":"   1027 \n"}
-,{"stream_name":"stderr","time":43.177333361,"data":"   1028 \n"}
-,{"stream_name":"stderr","time":43.177335608,"data":"\n"}
-,{"stream_name":"stderr","time":43.17733789,"data":"/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py in _read(filepath_or_buffer, kwds)\n"}
-,{"stream_name":"stderr","time":43.17734035,"data":"    618 \n"}
-,{"stream_name":"stderr","time":43.177342701,"data":"    619     # Create the parser.\n"}
-,{"stream_name":"stderr","time":43.177345077,"data":"--\u003e 620     parser = TextFileReader(filepath_or_buffer, **kwds)\n"}
-,{"stream_name":"stderr","time":43.177347562,"data":"    621 \n"}
-,{"stream_name":"stderr","time":43.177349835,"data":"    622     if chunksize or iterator:\n"}
-,{"stream_name":"stderr","time":43.177352313,"data":"\n"}
-,{"stream_name":"stderr","time":43.17735455,"data":"/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py in __init__(self, f, engine, **kwds)\n"}
-,{"stream_name":"stderr","time":43.177357013,"data":"   1618 \n"}
-,{"stream_name":"stderr","time":43.177359266,"data":"   1619         self.handles: IOHandles | None = None\n"}
-,{"stream_name":"stderr","time":43.177361694,"data":"-\u003e 1620         self._engine = self._make_engine(f, self.engine)\n"}
-,{"stream_name":"stderr","time":43.177364631,"data":"   1621 \n"}
-,{"stream_name":"stderr","time":43.177367241,"data":"   1622     def close(self) -\u003e None:\n"}
-,{"stream_name":"stderr","time":43.177369682,"data":"\n"}
-,{"stream_name":"stderr","time":43.177372699,"data":"/usr/local/lib/python3.12/dist-packages/pandas/io/parsers/readers.py in _make_engine(self, f, engine)\n"}
-,{"stream_name":"stderr","time":43.1773752,"data":"   1878                 if \"b\" not in mode:\n"}
-,{"stream_name":"stderr","time":43.177377724,"data":"   1879                     mode += \"b\"\n"}
-,{"stream_name":"stderr","time":43.177380136,"data":"-\u003e 1880             self.handles = get_handle(\n"}
-,{"stream_name":"stderr","time":43.17738254,"data":"   1881                 f,\n"}
-,{"stream_name":"stderr","time":43.177384888,"data":"   1882                 mode,\n"}
-,{"stream_name":"stderr","time":43.177387504,"data":"\n"}
-,{"stream_name":"stderr","time":43.17739261,"data":"/usr/local/lib/python3.12/dist-packages/pandas/io/common.py in get_handle(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)\n"}
-,{"stream_name":"stderr","time":43.177395242,"data":"    871         if ioargs.encoding and \"b\" not in ioargs.mode:\n"}
-,{"stream_name":"stderr","time":43.177397714,"data":"    872             # Encoding\n"}
-,{"stream_name":"stderr","time":43.17740014,"data":"--\u003e 873             handle = open(\n"}
-,{"stream_name":"stderr","time":43.177402524,"data":"    874                 handle,\n"}
-,{"stream_name":"stderr","time":43.177404832,"data":"    875                 ioargs.mode,\n"}
-,{"stream_name":"stderr","time":43.177407168,"data":"\n"}
-,{"stream_name":"stderr","time":43.177409536,"data":"FileNotFoundError: [Errno 2] No such file or directory: '/kaggle/input/thesis-indobert-processed-data/data_preprocessed_with_emoticon.csv'\n"}
-,{"stream_name":"stderr","time":43.177412084,"data":"\n"}
-,{"stream_name":"stderr","time":45.273201823,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
-,{"stream_name":"stderr","time":45.273231933,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
-,{"stream_name":"stderr","time":45.426917113,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
-,{"stream_name":"stderr","time":45.426943456,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
-,{"stream_name":"stderr","time":46.027425231,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
-,{"stream_name":"stderr","time":46.332202403,"data":"[NbConvertApp] Writing 34629 bytes to __notebook__.ipynb\n"}
-,{"stream_name":"stderr","time":48.701080107,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
-,{"stream_name":"stderr","time":49.555001308,"data":"[NbConvertApp] Writing 351101 bytes to __results__.html\n"}
+[{"stream_name":"stderr","time":5.94519162,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":5.945246618,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":5.945253198,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":5.945257407,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":6.490361891,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.49039418,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.490399146,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.490402855,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":7.468780676,"data":"CUDA_VISIBLE_DEVICES = 0\n"}
+,{"stream_name":"stdout","time":29.997539053,"data":"python        : 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]\n"}
+,{"stream_name":"stdout","time":29.997577609,"data":"torch         : 2.10.0+cu128\n"}
+,{"stream_name":"stdout","time":29.997582566,"data":"transformers  : 5.0.0\n"}
+,{"stream_name":"stdout","time":29.997585771,"data":"peft          : 0.19.1\n"}
+,{"stream_name":"stdout","time":29.997588829,"data":"cuda available: True\n"}
+,{"stream_name":"stdout","time":29.997591776,"data":"gpu count     : 1\n"}
+,{"stream_name":"stdout","time":29.997594926,"data":"gpu name      : Tesla T4\n"}
+,{"stream_name":"stdout","time":31.048574242,"data":"Found existing installation: torchao 0.10.0\r\n"}
+,{"stream_name":"stdout","time":31.099277985,"data":"Uninstalling torchao-0.10.0:\r\n"}
+,{"stream_name":"stdout","time":31.404101448,"data":"  Successfully uninstalled torchao-0.10.0\r\n"}
+,{"stream_name":"stdout","time":33.439697424,"data":"GPU tersedia: True\n"}
+,{"stream_name":"stdout","time":33.462701705,"data":"Isi /kaggle/input:\n"}
+,{"stream_name":"stdout","time":33.46272141,"data":"   /kaggle/input/datasets/emanuelembuaijdak/thesis-indobert-processed-data/data_preprocessed_with_emoticon.csv\n"}
+,{"stream_name":"stdout","time":33.462727907,"data":"   /kaggle/input/datasets/emanuelembuaijdak/thesis-indobert-processed-data/split_data.pkl\n"}
+,{"stream_name":"stderr","time":37.105435984,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":37.105461434,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":37.105466292,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":37.105622367,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":37.105634269,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":37.105835451,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":37.105925946,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":37.10593406,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":37.105939764,"data":"Exception encountered at \"In [6]\":\n"}
+,{"stream_name":"stderr","time":37.105944374,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":37.105960397,"data":"FileNotFoundError                         Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":37.105964282,"data":"/tmp/ipykernel_24/3916848833.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":37.105968019,"data":"     20 csv_path = f\"{DATASET_DIR}/data_preprocessed_with_emoticon.csv\"\n"}
+,{"stream_name":"stderr","time":37.105971624,"data":"     21 if csv_path not in mounted:\n"}
+,{"stream_name":"stderr","time":37.10597502,"data":"---\u003e 22     raise FileNotFoundError(\n"}
+,{"stream_name":"stderr","time":37.105978517,"data":"     23         \"CSV dataset tidak ditemukan di mount. Ter-mount: \"\n"}
+,{"stream_name":"stderr","time":37.105982185,"data":"     24         + (str(mounted) if mounted else \"TIDAK ADA APA PUN\")\n"}
+,{"stream_name":"stderr","time":37.105985754,"data":"\n"}
+,{"stream_name":"stderr","time":37.105989905,"data":"FileNotFoundError: CSV dataset tidak ditemukan di mount. Ter-mount: ['/kaggle/input/datasets/emanuelembuaijdak/thesis-indobert-processed-data/data_preprocessed_with_emoticon.csv', '/kaggle/input/datasets/emanuelembuaijdak/thesis-indobert-processed-data/split_data.pkl'] - cek dataset_sources di kernel-metadata.json / attach manual via UI.\n"}
+,{"stream_name":"stderr","time":37.106009065,"data":"\n"}
+,{"stream_name":"stderr","time":39.103481507,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":39.10350684,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":39.239540923,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":39.239572946,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":39.807346679,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":40.103027651,"data":"[NbConvertApp] Writing 30633 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":42.394638881,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":43.200242513,"data":"[NbConvertApp] Writing 348846 bytes to __results__.html\n"}
 ]

@@ -1,0 +1,280 @@
+[{"stream_name":"stderr","time":7.101851053,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.10191408,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.101919637,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.1019225519999996,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":7.711059982,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.71108851,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.711093113,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.711097325,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":8.794376332,"data":"CUDA_VISIBLE_DEVICES = 0\n"}
+,{"stream_name":"stdout","time":36.119736075,"data":"python        : 3.12.13 (main, Mar  4 2026, 09:23:07) [GCC 11.4.0]\n"}
+,{"stream_name":"stdout","time":36.119767537,"data":"torch         : 2.10.0+cu128\n"}
+,{"stream_name":"stdout","time":36.119775057,"data":"transformers  : 5.0.0\n"}
+,{"stream_name":"stdout","time":36.119780979,"data":"peft          : 0.19.1\n"}
+,{"stream_name":"stdout","time":36.119787462,"data":"cuda available: True\n"}
+,{"stream_name":"stdout","time":36.11979367,"data":"gpu count     : 1\n"}
+,{"stream_name":"stdout","time":36.119800108,"data":"gpu name      : Tesla T4\n"}
+,{"stream_name":"stdout","time":37.225708119,"data":"Found existing installation: torchao 0.10.0\r\n"}
+,{"stream_name":"stdout","time":37.379184001,"data":"Uninstalling torchao-0.10.0:\r\n"}
+,{"stream_name":"stdout","time":37.734364743,"data":"  Successfully uninstalled torchao-0.10.0\r\n"}
+,{"stream_name":"stdout","time":39.940188607,"data":"GPU tersedia: True\n"}
+,{"stream_name":"stdout","time":40.14066818,"data":"Isi /kaggle/input:\n"}
+,{"stream_name":"stdout","time":40.140708994,"data":"   /kaggle/input/datasets/emanuelembuaijdak/thesis-indobert-processed-data/data_preprocessed_with_emoticon.csv\n"}
+,{"stream_name":"stdout","time":40.14071617,"data":"   /kaggle/input/datasets/emanuelembuaijdak/thesis-indobert-processed-data/split_data.pkl\n"}
+,{"stream_name":"stdout","time":40.140722014,"data":"CSV ditemukan di: /kaggle/input/datasets/emanuelembuaijdak/thesis-indobert-processed-data/data_preprocessed_with_emoticon.csv\n"}
+,{"stream_name":"stdout","time":40.322376014,"data":"Kolom BERT terpilih: text_bert\n"}
+,{"stream_name":"stdout","time":40.322417885,"data":"Train set: 6918 | Test set: 1730\n"}
+,{"stream_name":"stdout","time":40.349656084,"data":"Distribusi train final:\n"}
+,{"stream_name":"stdout","time":40.34968325,"data":"0    3486\n"}
+,{"stream_name":"stdout","time":40.349694749,"data":"1    1055\n"}
+,{"stream_name":"stdout","time":40.349698678,"data":"2    1685\n"}
+,{"stream_name":"stdout","time":40.349701762,"data":"Name: count, dtype: int64\n"}
+,{"stream_name":"stdout","time":40.34970493,"data":"\n"}
+,{"stream_name":"stdout","time":40.349707906,"data":"Distribusi validation:\n"}
+,{"stream_name":"stdout","time":40.349711349,"data":"0    388\n"}
+,{"stream_name":"stdout","time":40.349714369,"data":"1    117\n"}
+,{"stream_name":"stdout","time":40.349717415,"data":"2    187\n"}
+,{"stream_name":"stdout","time":40.349720371,"data":"Name: count, dtype: int64\n"}
+,{"stream_name":"stdout","time":40.349733746,"data":"\n"}
+,{"stream_name":"stdout","time":40.349736308,"data":"Distribusi test:\n"}
+,{"stream_name":"stdout","time":40.349738533,"data":"0    969\n"}
+,{"stream_name":"stdout","time":40.349740802,"data":"1    293\n"}
+,{"stream_name":"stdout","time":40.349743082,"data":"2    468\n"}
+,{"stream_name":"stdout","time":40.349745381,"data":"Name: count, dtype: int64\n"}
+,{"stream_name":"stderr","time":40.522477849,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stderr","time":40.522521387,"data":"\n"}
+,{"stream_name":"stderr","time":40.522534128,"data":"Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.\n"}
+,{"stream_name":"stdout","time":41.348585037,"data":"Train 6226 | Val 692 | Test 1730\n"}
+,{"stream_name":"stdout","time":41.55003517,"data":"\n"}
+,{"stream_name":"stdout","time":41.550076796,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":41.550084324,"data":"E1 | label_smoothing_factor = 0.0 | tag = baseline\n"}
+,{"stream_name":"stdout","time":41.550090961,"data":"============================================================\n"}
+,{"stream_name":"stderr","time":47.661372917,"data":"BertForSequenceClassification LOAD REPORT from: indolem/indobertweet-base-uncased\n"}
+,{"stream_name":"stderr","time":47.661643127,"data":"Key                                        | Status     | \n"}
+,{"stream_name":"stderr","time":47.6629647,"data":"-------------------------------------------+------------+-\n"}
+,{"stream_name":"stderr","time":47.662979129,"data":"cls.predictions.bias                       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":47.662985407,"data":"cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":47.662991634,"data":"cls.predictions.decoder.bias               | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":47.662997924,"data":"cls.predictions.transform.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":47.663004171,"data":"cls.predictions.transform.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":47.663010434,"data":"cls.predictions.decoder.weight             | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":47.663016802,"data":"cls.predictions.transform.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":47.663023084,"data":"classifier.weight                          | MISSING    | \n"}
+,{"stream_name":"stderr","time":47.663029329,"data":"classifier.bias                            | MISSING    | \n"}
+,{"stream_name":"stderr","time":47.663035585,"data":"\n"}
+,{"stream_name":"stderr","time":47.663041842,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":47.663048277,"data":"- UNEXPECTED\t:can be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":47.663055802,"data":"- MISSING\t:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stderr","time":47.663062057,"data":"\n"}
+,{"stream_name":"stderr","time":47.663068364,"data":"BertForSequenceClassification LOAD REPORT from: indolem/indobertweet-base-uncased\n"}
+,{"stream_name":"stderr","time":47.663074688,"data":"Key                                        | Status     | \n"}
+,{"stream_name":"stderr","time":47.663080977,"data":"-------------------------------------------+------------+-\n"}
+,{"stream_name":"stderr","time":47.663097283,"data":"cls.predictions.bias                       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":47.663101914,"data":"cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":47.663106583,"data":"cls.predictions.decoder.bias               | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":47.663111319,"data":"cls.predictions.transform.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":47.663116295,"data":"cls.predictions.transform.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":47.663121071,"data":"cls.predictions.decoder.weight             | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":47.663125976,"data":"cls.predictions.transform.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":47.663130794,"data":"classifier.weight                          | MISSING    | \n"}
+,{"stream_name":"stderr","time":47.663135608,"data":"classifier.bias                            | MISSING    | \n"}
+,{"stream_name":"stderr","time":47.663140565,"data":"\n"}
+,{"stream_name":"stderr","time":47.663145125,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":47.66315018,"data":"- UNEXPECTED\t:can be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":47.663155114,"data":"- MISSING\t:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":571.265588999,"data":"Hasil validation: {'eval_loss': 0.7014706134796143, 'eval_accuracy': 0.7196531791907514, 'eval_precision_macro': 0.6626775271512114, 'eval_recall_macro': 0.6517840076057176, 'eval_f1_macro': 0.6551236165987401, 'eval_runtime': 5.3281, 'eval_samples_per_second': 129.878, 'eval_steps_per_second': 8.258, 'epoch': 5.0}\n"}
+,{"stream_name":"stdout","time":576.665370839,"data":"Distribusi prediksi val : {0: 399, 1: 133, 2: 160}\n"}
+,{"stream_name":"stdout","time":576.665423779,"data":"Baseline mayoritas val  : acc=0.5607 macro_f1=0.2395\n"}
+,{"stream_name":"stdout","time":576.665446088,"data":"STATUS: OK\n"}
+,{"stream_name":"stdout","time":576.665465882,"data":"\n"}
+,{"stream_name":"stdout","time":576.665469845,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":576.665473203,"data":"E1 | label_smoothing_factor = 0.05 | tag = eps05\n"}
+,{"stream_name":"stdout","time":576.66547648,"data":"============================================================\n"}
+,{"stream_name":"stderr","time":577.679017568,"data":"BertForSequenceClassification LOAD REPORT from: indolem/indobertweet-base-uncased\n"}
+,{"stream_name":"stderr","time":577.679059843,"data":"Key                                        | Status     | \n"}
+,{"stream_name":"stderr","time":577.679065555,"data":"-------------------------------------------+------------+-\n"}
+,{"stream_name":"stderr","time":577.679070543,"data":"cls.predictions.bias                       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":577.6790753,"data":"cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":577.679084279,"data":"cls.predictions.decoder.bias               | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":577.679089041,"data":"cls.predictions.transform.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":577.679093693,"data":"cls.predictions.transform.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":577.679115784,"data":"cls.predictions.decoder.weight             | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":577.679135091,"data":"cls.predictions.transform.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":577.67913915,"data":"classifier.weight                          | MISSING    | \n"}
+,{"stream_name":"stderr","time":577.679142846,"data":"classifier.bias                            | MISSING    | \n"}
+,{"stream_name":"stderr","time":577.679146574,"data":"\n"}
+,{"stream_name":"stderr","time":577.679150146,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":577.67915379,"data":"- UNEXPECTED\t:can be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":577.679158179,"data":"- MISSING\t:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stderr","time":577.679161988,"data":"\n"}
+,{"stream_name":"stderr","time":577.679165661,"data":"BertForSequenceClassification LOAD REPORT from: indolem/indobertweet-base-uncased\n"}
+,{"stream_name":"stderr","time":577.679169522,"data":"Key                                        | Status     | \n"}
+,{"stream_name":"stderr","time":577.679173315,"data":"-------------------------------------------+------------+-\n"}
+,{"stream_name":"stderr","time":577.679176892,"data":"cls.predictions.bias                       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":577.679181045,"data":"cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":577.679184804,"data":"cls.predictions.decoder.bias               | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":577.679188672,"data":"cls.predictions.transform.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":577.679192343,"data":"cls.predictions.transform.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":577.679196148,"data":"cls.predictions.decoder.weight             | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":577.67919993,"data":"cls.predictions.transform.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":577.679203661,"data":"classifier.weight                          | MISSING    | \n"}
+,{"stream_name":"stderr","time":577.679207437,"data":"classifier.bias                            | MISSING    | \n"}
+,{"stream_name":"stderr","time":577.679211282,"data":"\n"}
+,{"stream_name":"stderr","time":577.679214847,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":577.679218574,"data":"- UNEXPECTED\t:can be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":577.679222704,"data":"- MISSING\t:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":1102.163700652,"data":"Hasil validation: {'eval_loss': 0.7592799067497253, 'eval_accuracy': 0.7095375722543352, 'eval_precision_macro': 0.655476744815637, 'eval_recall_macro': 0.6508165261955438, 'eval_f1_macro': 0.6500103494015638, 'eval_runtime': 5.3326, 'eval_samples_per_second': 129.767, 'eval_steps_per_second': 8.251, 'epoch': 5.0}\n"}
+,{"stream_name":"stdout","time":1107.55265417,"data":"Distribusi prediksi val : {0: 385, 1: 146, 2: 161}\n"}
+,{"stream_name":"stdout","time":1107.552717206,"data":"Baseline mayoritas val  : acc=0.5607 macro_f1=0.2395\n"}
+,{"stream_name":"stdout","time":1107.552724971,"data":"STATUS: OK\n"}
+,{"stream_name":"stdout","time":1107.552757287,"data":"\n"}
+,{"stream_name":"stdout","time":1107.552761549,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":1107.552764781,"data":"E1 | label_smoothing_factor = 0.1 | tag = eps10\n"}
+,{"stream_name":"stdout","time":1107.55277826,"data":"============================================================\n"}
+,{"stream_name":"stderr","time":1108.521104586,"data":"BertForSequenceClassification LOAD REPORT from: indolem/indobertweet-base-uncased\n"}
+,{"stream_name":"stderr","time":1108.521141689,"data":"Key                                        | Status     | \n"}
+,{"stream_name":"stderr","time":1108.521147114,"data":"-------------------------------------------+------------+-\n"}
+,{"stream_name":"stderr","time":1108.521168099,"data":"cls.predictions.bias                       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1108.521173856,"data":"cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1108.521187213,"data":"cls.predictions.decoder.bias               | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1108.521192618,"data":"cls.predictions.transform.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1108.52119748,"data":"cls.predictions.transform.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1108.521204064,"data":"cls.predictions.decoder.weight             | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1108.521212106,"data":"cls.predictions.transform.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1108.521215603,"data":"classifier.weight                          | MISSING    | \n"}
+,{"stream_name":"stderr","time":1108.52121891,"data":"classifier.bias                            | MISSING    | \n"}
+,{"stream_name":"stderr","time":1108.521222198,"data":"\n"}
+,{"stream_name":"stderr","time":1108.521225374,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":1108.5212287,"data":"- UNEXPECTED\t:can be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":1108.52123246,"data":"- MISSING\t:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stderr","time":1108.52123602,"data":"\n"}
+,{"stream_name":"stderr","time":1108.521239174,"data":"BertForSequenceClassification LOAD REPORT from: indolem/indobertweet-base-uncased\n"}
+,{"stream_name":"stderr","time":1108.52124252,"data":"Key                                        | Status     | \n"}
+,{"stream_name":"stderr","time":1108.521245794,"data":"-------------------------------------------+------------+-\n"}
+,{"stream_name":"stderr","time":1108.521249181,"data":"cls.predictions.bias                       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1108.521267066,"data":"cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1108.521273489,"data":"cls.predictions.decoder.bias               | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1108.521279234,"data":"cls.predictions.transform.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1108.521284671,"data":"cls.predictions.transform.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1108.521289566,"data":"cls.predictions.decoder.weight             | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1108.521294337,"data":"cls.predictions.transform.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1108.521299171,"data":"classifier.weight                          | MISSING    | \n"}
+,{"stream_name":"stderr","time":1108.521303828,"data":"classifier.bias                            | MISSING    | \n"}
+,{"stream_name":"stderr","time":1108.521308695,"data":"\n"}
+,{"stream_name":"stderr","time":1108.521318727,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":1108.521322271,"data":"- UNEXPECTED\t:can be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":1108.521340369,"data":"- MISSING\t:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":1632.78570924,"data":"Hasil validation: {'eval_loss': 0.7857110500335693, 'eval_accuracy': 0.7109826589595376, 'eval_precision_macro': 0.6501269362740237, 'eval_recall_macro': 0.6425065288012529, 'eval_f1_macro': 0.6453628877087664, 'eval_runtime': 5.3324, 'eval_samples_per_second': 129.773, 'eval_steps_per_second': 8.251, 'epoch': 5.0}\n"}
+,{"stream_name":"stdout","time":1638.144356708,"data":"Distribusi prediksi val : {0: 397, 1: 127, 2: 168}\n"}
+,{"stream_name":"stdout","time":1638.144414279,"data":"Baseline mayoritas val  : acc=0.5607 macro_f1=0.2395\n"}
+,{"stream_name":"stdout","time":1638.144433506,"data":"STATUS: OK\n"}
+,{"stream_name":"stdout","time":1638.144439258,"data":"\n"}
+,{"stream_name":"stdout","time":1638.144444108,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":1638.144448684,"data":"E1 | label_smoothing_factor = 0.15 | tag = eps15\n"}
+,{"stream_name":"stdout","time":1638.144453313,"data":"============================================================\n"}
+,{"stream_name":"stderr","time":1639.107454535,"data":"BertForSequenceClassification LOAD REPORT from: indolem/indobertweet-base-uncased\n"}
+,{"stream_name":"stderr","time":1639.107500114,"data":"Key                                        | Status     | \n"}
+,{"stream_name":"stderr","time":1639.107506902,"data":"-------------------------------------------+------------+-\n"}
+,{"stream_name":"stderr","time":1639.107511509,"data":"cls.predictions.bias                       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1639.107517474,"data":"cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1639.10752277,"data":"cls.predictions.decoder.bias               | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1639.107528501,"data":"cls.predictions.transform.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1639.10753377,"data":"cls.predictions.transform.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1639.107539035,"data":"cls.predictions.decoder.weight             | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1639.107544588,"data":"cls.predictions.transform.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1639.107549884,"data":"classifier.weight                          | MISSING    | \n"}
+,{"stream_name":"stderr","time":1639.107586793,"data":"classifier.bias                            | MISSING    | \n"}
+,{"stream_name":"stderr","time":1639.107591795,"data":"\n"}
+,{"stream_name":"stderr","time":1639.107596973,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":1639.1076024,"data":"- UNEXPECTED\t:can be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":1639.107608627,"data":"- MISSING\t:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stderr","time":1639.107614824,"data":"\n"}
+,{"stream_name":"stderr","time":1639.107619875,"data":"BertForSequenceClassification LOAD REPORT from: indolem/indobertweet-base-uncased\n"}
+,{"stream_name":"stderr","time":1639.107625181,"data":"Key                                        | Status     | \n"}
+,{"stream_name":"stderr","time":1639.107630675,"data":"-------------------------------------------+------------+-\n"}
+,{"stream_name":"stderr","time":1639.107655088,"data":"cls.predictions.bias                       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1639.107659526,"data":"cls.predictions.transform.LayerNorm.bias   | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1639.107663259,"data":"cls.predictions.decoder.bias               | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1639.107667312,"data":"cls.predictions.transform.dense.bias       | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1639.107671131,"data":"cls.predictions.transform.LayerNorm.weight | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1639.10767508,"data":"cls.predictions.decoder.weight             | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1639.107678764,"data":"cls.predictions.transform.dense.weight     | UNEXPECTED | \n"}
+,{"stream_name":"stderr","time":1639.107682552,"data":"classifier.weight                          | MISSING    | \n"}
+,{"stream_name":"stderr","time":1639.107686883,"data":"classifier.bias                            | MISSING    | \n"}
+,{"stream_name":"stderr","time":1639.107690953,"data":"\n"}
+,{"stream_name":"stderr","time":1639.107695705,"data":"Notes:\n"}
+,{"stream_name":"stderr","time":1639.107699945,"data":"- UNEXPECTED\t:can be ignored when loading from different task/architecture; not ok if you expect identical arch.\n"}
+,{"stream_name":"stderr","time":1639.107704293,"data":"- MISSING\t:those params were newly initialized because missing from the checkpoint. Consider training on your downstream task.\n"}
+,{"stream_name":"stdout","time":2163.484395519,"data":"Hasil validation: {'eval_loss': 0.8298713564872742, 'eval_accuracy': 0.7095375722543352, 'eval_precision_macro': 0.6509828083170984, 'eval_recall_macro': 0.6408670445965776, 'eval_f1_macro': 0.6439183597989622, 'eval_runtime': 5.3219, 'eval_samples_per_second': 130.028, 'eval_steps_per_second': 8.268, 'epoch': 5.0}\n"}
+,{"stream_name":"stdout","time":2168.669506184,"data":"Distribusi prediksi val : {0: 397, 1: 134, 2: 161}\n"}
+,{"stream_name":"stdout","time":2168.669601188,"data":"Baseline mayoritas val  : acc=0.5607 macro_f1=0.2395\n"}
+,{"stream_name":"stdout","time":2168.669618316,"data":"STATUS: OK\n"}
+,{"stream_name":"stdout","time":2168.711626688,"data":"     tag  label_smoothing  accuracy_val  precision_macro_val  recall_macro_val  f1_macro_val status\n"}
+,{"stream_name":"stdout","time":2168.711653944,"data":"baseline             0.00      0.719653             0.662678          0.651784      0.655124     OK\n"}
+,{"stream_name":"stdout","time":2168.711660996,"data":"   eps05             0.05      0.709538             0.655477          0.650817      0.650010     OK\n"}
+,{"stream_name":"stdout","time":2168.711666365,"data":"   eps10             0.10      0.710983             0.650127          0.642507      0.645363     OK\n"}
+,{"stream_name":"stdout","time":2168.711671519,"data":"   eps15             0.15      0.709538             0.650983          0.640867      0.643918     OK\n"}
+,{"stream_name":"stdout","time":2168.71167685,"data":"Tag terbaik (val macro F1): baseline\n"}
+,{"stream_name":"stdout","time":2168.863031077,"data":"\n"}
+,{"stream_name":"stdout","time":2168.863071316,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":2168.863076311,"data":"EVALUASI TEST | baseline\n"}
+,{"stream_name":"stdout","time":2168.863080253,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":2182.247165576,"data":"              precision    recall  f1-score   support\n"}
+,{"stream_name":"stdout","time":2182.247209055,"data":"\n"}
+,{"stream_name":"stdout","time":2182.247214795,"data":"     negatif       0.81      0.81      0.81       969\n"}
+,{"stream_name":"stdout","time":2182.247246417,"data":"      netral       0.47      0.50      0.48       293\n"}
+,{"stream_name":"stdout","time":2182.247251803,"data":"     positif       0.71      0.68      0.70       468\n"}
+,{"stream_name":"stdout","time":2182.247256392,"data":"\n"}
+,{"stream_name":"stdout","time":2182.247260642,"data":"    accuracy                           0.72      1730\n"}
+,{"stream_name":"stdout","time":2182.247264491,"data":"   macro avg       0.66      0.66      0.66      1730\n"}
+,{"stream_name":"stdout","time":2182.247268096,"data":"weighted avg       0.73      0.72      0.73      1730\n"}
+,{"stream_name":"stdout","time":2182.247271726,"data":"\n"}
+,{"stream_name":"stdout","time":2182.247275125,"data":"Distribusi prediksi: {0: 970, 1: 313, 2: 447}\n"}
+,{"stream_name":"stdout","time":2182.247278603,"data":"Distribusi aktual  : {0: 969, 1: 293, 2: 468}\n"}
+,{"stream_name":"stdout","time":2182.247282153,"data":"Tersimpan: hasil_e1_test_baseline.csv\n"}
+,{"stream_name":"stdout","time":2182.247287507,"data":"\n"}
+,{"stream_name":"stdout","time":2182.247294497,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":2182.247297159,"data":"EVALUASI TEST | baseline\n"}
+,{"stream_name":"stdout","time":2182.247299673,"data":"============================================================\n"}
+,{"stream_name":"stdout","time":2195.489334365,"data":"              precision    recall  f1-score   support\n"}
+,{"stream_name":"stdout","time":2195.489374088,"data":"\n"}
+,{"stream_name":"stdout","time":2195.489381889,"data":"     negatif       0.81      0.81      0.81       969\n"}
+,{"stream_name":"stdout","time":2195.48938814,"data":"      netral       0.47      0.50      0.48       293\n"}
+,{"stream_name":"stdout","time":2195.489394341,"data":"     positif       0.71      0.68      0.70       468\n"}
+,{"stream_name":"stdout","time":2195.489400714,"data":"\n"}
+,{"stream_name":"stdout","time":2195.489406328,"data":"    accuracy                           0.72      1730\n"}
+,{"stream_name":"stdout","time":2195.489412224,"data":"   macro avg       0.66      0.66      0.66      1730\n"}
+,{"stream_name":"stdout","time":2195.48941852,"data":"weighted avg       0.73      0.72      0.73      1730\n"}
+,{"stream_name":"stdout","time":2195.48942407,"data":"\n"}
+,{"stream_name":"stdout","time":2195.489429586,"data":"Distribusi prediksi: {0: 970, 1: 313, 2: 447}\n"}
+,{"stream_name":"stdout","time":2195.489435254,"data":"Distribusi aktual  : {0: 969, 1: 293, 2: 468}\n"}
+,{"stream_name":"stdout","time":2195.489441246,"data":"Tersimpan: hasil_e1_test_baseline.csv\n"}
+,{"stream_name":"stdout","time":2195.489446986,"data":"     tag  accuracy  precision_macro  recall_macro  f1_macro\n"}
+,{"stream_name":"stdout","time":2195.489453235,"data":"baseline  0.724855         0.664501       0.66472  0.664313\n"}
+,{"stream_name":"stdout","time":2195.489459482,"data":"baseline  0.724855         0.664501       0.66472  0.664313\n"}
+,{"stream_name":"stdout","time":2195.511015358,"data":"b (baseline benar, best salah) = 0\n"}
+,{"stream_name":"stdout","time":2195.511039548,"data":"c (baseline salah, best benar) = 0\n"}
+,{"stream_name":"stdout","time":2195.51104535,"data":"p-value = 1.000000 (tidak signifikan @ 0.05)\n"}
+,{"stream_name":"stdout","time":2195.53443659,"data":"=== RINGKASAN E1 (validation) ===\n"}
+,{"stream_name":"stdout","time":2195.534458746,"data":"     tag  label_smoothing  accuracy_val  precision_macro_val  recall_macro_val  f1_macro_val status\n"}
+,{"stream_name":"stdout","time":2195.534485844,"data":"baseline             0.00      0.719653             0.662678          0.651784      0.655124     OK\n"}
+,{"stream_name":"stdout","time":2195.534510314,"data":"   eps05             0.05      0.709538             0.655477          0.650817      0.650010     OK\n"}
+,{"stream_name":"stdout","time":2195.534515148,"data":"   eps10             0.10      0.710983             0.650127          0.642507      0.645363     OK\n"}
+,{"stream_name":"stdout","time":2195.534519053,"data":"   eps15             0.15      0.709538             0.650983          0.640867      0.643918     OK\n"}
+,{"stream_name":"stdout","time":2195.534522911,"data":"\n"}
+,{"stream_name":"stdout","time":2195.534526611,"data":"=== RINGKASAN E1 (test) ===\n"}
+,{"stream_name":"stdout","time":2195.534530319,"data":"     tag  accuracy  precision_macro  recall_macro  f1_macro\n"}
+,{"stream_name":"stdout","time":2195.534536006,"data":"baseline  0.724855         0.664501       0.66472  0.664313\n"}
+,{"stream_name":"stdout","time":2195.534556517,"data":"baseline  0.724855         0.664501       0.66472  0.664313\n"}
+,{"stream_name":"stdout","time":2195.534560688,"data":"\n"}
+,{"stream_name":"stdout","time":2195.534601638,"data":"Tag terbaik: baseline\n"}
+,{"stream_name":"stdout","time":2195.53460746,"data":"Entri PASCA eksperimen diisi di docs/LOG_EKSPERIMEN.md setelah run selesai.\n"}
+,{"stream_name":"stderr","time":2201.334404568,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":2201.334441254,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":2201.507369575,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":2201.507398992,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":2202.148815086,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":2202.517374084,"data":"[NbConvertApp] Writing 173046 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":2204.979024244,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":2205.924747193,"data":"[NbConvertApp] Writing 461703 bytes to __results__.html\n"}
+]

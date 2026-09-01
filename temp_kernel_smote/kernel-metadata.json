@@ -5,10 +5,10 @@
   "language": "python",
   "kernel_type": "notebook",
   "is_private": "true",
-  "enable_gpu": "true",
+  "enable_gpu": "false",
   "enable_internet": "true",
-  "machine_shape": "NvidiaTeslaT4",
   "dataset_sources": [
-    "emanuelembuaijdak/thesis-indobert-processed-data"
+    "emanuelembuaijdak/thesis-indobert-processed-data",
+    "emanuelembuaijdak/gemini-secret"
   ]
 }
