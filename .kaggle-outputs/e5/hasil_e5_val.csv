@@ -1,2 +1,0 @@
-run,accuracy_val,precision_macro_val,recall_macro_val,f1_macro_val,status
-focal_g2,0.7254335260115607,0.6816845950931963,0.7058275519574221,0.6903248782705846,OK

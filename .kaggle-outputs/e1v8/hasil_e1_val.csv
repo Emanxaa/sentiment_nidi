@@ -1,2 +1,0 @@
-tag,label_smoothing,accuracy_val,precision_macro_val,recall_macro_val,f1_macro_val,status
-baseline,0.0,0.7586705202312138,0.7134914047906173,0.7070432338224545,0.7098820719510375,OK

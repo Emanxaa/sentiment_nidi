@@ -114,3 +114,29 @@ class SentimenDataset(Dataset):
             "attention_mask": encoding["attention_mask"].flatten(),
             "labels": torch.tensor(label, dtype=torch.long),
         }
+
+
+class MLMDataset(Dataset):
+    """Dataset PyTorch untuk Masked Language Modeling (TAPT)."""
+
+    def __init__(self, texts: Any, tokenizer, max_length: int = 128):
+        self.texts = texts.values if isinstance(texts, pd.Series) else np.array(texts)
+        self.tokenizer = tokenizer
+        self.max_length = max_length
+
+    def __len__(self) -> int:
+        return len(self.texts)
+
+    def __getitem__(self, idx: int) -> dict[str, torch.Tensor]:
+        text = str(self.texts[idx])
+        encoding = self.tokenizer(
+            text,
+            truncation=True,
+            padding="max_length",
+            max_length=self.max_length,
+            return_tensors="pt",
+        )
+        return {
+            "input_ids": encoding["input_ids"].flatten(),
+            "attention_mask": encoding["attention_mask"].flatten(),
+        }

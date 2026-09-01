@@ -1,7 +1,0 @@
-pola,deskripsi,jumlah_baris,persentase,contoh_id
-tampilkan_lebih_banyak,tampilkan\s+lebih\s+banyak,858,9.92,1|5|6|7|13
-engagement_rb,\b\d+\s*rb\b,8,0.09,4783|5357|5495|5603|6156
-timestamp_video,"\b\d{1,2}:\d{2}(?::\d{2})?\b",111,1.28,0|59|64|115|118
-sumber_berita,\bdari\s+[\w.\-]+\.(com|id|co|net)\b,877,10.14,3|4|8|12|17
-noise_token,\b(rb|com|id|co|net|membalas)\b,3970,45.91,1|3|4|5|6
-artefak_huruf_matematika,Karakter Mathematical Alphanumeric U+1D400-U+1D7FF (artefak scraping),18,0.21,247|259|395|619|725

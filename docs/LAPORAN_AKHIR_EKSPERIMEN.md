@@ -1,4 +1,4 @@
-﻿# LAPORAN AKHIR HASIL PENELITIAN DAN EKSPERIMEN
+# LAPORAN AKHIR HASIL PENELITIAN DAN EKSPERIMEN
 **Analisis Sentimen Tweet Bencana Banjir Menggunakan Model IndoBERTweet-LoRA dan Kalibrasi Ambang Batas**
 
 - **Tanggal Dokumen**: 1 September 2026  
@@ -151,15 +151,17 @@ Tabel berikut menyajikan perbandingan performa seluruh metode yang telah dievalu
 
 | No | Pendekatan / Metode Model | Akurasi | Macro Precision | Macro Recall | Macro F1-Score | Recall Netral | Status Metodologis |
 |:---:|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| **1** | **IndoBERTweet-LoRA + Kalibrasi ($w=[1, 1.5, 1]$)** | **77,46%** | **0,7310** | **0,7532** | **0,7394** | **66,89%** | 🥇 **Model Terbaik (Kandidat Tesis)** |
-| 2 | IndoBERTweet-LoRA (Data Terkoreksi Baseline) | 78,27% | 0,7347 | 0,7403 | 0,7371 | 57,28% | Pembanding Argmax |
-| 3 | IndoBERTweet-LoRA + Weighted CrossEntropy | 77,11% | 0,7256 | 0,7459 | 0,7339 | 63,00% | Setara secara statistik ($p=0,572$) |
-| 4 | IndoBERTweet-LoRA (Data Lama Sebelum Koreksi) | 79,54% | 0,7450 | 0,7252 | 0,7328 | 50,00% | Baseline Kanonik Awal |
-| 5 | IndoBERTweet-LoRA + Label Smoothing ($\epsilon=0,1$) | 76,80% | 0,7210 | 0,7180 | 0,7195 | 52,00% | Kurang Optimal |
-| 6 | IndoBERTweet-LoRA + Focal Loss ($\gamma=2$) | 73,41% | 0,6954 | 0,7304 | 0,7041 | 68,00% | Presisi Rusak ($p < 0,0001$) |
-| 7 | IndoBERTweet-LoRA (Manipulasi Rasio 1:1:1) | 63,41% | 0,5896 | 0,6189 | 0,5908 | 54,00% | Rekayasa Rasio Menurunkan Hasil |
-| 8 | BiLSTM v2 (Data Terkoreksi Baseline) | *Evaluasi* | *Evaluasi* | *Evaluasi* | *Evaluasi* | *Evaluasi* | Pembanding Arsitektur RNN |
-| 9 | LSTM v2 (Data Terkoreksi Baseline) | *Evaluasi* | *Evaluasi* | *Evaluasi* | *Evaluasi* | *Evaluasi* | Pembanding Arsitektur RNN |
+| **1** | **IndoBERTweet-LoRA + TAPT + Kalibrasi ($w=[1, 1.4, 1]$)** | **79,60%** | **0,7494** | **0,7464** | **0,7479** | **58,94%** | 🥇 **Model Terbaik Keseluruhan (P2 TAPT)** |
+| 2 | IndoBERTweet-LoRA + TAPT via MLM (P2 Argmax) | 80,06% | 0,7583 | 0,7383 | 0,7461 | 52,65% | Akurasi Tertinggi ($p=0,0041$) |
+| 3 | IndoBERTweet-LoRA + Kalibrasi ($w=[1, 1.5, 1]$) | 77,46% | 0,7310 | 0,7532 | 0,7394 | 66,89% | Baseline Terkunci + Kalibrasi |
+| 4 | IndoBERTweet-LoRA + Fine-Tuning Sweep (P1 / t10) | 77,98% | 0,7318 | 0,7488 | 0,7390 | 61,26% | Optimum Argmax Parameter |
+| 5 | IndoBERTweet-LoRA (Data Terkoreksi Baseline) | 78,27% | 0,7347 | 0,7403 | 0,7371 | 57,28% | Pembanding Argmax Standar |
+| 6 | IndoBERTweet-LoRA + Weighted CrossEntropy | 77,11% | 0,7256 | 0,7459 | 0,7339 | 63,00% | Setara secara statistik ($p=0,572$) |
+| 7 | IndoBERTweet-LoRA (Data Lama Sebelum Koreksi) | 79,54% | 0,7450 | 0,7252 | 0,7328 | 50,00% | Baseline Kanonik Awal |
+| 8 | IndoBERTweet-LoRA + Label Smoothing ($\epsilon=0,1$) | 76,80% | 0,7210 | 0,7180 | 0,7195 | 52,00% | Kurang Optimal |
+| 9 | IndoBERTweet-LoRA + Focal Loss ($\gamma=2$) | 73,41% | 0,6954 | 0,7304 | 0,7041 | 68,00% | Presisi Rusak ($p < 0,0001$) |
+| 10 | IndoBERTweet-LoRA (Manipulasi Rasio 1:1:1) | 63,41% | 0,5896 | 0,6189 | 0,5908 | 54,00% | Rekayasa Rasio Menurunkan Hasil |
+
 
 ---
 

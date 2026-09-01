@@ -527,23 +527,9 @@ print("Memulai Tahap 1: Masked Language Modeling pada Korpus Banjir...")
 raw_texts = df[COL_TEXT].dropna().tolist()
 print(f"Total tweet korpus untuk TAPT: {{len(raw_texts)}}")
 
-class MLMTextDataset(Dataset):
-    def __init__(self, texts, tokenizer, max_length=128):
-        self.encodings = tokenizer(
-            texts,
-            truncation=True,
-            padding="max_length",
-            max_length=max_length,
-            return_tensors="pt",
-        )
-    def __len__(self):
-        return len(self.encodings["input_ids"])
-    def __getitem__(self, idx):
-        return {{{{key: val[idx] for key, val in self.encodings.items()}}}}
-
 train_texts, val_texts = train_test_split(raw_texts, test_size=0.1, random_state=42)
-mlm_train_ds = MLMTextDataset(train_texts, tokenizer, max_length={p.get('max_length', 128)})
-mlm_val_ds = MLMTextDataset(val_texts, tokenizer, max_length={p.get('max_length', 128)})
+mlm_train_ds = MLMDataset(train_texts, tokenizer, max_length={p.get('max_length', 128)})
+mlm_val_ds = MLMDataset(val_texts, tokenizer, max_length={p.get('max_length', 128)})
 
 mlm_model = AutoModelForMaskedLM.from_pretrained(MODEL_NAME)
 data_collator = DataCollatorForLanguageModeling(

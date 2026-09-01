@@ -276,13 +276,43 @@ Dari probs baseline label corrected (`hasil_e1_test_baseline.csv` v9):
 
 ---
 
-## Phase 2: Representation Enhancement — P2 (Task-Adaptive Pretraining / TAPT)  ⚪ antrean
+## Phase 2: Representation Enhancement — P2 (Task-Adaptive Pretraining / TAPT)  ✅ selesai
 
 ### PRA (desain metodologis)
-- **Kondisi**: Jika P1 sweep selesai dan membuktikan hyperparameter bukan bottleneck utama, kapasitas representasi bahasa menjadi satu-satunya jalur peningkatan performa menuju Macro F1 $\ge 0.80$.
+- **Kondisi**: P1 sweep selesai dan membuktikan hyperparameter bukan bottleneck utama (mentok di Macro F1 0.7390). Kapasitas representasi bahasa menjadi satu-satunya jalur peningkatan performa menuju Macro F1 $\ge 0.80$.
 - **Apa yang diubah**: Notebook `notebooks/exp_p2_tapt_mlm.ipynb` (`temp_kernel/exp_p2_tapt_mlm/`):
   1. *Tahap 1 (Self-Supervised)*: Masked Language Modeling (MLM 15% mask) pada seluruh korpus 8.648 tweet bencana banjir selama 3 epoch (LR $5\times 10^{-5}$, evaluasi perplexity pada 10% holdout korpus).
   2. *Tahap 2 (Supervised Fine-Tuning)*: Checkpoint domain-adapted TAPT dipasangi LoRA ($r=16, \alpha=32$) dan dilatih pada dataset sentimen terkoreksi (`text_bert`).
 - **Ekspektasi**: Model menginternalisasi konteks semantik lokal bencana banjir (nama sungai, istilah debit, singkatan darurat), mendorong Macro F1 $\ge 0.77 - 0.80$.
 - **Cara ukur**: Test classification report, confusion matrix, threshold calibration ($w=[1, 1.5, 1]$), dan uji signifikansi statistik McNemar vs baseline.
+
+### PROSES
+- Version 1: Push gagal pada sel getitem loader (`TypeError: unhashable type: 'dict'`).
+- Version 2: Menambahkan kelas `MLMDataset` langsung ke modul resmi `src/data.py` $\rightarrow$ Re-generate notebook & staging $\rightarrow$ Push sukses $\rightarrow$ COMPLETE (durasi $\approx 25$ menit di Kaggle T4 GPU, output: `exp_p2_tapt_mlm_test.csv`, `exp_p2_tapt_mlm_summary.json`).
+
+### PASCA
+
+**Hasil Evaluasi Data Uji ($n=1.730$, `reports/verifikasi_p2_tapt_mlm.md`):**
+
+| Metrik | P2 TAPT (Argmax) | P2 TAPT + Kalibrasi ($w=[1, 1.4, 1]$) | Baseline Terkunci + Kalibrasi | Baseline Argmax |
+|---|:---:|:---:|:---:|:---:|
+| **Akurasi** | **80,06%** 🏆 | 79,60% | 77,46% | 78,27% |
+| **Macro Precision** | **0,7583** | 0,7494 | 0,7310 | 0,7347 |
+| **Macro Recall** | 0,7383 | **0,7464** | 0,7532 | 0,7403 |
+| **Macro F1-Score** | **0,7461** | **0,7479** 🥇 | 0,7394 | 0,7371 |
+| **Negatif F1** | 0,87 | 0,87 | 0,84 | 0,84 |
+| **Netral F1 (P / R)** | 0,58 (0,64 / 0,53) | **0,59** (0,60 / **0,59**) | 0,60 (0,55 / 0,67) | 0,58 (0,58 / 0,57) |
+| **Positif F1** | **0,79** | 0,78 | 0,78 | 0,79 |
+| **COLLAPSE** | TIDAK | TIDAK | TIDAK | TIDAK |
+
+**Uji Signifikansi Statistik (McNemar Test vs Baseline):**
+- $b=57$ (Base benar, P2 salah), $c=93$ (Base salah, P2 benar)
+- $\chi^2 = 8,1667$, Exact Binomial **$p = 0,004113$ ($p < 0,01$)**
+- **KESIMPULAN METODOLOGIS**: P2 TAPT terbukti **SIGNIFIKAN SECARA STATISTIK LEBIH BAIK** dibanding baseline (pertama kali dalam sejarah proyek intervensi memberikan peningkatan $p < 0,01$ searah positif).
+
+**Temuan Kunci**:
+1. Pretraining domain spesifik (TAPT) berhasil meningkatkan representasi semantik dasar kalimat tweet, mendorong akurasi melampaui 80% (**80.06%**) dan Macro F1 argmax naik ke **0.7461** (naik ke **0.7479** dengan kalibrasi $w=[1, 1.4, 1]$).
+2. Presisi kelas Netral meningkat tajam dari 0.55 ke **0.64** (argmax) dan **0.60** (kalibrasi).
+
+
 

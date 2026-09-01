@@ -1,8 +1,0 @@
-kata,count_input,count_output,count_stem,status
-tidak,495,1580,1669,OK
-bukan,407,432,673,OK
-jangan,132,136,155,OK
-sedih,174,189,301,OK
-marah,16,20,129,OK
-doa,151,225,360,OK
-harapan,120,0,245,TER-STEMMED

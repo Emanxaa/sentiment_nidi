@@ -1,4 +1,4 @@
-﻿# Bukti Proyek untuk Pembimbing / Stakeholder
+# Bukti Proyek untuk Pembimbing / Stakeholder
 **Analisis Sentimen Bencana Banjir Menggunakan Model IndoBERTweet-LoRA dan Threshold Calibration**
 
 Dokumen ini memuat rangkuman bukti empiris dan artefak repositori berdasarkan 9 fase perjalanan proyek penelitian. Laporan komprehensif naratif untuk naskah Bab III & IV dapat diakses pada [**`docs/LAPORAN_AKHIR_EKSPERIMEN.md`**](docs/LAPORAN_AKHIR_EKSPERIMEN.md).
@@ -165,12 +165,12 @@ Dokumen ini memuat rangkuman bukti empiris dan artefak repositori berdasarkan 9 
 * **Decision Tree Roadmap**:
   * Terdokumentasi lengkap di [`docs/TASK_BOARD.md`](docs/TASK_BOARD.md).
 * **Daftar Eksperimen Prioritas (Target Macro F1 $\ge 0.80$)**:
-  1. **P1 — Fine-Tuning Sweep Lanjutan**: Optimasi Learning Rate, Warmup, dan Weight Decay ([`configs/exp_p1_ft_sweep.yaml`](configs/exp_p1_ft_sweep.yaml)).
-  2. **P2 — Task-Adaptive Pretraining (TAPT via MLM 1-3 Epoch)**: Adaptasi domain kosakata tweet banjir lokal Sumatera (nama sungai, istilah debit air) pada seluruh korpus mentah 8.648 tweet.
+  1. **P1 — Fine-Tuning Sweep Lanjutan** (✅ Selesai): 10 varian diuji ([`configs/exp_p1_ft_sweep.yaml`](configs/exp_p1_ft_sweep.yaml)). Varian terbaik `t10` (LR 2e-4, Ep 8, Wm 0.1, WD 0.01, Len 64) menghasilkan Akurasi 77.98% / Macro F1 **0.7390** / Recall Netral 61.26%. Membuktikan secara definitif bahwa hyperparameter bukan bottleneck.
+  2. **P2 — Task-Adaptive Pretraining (TAPT via MLM 3 Epoch)** (🟡 Berjalan): Adaptasi domain kosakata tweet banjir lokal Sumatera (nama sungai, istilah debit air) pada seluruh korpus 8.648 tweet (`notebooks/exp_p2_tapt_mlm.ipynb`).
   3. **P3 — Representation Benchmark**: Evaluasi komparasi fitur TF-IDF vs Sentence-BERT vs IndoBERTweet.
   4. **P4 — Backbone Swap**: Eksplorasi backbone alternatif (IndoRoBERTa / XLM-RoBERTa).
   5. **P5 — Ensemble Model**: Penggabungan probabilitas model terbaik via *soft-voting*.
-* **Alasan Pemilihan**: Eksperimen fungsi loss dan decision-threshold telah mencapai batas maksimal (*performance ceiling* $\approx 0.74$). Peningkatan berikutnya wajib berfokus pada **peningkatan kapasitas representasi domain bahasa**.
+* **Alasan Pemilihan**: Eksperimen fungsi loss, sampling, dan hyperparameter sweep (P1) semuanya mengonfirmasi batas maksimal (*performance ceiling* $\approx 0.74$). Peningkatan berikutnya wajib berfokus pada **peningkatan kapasitas representasi domain bahasa**.
 
 ---
 
@@ -185,5 +185,7 @@ Dokumen ini memuat rangkuman bukti empiris dan artefak repositori berdasarkan 9 
 | **Imbalance** | [`reports/verifikasi_e4_p1.md`](reports/verifikasi_e4_p1.md), [`reports/verifikasi_e5_p2.md`](reports/verifikasi_e5_p2.md) | Focal Loss & Smoothing gagal; SMOTE merusak representasi teks |
 | **Analisis Model** | [`reports/verifikasi_final_kalibrasi.md`](reports/verifikasi_final_kalibrasi.md), [`docs/LAPORAN_AKHIR_EKSPERIMEN.md`](docs/LAPORAN_AKHIR_EKSPERIMEN.md) | Titik lemah terbukti pada ambiguitas kelas Netral vs Negatif |
 | **Calibration** | [`quality_pipeline/calibrate_thresholds.py`](quality_pipeline/calibrate_thresholds.py), [`reports/verifikasi_final_kalibrasi.md`](reports/verifikasi_final_kalibrasi.md) | Recall Netral melonjak **50.0% $\rightarrow$ 66.9%**, Macro F1 naik ke **0.7394** |
+| **P1 FT Sweep** | [`reports/verifikasi_p1_ft_sweep.md`](reports/verifikasi_p1_ft_sweep.md), [`configs/exp_p1_ft_sweep.yaml`](configs/exp_p1_ft_sweep.yaml) | Sweep 10 varian capai **0.7390** (Recall Netral 61.3%); bukti batas representasi |
 | **Kesimpulan** | [`docs/LAPORAN_AKHIR_EKSPERIMEN.md`](docs/LAPORAN_AKHIR_EKSPERIMEN.md) | *Data-centric* & kalibrasi terbukti efektif; manipulasi loss/resampling gagal |
-| **Roadmap** | [`docs/TASK_BOARD.md`](docs/TASK_BOARD.md), [`configs/exp_p1_ft_sweep.yaml`](configs/exp_p1_ft_sweep.yaml) | Decision tree Pareto: prioritaskan TAPT (MLM) & Backbone Swap menuju $\ge 0.80$ |
+| **Roadmap** | [`docs/TASK_BOARD.md`](docs/TASK_BOARD.md), [`notebooks/exp_p2_tapt_mlm.ipynb`](notebooks/exp_p2_tapt_mlm.ipynb) | **P2 TAPT (MLM 3-Epoch) sedang berjalan** menuju target $\ge 0.80$ |
+
