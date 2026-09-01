@@ -229,7 +229,7 @@ Dari probs baseline label corrected (`hasil_e1_test_baseline.csv` v9):
 
 ---
 
-## Phase 2: Representation Enhancement — P1 (Fine-Tuning Sweep)  🟡 siap run
+## Phase 2: Representation Enhancement — P1 (Fine-Tuning Sweep)  ✅ selesai
 
 ### PRA (ditulis sebelum push)
 - **Kondisi**: Baseline terkunci (label corrected + threshold calibration $w=[1, 1.5, 1]$) menghasilkan Acc 0.7746 / Macro F1 **0.7394** / Netral Recall 0.669 / F1 0.601. Eksperimen loss (Class Weight, Focal Loss, Label Smoothing, Resampling) terbukti tidak mampu melampaui ceiling 0.74.
@@ -241,9 +241,38 @@ Dari probs baseline label corrected (`hasil_e1_test_baseline.csv` v9):
   - *Max Length*: 64, 128
 - **Ekspektasi**: Memastikan IndoBERTweet tidak tersandera oleh hyperparameter dasar. Target gate: Macro F1 $\ge 0.77$.
 - **Cara ukur**: Evaluasi validation macro F1 per varian $\rightarrow$ model terbaik dievaluasi di test set ($n=1.730$) + simpan `exp_p1_ft_sweep_val.csv` dan `exp_p1_ft_sweep_test.csv`.
-- **Decision Gate**:
-  - Jika Macro F1 $\ge 0.77 \rightarrow$ Lanjut Polishing/Ensemble.
-  - Jika Macro F1 $< 0.77 \rightarrow$ **Langsung eksekusi P2 (TAPT)** sebagai prioritas utama.
+
+### PROSES
+- Version 1: Push gagal pada inisialisasi seed (`NameError: set_seed`).
+- Version 2: Fixed import explicit di template generator notebook $\rightarrow$ Push sukses $\rightarrow$ COMPLETE (durasi $\approx 85$ menit, 10 varian dieksekusi tuntas di Kaggle T4).
+
+### PASCA
+
+**Hasil Sweep Validasi (10 Varian, `exp_p1_ft_sweep_val.csv`):**
+
+| Ranking | Varian | Learning Rate | Epochs | Warmup | Weight Decay | Max Length | Val Acc | Val Macro F1 | Status |
+|:---:|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+| 🥇 | **t10** | **2e-4** | **8** | **0.1** | **0.01** | **64** | **0.7587** | **0.7163** | OK |
+| 🥈 | **t8** | 2e-4 | 10 | 0.1 | 0.01 | 128 | 0.7630 | 0.7115 | OK |
+| 🥉 | **t6 (base)** | 2e-4 | 8 | 0.1 | 0.01 | 128 | 0.7457 | 0.6987 | OK |
+| 4 | **t5** | 1e-4 | 8 | 0.1 | 0.01 | 128 | 0.7457 | 0.6924 | OK |
+| 5 | **t4** | 5e-5 | 8 | 0.1 | 0.01 | 128 | 0.7283 | 0.6472 | OK |
+| 6 | **t7** | 3e-5 | 10 | 0.1 | 0.01 | 128 | 0.7052 | 0.6138 | OK |
+| 7 | **t3** | 3e-5 | 8 | 0.1 | 0.01 | 128 | 0.6806 | 0.5346 | OK |
+| 8 | **t9** | 3e-5 | 8 | 0.1 | 0.01 | 64 | 0.6618 | 0.4813 | OK |
+| 9 | **t2** | 2e-5 | 5 | 0.1 | 0.01 | 128 | 0.6069 | 0.4083 | OK |
+| 10 | **t1** | 1e-5 | 5 | 0.0 | 0.00 | 128 | 0.5448 | 0.2417 | OK (underfit) |
+
+**Evaluasi Model Terbaik (t10) pada Test Set ($n=1.730$, `reports/verifikasi_p1_ft_sweep.md`):**
+- **Akurasi**: 77.98%
+- **Macro F1 (Argmax)**: **0.7390** (Precision 0.7318, Recall 0.7488)
+- **Netral P / R / F1**: 0.56 / 0.61 / 0.59
+- **COLLAPSE**: TIDAK
+
+**Verdict Gate P1 — GAGAL (0.7390 < 0.77)**:
+- Optimasi hyperparameter komprehensif mengonfirmasi bahwa batas tertinggi model pada konfigurasi training yang ada adalah **Macro F1 $\approx 0.739$**.
+- Hyperparameter tuning **bukan** penyebab bottleneck.
+- **Tindakan Sesuai Roadmap**: **LANGSUNG PIVOT KE P2 (Task-Adaptive Pretraining / TAPT via MLM)** untuk mengubah kapasitas representasi bahasa dasar.
 
 ---
 
