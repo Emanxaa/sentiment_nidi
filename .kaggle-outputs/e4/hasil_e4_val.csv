@@ -1,0 +1,2 @@
+run,accuracy_val,precision_macro_val,recall_macro_val,f1_macro_val,status
+weighted_ce,0.7413294797687862,0.6896262440006801,0.6975154513596072,0.693002847127499,OK

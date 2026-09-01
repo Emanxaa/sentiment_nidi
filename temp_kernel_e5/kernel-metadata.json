@@ -1,0 +1,14 @@
+{
+  "id": "emanuelembuaijdak/thesis-lora-e5-focal-loss",
+  "title": "Thesis LoRA E5 Focal Loss",
+  "code_file": "thesis-lora-e5-focal.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "true",
+  "enable_gpu": "true",
+  "enable_internet": "true",
+  "machine_shape": "NvidiaTeslaT4",
+  "dataset_sources": [
+    "emanuelembuaijdak/thesis-indobert-processed-data"
+  ]
+}

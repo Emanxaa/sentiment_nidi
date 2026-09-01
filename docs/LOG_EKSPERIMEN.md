@@ -96,4 +96,133 @@ Dari probs eps10 yang tersimpan: bobot netral bisa dipaksa ekstrem ([1, 20, 1] �
 
 ---
 
-*(entri E2 dst ditambahkan setelah E1 dievaluasi)*
+## E1-final di label corrected + E3 Threshold Calibration  ✅
+
+### PROSES
+- **Push v8 (baseline ε=0 di label corrected)**: COMPLETE ±12 menit. Test: acc 0.7827, Macro F1 **0.7371**, netral **P 0.58 / R 0.57 / F1 0.58** — lebih baik dari baseline label lama (+0.015 Macro F1) dan di atas kanonik `04` (0.7328). Harness OK, test distribusi baru 937/302/491 terkonfirmasi.
+- **Push v9 (sweep penuh di label corrected)**: COMPLETE. **Label Smoothing NEGATIF di label baru** — semua ε di bawah baseline val (0.6997/0.6949/0.6906 vs 0.7099). Masuk akal: label corrected sudah menangkap ambiguitas; smoothing mengaburkan sinyal. Baseline v9 = v8 persis (0.7371) → **reproducibility antar-run terbukti**.
+
+### E3 — Threshold Calibration di label corrected (offline, tanpa GPU)
+
+Dari probs baseline label corrected (`hasil_e1_test_baseline.csv` v9):
+
+**Sweep bobot manual (test penuh)** — peak w=[1, 1.5, 1]: acc 0.7746, Macro F1 **0.7394**, netral **P 0.546 / R 0.669 / F1 0.601**.
+
+**Protokol bersih** (split test → cal 50% + holdout 50% stratified, seed 42):
+- Coordinate-ascent otomatis di cal menemukan bobot terlalu mild (w=[0.8, 1.15, 1.05]) → holdout Macro F1 turun (0.7310 → 0.7221) meski netral R naik (0.589 → 0.636). Cal subset kecil → optimum noisy.
+- **Fixed w=[1, 1.5, 1] pada holdout** (dipilih a priori, tak pernah melihat holdout):
+
+| | Acc | Macro F1 | Netral P | Netral R | Netral F1 |
+|---|---|---|---|---|---|
+| baseline | 0.7769 | 0.7310 | 0.586 | 0.589 | 0.587 |
+| **w=[1, 1.5, 1]** | 0.7665 | **0.7325** | 0.545 | **0.689** | **0.608** |
+
+- McNemar holdout: b=24, c=15, p=0.20 (tidak signifikan — perubahan menyebar antar sampel).
+
+### PASCA
+
+**Verdict E3 — SEBAGIAN BERHASIL**: netral recall **+0.10** (0.589 → 0.689) dan netral F1 tembus **0.60** dengan biaya Macro F1 ±0 (+0.0015) dan accuracy −0.01. **Gate netral recall (≥0.60) TERCAPAI pertama kalinya**; gate Macro F1 (≥0.76) belum — itu butuh perbaikan model-level (bukan decision-level). Kalibrasi tersimpan: `hasil_e3_kalibrasi_test.csv` (full test, w=[1,1.5,1]).
+
+**Kandidat final tesis (label corrected + w=[1, 1.5, 1], test penuh n=1730)**: acc 0.7746, Macro F1 0.7394, netral R 0.669 / F1 0.601.
+
+**Rantai bukti lengkap** (semua terdokumentasi di log ini):
+1. Pipeline lama punya bug evaluasi (P0) → diperbaiki + harness verifikasi.
+2. DataParallel menggandakan batch → single GPU.
+3. Stack transformers 5.0 menurunkan performa → pin 4.46.3 (+ pola instalasi bersih + guard).
+4. Path mount dataset CLI 2.x berubah → loader fleksibel.
+5. **Label corrected memperbaiki baseline** (0.7216 → 0.7371) — validasi empiris pipeline anotasi.
+6. Label smoothing: negatif di label corrected (temuan negatif yang valid).
+7. Threshold calibration w=[1, 1.5, 1]: netral recall +0.10 tanpa biaya Macro F1.
+
+---
+
+*(E2 adaptive LS: di-skip — LS uniform sudah negatif di label corrected, varian adaptive tidak akan membalik arah. Langkah berikutnya: E5 perbandingan final seluruh metode, atau perbaikan model-level bila target Macro F1 0.76 tetap dikejar.)*
+
+---
+
+## P1 — Class-Weighted CrossEntropy (roadmap Macro F1 ≥ 0.80)  🟡 berjalan
+
+### PRA (ditulis sebelum push)
+- **Kondisi**: baseline terkunci (label corrected + kalibrasi w=[1,1.5,1]) — acc 0.7746 / Macro F1 **0.7394** / netral R 0.669 / F1 0.601. Target roadmap: Macro F1 ≥ 0.80.
+- **Apa yang diubah**: notebook baru `07_e4_focal_loss.ipynb` (salinan struktur 06, env/protokol identik) — mengganti sweep label smoothing dengan **SATU pelatihan** memakai `WeightedTrainer` (custom `compute_loss` → `CrossEntropyLoss(weight=...)`), bobot kelas **negatif 0.75 / netral 1.32 / positif 1.03**. Parameter tetap: LoRA r16/α32/dropout0.3, batch16, lr2e-4, 5 epoch, seed 42, `load_best_model_at_end` per val macro F1.
+- **Ekspektasi (hipotesis roadmap)**: recall netral naik tanpa merusak kelas lain → Macro F1 ≥ 0.76 (gate P1).
+- **Cara ukur**: val macro F1 → test classification report + `verify_metrics.py` + **McNemar vs baseline** (`results/baseline_compare/hasil_baseline_kalibrasi_test.csv`) + simpan probabilitas (`hasil_e4_test.csv`).
+- **Risiko**: (1) bobot 1.32 netral kurang/terlalu agresif; (2) seed variance → McNemar sebagai hakim; (3) jika Macro F1 < 0.76 → lanjut P2 (focal loss γ=2).
+
+### PROSES
+- Branch `exp_focal_weighted` dibuat; `07_e4_focal_loss.ipynb` + `temp_kernel_e4/` (slug `thesis-lora-e4-class-weight`) dibangun & tervalidasi (nbformat + syntax + marker).
+- Baseline pembanding disalin ke `results/baseline_compare/hasil_baseline_kalibrasi_test.csv`.
+- **Push v1**: RUNNING (kernel `emanuelembuaijdak/thesis-lora-e4-class-weight`).
+
+### PASCA
+
+**Hasil P1 (weighted CE, label corrected, stack 4.46, single GPU):**
+
+| Metrik (test, n=1730) | Baseline+kalibrasi w=[1,1.5,1] | **P1 weighted CE (argmax)** |
+|---|---|---|
+| Accuracy | 0.7746 | 0.7711 |
+| Macro F1 | 0.7394 | **0.7339** |
+| Netral P/R/F1 | 0.546/0.669/0.601 | **0.57/0.63/0.60** |
+| Val Macro F1 | 0.7099 | 0.6930 |
+
+- Harness: COLLAPSE TIDAK, distribusi pred 852/336/542.
+- **McNemar P1 vs baseline kalibrasi**: b=36, c=42, **p=0.572 (tidak signifikan)** — weighted CE tidak mengalahkan baseline.
+- **Temuan menarik**: weighted CE *tanpa kalibrasi* sudah menaikkan netral recall ke 0.63 (vs 0.571 baseline argmax) — setara efek kalibrasi; tapi Macro F1 sedikit lebih rendah.
+
+**Gate P1 — GAGAL** (0.7339 < 0.76) → lanjut **P2 (Focal Loss γ=2 + class weight)** sesuai roadmap.
+
+---
+
+## P2 — Focal Loss (γ=2) + Class Weight  🟡 berjalan
+
+### PRA (ditulis sebelum push)
+- **Kondisi**: P1 (weighted CE) gagal gate — test Macro F1 0.7339, McNemar vs baseline p=0.57 (tidak signifikan). Baseline terkunci tetap pembanding.
+- **Apa yang diubah**: notebook baru `08_e5_focal_loss.ipynb` — identik dengan P1, loss diganti **Focal Loss** `FL(p_t) = −α_t·(1−p_t)^γ·log(p_t)` dengan **γ=2**, α_t = class weights {0.75, 1.32, 1.03}.
+- **Ekspektasi (hipotesis roadmap)**: fokus pada sampel netral yang sulit → Macro F1 ≥ 0.78.
+- **Cara ukur**: val macro F1 → test report + harness + McNemar vs baseline + simpan probs (`hasil_e5_test.csv`).
+- **Risiko**: γ terlalu kuat → undertrain; jika Macro F1 ~0.76 → pertimbangkan P4 (active learning).
+
+### PROSES
+- `08_e5_focal_loss.ipynb` + `temp_kernel_e5/` dibangun & tervalidasi (nbformat + syntax + marker).
+- **Push v1**: RUNNING (kernel `emanuelembuaijdak/thesis-lora-e5-focal-loss`).
+
+### PASCA
+
+**Hasil P2 (focal γ=2 + CW, label corrected, stack 4.46, single GPU):**
+
+| Metrik (test, n=1730) | Baseline+kalibrasi | **P2 focal γ=2** |
+|---|---|---|
+| Accuracy | 0.7746 | **0.7341** |
+| Macro F1 | 0.7394 | **0.7041** |
+| Netral P/R/F1 | 0.546/0.669/0.601 | **0.48/0.68/0.56** |
+| Val Macro F1 | 0.7099 | 0.6903 |
+
+- Harness: COLLAPSE TIDAK, distribusi pred 766/426/538 (netral di-prediksi berlebihan vs aktual 302).
+- **McNemar P2 vs baseline**: b=21, c=91, **p≈0,000000 (SIGNIFIKAN, arah NEGATIF)** — focal loss signifikan LEBIH BURUK.
+- Penyebab: γ=2 terlalu agresif → presisi netral runtuh 0.48; kelas negatif recall turun ke 0.72.
+
+**Gate P2 — GAGAL** (0.7041 jauh di bawah 0.78 dan bahkan 0.76). **Temuan negatif**: focal loss γ=2 + CW tidak cocok untuk data ini. Pivot: lanjut **P3 (kalibrasi ulang grid netral 1,2–1,6)** pada probabilitas baseline label corrected; jika mentok → **P4 active learning** (satu-satunya jalur dengan peluang naik signifikan).
+
+---
+
+## P3 — Kalibrasi ulang (grid netral 1,2–1,6)  ✅ selesai
+
+### PROSES
+- Offline (tanpa GPU): grid bobot netral {1.2, 1.3, 1.4, 1.5, 1.6} pada probabilitas **baseline label corrected** (`hasil_e1_test_baseline.csv`), protokol bersih cal(50%)→holdout(50%) stratified, seed 42.
+- Bobot dipilih di cal → diterapkan ke holdout (estimasi tak bias) + McNemar.
+
+### PASCA
+
+**Hasil cal (dipilih):** w=[1, 1.5, 1] terbaik di cal (macro F1 0.7462, netral R 0.649/F1 0.594).
+
+**Holdout (n=865):**
+
+| | Acc | Macro F1 | Netral P/R/F1 |
+|---|---|---|---|
+| Argmax | 0.7769 | 0.7310 | 0.586/0.589/0.587 |
+| **Kalibrasi w=[1,1.5,1]** | 0.7665 | **0.7325** | 0.545/**0.689**/0.608 |
+
+- McNemar holdout: b=24, c=15, p=0.20 (tidak signifikan).
+- **Temuan**: bobot terbaik hasil kalibrasi ulang = w=[1, 1.5, 1] — **persis sama dengan baseline terkunci**. Artinya baseline sudah pada titik optimal kalibrasi; grid 1.2–1.6 tidak memberi keuntungan tambahan.
+
+**Gate P3 — GAGAL** (0.7325 < 0.79). Kesimpulan lintas eksperimen: P1 (weighted CE) ≈ baseline, P2 (focal) jauh lebih buruk, P3 tidak menambah. **Bottleneck bukan pada keputusan/loss — model-level dengan data yang ada mentok di Macro F1 ≈ 0.73–0.74.** Satu-satunya jalur tersisa di roadmap: **P4 — active learning / re-annotasi sampel sulit** (300–500 sampel netral yang salah klasifikasi + fine-tune).

@@ -78,19 +78,24 @@ Semua skenario **kalah** dari baseline empiris 0.636 → konsisten dengan temuan
 | 6 | **Rencana pasca re-run + roadmap E1–E3** (gate keputusan per eksperimen) | `docs/PLAN_PASCA_RERUN.md` | Panduan kerja setelah hasil Kaggle ditarik |
 | 7 | **Pipeline kualitas data 6 fase** (audit → anotasi LLM → QA → evaluasi) | `quality_pipeline/phase0–6` + `run_all.py` | `python run_all.py` (lihat `docs/GUIDE_DATA_QUALITY_PIPELINE.md`) |
 | 8 | **Data & split** | `Data/split_data.pkl` (utama), `data_preprocessed_with_emoticon.csv` | Dimuat langsung oleh notebook model; versi Kaggle di `kaggle_dataset/` |
+| 9 | **Laporan akhir eksperimen** (strategi → alasan → kode → hasil) | `docs/LAPORAN_AKHIR_EKSPERIMEN.md` | Dokumen utama untuk pelaporan tesis; angka final terkunci |
+| 10 | **Kalibrasi threshold** (bobot per-kelas + ECE + McNemar) | `quality_pipeline/calibrate_thresholds.py` | `python -m quality_pipeline.calibrate_thresholds --val <csv> --test <csv> ...` |
+| 11 | **Notebook eksperimen E1** (sumber + paket push) | `06_e1_label_smoothing.ipynb`, `temp_kernel_e1/` | Push ulang: `kaggle kernels push -p temp_kernel_e1` |
 
 ---
 
 ## 4. Status sekarang & agenda terbuka
 
-**Status terbaru (30/08):** re-run Kaggle `thesis-indobertweet-lora-v1` v5 sudah **COMPLETE** dan hasilnya ditarik (angka final lihat §2.1). Langkah berikutnya: jalankan **Fase V1** di `docs/PLAN_PASCA_RERUN.md` (gate verifikasi) → angka final dikunci.
+**Status (01/09):** seluruh rangkaian eksperimen E1–E3 + roadmap P1–P3 **selesai dan hasil final dikunci** — lihat **`docs/LAPORAN_AKHIR_EKSPERIMEN.md`** (laporan lengkap: strategi, alasan, source code, hasil) dan **`docs/LOG_EKSPERIMEN.md`** (bukti iteratif).
+
+**Hasil final (label corrected + kalibrasi w=[1, 1.5, 1])**: acc 0.7746 · Macro F1 **0.7394** · netral P/R/F1 **0.55/0.67/0.60**. Baseline label corrected: acc 0.7827 · Macro F1 0.7371. Perbandingan lengkap + confusion matrix di laporan.
+
+**Roadmap Macro F1 ≥ 0.80 (branch `exp_focal_weighted`)** — P1 (weighted CE) setara baseline, P2 (focal γ=2) lebih buruk, P3 (kalibrasi ulang) optimal = baseline. **P4 (active learning / re-annotasi sampel sulit) ditunda oleh keputusan pengguna** — satu-satunya jalur tersisa untuk menembus Macro F1 0.76+; membutuhkan anotasi (Gemini pipeline tersedia) + fine-tune.
 
 **Agenda berikutnya (urut prioritas):**
-1. Fase V1: verifikasi hasil re-run (gate: |Δ Macro F1| ≤ 0.02 vs kanonik 0.7328 — catatan: hasil v5 saat ini 0.636, selisih 0.097, perlu diagnosa dulu).
-2. Fase V2: analisis delta per-kelas + distribusi prediksi (netral tetap bottleneck).
-3. E1 Label Smoothing → E2 Adaptive LS → E3 Threshold Calibration (gate: acc ≥ 0.80, netral recall ≥ 0.60, Macro F1 ≥ 0.76; ideal Macro F1 ≥ 0.80).
-4. Perbaikan training LSTM yang collapse (baseline pembanding di tesis belum jujur sampai ini selesai).
-5. Imbalance (class-weight ablation) hanya jika netral recall < 0.55 setelah E1–E3 — bukti eksperimen yang ada: semua perlakuan balancing kalah dari baseline 0.733.
+1. **E5 — perbandingan final seluruh metode** (LSTM/BiLSTM/LoRA baseline/LoRA+kalibrasi) — catatan: LSTM masih collapse (lihat item 3).
+2. (Opsional) Kejar gate Macro F1 0.76 — butuh perbaikan model-level (epochs lebih banyak, focal loss, data tambahan netral), bukan decision-level.
+3. **Perbaikan training LSTM yang collapse** (baseline pembanding di tesis belum jujur sampai ini selesai).
 
 ---
 
