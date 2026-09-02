@@ -1,0 +1,2 @@
+epoch,train_loss,val_loss,train_acc,val_acc,val_macro_f1
+1,0.0,0.0,0.0,0.0,0.0

@@ -1,38 +1,44 @@
 model:
-name: indolem/indobertweet-base-uncased
-num_labels: 3
-max_length: 128
+  name: indolem/indobertweet-base-uncased
+  num_labels: 3
+  max_length: 128
 
 lora:
-r: 16
-alpha: 32
-dropout: 0.1
-bias: none
-task_type: SEQ_CLS
+  r: 16
+  alpha: 32
+  dropout: 0.1
+  bias: none
+  task_type: SEQ_CLS
+  target_modules:
+    - query
+    - value
+  modules_to_save:
+    - classifier
 
 training:
-epochs: 5
-batch_size: 16
-learning_rate: 2e-5
-weight_decay: 0.01
-warmup_ratio: 0.1
-early_stopping_patience: 2
-gradient_accumulation_steps: 1
+  epochs: 5
+  batch_size: 16
+  learning_rate: 0.00002
+  weight_decay: 0.01
+  warmup_ratio: 0.1
+  early_stopping_patience: 2
+  gradient_accumulation_steps: 1
 
 dataset:
-path: Data/processed/banjir_processed_v2.csv
-text_column: processed_text_v2
-label_column: label
+  path: Data/processed/banjir_processed_v2.csv
+  text_column: processed_text_v2
+  label_column: label
 
 split:
-test_size: 0.2
-val_size: 0.1
-stratify: true
+  test_size: 0.2
+  val_size: 0.1
+  stratify: true
 
 runtime:
-mixed_precision: true
-cudnn_benchmark: true
-seeds:
-- 42
-- 123
-- 456
+  mixed_precision: true
+  gradient_checkpointing: false
+  cudnn_benchmark: false
+  seeds:
+    - 42
+    - 123
+    - 456

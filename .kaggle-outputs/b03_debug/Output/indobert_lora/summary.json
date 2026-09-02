@@ -1,0 +1,171 @@
+{
+    "aggregated_metrics": {
+        "accuracy": {
+            "mean": 0.6904,
+            "std": 0.0154
+        },
+        "precision": {
+            "mean": 0.6176,
+            "std": 0.0878
+        },
+        "recall": {
+            "mean": 0.5589,
+            "std": 0.0215
+        },
+        "macro_f1": {
+            "mean": 0.5172,
+            "std": 0.0285
+        }
+    },
+    "seeds": {
+        "42": {
+            "seed": 42,
+            "training_time_sec": 167.67,
+            "accuracy": 0.7081,
+            "macro_f1": 0.5487,
+            "precision": 0.6892,
+            "recall": 0.5837,
+            "validation_macro_f1": 0.5267,
+            "train_metrics": {
+                "accuracy": 0.6966,
+                "macro_f1": 0.5396,
+                "precision": 0.7096,
+                "recall": 0.5696
+            },
+            "val_metrics": {
+                "accuracy": 0.6835,
+                "macro_f1": 0.5267,
+                "precision": 0.6374,
+                "recall": 0.558
+            },
+            "test_metrics": {
+                "accuracy": 0.7081,
+                "macro_f1": 0.5487,
+                "precision": 0.6892,
+                "recall": 0.5837
+            },
+            "samples": {
+                "total": 8648,
+                "train": 6226,
+                "val": 692,
+                "test": 1730
+            },
+            "device": "Tesla T4",
+            "mixed_precision": true,
+            "lora_parameters": {
+                "trainable": 592131,
+                "total": 111152646,
+                "percent_trainable": 0.5327,
+                "r": 16,
+                "alpha": 32,
+                "dropout": 0.1
+            }
+        },
+        "123": {
+            "seed": 123,
+            "training_time_sec": 170.99,
+            "accuracy": 0.6827,
+            "macro_f1": 0.5096,
+            "precision": 0.6441,
+            "recall": 0.5485,
+            "validation_macro_f1": 0.5046,
+            "train_metrics": {
+                "accuracy": 0.6844,
+                "macro_f1": 0.5099,
+                "precision": 0.7447,
+                "recall": 0.5532
+            },
+            "val_metrics": {
+                "accuracy": 0.6821,
+                "macro_f1": 0.5046,
+                "precision": 0.6948,
+                "recall": 0.551
+            },
+            "test_metrics": {
+                "accuracy": 0.6827,
+                "macro_f1": 0.5096,
+                "precision": 0.6441,
+                "recall": 0.5485
+            },
+            "samples": {
+                "total": 8648,
+                "train": 6226,
+                "val": 692,
+                "test": 1730
+            },
+            "device": "Tesla T4",
+            "mixed_precision": true,
+            "lora_parameters": {
+                "trainable": 592131,
+                "total": 111152646,
+                "percent_trainable": 0.5327,
+                "r": 16,
+                "alpha": 32,
+                "dropout": 0.1
+            }
+        },
+        "456": {
+            "seed": 456,
+            "training_time_sec": 171.64,
+            "accuracy": 0.6803,
+            "macro_f1": 0.4933,
+            "precision": 0.5196,
+            "recall": 0.5446,
+            "validation_macro_f1": 0.4974,
+            "train_metrics": {
+                "accuracy": 0.6841,
+                "macro_f1": 0.5056,
+                "precision": 0.7145,
+                "recall": 0.5516
+            },
+            "val_metrics": {
+                "accuracy": 0.6806,
+                "macro_f1": 0.4974,
+                "precision": 0.7807,
+                "recall": 0.5496
+            },
+            "test_metrics": {
+                "accuracy": 0.6803,
+                "macro_f1": 0.4933,
+                "precision": 0.5196,
+                "recall": 0.5446
+            },
+            "samples": {
+                "total": 8648,
+                "train": 6226,
+                "val": 692,
+                "test": 1730
+            },
+            "device": "Tesla T4",
+            "mixed_precision": true,
+            "lora_parameters": {
+                "trainable": 592131,
+                "total": 111152646,
+                "percent_trainable": 0.5327,
+                "r": 16,
+                "alpha": 32,
+                "dropout": 0.1
+            }
+        }
+    },
+    "runtimes_sec": {
+        "42": 167.67,
+        "123": 170.99,
+        "456": 171.64
+    },
+    "total_runtime_sec": 604.31,
+    "lstm_comparison": {
+        "lstm_accuracy": 72.45,
+        "indobert_accuracy": 69.04,
+        "delta_accuracy": -3.41,
+        "lstm_macro_f1": 64.95,
+        "indobert_macro_f1": 51.72,
+        "delta_macro_f1": -13.23,
+        "lstm_precision": 67.28,
+        "indobert_precision": 61.76,
+        "delta_precision": -5.52,
+        "lstm_recall": 63.78,
+        "indobert_recall": 55.89,
+        "delta_recall": -7.89
+    }
+}
