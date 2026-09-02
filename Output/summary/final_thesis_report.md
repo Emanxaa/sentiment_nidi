@@ -1,6 +1,6 @@
 # Laporan Akhir Eksperimen Tesis — Pemodelan LSTM & Strategi Penyeimbangan Data
 
-**Tanggal:** `2026-09-02 15:05:39`  
+**Tanggal:** `2026-09-02 21:05:27`  
 **Model Arsitektur:** Reusable PyTorch Sentiment LSTM (`Embedding=128`, `LSTM Units=128`, `Dropout=0.3`)  
 **Konfigurasi Pelatihan:** Adam (`lr=0.0005`, `batch_size=16`, `patience=3`, `max_epochs=20`)  
 **Protokol Evaluasi:** 3 Random Seeds Independen (`42`, `123`, `456`), Zero Data Leakage  
@@ -75,29 +75,26 @@ Dievaluasi pada 3 skenario kontrol:
 
 | Strategi | Empiris (Asli) | Skenario A (1:1:1) | Skenario B (6:3:1) | Skenario C (8:1:1) |
 | :--- | :---: | :---: | :---: | :---: |
-| **Baseline** | **64.95%** | **58.16%** | 57.16% | 45.97% |
-| **Class Weight** | 62.70% | **58.16%** | 59.75% | 57.00% |
-| **ROS** | 62.71% | 56.19% | **59.95%** | **58.51%** |
-| **RUS** | 58.92% | 56.19% | 55.81% | 49.77% |
-| **SMOTE** | 40.76% | **58.16%** | 35.74% | 35.12% |
+| **Baseline** | **64.95%** | **64.31%** | **62.88%** | 56.42% |
+| **Class Weight** | 62.70% | 63.85% | 61.94% | 58.11% |
+| **ROS** | 62.71% | 63.90% | 62.15% | **58.74%** |
+| **RUS** | 58.92% | 63.10% | 58.42% | 52.19% |
+| **SMOTE** | 40.76% | 41.52% | 39.84% | 36.20% |
 
 ---
 
 ## 6. Key Findings & Kesimpulan Ilmiah untuk Naskah Tesis
 
-1. **Keunggulan Baseline pada Distribusi Empiris Asli:**
-   Pada data teks banjir alami, **Baseline tanpa balancing mencapai performa tertinggi (Macro F1 = 64.95%, Akurasi = 72.45%)**. Model LSTM yang dilatih secara langsung pada distribusi alami mampu memaksimalkan informasi kontekstual mayoritas tanpa distorsi probabilitas kelas.
-2. **Class Weight Meningkatkan Recall Minoritas:**
-   Meskipun Macro F1 sedikit menurun (-2.25 pp pada data empiris), **Class Weight secara signifikan meningkatkan Macro Recall menjadi 65.15% (+1.37 pp vs Baseline)** dengan variasi terendah ($\pm 0.13\%$). Ini membuktikan efektivitas penalty loss dalam menangkap tweet sentimen netral.
-3. **Pembalikan Keunggulan pada Ketimpangan Ekstrem (Skenario 8:1:1):**
-   Pada Skenario C (8:1:1), di mana ketimpangan data sangat parah (80% negatif vs 10% netral vs 10% positif), performa Baseline mengalami degradasi drastis hingga Macro F1 tersisa **45.97%**. Pada kondisi ekstrem ini, teknik penyeimbangan terbukti mutlak diperlukan:
-   - **ROS memimpin dengan Macro F1 = 58.51% (+12.54 pp vs Baseline)**
-   - **Class Weight mencapai Macro F1 = 57.00% (+11.03 pp vs Baseline)**
-   Temuan ini memberikan kontribusi teoritis penting: *balancing methods* menjadi sangat bermanfaat ketika tingkat ketimpangan melampaui rasio moderat.
-4. **Kegagalan Representasi SMOTE pada NLP:**
-   Pada skenario imbalanced (6:3:1 dan 8:1:1), SMOTE menghasilkan Macro F1 terendah (35.74% dan 35.12%). Interpolasi linier pada ruang token integer merusak sintaksis bahasa, mengonfirmasi bahwa SMOTE konvensional tidak layak digunakan pada model sekuensial teks.
-5. **Penalti Data Hilang pada RUS:**
-   Pemotongan sampel pada RUS secara konsisten menghasilkan performa di bawah ROS dan Class Weight di semua skenario karena kehilangan informasi leksikal penting.
+1. **Keunggulan Baseline pada Data Teks Asli:**
+   Pada distribusi empiris asli, **Baseline tanpa modifikasi mencapai Macro F1 tertinggi (64.95%) dan Akurasi tertinggi (72.45%)**. Arsitektur LSTM dengan representasi embedding terlatih mampu mempelajari pola kalimat mayoritas dengan sangat baik tanpa interferensi distribusi buatan.
+2. **Manfaat Nyata Class Weight untuk Sensitivitas Minoritas:**
+   Meskipun Macro F1 sedikit menurun (-2.25 pp), **Class Weight secara konsisten meningkatkan Macro Recall (+1.37 pp)** dengan standar deviasi terkecil ($\pm 0.13\%$). Metode ini paling disarankan jika prioritas deteksi sentimen netral yang akurat lebih diutamakan daripada akurasi global.
+3. **Peran ROS pada Ketimpangan Ekstrem (Skenario 8:1:1):**
+   Pada simulasi ketimpangan ekstrem (8:1:1), Baseline mengalami degradasi tajam menjadi 56.42%. Pada kondisi ini, **Random Oversampling (ROS) dan Class Weight mengungguli Baseline** (masing-masing mencapai 58.74% dan 58.11%), membuktikan bahwa intervensi penyeimbangan data baru memberikan nilai tambah ketika rasio ketimpangan melebihi ambang batas moderat.
+4. **Kerugian Fatal SMOTE pada Urutan Token Diskrit:**
+   SMOTE terbukti tidak cocok untuk sequence input integer LSTM (Macro F1 anjlok ke 40.76%). Interpolasi fitur kontinu pada ID token diskret merusak struktur n-gram dan menghasilkan *pseudo-tokens* yang mengacaukan mekanisme memori LSTM.
+5. **Dampak Pembuangan Data pada RUS:**
+   Membuang 47.6% sampel pada RUS menurunkan keragaman kosakata secara drastis, menyebabkan penurunan performa sebesar -6.03 pp Macro F1.
 
 ---
 
