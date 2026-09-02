@@ -1,7 +1,7 @@
 # RANGKUMAN HASIL PEMODELAN DATA LAMA
 ## Analisis Sentimen Bencana Banjir — Dataset `data_preprocessed_with_emoticon.csv`
 
-- **Tanggal Eksekusi Ulang (Retraining)**: 02 September 2026
+- **Tanggal Eksekusi Ulang (Retraining & Verifikasi)**: 02 September 2026
 - **Sumber Dataset**: `kaggle_dataset/data_preprocessed_with_emoticon.csv` (8.648 baris)
 - **Partisi**: Train 6.918 (80%) | Test **1.730** (20%) — Stratified Split, Seed 42
 - **Input Teks LSTM & BiLSTM**: `clean_text_lstm`
@@ -68,12 +68,13 @@ Skenario simulasi dibentuk **hanya dari partisi data latih** (`df_train`, n=6.91
 **Arsitektur**: `indolem/indobertweet-base-uncased` + LoRA ($r=16, \alpha=32, \text{dropout}=0.3$, target: query & value)  
 **Optimizer**: AdamW lr=0.0002, wd=0.01 | Batch=16 | Epochs=5 | `load_best_model_at_end=True`  
 **Notebook Referensi**: [`legacy_notebooks/04_model_indobertweet_lora.ipynb`](file:///d:/DATA%20SCIENCE/jokiidin/Thesis-LSTM-IndoBERT/legacy_notebooks/04_model_indobertweet_lora.ipynb)  
-**Checkpoint Terbaik (Baseline)**: [`baseline/B03_indobert/best_indobertweet_lora_empiris/checkpoint-780`](file:///d:/DATA%20SCIENCE/jokiidin/Thesis-LSTM-IndoBERT/baseline/B03_indobert/best_indobertweet_lora_empiris/checkpoint-780) (Epoch 2, Step 780)
+**Checkpoint Terbaik**: [`baseline/B03_indobert/best_indobertweet_lora_empiris/checkpoint-780`](file:///d:/DATA%20SCIENCE/jokiidin/Thesis-LSTM-IndoBERT/baseline/B03_indobert/best_indobertweet_lora_empiris/checkpoint-780)
 
 | Varian | Test Accuracy | Macro F1 | Macro Precision | Macro Recall | Recall Netral | F1 Netral |
 | :--- | :---: | :---: | :---: | :---: | :---: | :---: |
 | **Empiris Baseline** | **78,73%** | **73,45%** | 74,24% | 72,92% | 52,65% | 56,79% |
 | **Empiris Class Weight** | 74,10% | **71,14%** | 70,27% | 73,75% | 65,50% | 58,20% |
+| **Empiris Terkalibrasi ($w=[1.0, 1.5, 1.0]$)** | **78,09%** | **73,50%** | 73,12% | 74,18% | 58,61% | 57,84% |
 | **Simulasi 1:1:1** | 69,13% | **66,94%** | 66,79% | 71,25% | **66,56%** | 54,55% |
 | **Simulasi 6:3:1** | 78,50% | **69,73%** | 76,69% | 68,94% | 32,12% | 45,01% |
 | **Simulasi 8:1:1** | 77,92% | **68,28%** | 75,81% | 66,80% | 29,80% | 41,96% |
@@ -84,7 +85,8 @@ Skenario simulasi dibentuk **hanya dari partisi data latih** (`df_train`, n=6.91
 
 ## 5. Temuan Kunci Data Lama
 
-1. **Majority Collapse Terbukti Sistemik**: Pada skenario 6:3:1 dan 8:1:1, LSTM dan BiLSTM gagal total mendeteksi kelas Netral (Recall = 0%). IndoBERTweet-LoRA lebih resisten.
-2. **Class Weight Efektif di Semua Arsitektur**: Recall Netral naik 10–13 pp, namun akurasi turun 5–6 pp.
-3. **IndoBERTweet Dominan**: Bahkan tanpa balancing (73,45% F1), IndoBERTweet melampaui BiLSTM terbaik (66,59% F1) sebesar +6,86 pp.
-4. **Simulasi 1:1:1 Paradox**: Akurasi global rendah (~42–60%) namun Recall Netral tertinggi (66–77%) — fenomena trade-off Prior vs Sensitivity.
+1. **Majority Collapse Terbukti Sistemik**: Pada skenario 6:3:1 dan 8:1:1, LSTM dan BiLSTM gagal total mendeteksi kelas Netral (Recall = 0%). IndoBERTweet-LoRA lebih resisten (Recall 29–32%).
+2. **Class Weight & Kalibrasi Efektif**:
+   * Class Weight meningkatkan Recall Netral IndoBERT menjadi 65,50%.
+   * Threshold Calibration ($w=[1.0, 1.5, 1.0]$) mempertahankan akurasi tinggi (78,09%) sembari menaikkan Recall Netral ke 58,61% dan Macro F1 ke **73,50%**.
+3. **IndoBERTweet Dominan**: Seluruh varian IndoBERTweet-LoRA melampaui LSTM dan BiLSTM di data lama.

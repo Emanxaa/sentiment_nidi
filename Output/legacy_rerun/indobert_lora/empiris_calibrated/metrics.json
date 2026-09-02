@@ -1,0 +1,16 @@
+{
+    "experiment": "empiris_calibrated",
+    "calibration_weights": [
+        1.0,
+        1.5,
+        1.0
+    ],
+    "metrics": {
+        "accuracy": 0.7809,
+        "macro_f1": 0.735,
+        "macro_precision": 0.7336,
+        "macro_recall": 0.7364,
+        "neutral_recall": 0.5861,
+        "neutral_f1": 0.5784
+    }
+}
