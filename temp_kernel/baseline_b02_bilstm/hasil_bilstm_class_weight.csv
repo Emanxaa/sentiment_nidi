@@ -1,0 +1,2 @@
+Model,Perlakuan,Accuracy,Precision Macro,Recall Macro,Macro F1
+BiLSTM,Class Weight,0.715028901734104,0.6693158564867581,0.6973064907894138,0.6777754700404438

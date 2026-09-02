@@ -1,0 +1,2 @@
+Model,Perlakuan,Accuracy,Precision Macro,Recall Macro,Macro F1
+IndoBERTweet-LoRA,Class Weight,0.7410404624277457,0.7027081089164061,0.7374726843581776,0.7114344940171268

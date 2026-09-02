@@ -1,0 +1,5 @@
+Model,Perlakuan,Accuracy,Precision Macro,Recall Macro,Macro F1
+LSTM,Tanpa Class Weight,0.74,0.69,0.65,0.66
+IndoBERTweet-LoRA,Tanpa Class Weight,0.8,0.745,0.725,0.733
+LSTM,Class Weight,0.75,0.7,0.69,0.695
+IndoBERTweet-LoRA,Class Weight,0.81,0.74,0.73,0.735
