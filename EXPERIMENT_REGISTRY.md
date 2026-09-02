@@ -17,8 +17,9 @@
 | **LSTM-M6** | BiLSTM | `processed_text_v2` | Random Undersampling| N/A | 1e-3 | 62.01% | 68.96% | **COMPLETED (LSTM Ref)** |
 | **LSTM-M7** | BiLSTM | `processed_text_v2` | SMOTE (Sequence) | N/A | 1e-3 | 64.12% | 71.85% | **COMPLETED (LSTM Ref)** |
 | **IB-B03-LEG**| IndoBERT-LoRA | `text_with_emoticon`| None (Natural) | r=16, a=32, d=0.3 | 2e-4 | 73.45% | 78.73% | **COMPLETED (Legacy Trial)** |
-| **IB-B1-BASE**| IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=16, a=32, d=0.1 | 2e-5 | 51.72% | 69.04% | **COMPLETED (B1 Default)** |
-| **IB-B0.5-S1**| IndoBERT-LoRA | `clean_text` | None (Natural) | r=16, a=32, d=0.1 | 2e-5 | — | — | PLANNED (B0.5 Input Ablation) |
+| **IB-B1-BASE**| IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=16, a=32, d=0.1 | 2e-5 | 51.72% | 69.04% | **COMPLETED (B1 Default, 3 Seeds)** |
+| **B1.1-clean** | IndoBERT-LoRA | `clean_text` | None (Natural) | r=16, a=32, d=0.1 | 2e-5 | 29.66% (Val: 27.81%) | 56.47% | **COMPLETED (B1.1 Ablation)** |
+| **B1.1-v2**    | IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=16, a=32, d=0.1 | 2e-5 | 31.34% (Val: 30.28%) | 57.05% | **COMPLETED (B1.1 Official Selected Input)** |
 | **IB-B0.5-S2**| IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=16, a=32, d=0.1 | 1e-5 | — | — | PLANNED (B0.5 LR Sweep) |
 | **IB-B0.5-S3**| IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=16, a=32, d=0.1 | 3e-5 | — | — | PLANNED (B0.5 LR Sweep) |
 | **IB-B0.5-S4**| IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=8, a=16, d=0.05 | Tuning | — | — | PLANNED (B0.5 LoRA Sweep) |

@@ -1,0 +1,3 @@
+Input,Val Macro F1,Test Macro F1,Accuracy,Precision,Recall,Runtime (s)
+clean_text,0.2781,0.2966,0.5647,0.4531,0.3634,86.86
+processed_text_v2,0.3028,0.3134,0.5705,0.4476,0.3721,87.75

@@ -1,0 +1,23 @@
+{
+    "input_column": "clean_text",
+    "seed": 42,
+    "runtime_sec": 86.86,
+    "train_metrics": {
+        "accuracy": 0.5594,
+        "macro_f1": 0.2851,
+        "precision": 0.425,
+        "recall": 0.3569
+    },
+    "val_metrics": {
+        "accuracy": 0.5592,
+        "macro_f1": 0.2781,
+        "precision": 0.4934,
+        "recall": 0.3546
+    },
+    "test_metrics": {
+        "accuracy": 0.5647,
+        "macro_f1": 0.2966,
+        "precision": 0.4531,
+        "recall": 0.3634
+    }
+}
