@@ -1,0 +1,26 @@
+# Milestone M2 — Hyperparameter Search
+
+Use the existing pipeline.
+
+Search only:
+
+* Units: 64,128
+* Dropout: 0.2,0.3
+* Learning rate: 2e-4,5e-4
+* Batch size:16
+
+Maximum 8 combinations.
+
+Use Validation Macro F1.
+
+Save:
+
+Output/hparam_summary.csv
+
+Update:
+
+configs/lstm_config.yaml
+
+with the best configuration.
+
+Stop after M2.

@@ -71,3 +71,19 @@ Sebagai asisten peneliti tingkat lanjut (*Senior Research Assistant*):
 1. Edit hanya notebook yang diminta.
 2. Selalu sebutkan target kernel slug sebelum menjalankan `kaggle kernels push`.
 3. Jangan mengubah `kernel-metadata.json` (terutama field `id`).
+
+# AGENT.md
+
+## Project
+
+Thesis-LSTM-IndoBERT
+
+## Rules
+
+* Never modify raw data.
+* Preserve labels and row counts unless instructed.
+* Every stage writes a new output.
+* Build reusable code inside `utils/`.
+* Stop after completing the requested milestone.
+* Do not continue to the next milestone automatically.
+* Log assumptions and validation results.

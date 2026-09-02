@@ -1,0 +1,24 @@
+seed: 42
+dataset:
+  path: Data/processed/banjir_processed_v2.csv
+  text_column: processed_text_v2
+  label_column: label
+split:
+  test_size: 0.2
+  val_size: 0.1
+  stratify: true
+tokenizer:
+  max_words: 20000
+  oov_token: <OOV>
+  max_length: 128
+  padding: post
+  truncating: post
+training:
+  batch_size: 16
+  epochs: 20
+  learning_rate: 0.0005
+  early_stopping_patience: 3
+model:
+  embedding_dim: 128
+  lstm_units: 128
+  dropout: 0.3

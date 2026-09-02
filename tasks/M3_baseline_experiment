@@ -1,0 +1,26 @@
+# Milestone M3 — Baseline Experiment
+
+Use the best configuration.
+
+Run:
+
+* Seed42
+* Seed123
+* Seed456
+
+Output:
+
+Output/empirical/baseline/
+
+Generate:
+
+* history.csv
+* metrics.json
+* confusion_train.png
+* confusion_val.png
+* confusion_test.png
+* classification_report.csv
+
+Compute mean and standard deviation.
+
+Stop after M3.
