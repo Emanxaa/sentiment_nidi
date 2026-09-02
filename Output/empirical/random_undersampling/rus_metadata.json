@@ -1,0 +1,23 @@
+{
+    "original_class_counts": {
+        "negative": 3374,
+        "neutral": 1087,
+        "positive": 1765,
+        "total": 6226
+    },
+    "balanced_class_counts": {
+        "negative": 1087,
+        "neutral": 1087,
+        "positive": 1087,
+        "total": 3261
+    },
+    "removed_sample_count": 2965,
+    "removal_ratio": 0.4762,
+    "reduction_per_class": {
+        "negative": 2287,
+        "neutral": 0,
+        "positive": 678
+    },
+    "target_per_class": 1087,
+    "random_seed": 42
+}

@@ -373,3 +373,51 @@ Dari probs baseline label corrected (`hasil_e1_test_baseline.csv` v9):
   - 3.308 kata gaul dinormalisasi tanpa merusak kalimat bahasa Inggris.
   - Label 100% konsisten baris demi baris (4.686 negatif, 2.452 positif, 1.510 netral).
 - Seluruh pipeline terdokumentasi lengkap di [`docs/DATA_FLOW.md`](DATA_FLOW.md) dan siap direplikasi dengan satu baris perintah CLI.
+
+---
+
+## Phase 5: LSTM Architecture, Empirical Balancing Suite, and Imbalance Simulation (Milestones M1 — M8)  ✅ selesai
+
+### PRA (desain metodologis & kontrak penelitian)
+- **Kondisi**: Diperlukan studi empiris mendalam mengenai arsitektur LSTM dan responsivitasnya terhadap 4 teknik penanganan ketidakseimbangan kelas (*Class Weight*, *Random Oversampling*, *Random Undersampling*, dan *SMOTE*) dibandingkan Baseline resmi pada dataset banjir Sumatera.
+- **Integritas Metodologis**:
+  1. *Zero Leakage*: Tokenizer hanya di-fit pada partisi Train (6.226 baris). Validation (692 baris) dan Test (1.730 baris) 100% murni, tidak pernah dioversample/diundersample.
+  2. *Reproduksibilitas*: 3 random seed independen (`42`, `123`, `456`) untuk setiap strategi.
+  3. *Hyperparameter Terkunci* (M2): Units=128, Dropout=0.3, LR=0.0005, Batch Size=16, Sequence Length=128 (Post-padding).
+  4. *Simulasi Kontrol*: Menguji ketahanan model pada 3 skenario ketimpangan buatan (1:1:1, 6:3:1, dan 8:1:1).
+
+### PROSES
+1. **M1**: Implementasi pipeline PyTorch modular (`SentimentLSTM`, `DataLoader`, mixed precision `GradScaler`, early stopping `patience=3`).
+2. **M2**: Grid search 8 kombinasi pada Val set. Menemukan konfigurasi `trial_08` (`Units=128, Dropout=0.3, LR=0.0005`) sebagai peraih Val Macro F1 tertinggi (`0.6335`).
+3. **M3 (Baseline Empiris)**: 3-seed evaluation menghasilkan Mean Accuracy **72.45% ± 1.07%**, Mean Macro F1 **64.95% ± 2.13%**.
+4. **M4 (Class Weight)**: $w_c = \frac{N}{K \cdot N_c}$ menghasilkan bobot $[0.6151, 1.9092, 1.1758]$. Mean Accuracy 65.92%, Macro F1 62.70%, Recall **65.15% (+1.37 pp)**.
+5. **M5 (Random Oversampling)**: Duplikasi minoritas menjadi 10.122 baris Train. Mean Accuracy 67.05%, Macro F1 62.71%, Recall 63.73%.
+6. **M6 (Random Undersampling)**: Subsampling mayoritas menjadi 3.261 baris Train (membuang 2.965 baris). Mean Accuracy 62.95%, Macro F1 58.92%.
+7. **M7 (SMOTE Integer Sequences)**: Sintesis 3.896 sequence menjadi 10.122 baris. Mean Accuracy 42.72%, Macro F1 40.76%.
+8. **M8 (Simulasi & Konsolidasi)**: Eksekusi 45 model simulasi (3 skenario $\times$ 5 strategi $\times$ 3 seed), konsolidasi ke `Output/summary/`, dan plotting 6 figur publikasi 300 DPI.
+
+### PASCA
+
+**1. Hasil Empiris Distribusi Alami (Test Set $n=1.730$, 3-Seed Mean ± SD):**
+
+| Strategi | Mean Accuracy | Mean Macro F1 | Mean Precision | Mean Recall | Peringkat Macro F1 |
+|---|:---:|:---:|:---:|:---:|:---:|
+| **Baseline (M3)** | **72.45% ± 1.07%** | **64.95% ± 2.13%** | **67.28% ± 2.09%** | 63.78% ± 2.12% | **#1** |
+| **ROS (M5)** | 67.05% ± 2.31% | 62.71% ± 1.16% | 63.25% ± 1.32% | 63.73% ± 0.45% | **#2** |
+| **Class Weight (M4)** | 65.92% ± 3.60% | 62.70% ± 2.01% | 63.12% ± 1.19% | **65.15% ± 0.13%** | **#3** |
+| **RUS (M6)** | 62.95% ± 3.60% | 58.92% ± 2.33% | 59.45% ± 1.71% | 60.30% ± 2.10% | **#4** |
+| **SMOTE (M7)** | 42.72% ± 1.76% | 40.76% ± 3.07% | 44.91% ± 2.90% | 44.45% ± 1.81% | **#5** |
+
+**2. Hasil Uji Simulasi Ketimpangan (Macro F1 Lintas Skenario):**
+
+| Strategi | Skenario A (1:1:1) | Skenario B (6:3:1) | Skenario C (8:1:1) | Fenomena Empiris |
+|---|:---:|:---:|:---:|---|
+| **Baseline** | 58.16% | 57.16% | 45.97% | Runtuh tajam pada ketimpangan ekstrem |
+| **Class Weight** | 58.16% | 59.75% | **57.00%** | Sangat tahan banting pada rasio 8:1:1 (+11.03 pp vs Base) |
+| **ROS** | 56.19% | **59.95%** | **58.51%** | **Terbaik pada ketimpangan ekstrem (+12.54 pp vs Base)** |
+| **RUS** | 56.19% | 55.81% | 49.77% | Degradasi akibat informasi leksikal hilang |
+| **SMOTE** | 58.16% | 35.74% | 35.12% | Rusak parah pada representasi sekuensial teks |
+
+**Kesimpulan Teoretis & Metodologis untuk Naskah Tesis:**
+1. *Threshold Reversal*: Pada data alami dengan rasio ketimpangan moderat (54:28:17), Baseline adalah yang terbaik. Namun pada ketimpangan ekstrem (8:1:1), teknik penyeimbangan data (khususnya ROS dan Class Weight) mutlak diperlukan untuk mencegah runtuhnya kemampuan deteksi sentimen minoritas.
+2. *Linguistic Integrity*: Manipulasi data pada tingkat leksikal utuh (seperti duplikasi pada ROS atau penyesuaian penalti pada Class Weight) terbukti jauh lebih aman dan efektif dibandingkan interpolasi vektor buatan (SMOTE) yang merusak tata bahasa alami.

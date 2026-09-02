@@ -1,0 +1,68 @@
+{
+    "source_dataset": "D:\\DATA SCIENCE\\jokiidin\\Thesis-LSTM-IndoBERT\\Data\\processed\\banjir_processed_v2.csv",
+    "source_train_counts": {
+        "negative": 3374,
+        "neutral": 1087,
+        "positive": 1765,
+        "total": 6226
+    },
+    "validation_counts": {
+        "total": 692,
+        "unchanged": true
+    },
+    "test_counts": {
+        "total": 1730,
+        "unchanged": true
+    },
+    "random_seed": 42,
+    "scenarios": {
+        "scenario_111": {
+            "name": "Scenario A: Balanced (1:1:1)",
+            "ratio": "1:1:1",
+            "file": "scenario_111.csv",
+            "counts": {
+                "negative": 1000,
+                "neutral": 1000,
+                "positive": 1000,
+                "total": 3000
+            },
+            "percentages": {
+                "negative": 33.33,
+                "neutral": 33.33,
+                "positive": 33.33
+            }
+        },
+        "scenario_631": {
+            "name": "Scenario B: Moderately Imbalanced (6:3:1)",
+            "ratio": "6:3:1",
+            "file": "scenario_631.csv",
+            "counts": {
+                "negative": 3000,
+                "neutral": 500,
+                "positive": 1500,
+                "total": 5000
+            },
+            "percentages": {
+                "negative": 60.0,
+                "neutral": 10.0,
+                "positive": 30.0
+            }
+        },
+        "scenario_811": {
+            "name": "Scenario C: Highly Imbalanced (8:1:1)",
+            "ratio": "8:1:1",
+            "file": "scenario_811.csv",
+            "counts": {
+                "negative": 3200,
+                "neutral": 400,
+                "positive": 400,
+                "total": 4000
+            },
+            "percentages": {
+                "negative": 80.0,
+                "neutral": 10.0,
+                "positive": 10.0
+            }
+        }
+    }
+}

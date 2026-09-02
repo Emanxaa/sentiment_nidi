@@ -9,3 +9,8 @@ EXP_07,LSTM (Baseline),Word Embedding + LSTM,0.7265895953757225,0.68115085474054
 EXP_08,BiLSTM (Empiris),Word Embedding + BiLSTM,0.7526011560693642,0.6963074587751645,0.6837416343106683,0.6880393982089981
 EXP_09,IndoBERTweet-LoRA (Empiris),Transformer + LoRA (r=16),0.7872832369942196,0.742353589490872,0.7291602493390551,0.7344524585699365
 EXP_10,"IndoBERTweet-LoRA (Calibrated w=[1,1.5,1])",Transformer + LoRA + Calibration,0.7745664739884393,0.7315201948123912,0.7528401928491824,0.7394129841029145
+EXP_11,"LSTM Baseline (M3, 3-Seed)",Trainable Embedding + LSTM (128) + Dropout (0.3),0.7245,0.6728,0.6378,0.6495
+EXP_12,"LSTM + Class Weight (M4, 3-Seed)",Cost-Sensitive Weighted CrossEntropy,0.6592,0.6312,0.6515,0.6270
+EXP_13,"LSTM + Random Oversampling (M5, 3-Seed)",Train Minority Duplication (10122 samples),0.6705,0.6325,0.6373,0.6271
+EXP_14,"LSTM + Random Undersampling (M6, 3-Seed)",Train Majority Subsampling (3261 samples),0.6295,0.5945,0.6030,0.5892
+EXP_15,"LSTM + SMOTE (M7, 3-Seed)",Integer Sequence Oversampling (10122 samples),0.4272,0.4491,0.4445,0.4076

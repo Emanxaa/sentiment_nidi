@@ -1,0 +1,23 @@
+{
+    "original_class_counts": {
+        "negative": 3374,
+        "neutral": 1087,
+        "positive": 1765,
+        "total": 6226
+    },
+    "balanced_class_counts": {
+        "negative": 3374,
+        "neutral": 3374,
+        "positive": 3374,
+        "total": 10122
+    },
+    "synthetic_sample_count": 3896,
+    "synthetic_per_class": {
+        "negative": 0,
+        "neutral": 2287,
+        "positive": 1609
+    },
+    "sampling_strategy": "auto (all classes balanced to majority count)",
+    "target_per_class": 3374,
+    "random_seed": 42
+}

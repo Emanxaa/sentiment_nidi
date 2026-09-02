@@ -148,3 +148,46 @@ flowchart TD
 | `utils/split_dataset.py` | `Data/processed/split_data_v2.pkl` | **Pickle Data Siap Latih (Train/Val/Test)** |
 | `utils/train_and_benchmark.py`| `reports/benchmark_metrics.csv` | Benchmark seluruh representasi model |
 | `utils/evaluate_synthesis.py` | `experiments/results.csv` | **Tabel Master & Uji Signifikansi Bab IV** |
+
+---
+
+## 4. Alur Data & Pipeline Eksperimen Pemodelan LSTM (Milestones M1 — M8)
+
+```mermaid
+flowchart TD
+    Processed["Data/processed/banjir_processed_v2.csv (8.648 baris)"] --> StratSplit["Stratified Partition (Train 72%, Val 8%, Test 20%)"]
+    StratSplit --> OrigTrain["Original Train Split (6.226 baris)"]
+    StratSplit --> OrigVal["Val Split (692 baris, untouched)"]
+    StratSplit --> OrigTest["Test Split (1.730 baris, untouched)"]
+    
+    OrigTrain --> M1["M1: Pipeline LSTM Modular & Reusable"]
+    M1 --> M2["M2: Grid Search Hyperparameter (8 Trial) -> Units=128, Dropout=0.3, LR=0.0005"]
+    
+    M2 --> EmpSuite["Empirical Balancing Suite (3 Seeds: 42, 123, 456)"]
+    EmpSuite --> M3["M3: Baseline (Unweighted) -> Macro F1 64.95%, Acc 72.45%"]
+    EmpSuite --> M4["M4: Class Weight -> Recall 65.15% (+1.37 pp), Macro F1 62.70%"]
+    EmpSuite --> M5["M5: Random Oversampling (10.122 baris) -> Macro F1 62.71%, Acc 67.05%"]
+    EmpSuite --> M6["M6: Random Undersampling (3.261 baris) -> Macro F1 58.92%, Acc 62.95%"]
+    EmpSuite --> M7["M7: SMOTE Sequences (10.122 baris) -> Macro F1 40.76%, Acc 42.72%"]
+    
+    OrigTrain --> SimData["M8 Part A: Data/simulated/ (1:1:1, 6:3:1, 8:1:1)"]
+    SimData --> SimSuite["M8 Part B: Simulation Suite (45 Pelatihan)"]
+    
+    EmpSuite --> MasterSummary["Output/summary/ (M8 Part D-G)"]
+    SimSuite --> MasterSummary
+    
+    MasterSummary --> Deliverables["final_results_table.csv, 6 Gambar Publikasi (300 DPI), final_thesis_report.md"]
+```
+
+### Rincian Modul Eksperimen M1 — M8:
+* **`experiments/run_lstm.py` (M1)**: Script pelatihan dasar LSTM dengan mixed precision & early stopping.
+* **`experiments/run_hparam_search.py` (M2)**: Grid search 8 kombinasi pada Validation set.
+* **`experiments/run_m3_baseline.py` (M3)**: Evaluasi baseline 3 random seed (`Output/empirical/baseline/`).
+* **`experiments/run_m4_class_weight.py` (M4)**: Cost-sensitive weighted CrossEntropy (`Output/empirical/class_weight/`).
+* **`experiments/run_m5_ros.py` (M5)**: Duplikasi sampel minoritas pada Train (`Output/empirical/random_oversampling/`).
+* **`experiments/run_m6_rus.py` (M6)**: Subsampling mayoritas pada Train (`Output/empirical/random_undersampling/`).
+* **`experiments/run_m7_smote.py` (M7)**: Interpolasi SMOTE pada integer token sequence (`Output/empirical/smote/`).
+* **`experiments/generate_simulated_data.py` (M8 Part A)**: Generator skenario kontrol 1:1:1, 6:3:1, dan 8:1:1 (`Data/simulated/`).
+* **`experiments/run_m8_simulation.py` (M8 Part B)**: Eksekusi 45 model simulasi (`Output/simulated/`).
+* **`experiments/generate_m8_thesis_summary.py` (M8 Part D-G)**: Generator tabel master, 6 grafik publikasi, dan laporan akhir tesis (`Output/summary/`).
+

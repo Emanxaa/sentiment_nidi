@@ -186,6 +186,31 @@ Untuk membuktikan secara ilmiah bahwa keunggulan model Transformer bukan semata 
    - $\chi^2 = 0.89, \quad p = 0.3455 \quad (p > 0.05)$
    - **Kesimpulan**: Kalibrasi ambang batas berhasil menaikkan Recall Netral secara drastis (+13.31%) **tanpa menurunkan akurasi umum secara signifikan**.
 
+---
+
+### C. Eksperimen Komprehensif Penyeimbangan Kelas pada LSTM (Milestones M1 — M8)
+
+Untuk menganalisis secara mendalam perilaku arsitektur LSTM terhadap ketimpangan kelas, dievaluasi 5 strategi pada data empiris alami ($n=1.730$) dan 3 skenario simulasi ketimpangan (Balanced 1:1:1, Moderate 6:3:1, Severe 8:1:1) melintasi 3 random seed independen (`42`, `123`, `456`):
+
+#### 1. Performa Empiris pada Distribusi Alami Tweet Banjir (Mean ± SD)
+| Strategi Penyeimbangan | Akurasi | Macro F1 | Macro Precision | Macro Recall | Recall Netral | Peringkat Macro F1 |
+|:---|:---:|:---:|:---:|:---:|:---:|:---:|
+| **Baseline (M3)** | **72,45% ± 1,07%** | **64,95% ± 2,13%** | **67,28% ± 2,09%** | 63,78% ± 2,12% | 46,25% | **#1 (Terbaik)** |
+| **Random Oversampling / ROS (M5)** | 67,05% ± 2,31% | 62,71% ± 1,16% | 63,25% ± 1,32% | 63,73% ± 0.45% | 51,10% | **#2** |
+| **Class Weight (M4)** | 65,92% ± 3,60% | 62,70% ± 2,01% | 63,12% ± 1,19% | **65,15% ± 0,13%** | **59,16%** | **#3 (Recall Netral Terbaik)** |
+| **Random Undersampling / RUS (M6)** | 62,95% ± 3,60% | 58,92% ± 2,33% | 59,45% ± 1,71% | 60,30% ± 2,10% | 48,01% | **#4** |
+| **SMOTE (M7)** | 42,72% ± 1,76% | 40.76% ± 3.07% | 44,91% ± 2,90% | 44,45% ± 1,81% | 38,20% | **#5** |
+
+#### 2. Ketahanan Model pada Skenario Ketimpangan Buatan (Macro F1)
+| Strategi | Skenario A (1:1:1) | Skenario B (6:3:1) | Skenario C (8:1:1) | Pola Ketahanan |
+|:---|:---:|:---:|:---:|---|
+| **Baseline** | **58,16%** | 57,16% | 45,97% | Ambruk drastis (-12.19 pp) pada ketimpangan ekstrem |
+| **Class Weight** | **58,16%** | 59,75% | 57,00% | Sangat tangguh mempertahankan F1 pada 8:1:1 (+11,03 pp vs Base) |
+| **ROS** | 56,19% | **59,95%** | **58,51%** | **Performa tertinggi pada ketimpangan ekstrem (+12,54 pp vs Base)** |
+| **RUS** | 56,19% | 55,81% | 49,77% | Penurunan performa akibat hilangnya leksikon mayoritas |
+| **SMOTE** | **58,16%** | 35,74% | 35,12% | Gagal mempertahankan representasi tata bahasa sekuensial |
+
+*Seluruh tabel rekapitulasi numerik dan grafik beresolusi tinggi (300 DPI) tersimpan di direktori terpusat [`Output/summary/`](../Output/summary).*
 
 ---
 

@@ -1,0 +1,42 @@
+# Milestone M4 — Class Weight
+
+Reuse the existing pipeline.
+
+Change only:
+
+BALANCING=class_weight
+
+Everything else remains identical.
+
+Generate the same outputs.
+
+Stop after completion.
+
+# Milestone M5 — Oversamling
+
+BALANCING=random_oversampling
+
+# Milestone M6 — Undersampling
+
+BALANCING=random_undersampling
+
+# Milestone M7 — Smote
+
+BALANCING=smote
+
+# Milestone M8 — Automatic Summary
+
+Read every experiment folder.
+
+Generate:
+
+* empirical_summary.csv
+* comparison_accuracy.png
+* comparison_macro_f1.png
+
+Compute:
+
+* mean
+* standard deviation
+
+Do not retrain any model.

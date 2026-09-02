@@ -1,0 +1,6 @@
+Strategy,Mean Accuracy,SD Accuracy,Mean Macro F1,SD Macro F1,Mean Precision,SD Precision,Mean Recall,SD Recall
+Baseline,0.7245,0.0107,0.6495,0.0213,0.6728,0.0209,0.6378,0.0212
+Class Weight,0.6592,0.036,0.627,0.0201,0.6312,0.0119,0.6515,0.0013
+Random Oversampling,0.6705,0.0231,0.6271,0.0116,0.6325,0.0132,0.6373,0.0045
+Random Undersampling,0.6295,0.036,0.5892,0.0233,0.5945,0.0171,0.603,0.021
+SMOTE,0.4272,0.0176,0.4076,0.0307,0.4491,0.029,0.4445,0.0181

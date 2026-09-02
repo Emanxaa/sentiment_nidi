@@ -1,0 +1,29 @@
+{
+    "accuracy": 0.6723,
+    "macro_f1": 0.6215,
+    "precision": 0.6179,
+    "recall": 0.6268,
+    "validation_macro_f1": 0.6174,
+    "training_time": 46.95,
+    "train_metrics": {
+        "accuracy": 0.8293,
+        "macro_f1": 0.8283,
+        "precision": 0.8344,
+        "recall": 0.8293
+    },
+    "val_metrics": {
+        "accuracy": 0.672,
+        "macro_f1": 0.6174,
+        "precision": 0.6132,
+        "recall": 0.6227
+    },
+    "test_metrics": {
+        "accuracy": 0.6723,
+        "macro_f1": 0.6215,
+        "precision": 0.6179,
+        "recall": 0.6268
+    },
+    "scenario": "scenario_111",
+    "strategy": "baseline",
+    "seed": 123
+}
