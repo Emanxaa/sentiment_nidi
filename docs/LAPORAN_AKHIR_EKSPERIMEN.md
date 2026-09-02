@@ -147,20 +147,44 @@ Dalam penelitian ilmiah, pelaporan metode yang **tidak berhasil** (*negative fin
 
 ## 5. Tabel Rekapitulasi Komparasi Seluruh Model (Untuk Naskah Bab IV)
 
-Tabel berikut menyajikan perbandingan performa seluruh metode yang telah dievaluasi pada dataset pengujian yang sama ($n = 1.730$):
+Tabel berikut menyajikan perbandingan performa seluruh metode baseline dan model transformer yang telah dievaluasi pada dataset pengujian yang sama ($n = 1.730$):
 
-| No | Pendekatan / Metode Model | Akurasi | Macro Precision | Macro Recall | Macro F1-Score | Recall Netral | Status Metodologis |
-|:---:|---|:---:|:---:|:---:|:---:|:---:|:---:|
-| **1** | **IndoBERTweet-LoRA + TAPT + Kalibrasi ($w=[1, 1.4, 1]$)** | **79,60%** | **0,7494** | **0,7464** | **0,7479** | **58,94%** | 🥇 **Model Terbaik Keseluruhan (P2 TAPT)** |
-| 2 | IndoBERTweet-LoRA + TAPT via MLM (P2 Argmax) | 80,06% | 0,7583 | 0,7383 | 0,7461 | 52,65% | Akurasi Tertinggi ($p=0,0041$) |
-| 3 | IndoBERTweet-LoRA + Kalibrasi ($w=[1, 1.5, 1]$) | 77,46% | 0,7310 | 0,7532 | 0,7394 | 66,89% | Baseline Terkunci + Kalibrasi |
-| 4 | IndoBERTweet-LoRA + Fine-Tuning Sweep (P1 / t10) | 77,98% | 0,7318 | 0,7488 | 0,7390 | 61,26% | Optimum Argmax Parameter |
-| 5 | IndoBERTweet-LoRA (Data Terkoreksi Baseline) | 78,27% | 0,7347 | 0,7403 | 0,7371 | 57,28% | Pembanding Argmax Standar |
-| 6 | IndoBERTweet-LoRA + Weighted CrossEntropy | 77,11% | 0,7256 | 0,7459 | 0,7339 | 63,00% | Setara secara statistik ($p=0,572$) |
-| 7 | IndoBERTweet-LoRA (Data Lama Sebelum Koreksi) | 79,54% | 0,7450 | 0,7252 | 0,7328 | 50,00% | Baseline Kanonik Awal |
-| 8 | IndoBERTweet-LoRA + Label Smoothing ($\epsilon=0,1$) | 76,80% | 0,7210 | 0,7180 | 0,7195 | 52,00% | Kurang Optimal |
-| 9 | IndoBERTweet-LoRA + Focal Loss ($\gamma=2$) | 73,41% | 0,6954 | 0,7304 | 0,7041 | 68,00% | Presisi Rusak ($p < 0,0001$) |
-| 10 | IndoBERTweet-LoRA (Manipulasi Rasio 1:1:1) | 63,41% | 0,5896 | 0,6189 | 0,5908 | 54,00% | Rekayasa Rasio Menurunkan Hasil |
+### A. Tabel Master Baseline & Model Comparison
+
+| No | Arsitektur Model | Representasi Fitur / Strategi | Akurasi | Macro Precision | Macro Recall | Macro F1 | Recall Netral | F1 Netral | Cohen's Kappa ($\kappa$) | Status Metodologis |
+|:---:|---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|---|
+| **1** | **IndoBERTweet-LoRA + TAPT + Kalibrasi ($w=[1, 1.4, 1]$)** | Transformer + MLM + Kalibrasi | **79,60%** | **0,7494** | **0,7464** | **0,7479** | **58,94%** | **0,6082** | **0,6492** | 🥇 **Model Terbaik Keseluruhan (P2 TAPT)** |
+| 2 | IndoBERTweet-LoRA + TAPT via MLM (P2 Argmax) | Transformer + MLM (3 Epoch) | 80,06% | 0,7583 | 0,7383 | 0,7461 | 52,65% | 0,5894 | 0,6541 | Akurasi Tertinggi ($p=0,0041$) |
+| 3 | **IndoBERTweet-LoRA + Kalibrasi ($w=[1, 1.5, 1]$)** | Transformer + LoRA + Kalibrasi | 77,46% | 0,7310 | 0,7532 | **0,7394** | **66,89%** | **0,6012** | **0,6274** | 🥈 **Baseline Terkunci + Kalibrasi** |
+| 4 | IndoBERTweet-LoRA (Empiris / B03) | Transformer + LoRA ($r=16, \alpha=32$) | 78,73% | 0,7424 | 0,7292 | 0,7345 | 53,58% | 0,5638 | **0,6387** | Baseline Transformer Standar |
+| 5 | IndoBERTweet-LoRA + Class Weight (B03) | Transformer + Weighted Loss | 74,10% | 0,7027 | 0,7375 | 0,7114 | 63,58% | 0,5512 | 0,5788 | Bobot Penalti Kelas |
+| 6 | **BiLSTM (Empiris / B02)** | Word Embedding + Bidirectional LSTM | 75,26% | 0,6963 | 0,6837 | **0,6880** | 49,15% | 0,5126 | **0,5782** | Baseline RNN Dua Arah |
+| 7 | **LSTM (Baseline / B01)** | Word Embedding + LSTM | 72,66% | 0,6812 | 0,7084 | **0,6899** | 55,12% | 0,5283 | **0,5694** | Baseline RNN Satu Arah |
+| 8 | **Linear SVM (LinearSVC)** | TF-IDF (Unigram + Bigram) | 75,78% | 0,7071 | 0,6798 | **0,6878** | 40,40% | 0,4485 | **0,5821** | Baseline Linear Klasik Terbaik |
+| 9 | Logistic Regression (L2) | TF-IDF (Unigram + Bigram) | 76,30% | 0,7461 | 0,6611 | 0,6761 | 31,13% | 0,3806 | 0,5768 | Baseline Probabilistik Klasik |
+| 10 | SGD Classifier (Log Loss) | TF-IDF (Unigram + Bigram) | 75,95% | 0,7452 | 0,6513 | 0,6661 | 28,48% | 0,3539 | 0,5691 | Baseline Optimasi Gradien |
+| 11 | Multinomial Naive Bayes | TF-IDF (Unigram + Bigram) | 73,18% | 0,7382 | 0,6176 | 0,6274 | 22,52% | 0,2976 | 0,5234 | Baseline Probabilitas Bersyarat |
+| 12 | Random Forest (100 Trees) | TF-IDF (Unigram + Bigram) | 74,45% | 0,7604 | 0,6145 | 0,6223 | 18,54% | 0,2606 | 0,5392 | Baseline Ensemble Pohon Keputusan |
+| 13 | Gradient Boosting | TF-IDF (Unigram + Bigram) | 73,53% | 0,7122 | 0,6108 | 0,6211 | 20,86% | 0,2882 | 0,5285 | Baseline Boosting Sekuensial |
+
+---
+
+### B. Uji Signifikansi Statistik Inferensial (McNemar's Chi-Square Test)
+
+Untuk membuktikan secara ilmiah bahwa keunggulan model Transformer bukan semata faktor kebetulan (*chance*), dilakukan pengujian statistik inferensial McNemar dengan derajat kebebasan $df=1$ dan taraf signifikansi $\alpha = 0,05$:
+
+1. **IndoBERTweet-LoRA vs Baseline LSTM**:
+   - $\chi^2 = 38.42, \quad p = 5.71 \times 10^{-10} \quad (p < 0.0001)$
+   - **Kesimpulan**: IndoBERTweet-LoRA **unggul signifikan secara statistik** atas LSTM.
+2. **IndoBERTweet-LoRA vs Linear SVM (TF-IDF)**:
+   - $\chi^2 = 46.18, \quad p = 1.08 \times 10^{-11} \quad (p < 0.0001)$
+   - **Kesimpulan**: IndoBERTweet-LoRA **unggul signifikan secara statistik** atas Linear SVM.
+3. **BiLSTM vs LSTM**:
+   - $\chi^2 = 3.12, \quad p = 0.0773 \quad (p > 0.05)$
+   - **Kesimpulan**: Perbedaan performa antara BiLSTM dan LSTM **tidak berbeda signifikan secara statistik**, membuktikan keterbatasan embedding statis pada pemodelan sentimen informal.
+4. **IndoBERTweet-LoRA (Argmax) vs IndoBERTweet-LoRA (Kalibrasi $w=[1, 1.5, 1]$)**:
+   - $\chi^2 = 0.89, \quad p = 0.3455 \quad (p > 0.05)$
+   - **Kesimpulan**: Kalibrasi ambang batas berhasil menaikkan Recall Netral secara drastis (+13.31%) **tanpa menurunkan akurasi umum secara signifikan**.
 
 
 ---

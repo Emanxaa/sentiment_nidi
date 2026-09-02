@@ -309,10 +309,67 @@ Dari probs baseline label corrected (`hasil_e1_test_baseline.csv` v9):
 - $b=57$ (Base benar, P2 salah), $c=93$ (Base salah, P2 benar)
 - $\chi^2 = 8,1667$, Exact Binomial **$p = 0,004113$ ($p < 0,01$)**
 - **KESIMPULAN METODOLOGIS**: P2 TAPT terbukti **SIGNIFIKAN SECARA STATISTIK LEBIH BAIK** dibanding baseline (pertama kali dalam sejarah proyek intervensi memberikan peningkatan $p < 0,01$ searah positif).
-
 **Temuan Kunci**:
 1. Pretraining domain spesifik (TAPT) berhasil meningkatkan representasi semantik dasar kalimat tweet, mendorong akurasi melampaui 80% (**80.06%**) dan Macro F1 argmax naik ke **0.7461** (naik ke **0.7479** dengan kalibrasi $w=[1, 1.4, 1]$).
 2. Presisi kelas Netral meningkat tajam dari 0.55 ke **0.64** (argmax) dan **0.60** (kalibrasi).
 
+---
 
+## Phase 3: Baseline Experiment Benchmarks (Data Lama & Multi-Model Comparison)  ✅ selesai
 
+### PRA (desain komparasi ilmiah)
+- **Kondisi**: Diperlukan baseline benchmark komprehensif pada data uji pengujian yang sama ($n = 1.730$) untuk memvalidasi performa arsitektur klasik (TF-IDF + SVM, LR, Naive Bayes, Random Forest), RNN sekuensial (LSTM, BiLSTM), dan Transformer (IndoBERTweet-LoRA).
+- **Apa yang diuji**:
+  1. `emanuelembuaijdak/baseline-b01-lstm`: Word Embedding + LSTM (CPU).
+  2. `emanuelembuaijdak/baseline-b02-bilstm`: Word Embedding + BiLSTM (CPU).
+  3. `emanuelembuaijdak/baseline-b03-indobert`: IndoBERTweet-LoRA ($r=16, \alpha=32$) (GPU).
+  4. 6 model representasi fitur TF-IDF (Unigram + Bigram).
+- **Ekspektasi**: Membuktikan secara inferensial (McNemar Test & Cohen's Kappa) bahwa Transformer kontekstual secara signifikan mengungguli RNN dan model linier klasik pada teks informal bencana.
+- **Cara ukur**: Test Accuracy, Macro Precision, Macro Recall, Macro F1, Recall Netral, F1 Netral, Cohen's Kappa ($\kappa$), dan McNemar Chi-Square $p$-value.
+
+### PROSES
+- Kernel Kaggle dieksekusi secara terisolasi (`b-01`, `b-02`, `b-03`) $\rightarrow$ Output diunduh dan diverifikasi via CLI $\rightarrow$ Script benchmark lokal `utils/train_and_benchmark.py` dieksekusi tuntas $\rightarrow$ Seluruh metrik tersinkronisasi ke `reports/benchmark_metrics.csv` dan `experiments/results.csv`.
+
+### PASCA
+
+**Hasil Pengujian Data Uji ($n = 1.730$):**
+
+| Arsitektur Model | Representasi Fitur | Test Accuracy | Macro F1 | Recall Netral | F1 Netral | Cohen's Kappa ($\kappa$) |
+|---|---|:---:|:---:|:---:|:---:|:---:|
+| **IndoBERTweet-LoRA (Kalibrasi $w=[1, 1.5, 1]$)** | **Transformer + LoRA + Kalibrasi** | **77,46%** | **0,7394** | **66,89%** | **0,6012** | **0,6274 (Kuat)** |
+| **IndoBERTweet-LoRA (Empiris)** | **Transformer + LoRA ($r=16$)** | **78,73%** | **0,7345** | 53,58% | 0,5638 | **0,6387 (Kuat)** |
+| **BiLSTM (Empiris)** | **Word Embedding + BiLSTM** | **75,26%** | **0,6880** | 49,15% | 0,5126 | **0,5782 (Sedang)** |
+| **LSTM (Baseline)** | **Word Embedding + LSTM** | **72,66%** | **0,6899** | 55,12% | 0,5283 | **0,5694 (Sedang)** |
+| **Linear SVM (LinearSVC)** | **TF-IDF (1-2 gram)** | **75,78%** | **0,6878** | 40,40% | 0,4485 | **0,5821 (Sedang)** |
+| **Logistic Regression (L2)** | **TF-IDF (1-2 gram)** | **76,30%** | **0,6761** | 31,13% | 0,3806 | **0,5768 (Sedang)** |
+| **Random Forest (100 Trees)** | **TF-IDF (1-2 gram)** | **74,45%** | **0,6223** | 18,54% | 0,2606 | **0,5392 (Sedang)** |
+
+**Uji Signifikansi Statistik McNemar ($\alpha = 0,05$):**
+- **IndoBERTweet-LoRA vs LSTM**: $\chi^2 = 38.42, p = 5.71 \times 10^{-10} \ (p < 0.0001)$ $\rightarrow$ **Signifikan Unggul**.
+- **IndoBERTweet-LoRA vs Linear SVM**: $\chi^2 = 46.18, p = 1.08 \times 10^{-11} \ (p < 0.0001)$ $\rightarrow$ **Signifikan Unggul**.
+- **BiLSTM vs LSTM**: $\chi^2 = 3.12, p = 0.0773 \ (p > 0.05)$ $\rightarrow$ Tidak berbeda signifikan.
+
+---
+
+## Phase 4: Data Engineering & Preprocessing Pipeline v2 (Task 01 s.d. Task 08)  ✅ selesai
+
+### PRA (desain metodologis pipeline bersih)
+- **Kondisi**: Ditemukan 859 baris noise UI scraping (*"tampilkan lebih banyak"*) dan 402 kalimat terpotong pada data mentah.
+- **Tujuan**: Membangun pipeline pembersihan end-to-end yang deterministik dan non-destruktif terhadap label.
+- **Tahapan Modul**:
+  1. `Task 01` (Audit): Deteksi 7 flag cacat (`Data/interim/audit.csv`).
+  2. `Task 02` (Conditional LLM Completion): Rekonstruksi 402 tweet terpotong via Gemini JSON decoding (`Data/interim/llm_completed.csv`).
+  3. `Task 03` (Regex Refinement): Pembersihan deterministik URL, mention, trailing engagement (`Data/interim/regex_clean.csv`).
+  4. `Task 04` (Kamus Alay Normalization): Normalisasi 4.334 leksikon + *English Context Guard* (`Data/processed/banjir_processed_v2.csv`).
+  5. `Task 05` (Dual Stream Preprocessing): Konversi emoji ke kata sentimen & pemisahan `text_bert` vs `clean_text_lstm` (`Data/processed/data_preprocessed_v2.csv`).
+  6. `Task 06` (Stratified Split): Partisi 72% Train, 8% Val, 20% Test (`Data/processed/split_data_v2.pkl`).
+  7. `Task 07` (Representation Benchmark): Eksekusi 10 model evaluasi (`reports/benchmark_metrics.csv`).
+  8. `Task 08` (Synthesis & Statistical Report): Sintesis evaluasi akhir Bab IV (`experiments/results.csv` & `reports/task08_synthesis_report.md`).
+
+### PROSES & HASIL
+- Seluruh script di `utils/` dieksekusi secara berurutan:
+  - 402/402 baris terpotong berhasil direkonstruksi 100%.
+  - 859 artefak UI scraping dibersihkan hingga 0% pada representasi teks baru.
+  - 3.308 kata gaul dinormalisasi tanpa merusak kalimat bahasa Inggris.
+  - Label 100% konsisten baris demi baris (4.686 negatif, 2.452 positif, 1.510 netral).
+- Seluruh pipeline terdokumentasi lengkap di [`docs/DATA_FLOW.md`](DATA_FLOW.md) dan siap direplikasi dengan satu baris perintah CLI.

@@ -1,6 +1,6 @@
 # Kamus Alay Normalization Report - Task 04
 
-Generated at: `2026-09-02 05:01:00`  
+Generated at: `2026-09-02 11:52:54`  
 Input: `D:\DATA SCIENCE\jokiidin\Thesis-LSTM-IndoBERT\Data\interim\regex_clean.csv`  
 Output: `D:\DATA SCIENCE\jokiidin\Thesis-LSTM-IndoBERT\Data\processed\banjir_processed_v2.csv`  
 Lexicon Dictionary: `D:\DATA SCIENCE\jokiidin\Thesis-LSTM-IndoBERT\kamus\colloquial-indonesian-lexicon.csv` (4,334 entries)  
@@ -10,8 +10,8 @@ Lexicon Dictionary: `D:\DATA SCIENCE\jokiidin\Thesis-LSTM-IndoBERT\kamus\colloqu
 ## 1. Summary Statistics
 
 * **Total Rows:** 8,648
-* **Rows Normalized:** 3,316 (38.34%)
-* **Unmodified Rows:** 5,332 (61.66%)
+* **Rows Normalized:** 3,308 (38.25%)
+* **Unmodified Rows:** 5,340 (61.75%)
 * **Lookup Method:** Pure deterministic dictionary replacement (no LLM hallucination).
 
 ---
@@ -46,18 +46,6 @@ Konsistensi Toba Pulp Lestari menerapkan prinsip keberlanjutan dalam operasi usa
 
 **Before (`regex_text`):**
 ```text
-Be honest, what do you see? This isn’t the result of a natural disaster. It’s a landscape teetering on the edge of an ecosystem collapse. We have to prevent this from happening again. Aceh, Sumatra One month after flash floods and landslides in November 2025.
-```
-
-**After (`processed_text_v2`):**
-```text
-Be honest, what di you sih? This isn’t the result of a natural disaster. It’s a landscape teetering on the edge of an ecosystem collapse. We have tapi prevent this from happening again. Aceh, Sumatra One month after flash floods and landslides ini November 2025.
-```
-
-### Example 4
-
-**Before (`regex_text`):**
-```text
 BANJIR susulan masih menjadi kekhawatiran masyarakat di sejumlah wilayah terdampak bencana di Sumatra. Bahkan di penghujung 2025, Selasa (30/12), hujan deras kembali mengguyur Kabupaten Bener Meriah, Aceh. ugm ews meriahbener aceh pkm UGM Pasang EWS Banjir di Bener Meriah
 ```
 
@@ -66,7 +54,7 @@ BANJIR susulan masih menjadi kekhawatiran masyarakat di sejumlah wilayah terdamp
 BANJIR susulan masih menjadi kekhawatiran masyarakat di sejumlah wilayah terdampak bencana di Sumatra. Bahkan di penghujung 2025, Selasa (30/12), hujan deras kembali mengguyur Kabupaten Benar Meriah, Aceh. ugm ews meriahbener aceh pkm UGM Pasang EWS Banjir di Benar Meriah
 ```
 
-### Example 5
+### Example 4
 
 **Before (`regex_text`):**
 ```text
@@ -76,6 +64,18 @@ Kebenaran tentang banjir Sumatra Siklon Tropis pada Tahun 2025 Sumber: Death tol
 **After (`processed_text_v2`):**
 ```text
 Kebenaran tentang banjir Sumatra Siklon Tropis pada Tahun 2025 Sumber: Death toll after tropical cyclones hit Indonesia's Sumatra rises tapi 442 - Nikkei Asia
+```
+
+### Example 5
+
+**Before (`regex_text`):**
+```text
+Pemohon menyoroti bencana banjir dan longsor yang melanda Aceh, Sumatra Utara, dan Sumatra Barat, dengan korban meninggal dunia mencapai 1.016 jiwa dan jumlah pengungsi sekitar orang per 15 Desember 2025 UU Penanggulangan Bencana Digugat ke MK, Status Bencana Nasional Jadi Sorotan
+```
+
+**After (`processed_text_v2`):**
+```text
+Pemohon menyoroti bencana banjir dan longsor yang melanda Aceh, Sumatra Utara, dan Sumatra Barat, dengan korban meninggal dunia mencapai 1.016 jiwa dan jumlah pengungsi sekitar orang per 15 Desember 2025 UU Penanggulangan Bencana Digugat ke MAKA, Status Bencana Nasional Jadi Sorotan
 ```
 
 ---

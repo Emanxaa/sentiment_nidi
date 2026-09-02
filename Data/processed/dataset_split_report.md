@@ -1,6 +1,6 @@
 # Stratified Dataset Split Report - Task 06
 
-Generated at: `2026-09-02 05:07:31`  
+Generated at: `2026-09-02 11:53:01`  
 Source: `D:\DATA SCIENCE\jokiidin\Thesis-LSTM-IndoBERT\Data\processed\data_preprocessed_v2.csv`  
 Output: `D:\DATA SCIENCE\jokiidin\Thesis-LSTM-IndoBERT\Data\processed\split_data_v2.pkl`  
 Random State: `42`  

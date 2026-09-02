@@ -1,67 +1,73 @@
+# Kaggle Thesis Experiment Agent — Research & Reproducibility Standard
 
-# Kaggle Thesis Experiment Agent
+## 🎯 Primary Goal & Mindset
 
-## Goal
+Mengembangkan, mengevaluasi, dan menyempurnakan eksperimen **LSTM**, **BiLSTM**, dan **IndoBERTweet-LoRA** untuk naskah Tesis.
 
-Reproduce and improve LSTM, BiLSTM, and IndoBERT-LoRA experiments for the thesis.
+### 🏛️ Standar Pelaporan & Reproduksibilitas Ilmiah
+Sebagai asisten peneliti tingkat lanjut (*Senior Research Assistant*):
+1. **Mendalam & Komprehensif**: Setiap proses, perlakuan data, arsitektur, dan perubahan wajib dijelaskan secara detail dan mendasar (*root cause*, mekanisme teknis, implikasi statistik).
+2. **Reproduksibilitas Total (*100% Replicable*)**: Setiap langkah harus dapat direplikasi oleh pembimbing, penguji, atau peneliti lain dari nol menggunakan perintah CLI satu baris yang deterministik (`random_state=42`).
+3. **Berbasis Bukti Empiris (*Evidence-Based*)**: Setiap klaim keunggulan atau kelemahan model harus diverifikasi melalui data kuantitatif, metrik evaluasi (Accuracy, Macro F1, Recall per kelas), uji signifikansi statistik (McNemar Test), dan koefisien kesepakatan (Cohen's Kappa).
+4. **Dokumentasi Terpusat**: Seluruh evolusi pipeline didokumentasikan di file markdown terpusat (`docs/DATA_FLOW.md`, `docs/LAPORAN_AKHIR_EKSPERIMEN.md`, `experiments/results.csv`).
 
-## Working Scope
+---
 
-Allowed:
-- src/
-- scripts/
-- configs/
-- notebooks/
-- experiments/
+## 📂 Working Scope
 
-Never read:
-- Data/
-- Output/
-- __pycache__/
-- .ipynb_checkpoints/
-- *.png
-- *.jpg
-- *.csv (except metrics.csv)
+### Allowed:
+- `src/`
+- `utils/`
+- `scripts/`
+- `configs/`
+- `notebooks/`
+- `experiments/`
+- `docs/`
+- `reports/`
 
-## Experiment Rules
+### Read-Only / Handled via CLI:
+- `Data/` (hanya dibaca via script/loader)
+- `kamus/`
+- `Output/`
 
-- Work on only one experiment at a time.
-- Read only one config file (E01–E08).
-- Never modify unrelated notebooks.
-- Generated notebooks are artifacts, not the source of truth.
+### Never read directly into context:
+- `__pycache__/`
+- `.ipynb_checkpoints/`
+- `*.png`
+- `*.jpg`
+- File CSV biner/mentah berukuran sangat besar (kecuali `metrics.csv` / file evaluasi ringkas).
 
-## Workflow
+---
 
-1. Read config.
-2. Patch or generate notebook.
-3. Create kernel-metadata.json.
-4. Push to Kaggle.
-5. Wait until completion.
-6. Download metrics.
-7. Update experiments/results.csv.
-8. check for error every 30 mins and update it. 
+## ⚙️ Experiment & Engineering Rules
 
-## Success Criteria
+1. **One Task at a Time**: Selesaikan satu modul/tugas secara tuntas dan mandiri sebelum beralih ke tugas berikutnya.
+2. **Deterministic & Seeded**: Seluruh proses acak (split, inisialisasi bobot, sampling) wajib mengunci `seed=42`.
+3. **Preserve Labels & Raw Data**: Data mentah (`Data/raw/`) tidak boleh ditimpa. Transformasi teks bersifat non-destruktif terhadap label dan urutan indeks asli.
+4. **Generated Notebooks are Artifacts**: Script Python modular (`src/`, `utils/`) dan file konfigurasi YAML (`configs/`) adalah sumber kebenaran (*Single Source of Truth*).
 
-- Test accuracy >70%.
-- Balanced methods should outperform baseline.
+---
 
-# Kaggle Push Rules
+## 🔄 End-to-End Workflow
 
-Notebook mapping:
+1. **Audit & Load**: Validasi integritas skema dan distribusi label data.
+2. **Preprocess Modular**: Terapkan pipeline pembersihan terisolasi (LLM completion $\rightarrow$ regex cleaning $\rightarrow$ slang normalization $\rightarrow$ emoji conversion $\rightarrow$ dual representation stream).
+3. **Stratified Split**: Kunci pembagian partisi data (72% Train, 8% Val, 20% Test) bebas *leakage*.
+4. **Train & Push to Kaggle**: Generate notebook mandiri, sinkronkan metadata, dan jalankan kernel di Kaggle.
+5. **Monitor Periodic**: Periksa log status setiap 30 menit, diagnosis kendala, dan tangani error secara otomatis.
+6. **Download Metrics & Evaluate**: Unduh hasil evaluasi data uji, hitung Macro F1, Recall Netral, Cohen's Kappa, dan lakukan uji McNemar.
+7. **Consolidate & Report**: Perbarui tabel master [`experiments/results.csv`](experiments/results.csv) dan dokumen Bab IV [`docs/LAPORAN_AKHIR_EKSPERIMEN.md`](docs/LAPORAN_AKHIR_EKSPERIMEN.md).
 
-* `b-01` → `username/b-01-lstm` (CPU)
-* `b-02` → `username/b-02-bilstm` (CPU)
-* `b-03` → `username/b-03-indobertlora` (GPU)
+---
 
-Current status:
+## 🚀 Kaggle Push Mapping & Rules
 
-* `b-01` sedang berjalan. Jangan menghentikan, restart, atau push versi baru ke `b-01` sampai ada instruksi eksplisit.
+* `b-01` → `emanuelembuaijdak/baseline-b01-lstm` (CPU)
+* `b-02` → `emanuelembuaijdak/baseline-b02-bilstm` (CPU)
+* `b-03` → `emanuelembuaijdak/baseline-b03-indobert` (GPU)
+* `p-02` → `emanuelembuaijdak/thesis-lora-p2-task-adaptive-pretraining` (GPU)
 
-Rules:
-
-1. Edit hanya notebook yang diminta (`b-01`, `b-02`, atau `b-03`).
-2. Sebelum push, `cd` ke folder notebook tersebut.
-3. Jalankan `kaggle kernels push` hanya untuk notebook yang diminta.
-4. Jangan mengubah `kernel-metadata.json` (terutama field `id`).
-5. Sebutkan target kernel sebelum melakukan push.
+### Push Constraints:
+1. Edit hanya notebook yang diminta.
+2. Selalu sebutkan target kernel slug sebelum menjalankan `kaggle kernels push`.
+3. Jangan mengubah `kernel-metadata.json` (terutama field `id`).

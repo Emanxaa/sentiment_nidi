@@ -54,15 +54,40 @@ def load_normalization_dictionary(
     return norm_dict
 
 
+ENGLISH_STOPWORDS_GUARD = {
+    "the", "be", "to", "of", "and", "a", "in", "that", "have", "i", "it",
+    "for", "not", "on", "with", "he", "as", "you", "do", "at", "this",
+    "but", "his", "by", "from", "they", "we", "say", "her", "she", "or",
+    "an", "will", "my", "one", "all", "would", "there", "their", "what",
+    "so", "up", "out", "if", "about", "who", "get", "which", "go", "me",
+    "see", "is", "are", "was", "were", "been", "has", "had", "can", "could"
+}
+
+CROSS_LINGUAL_AMBIGUOUS_TOKENS = {
+    "it", "to", "do", "so", "see", "in", "or", "me", "no", "on", "at",
+    "an", "be", "by", "as", "he", "we", "if", "up", "my"
+}
+
+
+def is_primarily_english(tokens: list[str]) -> bool:
+    """Detect if a sentence is primarily in English to prevent false slang replacements."""
+    if not tokens:
+        return False
+    lower_tokens = [t.lower().strip(string.punctuation) for t in tokens]
+    en_matches = sum(1 for t in lower_tokens if t in ENGLISH_STOPWORDS_GUARD)
+    return (en_matches >= 3) or (len(tokens) > 0 and (en_matches / len(tokens) >= 0.20))
+
+
 def normalize_sentence(text: str, norm_dict: Dict[str, str]) -> str:
     """
     Normalize tokens in a sentence using dictionary lookup.
-    Handles tokenization while preserving punctuation attachments.
+    Handles tokenization while preserving punctuation attachments and English context.
     """
     if not isinstance(text, str) or not text.strip():
         return ""
 
     tokens = text.split()
+    is_english = is_primarily_english(tokens)
     normalized_tokens = []
 
     for token in tokens:
@@ -82,7 +107,11 @@ def normalize_sentence(text: str, norm_dict: Dict[str, str]) -> str:
             core_token = core_token[:-1]
 
         lower_token = core_token.lower()
-        if lower_token in norm_dict:
+
+        # If sentence is English and token is ambiguous cross-lingual word, keep unchanged
+        if is_english and lower_token in CROSS_LINGUAL_AMBIGUOUS_TOKENS:
+            normalized_tokens.append(token)
+        elif lower_token in norm_dict:
             replaced_token = norm_dict[lower_token]
             # Match capitalization if original was capitalized
             if core_token.istitle():
