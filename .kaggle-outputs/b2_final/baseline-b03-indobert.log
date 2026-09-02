@@ -1,0 +1,803 @@
+[{"stream_name":"stderr","time":5.188724586,"data":"/usr/local/lib/python3.12/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":5.188765442,"data":"  validate(nb)\n"}
+,{"stream_name":"stderr","time":5.89653766,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":5.896568805,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":5.896573726,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":5.896577713,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":6.433623208,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":6.433652144,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":6.433656947,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":6.433660616,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":8.58231937,"data":"Found existing installation: torchao 0.10.0\r\n"}
+,{"stream_name":"stdout","time":8.683178545,"data":"Uninstalling torchao-0.10.0:\r\n"}
+,{"stream_name":"stdout","time":8.936928461,"data":"  Successfully uninstalled torchao-0.10.0\r\n"}
+,{"stream_name":"stdout","time":10.861430142,"data":"Collecting transformers==4.46.3\r\n"}
+,{"stream_name":"stdout","time":11.013668673,"data":"  Downloading transformers-4.46.3-py3-none-any.whl.metadata (44 kB)\r\n"}
+,{"stream_name":"stdout","time":11.114445018,"data":"\u001b[?25l     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/44.1 kB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K     \u001b[91m━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[91m╸\u001b[0m\u001b[90m━━━━━━━━━━━━\u001b[0m \u001b[32m30.7/44.1 kB\u001b[0m \u001b[31m2.2 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m44.1/44.1 kB\u001b[0m \u001b[31m596.3 kB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":11.266395085,"data":"\u001b[?25hCollecting peft==0.13.2\r\n"}
+,{"stream_name":"stdout","time":11.316858188,"data":"  Downloading peft-0.13.2-py3-none-any.whl.metadata (13 kB)\r\n"}
+,{"stream_name":"stdout","time":11.771560341,"data":"Collecting tokenizers==0.20.3\r\n"}
+,{"stream_name":"stdout","time":11.82220486,"data":"  Downloading tokenizers-0.20.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)\r\n"}
+,{"stream_name":"stdout","time":12.024479372,"data":"Collecting huggingface-hub==0.26.5\r\n"}
+,{"stream_name":"stdout","time":12.07521551,"data":"  Downloading huggingface_hub-0.26.5-py3-none-any.whl.metadata (13 kB)\r\n"}
+,{"stream_name":"stdout","time":12.176627527,"data":"Downloading transformers-4.46.3-py3-none-any.whl (10.0 MB)\r\n"}
+,{"stream_name":"stdout","time":12.582450035,"data":"\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/10.0 MB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.1/10.0 MB\u001b[0m \u001b[31m3.4 MB/s\u001b[0m eta \u001b[36m0:00:03\u001b[0m\r\u001b[2K   \u001b[91m╸\u001b[0m\u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.2/10.0 MB\u001b[0m \u001b[31m2.8 MB/s\u001b[0m eta \u001b[36m0:00:04\u001b[0m\r\u001b[2K   \u001b[91m━\u001b[0m\u001b[90m╺\u001b[0m\u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.3/10.0 MB\u001b[0m \u001b[31m3.2 MB/s\u001b[0m eta \u001b[36m0:00:03\u001b[0m\r\u001b[2K   \u001b[91m━━\u001b[0m\u001b[90m╺\u001b[0m\u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.6/10.0 MB\u001b[0m \u001b[31m4.8 MB/s\u001b[0m eta \u001b[36m0:00:02\u001b[0m\r\u001b[2K   \u001b[91m━━━━\u001b[0m\u001b[91m╸\u001b[0m\u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m1.2/10.0 MB\u001b[0m \u001b[31m7.1 MB/s\u001b[0m eta \u001b[36m0:00:02\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━\u001b[0m\u001b[90m╺\u001b[0m\u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m1.9/10.0 MB\u001b[0m \u001b[31m9.0 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━\u001b[0m\u001b[91m╸\u001b[0m\u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m2.9/10.0 MB\u001b[0m \u001b[31m12.0 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[91m╸\u001b[0m\u001b[90m━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m5.7/10.0 MB\u001b[0m \u001b[31m20.6 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[91m╸\u001b[0m\u001b[90m━━━━━━\u001b[0m \u001b[32m8.5/10.0 MB\u001b[0m \u001b[31m27.4 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[91m╸\u001b[0m \u001b[32m10.0/10.0 MB\u001b[0m \u001b[31m29.5 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[91m╸\u001b[0m \u001b[32m10.0/10.0 MB\u001b[0m \u001b[31m29.5 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m10.0/10.0 MB\u001b[0m \u001b[31m25.8 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":12.633447925,"data":"\u001b[?25hDownloading peft-0.13.2-py3-none-any.whl (320 kB)\r\n"}
+,{"stream_name":"stdout","time":12.633473444,"data":"\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/320.7 kB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m320.7/320.7 kB\u001b[0m \u001b[31m24.5 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":12.684204468,"data":"\u001b[?25hDownloading tokenizers-0.20.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)\r\n"}
+,{"stream_name":"stdout","time":12.735133932,"data":"\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/3.0 MB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m3.0/3.0 MB\u001b[0m \u001b[31m97.4 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":12.785503542,"data":"\u001b[?25hDownloading huggingface_hub-0.26.5-py3-none-any.whl (447 kB)\r\n"}
+,{"stream_name":"stdout","time":12.785525262,"data":"\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/447.8 kB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m447.8/447.8 kB\u001b[0m \u001b[31m34.1 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":12.836040648,"data":"\u001b[?25hInstalling collected packages: transformers, tokenizers, peft, huggingface-hub\r\n"}
+,{"stream_name":"stdout","time":12.836058895,"data":"  Attempting uninstall: transformers\r\n"}
+,{"stream_name":"stdout","time":13.140098653999999,"data":"    Found existing installation: transformers 5.0.0\r\n"}
+,{"stream_name":"stdout","time":13.494733066,"data":"    Uninstalling transformers-5.0.0:\r\n"}
+,{"stream_name":"stdout","time":14.810411114,"data":"      Successfully uninstalled transformers-5.0.0\r\n"}
+,{"stream_name":"stdout","time":20.976399346,"data":"  Attempting uninstall: tokenizers\r\n"}
+,{"stream_name":"stdout","time":21.229558944,"data":"    Found existing installation: tokenizers 0.22.2\r\n"}
+,{"stream_name":"stdout","time":21.229580734,"data":"    Uninstalling tokenizers-0.22.2:\r\n"}
+,{"stream_name":"stdout","time":21.280569752,"data":"      Successfully uninstalled tokenizers-0.22.2\r\n"}
+,{"stream_name":"stdout","time":21.382194625,"data":"  Attempting uninstall: peft\r\n"}
+,{"stream_name":"stdout","time":21.635651594,"data":"    Found existing installation: peft 0.19.1\r\n"}
+,{"stream_name":"stdout","time":21.686416007,"data":"    Uninstalling peft-0.19.1:\r\n"}
+,{"stream_name":"stdout","time":21.838528903,"data":"      Successfully uninstalled peft-0.19.1\r\n"}
+,{"stream_name":"stdout","time":22.040942964,"data":"  Attempting uninstall: huggingface-hub\r\n"}
+,{"stream_name":"stdout","time":22.243014426,"data":"    Found existing installation: huggingface_hub 1.11.0\r\n"}
+,{"stream_name":"stdout","time":22.243037234,"data":"    Uninstalling huggingface_hub-1.11.0:\r\n"}
+,{"stream_name":"stdout","time":22.396658625,"data":"      Successfully uninstalled huggingface_hub-1.11.0\r\n"}
+,{"stream_name":"stdout","time":22.648493414,"data":"Successfully installed huggingface-hub-0.26.5 peft-0.13.2 tokenizers-0.20.3 transformers-4.46.3\r\n"}
+,{"stream_name":"stdout","time":26.701572248,"data":"[*] PyTorch Version : 2.10.0+cu128\n"}
+,{"stream_name":"stdout","time":26.701602452,"data":"[*] CUDA Available  : True\n"}
+,{"stream_name":"stdout","time":26.701607829,"data":"[*] Device Name     : Tesla T4\n"}
+,{"stream_name":"stdout","time":26.701612069,"data":"[*] Device Memory   : 14.56 GB\n"}
+,{"stream_name":"stdout","time":27.580409873,"data":"[*] Downloading banjir_processed_v2.csv from repository...\n"}
+,{"stream_name":"stdout","time":28.838756179,"data":"[+] Loaded primary dataset: 8,648 rows\n"}
+,{"stream_name":"stdout","time":28.856723035,"data":"[+] Attached 'text_with_emoticon' from /kaggle/input/thesis-indobert-processed-data/data_preprocessed_with_emoticon.csv\n"}
+,{"stream_name":"stdout","time":28.856752271,"data":"[+] Ready for B2 tuning with 8,648 rows and all required text columns.\n"}
+,{"stream_name":"stderr","time":29.128678346,"data":"\u003c\u003e:543: SyntaxWarning: invalid escape sequence '\\%'\n"}
+,{"stream_name":"stderr","time":29.12870603,"data":"\u003c\u003e:543: SyntaxWarning: invalid escape sequence '\\%'\n"}
+,{"stream_name":"stderr","time":29.128721589,"data":"/tmp/ipykernel_23/4103481319.py:543: SyntaxWarning: invalid escape sequence '\\%'\n"}
+,{"stream_name":"stderr","time":29.128736855,"data":"  \"\"\"\n"}
+,{"stream_name":"stderr","time":29.128740988,"data":"\n"}
+,{"stream_name":"stderr","time":29.128744679,"data":"\u003c\u003e:543: SyntaxWarning: invalid escape sequence '\\%'\n"}
+,{"stream_name":"stderr","time":29.128748344999998,"data":"\u003c\u003e:543: SyntaxWarning: invalid escape sequence '\\%'\n"}
+,{"stream_name":"stderr","time":29.128752386,"data":"/tmp/ipykernel_23/4103481319.py:543: SyntaxWarning: invalid escape sequence '\\%'\n"}
+,{"stream_name":"stderr","time":29.128756471,"data":"  \"\"\"\n"}
+,{"stream_name":"stdout","time":52.610268683,"data":"[*] Stratified splits: Train=6,226 | Val=692 | Test=1,730\n"}
+,{"stream_name":"stdout","time":54.02655998,"data":"\n"}
+,{"stream_name":"stdout","time":54.026593124,"data":"###########################################################################\n"}
+,{"stream_name":"stdout","time":54.026598988,"data":"# STARTING PHASE 1: LEGACY REPRODUCTION\n"}
+,{"stream_name":"stdout","time":54.026603671,"data":"###########################################################################\n"}
+,{"stream_name":"stdout","time":54.026608344,"data":"\n"}
+,{"stream_name":"stdout","time":54.026612629,"data":"===========================================================================\n"}
+,{"stream_name":"stdout","time":54.026617517,"data":"   TRIAL: legacy_reproduction\n"}
+,{"stream_name":"stdout","time":54.02662192,"data":"   Input: 'text_with_emoticon' | LR: 0.0002 | LoRA: r=16, a=32, drop=0.3\n"}
+,{"stream_name":"stdout","time":54.026626366,"data":"===========================================================================\n"}
+,{"stream_name":"stderr","time":84.825897884,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":84.825938809,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":84.825946972,"data":"\n"}
+,{"stream_name":"stderr","time":84.825956048,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":84.825960029,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":85.144049046,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":85.144104867,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":85.144128149,"data":"\n"}
+,{"stream_name":"stderr","time":85.144132093,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":85.14413638,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":86.062090605,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":86.062124507,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":86.062129225,"data":"\n"}
+,{"stream_name":"stderr","time":86.062132981,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":86.062138732,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":102.959781172,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":102.959812615,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":102.959837417,"data":"\n"}
+,{"stream_name":"stderr","time":102.959842062,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":102.959846621,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":118.935345789,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":118.935392797,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":118.935400251,"data":"\n"}
+,{"stream_name":"stderr","time":118.935405855,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":118.93541176,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":135.267210937,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":135.26724482,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":135.267250599,"data":"\n"}
+,{"stream_name":"stderr","time":135.267255224,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":135.267260259,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":151.70896281,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":151.708999805,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":151.709018857,"data":"\n"}
+,{"stream_name":"stderr","time":151.70902467,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":151.709030203,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stdout","time":168.961610866,"data":"[+] Finished training in 83.5s\n"}
+,{"stream_name":"stdout","time":186.85513232,"data":"[*] Val Metrics  : {'accuracy': 0.6647, 'macro_f1': 0.5163, 'precision': 0.6137, 'recall': 0.5331}\n"}
+,{"stream_name":"stdout","time":186.855163071,"data":"[*] Test Metrics : {'accuracy': 0.6821, 'macro_f1': 0.5444, 'precision': 0.6392, 'recall': 0.5541}\n"}
+,{"stream_name":"stdout","time":188.973514589,"data":"[+] Wrote Output/lora_tuning/legacy_reproduction_report.md\n"}
+,{"stream_name":"stdout","time":188.97355269,"data":"\n"}
+,{"stream_name":"stdout","time":188.973558604,"data":"###########################################################################\n"}
+,{"stream_name":"stdout","time":188.97357038,"data":"# STARTING PHASE 2: TARGETED LEARNING RATE SWEEP\n"}
+,{"stream_name":"stdout","time":188.973574426,"data":"###########################################################################\n"}
+,{"stream_name":"stdout","time":188.97357791,"data":"\n"}
+,{"stream_name":"stdout","time":188.973580835,"data":"===========================================================================\n"}
+,{"stream_name":"stdout","time":188.973584328,"data":"   TRIAL: LR Sweep: 1e-05\n"}
+,{"stream_name":"stdout","time":188.973587521,"data":"   Input: 'processed_text_v2' | LR: 1e-05 | LoRA: r=16, a=32, drop=0.1\n"}
+,{"stream_name":"stdout","time":188.973590749,"data":"===========================================================================\n"}
+,{"stream_name":"stderr","time":191.352361537,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":191.352401439,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":191.352407546,"data":"\n"}
+,{"stream_name":"stderr","time":191.352412594,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":191.352417937,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":191.889790017,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":191.88985519,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":191.889862678,"data":"\n"}
+,{"stream_name":"stderr","time":191.889867468,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":191.889872626,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":191.962147286,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":191.962191902,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":191.962219286,"data":"\n"}
+,{"stream_name":"stderr","time":191.962224123,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":191.962229243,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":209.543201044,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":209.5432327,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":209.543237781,"data":"\n"}
+,{"stream_name":"stderr","time":209.543241961,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":209.54325801,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":227.30791853,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":227.307958402,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":227.307969855,"data":"\n"}
+,{"stream_name":"stderr","time":227.307973466,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":227.307976929,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":244.819891548,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":244.819922467,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":244.819928122,"data":"\n"}
+,{"stream_name":"stderr","time":244.819932774,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":244.819937987,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":261.913274138,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":261.913310208,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":261.913316975,"data":"\n"}
+,{"stream_name":"stderr","time":261.913321801,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":261.913328389,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stdout","time":279.719624801,"data":"[+] Finished training in 88.0s\n"}
+,{"stream_name":"stdout","time":298.101220519,"data":"[*] Val Metrics  : {'accuracy': 0.5448, 'macro_f1': 0.2415, 'precision': 0.5145, 'recall': 0.3367}\n"}
+,{"stream_name":"stdout","time":298.101262448,"data":"[*] Test Metrics : {'accuracy': 0.5451, 'macro_f1': 0.2429, 'precision': 0.467, 'recall': 0.3374}\n"}
+,{"stream_name":"stdout","time":300.114565907,"data":"\n"}
+,{"stream_name":"stdout","time":300.11459423,"data":"===========================================================================\n"}
+,{"stream_name":"stdout","time":300.114599698,"data":"   TRIAL: LR Sweep: 2e-05\n"}
+,{"stream_name":"stdout","time":300.114604131,"data":"   Input: 'processed_text_v2' | LR: 2e-05 | LoRA: r=16, a=32, drop=0.1\n"}
+,{"stream_name":"stdout","time":300.114608797,"data":"===========================================================================\n"}
+,{"stream_name":"stderr","time":302.247724688,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":302.247775849,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":302.247781236,"data":"\n"}
+,{"stream_name":"stderr","time":302.247784967,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":302.247788917,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":302.786780043,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":302.786814511,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":302.786846988,"data":"\n"}
+,{"stream_name":"stderr","time":302.786851166,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":302.786856216,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":302.860082559,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":302.860144581,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":302.860150456,"data":"\n"}
+,{"stream_name":"stderr","time":302.860154908,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":302.860159934,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":320.336705239,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":320.336739106,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":320.336744519,"data":"\n"}
+,{"stream_name":"stderr","time":320.336748129,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":320.336751882,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":337.922188526,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":337.922237763,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":337.922243218,"data":"\n"}
+,{"stream_name":"stderr","time":337.922246804,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":337.922251335,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":355.196020163,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":355.196051932,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":355.196067428,"data":"\n"}
+,{"stream_name":"stderr","time":355.196071792,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":355.196076039,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":372.395770587,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":372.395803694,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":372.395808072,"data":"\n"}
+,{"stream_name":"stderr","time":372.395811402,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":372.395846218,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stdout","time":390.276443387,"data":"[+] Finished training in 87.6s\n"}
+,{"stream_name":"stdout","time":408.674852395,"data":"[*] Val Metrics  : {'accuracy': 0.5665, 'macro_f1': 0.3028, 'precision': 0.4389, 'recall': 0.3663}\n"}
+,{"stream_name":"stdout","time":408.674912168,"data":"[*] Test Metrics : {'accuracy': 0.5705, 'macro_f1': 0.3134, 'precision': 0.4476, 'recall': 0.3721}\n"}
+,{"stream_name":"stdout","time":410.703965256,"data":"\n"}
+,{"stream_name":"stdout","time":410.704000075,"data":"===========================================================================\n"}
+,{"stream_name":"stdout","time":410.704006646,"data":"   TRIAL: LR Sweep: 3e-05\n"}
+,{"stream_name":"stdout","time":410.704011814,"data":"   Input: 'processed_text_v2' | LR: 3e-05 | LoRA: r=16, a=32, drop=0.1\n"}
+,{"stream_name":"stdout","time":410.704017214,"data":"===========================================================================\n"}
+,{"stream_name":"stderr","time":412.970378517,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":412.97041657,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":412.970422571,"data":"\n"}
+,{"stream_name":"stderr","time":412.970427222,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":412.97043253,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":413.507236187,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":413.507282652,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":413.507287072,"data":"\n"}
+,{"stream_name":"stderr","time":413.507290562,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":413.507294359,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":413.579078888,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":413.579145577,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":413.579152196,"data":"\n"}
+,{"stream_name":"stderr","time":413.579156033,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":413.579159842,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":430.912662301,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":430.912698143,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":430.912701922,"data":"\n"}
+,{"stream_name":"stderr","time":430.912704366,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":430.912707301,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":448.53785042,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":448.537882433,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":448.537888866,"data":"\n"}
+,{"stream_name":"stderr","time":448.53789385,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":448.537899361,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":466.022737891,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":466.022779935,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":466.022785409,"data":"\n"}
+,{"stream_name":"stderr","time":466.022790302,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":466.022795458,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":483.335905674,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":483.335943586,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":483.335950518,"data":"\n"}
+,{"stream_name":"stderr","time":483.335955729,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":483.335961612,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stdout","time":501.264370606,"data":"[+] Finished training in 87.9s\n"}
+,{"stream_name":"stdout","time":519.590531199,"data":"[*] Val Metrics  : {'accuracy': 0.5925, 'macro_f1': 0.3687, 'precision': 0.4273, 'recall': 0.4067}\n"}
+,{"stream_name":"stdout","time":519.590569754,"data":"[*] Test Metrics : {'accuracy': 0.6058, 'macro_f1': 0.3876, 'precision': 0.4367, 'recall': 0.4219}\n"}
+,{"stream_name":"stdout","time":521.647233436,"data":"\n"}
+,{"stream_name":"stdout","time":521.647266274,"data":"===========================================================================\n"}
+,{"stream_name":"stdout","time":521.647271969,"data":"   TRIAL: LR Sweep: 0.0002\n"}
+,{"stream_name":"stdout","time":521.647289956,"data":"   Input: 'processed_text_v2' | LR: 0.0002 | LoRA: r=16, a=32, drop=0.1\n"}
+,{"stream_name":"stdout","time":521.64729383,"data":"===========================================================================\n"}
+,{"stream_name":"stderr","time":523.831074126,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":523.831109297,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":523.831114225,"data":"\n"}
+,{"stream_name":"stderr","time":523.831117841,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":523.83112206,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":524.38336732,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":524.383407185,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":524.383412821,"data":"\n"}
+,{"stream_name":"stderr","time":524.3834168,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":524.383421653,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":524.456044576,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":524.456071649,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":524.456076607,"data":"\n"}
+,{"stream_name":"stderr","time":524.456080311,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":524.456084253,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":541.759429717,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":541.759470691,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":541.75947584,"data":"\n"}
+,{"stream_name":"stderr","time":541.759479391,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":541.759483385,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":559.35448665,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":559.354522514,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":559.354528237,"data":"\n"}
+,{"stream_name":"stderr","time":559.354532918,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":559.354547639,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":576.675053794,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":576.67508862,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":576.675094156,"data":"\n"}
+,{"stream_name":"stderr","time":576.675098511,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":576.67510333,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":594.042213854,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":594.042256862,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":594.042262591,"data":"\n"}
+,{"stream_name":"stderr","time":594.042267542,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":594.042272716,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stdout","time":611.983577446,"data":"[+] Finished training in 87.8s\n"}
+,{"stream_name":"stdout","time":630.296580108,"data":"[*] Val Metrics  : {'accuracy': 0.6705, 'macro_f1': 0.5255, 'precision': 0.6338, 'recall': 0.5417}\n"}
+,{"stream_name":"stdout","time":630.296622728,"data":"[*] Test Metrics : {'accuracy': 0.6867, 'macro_f1': 0.5516, 'precision': 0.6478, 'recall': 0.5601}\n"}
+,{"stream_name":"stdout","time":632.380880323,"data":"\n"}
+,{"stream_name":"stdout","time":632.380901455,"data":"[+] Saved LR Sweep results to: Output/lora_tuning/lr_sweep.csv\n"}
+,{"stream_name":"stdout","time":632.380906982,"data":" Learning Rate  Val Macro F1  Test Macro F1  Accuracy  Precision  Recall  Runtime (s)\n"}
+,{"stream_name":"stdout","time":632.38091155,"data":"       0.00001        0.2415         0.2429    0.5451     0.4670  0.3374        87.98\n"}
+,{"stream_name":"stdout","time":632.380915967,"data":"       0.00002        0.3028         0.3134    0.5705     0.4476  0.3721        87.63\n"}
+,{"stream_name":"stdout","time":632.380920505,"data":"       0.00003        0.3687         0.3876    0.6058     0.4367  0.4219        87.91\n"}
+,{"stream_name":"stdout","time":632.380925001,"data":"       0.00020        0.5255         0.5516    0.6867     0.6478  0.5601        87.76\n"}
+,{"stream_name":"stdout","time":632.380930029,"data":"\n"}
+,{"stream_name":"stdout","time":632.380934802,"data":"[\u003e\u003e\u003e] WINNING LEARNING RATE: 0.0002 (Val Macro F1: 0.5255)\n"}
+,{"stream_name":"stdout","time":632.380940147,"data":"\n"}
+,{"stream_name":"stdout","time":632.380944418,"data":"###########################################################################\n"}
+,{"stream_name":"stdout","time":632.38094904,"data":"# STARTING PHASE 3: LORA CAPACITY SWEEP (Using Best LR: 0.0002)\n"}
+,{"stream_name":"stdout","time":632.380953495,"data":"###########################################################################\n"}
+,{"stream_name":"stdout","time":632.380959564,"data":"\n"}
+,{"stream_name":"stdout","time":632.380967985,"data":"===========================================================================\n"}
+,{"stream_name":"stdout","time":632.380971347,"data":"   TRIAL: LoRA: r=8, a=16, d=0.05\n"}
+,{"stream_name":"stdout","time":632.380974462,"data":"   Input: 'processed_text_v2' | LR: 0.0002 | LoRA: r=8, a=16, drop=0.05\n"}
+,{"stream_name":"stdout","time":632.38098512,"data":"===========================================================================\n"}
+,{"stream_name":"stderr","time":634.556082104,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":634.556119917,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":634.556125139,"data":"\n"}
+,{"stream_name":"stderr","time":634.55612861,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":634.556133003,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":635.08604085,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":635.086075231,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":635.086079961,"data":"\n"}
+,{"stream_name":"stderr","time":635.086083821,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":635.086088505,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":635.16028982,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":635.160337145,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":635.160342193,"data":"\n"}
+,{"stream_name":"stderr","time":635.160347334,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":635.160351063,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":652.475259075,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":652.47528882,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":652.475299756,"data":"\n"}
+,{"stream_name":"stderr","time":652.475302912,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":652.475305912,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":670.197856957,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":670.197895924,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":670.197902584,"data":"\n"}
+,{"stream_name":"stderr","time":670.197907925,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":670.197925322,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":687.611178046,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":687.611227046,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":687.611232982,"data":"\n"}
+,{"stream_name":"stderr","time":687.611236546,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":687.61124035,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":704.849326727,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":704.849357594,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":704.849363238,"data":"\n"}
+,{"stream_name":"stderr","time":704.849368053,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":704.849373297,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stdout","time":722.664141792,"data":"[+] Finished training in 87.7s\n"}
+,{"stream_name":"stdout","time":740.947304789,"data":"[*] Val Metrics  : {'accuracy': 0.6705, 'macro_f1': 0.5255, 'precision': 0.6338, 'recall': 0.5417}\n"}
+,{"stream_name":"stdout","time":740.947340605,"data":"[*] Test Metrics : {'accuracy': 0.6867, 'macro_f1': 0.5516, 'precision': 0.6478, 'recall': 0.5601}\n"}
+,{"stream_name":"stdout","time":743.041010157,"data":"\n"}
+,{"stream_name":"stdout","time":743.041058024,"data":"===========================================================================\n"}
+,{"stream_name":"stdout","time":743.041064322,"data":"   TRIAL: LoRA: r=8, a=16, d=0.1\n"}
+,{"stream_name":"stdout","time":743.041069437,"data":"   Input: 'processed_text_v2' | LR: 0.0002 | LoRA: r=8, a=16, drop=0.1\n"}
+,{"stream_name":"stdout","time":743.04107449,"data":"===========================================================================\n"}
+,{"stream_name":"stderr","time":745.26637195,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":745.26640801,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":745.266414137,"data":"\n"}
+,{"stream_name":"stderr","time":745.266419345,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":745.266424744,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":745.799374573,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":745.799429641,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":745.799437571,"data":"\n"}
+,{"stream_name":"stderr","time":745.799444054,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":745.799482727,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":745.871840272,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":745.871869084,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":745.87187356,"data":"\n"}
+,{"stream_name":"stderr","time":745.871877169,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":745.871881233,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":763.195894876,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":763.195926522,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":763.195931684,"data":"\n"}
+,{"stream_name":"stderr","time":763.195935336,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":763.195939653,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":780.682651203,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":780.682684403,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":780.682690401,"data":"\n"}
+,{"stream_name":"stderr","time":780.682695657,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":780.682701196,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":797.936257152,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":797.936296399,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":797.936301291,"data":"\n"}
+,{"stream_name":"stderr","time":797.936304419,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":797.936307846,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":815.113257122,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":815.113291701,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":815.11329788,"data":"\n"}
+,{"stream_name":"stderr","time":815.113302451,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":815.113307501,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stdout","time":833.101778502,"data":"[+] Finished training in 87.5s\n"}
+,{"stream_name":"stdout","time":851.437972299,"data":"[*] Val Metrics  : {'accuracy': 0.6705, 'macro_f1': 0.5255, 'precision': 0.6338, 'recall': 0.5417}\n"}
+,{"stream_name":"stdout","time":851.438017414,"data":"[*] Test Metrics : {'accuracy': 0.6867, 'macro_f1': 0.5516, 'precision': 0.6478, 'recall': 0.5601}\n"}
+,{"stream_name":"stdout","time":853.544334122,"data":"\n"}
+,{"stream_name":"stdout","time":853.544366857,"data":"===========================================================================\n"}
+,{"stream_name":"stdout","time":853.544371863,"data":"   TRIAL: LoRA: r=16, a=32, d=0.05\n"}
+,{"stream_name":"stdout","time":853.544376003,"data":"   Input: 'processed_text_v2' | LR: 0.0002 | LoRA: r=16, a=32, drop=0.05\n"}
+,{"stream_name":"stdout","time":853.544379884,"data":"===========================================================================\n"}
+,{"stream_name":"stderr","time":855.707350697,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":855.707384869,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":855.707389747,"data":"\n"}
+,{"stream_name":"stderr","time":855.707393342,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":855.707397558,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":856.237477761,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":856.237513211,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":856.237517976,"data":"\n"}
+,{"stream_name":"stderr","time":856.237521741,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":856.237525811,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":856.310560396,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":856.310588585,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":856.310593381,"data":"\n"}
+,{"stream_name":"stderr","time":856.310596956,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":856.310600819,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":873.628886757,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":873.62891432,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":873.628918961,"data":"\n"}
+,{"stream_name":"stderr","time":873.628922514,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":873.628926732,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":891.180636181,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":891.180680959,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":891.180686615,"data":"\n"}
+,{"stream_name":"stderr","time":891.18068986,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":891.180693565,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":908.597370195,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":908.597406241,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":908.597410118,"data":"\n"}
+,{"stream_name":"stderr","time":908.5974129,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":908.597415623,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":925.890028012,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":925.89006472,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":925.890071612,"data":"\n"}
+,{"stream_name":"stderr","time":925.890076154,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":925.890082793,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stdout","time":943.711472291,"data":"[+] Finished training in 87.6s\n"}
+,{"stream_name":"stdout","time":962.006152341,"data":"[*] Val Metrics  : {'accuracy': 0.6705, 'macro_f1': 0.5255, 'precision': 0.6338, 'recall': 0.5417}\n"}
+,{"stream_name":"stdout","time":962.006189056,"data":"[*] Test Metrics : {'accuracy': 0.6867, 'macro_f1': 0.5516, 'precision': 0.6478, 'recall': 0.5601}\n"}
+,{"stream_name":"stdout","time":964.139523928,"data":"\n"}
+,{"stream_name":"stdout","time":964.139556808,"data":"===========================================================================\n"}
+,{"stream_name":"stdout","time":964.139560929,"data":"   TRIAL: LoRA: r=16, a=32, d=0.1\n"}
+,{"stream_name":"stdout","time":964.139564346,"data":"   Input: 'processed_text_v2' | LR: 0.0002 | LoRA: r=16, a=32, drop=0.1\n"}
+,{"stream_name":"stdout","time":964.139567647,"data":"===========================================================================\n"}
+,{"stream_name":"stderr","time":966.264996529,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":966.265035686,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":966.265040089,"data":"\n"}
+,{"stream_name":"stderr","time":966.265043279,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":966.265046869,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":966.803236318,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":966.803295648,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":966.803301482,"data":"\n"}
+,{"stream_name":"stderr","time":966.803304943,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":966.803310697,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":966.875923453,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":966.875950108,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":966.875954803,"data":"\n"}
+,{"stream_name":"stderr","time":966.87595818,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":966.875962459,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":984.184684228,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":984.184717748,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":984.184722521,"data":"\n"}
+,{"stream_name":"stderr","time":984.184731172,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":984.18473396,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1001.69993959,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1001.69997328,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1001.699979048,"data":"\n"}
+,{"stream_name":"stderr","time":1001.699983679,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1001.699988942,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1019.064700613,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1019.064738199,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1019.064743647,"data":"\n"}
+,{"stream_name":"stderr","time":1019.064760576,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1019.064766462,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1036.326184616,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1036.326258373,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1036.32626584,"data":"\n"}
+,{"stream_name":"stderr","time":1036.326270863,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1036.326286823,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stdout","time":1054.201706242,"data":"[+] Finished training in 87.5s\n"}
+,{"stream_name":"stdout","time":1072.49445804,"data":"[*] Val Metrics  : {'accuracy': 0.6705, 'macro_f1': 0.5255, 'precision': 0.6338, 'recall': 0.5417}\n"}
+,{"stream_name":"stdout","time":1072.494506351,"data":"[*] Test Metrics : {'accuracy': 0.6867, 'macro_f1': 0.5516, 'precision': 0.6478, 'recall': 0.5601}\n"}
+,{"stream_name":"stdout","time":1074.561666121,"data":"\n"}
+,{"stream_name":"stdout","time":1074.561704926,"data":"===========================================================================\n"}
+,{"stream_name":"stdout","time":1074.561710073,"data":"   TRIAL: LoRA: r=32, a=64, d=0.05\n"}
+,{"stream_name":"stdout","time":1074.561713359,"data":"   Input: 'processed_text_v2' | LR: 0.0002 | LoRA: r=32, a=64, drop=0.05\n"}
+,{"stream_name":"stdout","time":1074.561716721,"data":"===========================================================================\n"}
+,{"stream_name":"stderr","time":1076.809426558,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":1076.809479068,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":1076.809486241,"data":"\n"}
+,{"stream_name":"stderr","time":1076.809491941,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":1076.80949829,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":1077.349602625,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":1077.349641859,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":1077.349648376,"data":"\n"}
+,{"stream_name":"stderr","time":1077.349652985,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":1077.349658052,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":1077.423277198,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1077.423309511,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1077.423328991,"data":"\n"}
+,{"stream_name":"stderr","time":1077.423334709,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1077.423340153,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1094.809568647,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1094.809601467,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1094.809618893,"data":"\n"}
+,{"stream_name":"stderr","time":1094.809623255,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1094.809644466,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1112.478486298,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1112.478525315,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1112.478531972,"data":"\n"}
+,{"stream_name":"stderr","time":1112.478551249,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1112.478557928,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1129.983384086,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1129.983423187,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1129.983427474,"data":"\n"}
+,{"stream_name":"stderr","time":1129.983430653,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1129.98343491,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1147.401280708,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1147.401313431,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1147.401319391,"data":"\n"}
+,{"stream_name":"stderr","time":1147.401324152,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1147.40132919,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stdout","time":1165.502995868,"data":"[+] Finished training in 88.3s\n"}
+,{"stream_name":"stdout","time":1183.896627168,"data":"[*] Val Metrics  : {'accuracy': 0.6705, 'macro_f1': 0.5255, 'precision': 0.6338, 'recall': 0.5417}\n"}
+,{"stream_name":"stdout","time":1183.896663684,"data":"[*] Test Metrics : {'accuracy': 0.6867, 'macro_f1': 0.5516, 'precision': 0.6478, 'recall': 0.5601}\n"}
+,{"stream_name":"stdout","time":1185.990133554,"data":"\n"}
+,{"stream_name":"stdout","time":1185.990178636,"data":"===========================================================================\n"}
+,{"stream_name":"stdout","time":1185.990184962,"data":"   TRIAL: LoRA: r=32, a=64, d=0.1\n"}
+,{"stream_name":"stdout","time":1185.990200178,"data":"   Input: 'processed_text_v2' | LR: 0.0002 | LoRA: r=32, a=64, drop=0.1\n"}
+,{"stream_name":"stdout","time":1185.990204824,"data":"===========================================================================\n"}
+,{"stream_name":"stderr","time":1188.255004627,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":1188.255043568,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":1188.255073173,"data":"\n"}
+,{"stream_name":"stderr","time":1188.255076863,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":1188.255079996,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":1188.782413306,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":1188.782475786,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":1188.782481465,"data":"\n"}
+,{"stream_name":"stderr","time":1188.782485126,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":1188.782489212,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":1188.855016375,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1188.855041791,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1188.855046434,"data":"\n"}
+,{"stream_name":"stderr","time":1188.855050091,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1188.855054127,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1206.34749994,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1206.347529802,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1206.347534962,"data":"\n"}
+,{"stream_name":"stderr","time":1206.347538471,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1206.347542628,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1224.043550769,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1224.043681614,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1224.044585036,"data":"\n"}
+,{"stream_name":"stderr","time":1224.044618649,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1224.04462554,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1241.424339342,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1241.424370422,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1241.424376201,"data":"\n"}
+,{"stream_name":"stderr","time":1241.42438092,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1241.424396553,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1258.709458166,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1258.709494978,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":1258.709499576,"data":"\n"}
+,{"stream_name":"stderr","time":1258.709502726,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":1258.709506312,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stdout","time":1276.692642784,"data":"[+] Finished training in 88.0s\n"}
+,{"stream_name":"stdout","time":1295.094814173,"data":"[*] Val Metrics  : {'accuracy': 0.6705, 'macro_f1': 0.5255, 'precision': 0.6338, 'recall': 0.5417}\n"}
+,{"stream_name":"stdout","time":1295.094868005,"data":"[*] Test Metrics : {'accuracy': 0.6867, 'macro_f1': 0.5516, 'precision': 0.6478, 'recall': 0.5601}\n"}
+,{"stream_name":"stdout","time":1296.953538188,"data":"\n"}
+,{"stream_name":"stdout","time":1296.95356839,"data":"[+] Saved LoRA Sweep results to: Output/lora_tuning/lora_sweep.csv\n"}
+,{"stream_name":"stdout","time":1296.953575468,"data":" r  alpha  dropout  Learning Rate  Val Macro F1  Test Macro F1  Accuracy  Precision  Recall  Runtime (s)\n"}
+,{"stream_name":"stdout","time":1296.953580886,"data":" 8     16     0.05         0.0002        0.5255         0.5516    0.6867     0.6478  0.5601        87.72\n"}
+,{"stream_name":"stdout","time":1296.953590657,"data":" 8     16     0.10         0.0002        0.5255         0.5516    0.6867     0.6478  0.5601        87.45\n"}
+,{"stream_name":"stdout","time":1296.953594755,"data":"16     32     0.05         0.0002        0.5255         0.5516    0.6867     0.6478  0.5601        87.62\n"}
+,{"stream_name":"stdout","time":1296.953598164,"data":"16     32     0.10         0.0002        0.5255         0.5516    0.6867     0.6478  0.5601        87.55\n"}
+,{"stream_name":"stdout","time":1296.953601873,"data":"32     64     0.05         0.0002        0.5255         0.5516    0.6867     0.6478  0.5601        88.30\n"}
+,{"stream_name":"stdout","time":1296.953605351,"data":"32     64     0.10         0.0002        0.5255         0.5516    0.6867     0.6478  0.5601        88.05\n"}
+,{"stream_name":"stdout","time":1296.953609347,"data":"\n"}
+,{"stream_name":"stdout","time":1296.953612536,"data":"[\u003e\u003e\u003e] WINNING LORA CONFIG: r=8, alpha=16, dropout=0.05\n"}
+,{"stream_name":"stdout","time":1296.953616331,"data":"      Validation Macro F1: 0.5255\n"}
+,{"stream_name":"stdout","time":1296.953619526,"data":"      Test Macro F1      : 0.5516\n"}
+,{"stream_name":"stdout","time":1296.953622782,"data":"      Test Accuracy      : 0.6867\n"}
+,{"stream_name":"stdout","time":1296.953625977,"data":"\n"}
+,{"stream_name":"stdout","time":1296.953629217,"data":"###########################################################################\n"}
+,{"stream_name":"stdout","time":1296.953632486,"data":"# STARTING PHASE 4: COMPARISON TABLE \u0026 CONFIGURATION SELECTION\n"}
+,{"stream_name":"stdout","time":1296.953636758,"data":"###########################################################################\n"}
+,{"stream_name":"stdout","time":1296.953641699,"data":"\n"}
+,{"stream_name":"stdout","time":1296.953645059,"data":"[+] Saved comparison table to: Output/lora_tuning/comparison_table.csv\n"}
+,{"stream_name":"stdout","time":1296.953648429,"data":"                                           Experiment  Val Macro F1  Test Macro F1  Accuracy\n"}
+,{"stream_name":"stdout","time":1296.953651922,"data":"         Legacy (text_with_emoticon, 2e-4, 16/32/0.3)        0.5163         0.5444    0.6821\n"}
+,{"stream_name":"stdout","time":1296.953663495,"data":"Current Baseline (processed_text_v2, 2e-5, 16/32/0.1)        0.3028         0.3134    0.5705\n"}
+,{"stream_name":"stdout","time":1296.953666241,"data":"       Best LR (processed_text_v2, 0.0002, 16/32/0.1)        0.5255         0.5516    0.6867\n"}
+,{"stream_name":"stdout","time":1296.953668793,"data":"     Best LoRA (processed_text_v2, 0.0002, 8/16/0.05)        0.5255         0.5516    0.6867\n"}
+,{"stream_name":"stdout","time":1296.953671416,"data":"[+] Wrote Output/lora_tuning/selected_configuration.md\n"}
+,{"stream_name":"stdout","time":1296.987937026,"data":"[*] Checking artifacts in /kaggle/working/Output/lora_tuning...\n"}
+,{"stream_name":"stdout","time":1296.987959931,"data":"[DIR] lora_tuning/\n"}
+,{"stream_name":"stdout","time":1296.987964498,"data":"  [FILE] lr_sweep.csv (267 bytes)\n"}
+,{"stream_name":"stdout","time":1296.987968159,"data":"  [FILE] legacy_reproduction_report.md (1,516 bytes)\n"}
+,{"stream_name":"stdout","time":1296.987972055,"data":"  [FILE] comparison_table.csv (334 bytes)\n"}
+,{"stream_name":"stdout","time":1296.987975617,"data":"  [FILE] selected_configuration.md (1,821 bytes)\n"}
+,{"stream_name":"stdout","time":1296.987979129,"data":"  [FILE] lora_sweep.csv (443 bytes)\n"}
+,{"stream_name":"stdout","time":1296.987983259,"data":"[DIR] lora_r16_a32_d5/\n"}
+,{"stream_name":"stdout","time":1296.98798673,"data":"  [FILE] classification_report.csv (460 bytes)\n"}
+,{"stream_name":"stdout","time":1296.987990134,"data":"  [FILE] confusion_test.png (120,318 bytes)\n"}
+,{"stream_name":"stdout","time":1296.987993383,"data":"  [FILE] metrics.json (625 bytes)\n"}
+,{"stream_name":"stdout","time":1296.987996795,"data":"  [FILE] confusion_val.png (109,867 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988001001,"data":"  [FILE] accuracy_curve.png (113,340 bytes)\n"}
+,{"stream_name":"stdout","time":1296.9880048,"data":"  [FILE] loss_curve.png (179,176 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988008452,"data":"  [FILE] history.csv (295 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988012444,"data":"  [FILE] confusion_train.png (118,810 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988016304,"data":"[DIR] best_model/\n"}
+,{"stream_name":"stdout","time":1296.988019604,"data":"  [FILE] tokenizer_config.json (1,262 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988022862,"data":"  [FILE] README.md (5,107 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988030339,"data":"  [FILE] adapter_config.json (704 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988033095,"data":"  [FILE] vocab.txt (235,395 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988035508,"data":"  [FILE] special_tokens_map.json (125 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988052177,"data":"  [FILE] adapter_model.safetensors (2,375,492 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988056111,"data":"  [FILE] tokenizer.json (737,950 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988060662,"data":"  [FILE] training_args.bin (5,713 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988064442,"data":"[DIR] legacy_reproduction/\n"}
+,{"stream_name":"stdout","time":1296.988068074,"data":"  [FILE] classification_report.csv (460 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988072341,"data":"  [FILE] confusion_test.png (120,431 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988076974,"data":"  [FILE] metrics.json (621 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988080394,"data":"  [FILE] confusion_val.png (109,021 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988083709,"data":"  [FILE] accuracy_curve.png (112,215 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988100131,"data":"  [FILE] loss_curve.png (179,451 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988102766,"data":"  [FILE] history.csv (299 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988105027,"data":"  [FILE] confusion_train.png (116,677 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988107284,"data":"[DIR] best_model/\n"}
+,{"stream_name":"stdout","time":1296.988109546,"data":"  [FILE] tokenizer_config.json (1,262 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988111814,"data":"  [FILE] README.md (5,107 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988114031,"data":"  [FILE] adapter_config.json (703 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988116253,"data":"  [FILE] vocab.txt (235,395 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988118545,"data":"  [FILE] special_tokens_map.json (125 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988120774,"data":"  [FILE] adapter_model.safetensors (2,375,492 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988123092,"data":"  [FILE] tokenizer.json (737,950 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988125314,"data":"  [FILE] training_args.bin (5,713 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988127621,"data":"[DIR] lora_r32_a64_d5/\n"}
+,{"stream_name":"stdout","time":1296.98812993,"data":"  [FILE] classification_report.csv (460 bytes)\n"}
+,{"stream_name":"stdout","time":1296.98813217,"data":"  [FILE] confusion_test.png (120,523 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988134391,"data":"  [FILE] metrics.json (624 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988136676,"data":"  [FILE] confusion_val.png (109,946 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988138908,"data":"  [FILE] accuracy_curve.png (113,588 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988142027,"data":"  [FILE] loss_curve.png (179,478 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988154659,"data":"  [FILE] history.csv (295 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988160057,"data":"  [FILE] confusion_train.png (118,322 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988163826,"data":"[DIR] best_model/\n"}
+,{"stream_name":"stdout","time":1296.988167451,"data":"  [FILE] tokenizer_config.json (1,262 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988171104,"data":"  [FILE] README.md (5,107 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988174977,"data":"  [FILE] adapter_config.json (704 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988178647,"data":"  [FILE] vocab.txt (235,395 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988182232,"data":"  [FILE] special_tokens_map.json (125 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988185879,"data":"  [FILE] adapter_model.safetensors (4,734,812 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988188805,"data":"  [FILE] tokenizer.json (737,950 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988191998,"data":"  [FILE] training_args.bin (5,713 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988195324,"data":"[DIR] lr_2e-05/\n"}
+,{"stream_name":"stdout","time":1296.988198428,"data":"  [FILE] classification_report.csv (416 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988208457,"data":"  [FILE] confusion_test.png (108,871 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988212123,"data":"  [FILE] metrics.json (615 bytes)\n"}
+,{"stream_name":"stdout","time":1296.98821646,"data":"  [FILE] confusion_val.png (109,851 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988220254,"data":"  [FILE] accuracy_curve.png (108,652 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988224014,"data":"  [FILE] loss_curve.png (166,685 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988232631,"data":"  [FILE] history.csv (301 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988236625,"data":"  [FILE] confusion_train.png (117,477 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988240142,"data":"[DIR] best_model/\n"}
+,{"stream_name":"stdout","time":1296.988243847,"data":"  [FILE] tokenizer_config.json (1,262 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988247356,"data":"  [FILE] README.md (5,107 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988251796,"data":"  [FILE] adapter_config.json (703 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988255001,"data":"  [FILE] vocab.txt (235,395 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988258234,"data":"  [FILE] special_tokens_map.json (125 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988261649,"data":"  [FILE] adapter_model.safetensors (2,375,492 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988265155,"data":"  [FILE] tokenizer.json (737,950 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988268326,"data":"  [FILE] training_args.bin (5,713 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988272151,"data":"[DIR] lora_r8_a16_d10/\n"}
+,{"stream_name":"stdout","time":1296.988275373,"data":"  [FILE] classification_report.csv (460 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988278757,"data":"  [FILE] confusion_test.png (118,058 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988281922,"data":"  [FILE] metrics.json (621 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988285336,"data":"  [FILE] confusion_val.png (107,906 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988288797,"data":"  [FILE] accuracy_curve.png (110,686 bytes)\n"}
+,{"stream_name":"stdout","time":1296.98829272,"data":"  [FILE] loss_curve.png (177,108 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988296743,"data":"  [FILE] history.csv (295 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988300032,"data":"  [FILE] confusion_train.png (116,683 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988303437,"data":"[DIR] best_model/\n"}
+,{"stream_name":"stdout","time":1296.988306827,"data":"  [FILE] tokenizer_config.json (1,262 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988310338,"data":"  [FILE] README.md (5,107 bytes)\n"}
+,{"stream_name":"stdout","time":1296.98831435,"data":"  [FILE] adapter_config.json (702 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988318176,"data":"  [FILE] vocab.txt (235,395 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988325277,"data":"  [FILE] special_tokens_map.json (125 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988329231,"data":"  [FILE] adapter_model.safetensors (1,195,748 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988333107,"data":"  [FILE] tokenizer.json (737,950 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988336464,"data":"  [FILE] training_args.bin (5,713 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988339817,"data":"[DIR] lora_r8_a16_d5/\n"}
+,{"stream_name":"stdout","time":1296.988343178,"data":"  [FILE] classification_report.csv (460 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988347135,"data":"  [FILE] confusion_test.png (119,748 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988350917,"data":"  [FILE] metrics.json (623 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988354947,"data":"  [FILE] confusion_val.png (109,449 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988358789,"data":"  [FILE] accuracy_curve.png (112,376 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988362014,"data":"  [FILE] loss_curve.png (178,722 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988366785,"data":"  [FILE] history.csv (295 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988370941,"data":"  [FILE] confusion_train.png (118,265 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988379042,"data":"[DIR] best_model/\n"}
+,{"stream_name":"stdout","time":1296.988383479,"data":"  [FILE] tokenizer_config.json (1,262 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988387362,"data":"  [FILE] README.md (5,107 bytes)\n"}
+,{"stream_name":"stdout","time":1296.98839155,"data":"  [FILE] adapter_config.json (703 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988395374,"data":"  [FILE] vocab.txt (235,395 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988399065,"data":"  [FILE] special_tokens_map.json (125 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988403112,"data":"  [FILE] adapter_model.safetensors (1,195,748 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988407299,"data":"  [FILE] tokenizer.json (737,950 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988411161,"data":"  [FILE] training_args.bin (5,713 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988415588,"data":"[DIR] lora_r16_a32_d10/\n"}
+,{"stream_name":"stdout","time":1296.988419656,"data":"  [FILE] classification_report.csv (460 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988423749,"data":"  [FILE] confusion_test.png (118,659 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988427677,"data":"  [FILE] metrics.json (623 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988430842,"data":"  [FILE] confusion_val.png (108,478 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988434128,"data":"  [FILE] accuracy_curve.png (111,921 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988437481,"data":"  [FILE] loss_curve.png (177,575 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988440737,"data":"  [FILE] history.csv (295 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988444024,"data":"  [FILE] confusion_train.png (117,207 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988447499,"data":"[DIR] best_model/\n"}
+,{"stream_name":"stdout","time":1296.988450726,"data":"  [FILE] tokenizer_config.json (1,262 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988454291,"data":"  [FILE] README.md (5,107 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988457765,"data":"  [FILE] adapter_config.json (703 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988461167,"data":"  [FILE] vocab.txt (235,395 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988464662,"data":"  [FILE] special_tokens_map.json (125 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988467773,"data":"  [FILE] adapter_model.safetensors (2,375,492 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988471182,"data":"  [FILE] tokenizer.json (737,950 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988474656,"data":"  [FILE] training_args.bin (5,713 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988478494,"data":"[DIR] lr_3e-05/\n"}
+,{"stream_name":"stdout","time":1296.988481954,"data":"  [FILE] classification_report.csv (413 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988485611,"data":"  [FILE] confusion_test.png (120,887 bytes)\n"}
+,{"stream_name":"stdout","time":1296.98848893,"data":"  [FILE] metrics.json (615 bytes)\n"}
+,{"stream_name":"stdout","time":1296.9884922,"data":"  [FILE] confusion_val.png (110,285 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988495769,"data":"  [FILE] accuracy_curve.png (110,737 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988500129,"data":"  [FILE] loss_curve.png (172,427 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988503818,"data":"  [FILE] history.csv (301 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988507597,"data":"  [FILE] confusion_train.png (116,506 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988511711,"data":"[DIR] best_model/\n"}
+,{"stream_name":"stdout","time":1296.988515422,"data":"  [FILE] tokenizer_config.json (1,262 bytes)\n"}
+,{"stream_name":"stdout","time":1296.98852329,"data":"  [FILE] README.md (5,107 bytes)\n"}
+,{"stream_name":"stdout","time":1296.98852679,"data":"  [FILE] adapter_config.json (703 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988530149,"data":"  [FILE] vocab.txt (235,395 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988533496,"data":"  [FILE] special_tokens_map.json (125 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988536874,"data":"  [FILE] adapter_model.safetensors (2,375,492 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988540214,"data":"  [FILE] tokenizer.json (737,950 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988547894,"data":"  [FILE] training_args.bin (5,713 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988563852,"data":"[DIR] lr_0_0002/\n"}
+,{"stream_name":"stdout","time":1296.988567768,"data":"  [FILE] classification_report.csv (460 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988571623,"data":"  [FILE] confusion_test.png (117,943 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988575381,"data":"  [FILE] metrics.json (616 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988579273,"data":"  [FILE] confusion_val.png (107,637 bytes)\n"}
+,{"stream_name":"stdout","time":1296.98858486,"data":"  [FILE] accuracy_curve.png (110,637 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988588599,"data":"  [FILE] loss_curve.png (177,358 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988592002,"data":"  [FILE] history.csv (295 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988595444,"data":"  [FILE] confusion_train.png (116,836 bytes)\n"}
+,{"stream_name":"stdout","time":1296.98859882,"data":"[DIR] best_model/\n"}
+,{"stream_name":"stdout","time":1296.988602067,"data":"  [FILE] tokenizer_config.json (1,262 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988605405,"data":"  [FILE] README.md (5,107 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988608699,"data":"  [FILE] adapter_config.json (703 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988612311,"data":"  [FILE] vocab.txt (235,395 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988615649,"data":"  [FILE] special_tokens_map.json (125 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988618927,"data":"  [FILE] adapter_model.safetensors (2,375,492 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988622257,"data":"  [FILE] tokenizer.json (737,950 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988627467,"data":"  [FILE] training_args.bin (5,713 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988635283,"data":"[DIR] lr_1e-05/\n"}
+,{"stream_name":"stdout","time":1296.988638167,"data":"  [FILE] classification_report.csv (405 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988640455,"data":"  [FILE] confusion_test.png (104,785 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988642777,"data":"  [FILE] metrics.json (614 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988645074,"data":"  [FILE] confusion_val.png (106,445 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988647791,"data":"  [FILE] accuracy_curve.png (103,715 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988661706,"data":"  [FILE] loss_curve.png (162,215 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988666208,"data":"  [FILE] history.csv (301 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988670058,"data":"  [FILE] confusion_train.png (112,431 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988673601,"data":"[DIR] best_model/\n"}
+,{"stream_name":"stdout","time":1296.988677521,"data":"  [FILE] tokenizer_config.json (1,262 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988681528,"data":"  [FILE] README.md (5,107 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988684868,"data":"  [FILE] adapter_config.json (703 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988691708,"data":"  [FILE] vocab.txt (235,395 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988696058,"data":"  [FILE] special_tokens_map.json (125 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988699467,"data":"  [FILE] adapter_model.safetensors (2,375,492 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988702851,"data":"  [FILE] tokenizer.json (737,950 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988706126,"data":"  [FILE] training_args.bin (5,713 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988709817,"data":"[DIR] lora_r32_a64_d10/\n"}
+,{"stream_name":"stdout","time":1296.98871304,"data":"  [FILE] classification_report.csv (460 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988716497,"data":"  [FILE] confusion_test.png (118,989 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988719787,"data":"  [FILE] metrics.json (623 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988723069,"data":"  [FILE] confusion_val.png (108,613 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988726379,"data":"  [FILE] accuracy_curve.png (112,090 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988729772,"data":"  [FILE] loss_curve.png (177,796 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988733087,"data":"  [FILE] history.csv (295 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988739737,"data":"  [FILE] confusion_train.png (116,763 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988742597,"data":"[DIR] best_model/\n"}
+,{"stream_name":"stdout","time":1296.988745679,"data":"  [FILE] tokenizer_config.json (1,262 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988757061,"data":"  [FILE] README.md (5,107 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988760906,"data":"  [FILE] adapter_config.json (703 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988764799,"data":"  [FILE] vocab.txt (235,395 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988768482,"data":"  [FILE] special_tokens_map.json (125 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988772284,"data":"  [FILE] adapter_model.safetensors (4,734,812 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988775652,"data":"  [FILE] tokenizer.json (737,950 bytes)\n"}
+,{"stream_name":"stdout","time":1296.98877894,"data":"  [FILE] training_args.bin (5,713 bytes)\n"}
+,{"stream_name":"stdout","time":1296.988782273,"data":"\n"}
+,{"stream_name":"stdout","time":1296.988785443,"data":"[+] Milestone B2 Tuning Pipeline execution successfully completed!\n"}
+,{"stream_name":"stderr","time":1302.515636227,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":1302.515663631,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":1302.656027954,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":1302.656050858,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":1303.231290987,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":1303.578774738,"data":"[NbConvertApp] Writing 186649 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":1305.876146525,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":1306.762191832,"data":"[NbConvertApp] Writing 530943 bytes to __results__.html\n"}
+]

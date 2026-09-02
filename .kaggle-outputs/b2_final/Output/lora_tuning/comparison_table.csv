@@ -1,0 +1,5 @@
+Experiment,Val Macro F1,Test Macro F1,Accuracy
+"Legacy (text_with_emoticon, 2e-4, 16/32/0.3)",0.5163,0.5444,0.6821
+"Current Baseline (processed_text_v2, 2e-5, 16/32/0.1)",0.3028,0.3134,0.5705
+"Best LR (processed_text_v2, 0.0002, 16/32/0.1)",0.5255,0.5516,0.6867
+"Best LoRA (processed_text_v2, 0.0002, 8/16/0.05)",0.5255,0.5516,0.6867

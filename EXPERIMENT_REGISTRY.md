@@ -20,14 +20,10 @@
 | **IB-B1-BASE**| IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=16, a=32, d=0.1 | 2e-5 | 51.72% | 69.04% | **COMPLETED (B1 Default, 3 Seeds)** |
 | **B1.1-clean** | IndoBERT-LoRA | `clean_text` | None (Natural) | r=16, a=32, d=0.1 | 2e-5 | 29.66% (Val: 27.81%) | 56.47% | **COMPLETED (B1.1 Ablation)** |
 | **B1.1-v2**    | IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=16, a=32, d=0.1 | 2e-5 | 31.34% (Val: 30.28%) | 57.05% | **COMPLETED (B1.1 Official Selected Input)** |
-| **IB-B0.5-S2**| IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=16, a=32, d=0.1 | 1e-5 | — | — | PLANNED (B0.5 LR Sweep) |
-| **IB-B0.5-S3**| IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=16, a=32, d=0.1 | 3e-5 | — | — | PLANNED (B0.5 LR Sweep) |
-| **IB-B0.5-S4**| IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=8, a=16, d=0.05 | Tuning | — | — | PLANNED (B0.5 LoRA Sweep) |
-| **IB-B0.5-S5**| IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=8, a=16, d=0.10 | Tuning | — | — | PLANNED (B0.5 LoRA Sweep) |
-| **IB-B0.5-S6**| IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=16, a=32, d=0.05| Tuning | — | — | PLANNED (B0.5 LoRA Sweep) |
-| **IB-B0.5-S7**| IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=32, a=64, d=0.05| Tuning | — | — | PLANNED (B0.5 LoRA Sweep) |
-| **IB-B0.5-S8**| IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=32, a=64, d=0.10| Tuning | — | — | PLANNED (B0.5 LoRA Sweep) |
-| **IB-B2-OPT** | IndoBERT-LoRA | Winning Input | None (Natural) | Optimal Config | Optimal | — | — | PLANNED (B2 Best Baseline) |
+| **IB-B2-LEG** | IndoBERT-LoRA | `text_with_emoticon`| None (Natural) | r=16, a=32, d=0.3 | 2e-4 | 54.44% (Val: 51.63%) | 68.21% | **COMPLETED (Legacy Reprod)** |
+| **IB-B2-LR**  | IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=16, a=32, d=0.1 | Sweep [1e-5..2e-4] | Best 55.16% (Val: 52.55%) | 68.67% | **COMPLETED (LR Winner: 2e-4)** |
+| **IB-B2-LORA**| IndoBERT-LoRA | `processed_text_v2` | None (Natural) | Sweep 6 Configs | 2e-4 | 55.16% (Val: 52.55%) | 68.67% | **COMPLETED (LoRA Winner: 8/16/0.05)**|
+| **IB-B2-OPT** | IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=8, a=16, d=0.05 | 2e-4 | 55.16% (Val: 52.55%) | 68.67% | **COMPLETED (Official B2 Baseline)** |
 | **IB-B3-CW**  | IndoBERT-LoRA | Winning Input | Class Weight | Optimal Config | Optimal | — | — | PLANNED (B3 Balancing) |
 | **IB-B4-ROS** | IndoBERT-LoRA | Winning Input | Random Oversampling | Optimal Config | Optimal | — | — | PLANNED (B4 Balancing) |
 | **IB-B5-RUS** | IndoBERT-LoRA | Winning Input | Random Undersampling| Optimal Config | Optimal | — | — | PLANNED (B5 Balancing) |

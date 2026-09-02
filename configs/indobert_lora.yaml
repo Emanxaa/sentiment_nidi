@@ -4,9 +4,9 @@ model:
   max_length: 128
 
 lora:
-  r: 16
-  alpha: 32
-  dropout: 0.1
+  r: 8
+  alpha: 16
+  dropout: 0.05
   bias: none
   task_type: SEQ_CLS
   target_modules:
@@ -18,7 +18,7 @@ lora:
 training:
   epochs: 5
   batch_size: 16
-  learning_rate: 0.00002
+  learning_rate: 0.0002
   weight_decay: 0.01
   warmup_ratio: 0.1
   early_stopping_patience: 2

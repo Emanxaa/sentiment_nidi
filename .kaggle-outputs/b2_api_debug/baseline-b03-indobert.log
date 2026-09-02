@@ -1,0 +1,189 @@
+[{"stream_name":"stderr","time":6.866077052,"data":"/usr/local/lib/python3.12/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":6.866153667,"data":"  validate(nb)\n"}
+,{"stream_name":"stderr","time":7.799308605,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":7.79934474,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":7.7993503010000005,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":7.7993604770000005,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.445730502,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.445774432,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.445796695,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.445801377,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":11.048246498,"data":"Found existing installation: torchao 0.10.0\r\n"}
+,{"stream_name":"stdout","time":11.149792303,"data":"Uninstalling torchao-0.10.0:\r\n"}
+,{"stream_name":"stdout","time":11.557359252,"data":"  Successfully uninstalled torchao-0.10.0\r\n"}
+,{"stream_name":"stdout","time":13.645114556,"data":"Collecting transformers==4.46.3\r\n"}
+,{"stream_name":"stdout","time":13.696245788,"data":"  Downloading transformers-4.46.3-py3-none-any.whl.metadata (44 kB)\r\n"}
+,{"stream_name":"stdout","time":13.696274084,"data":"\u001b[?25l     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/44.1 kB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K     \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m44.1/44.1 kB\u001b[0m \u001b[31m1.6 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":13.848683974,"data":"\u001b[?25hCollecting peft==0.13.2\r\n"}
+,{"stream_name":"stdout","time":13.848713148,"data":"  Downloading peft-0.13.2-py3-none-any.whl.metadata (13 kB)\r\n"}
+,{"stream_name":"stdout","time":14.255361269,"data":"Collecting tokenizers==0.20.3\r\n"}
+,{"stream_name":"stdout","time":14.25539085,"data":"  Downloading tokenizers-0.20.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.7 kB)\r\n"}
+,{"stream_name":"stdout","time":14.458670487,"data":"Collecting huggingface-hub==0.26.5\r\n"}
+,{"stream_name":"stdout","time":14.458700764,"data":"  Downloading huggingface_hub-0.26.5-py3-none-any.whl.metadata (13 kB)\r\n"}
+,{"stream_name":"stdout","time":14.510255721,"data":"Downloading transformers-4.46.3-py3-none-any.whl (10.0 MB)\r\n"}
+,{"stream_name":"stdout","time":14.6629776,"data":"\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/10.0 MB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[91m━━\u001b[0m\u001b[90m╺\u001b[0m\u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.6/10.0 MB\u001b[0m \u001b[31m20.9 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[90m╺\u001b[0m\u001b[90m━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m5.0/10.0 MB\u001b[0m \u001b[31m73.8 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[91m╸\u001b[0m \u001b[32m10.0/10.0 MB\u001b[0m \u001b[31m109.5 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[91m╸\u001b[0m \u001b[32m10.0/10.0 MB\u001b[0m \u001b[31m109.5 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m10.0/10.0 MB\u001b[0m \u001b[31m71.2 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":14.663027437,"data":"\u001b[?25hDownloading peft-0.13.2-py3-none-any.whl (320 kB)\r\n"}
+,{"stream_name":"stdout","time":14.663031349,"data":"\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/320.7 kB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m320.7/320.7 kB\u001b[0m \u001b[31m19.4 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":14.714021945,"data":"\u001b[?25hDownloading tokenizers-0.20.3-cp312-cp312-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.0 MB)\r\n"}
+,{"stream_name":"stdout","time":14.764907649,"data":"\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/3.0 MB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[91m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m\u001b[91m╸\u001b[0m \u001b[32m3.0/3.0 MB\u001b[0m \u001b[31m234.9 MB/s\u001b[0m eta \u001b[36m0:00:01\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m3.0/3.0 MB\u001b[0m \u001b[31m83.2 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":14.764942502,"data":"\u001b[?25hDownloading huggingface_hub-0.26.5-py3-none-any.whl (447 kB)\r\n"}
+,{"stream_name":"stdout","time":14.764946043,"data":"\u001b[?25l   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m0.0/447.8 kB\u001b[0m \u001b[31m?\u001b[0m eta \u001b[36m-:--:--\u001b[0m\r\u001b[2K   \u001b[90m━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━\u001b[0m \u001b[32m447.8/447.8 kB\u001b[0m \u001b[31m26.1 MB/s\u001b[0m eta \u001b[36m0:00:00\u001b[0m\r\n"}
+,{"stream_name":"stdout","time":14.866098204,"data":"\u001b[?25hInstalling collected packages: transformers, tokenizers, peft, huggingface-hub\r\n"}
+,{"stream_name":"stdout","time":14.866124294,"data":"  Attempting uninstall: transformers\r\n"}
+,{"stream_name":"stdout","time":15.122740741,"data":"    Found existing installation: transformers 5.0.0\r\n"}
+,{"stream_name":"stdout","time":15.528209248,"data":"    Uninstalling transformers-5.0.0:\r\n"}
+,{"stream_name":"stdout","time":17.557045894,"data":"      Successfully uninstalled transformers-5.0.0\r\n"}
+,{"stream_name":"stdout","time":24.249679203,"data":"  Attempting uninstall: tokenizers\r\n"}
+,{"stream_name":"stdout","time":24.503614877,"data":"    Found existing installation: tokenizers 0.22.2\r\n"}
+,{"stream_name":"stdout","time":24.50365915,"data":"    Uninstalling tokenizers-0.22.2:\r\n"}
+,{"stream_name":"stdout","time":24.55419188,"data":"      Successfully uninstalled tokenizers-0.22.2\r\n"}
+,{"stream_name":"stdout","time":24.656031654,"data":"  Attempting uninstall: peft\r\n"}
+,{"stream_name":"stdout","time":24.91050917,"data":"    Found existing installation: peft 0.19.1\r\n"}
+,{"stream_name":"stdout","time":24.961394774,"data":"    Uninstalling peft-0.19.1:\r\n"}
+,{"stream_name":"stdout","time":25.164411696,"data":"      Successfully uninstalled peft-0.19.1\r\n"}
+,{"stream_name":"stdout","time":25.418549723,"data":"  Attempting uninstall: huggingface-hub\r\n"}
+,{"stream_name":"stdout","time":25.623671335,"data":"    Found existing installation: huggingface_hub 1.11.0\r\n"}
+,{"stream_name":"stdout","time":25.674357431,"data":"    Uninstalling huggingface_hub-1.11.0:\r\n"}
+,{"stream_name":"stdout","time":25.826314594,"data":"      Successfully uninstalled huggingface_hub-1.11.0\r\n"}
+,{"stream_name":"stdout","time":26.080319793,"data":"Successfully installed huggingface-hub-0.26.5 peft-0.13.2 tokenizers-0.20.3 transformers-4.46.3\r\n"}
+,{"stream_name":"stdout","time":31.661302999,"data":"[*] PyTorch Version : 2.10.0+cu128\n"}
+,{"stream_name":"stdout","time":31.661351881,"data":"[*] CUDA Available  : True\n"}
+,{"stream_name":"stdout","time":31.661360807,"data":"[*] Device Name     : Tesla T4\n"}
+,{"stream_name":"stdout","time":31.661366955,"data":"[*] Device Memory   : 14.56 GB\n"}
+,{"stream_name":"stdout","time":32.82958399,"data":"[*] Downloading banjir_processed_v2.csv from repository...\n"}
+,{"stream_name":"stdout","time":33.435862862,"data":"[+] Loaded primary dataset: 8,648 rows\n"}
+,{"stream_name":"stdout","time":33.577571036,"data":"[+] Attached 'text_with_emoticon' from /kaggle/input/thesis-indobert-processed-data/data_preprocessed_with_emoticon.csv\n"}
+,{"stream_name":"stdout","time":33.577610578,"data":"[+] Ready for B2 tuning with 8,648 rows and all required text columns.\n"}
+,{"stream_name":"stderr","time":33.825589613,"data":"\u003c\u003e:543: SyntaxWarning: invalid escape sequence '\\%'\n"}
+,{"stream_name":"stderr","time":33.825624415,"data":"\u003c\u003e:543: SyntaxWarning: invalid escape sequence '\\%'\n"}
+,{"stream_name":"stderr","time":33.825628750999996,"data":"/tmp/ipykernel_23/2563851615.py:543: SyntaxWarning: invalid escape sequence '\\%'\n"}
+,{"stream_name":"stderr","time":33.825632398,"data":"  \"\"\"\n"}
+,{"stream_name":"stderr","time":33.82563562,"data":"\n"}
+,{"stream_name":"stderr","time":33.825638605,"data":"\u003c\u003e:543: SyntaxWarning: invalid escape sequence '\\%'\n"}
+,{"stream_name":"stderr","time":33.825642303,"data":"\u003c\u003e:543: SyntaxWarning: invalid escape sequence '\\%'\n"}
+,{"stream_name":"stderr","time":33.825660739,"data":"/tmp/ipykernel_23/2563851615.py:543: SyntaxWarning: invalid escape sequence '\\%'\n"}
+,{"stream_name":"stderr","time":33.825666932,"data":"  \"\"\"\n"}
+,{"stream_name":"stdout","time":62.408472117,"data":"[*] Stratified splits: Train=6,226 | Val=692 | Test=1,730\n"}
+,{"stream_name":"stdout","time":63.036419042,"data":"\n"}
+,{"stream_name":"stdout","time":63.036463557,"data":"###########################################################################\n"}
+,{"stream_name":"stdout","time":63.036485281,"data":"# STARTING PHASE 1: LEGACY REPRODUCTION\n"}
+,{"stream_name":"stdout","time":63.03649014,"data":"###########################################################################\n"}
+,{"stream_name":"stdout","time":63.036494381,"data":"\n"}
+,{"stream_name":"stdout","time":63.036498129,"data":"===========================================================================\n"}
+,{"stream_name":"stdout","time":63.036502155,"data":"   TRIAL: legacy_reproduction\n"}
+,{"stream_name":"stdout","time":63.036506025,"data":"   Input: 'text_with_emoticon' | LR: 0.0002 | LoRA: r=16, a=32, drop=0.3\n"}
+,{"stream_name":"stdout","time":63.036510067,"data":"===========================================================================\n"}
+,{"stream_name":"stderr","time":91.643449228,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":91.643493192,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":91.643499891,"data":"\n"}
+,{"stream_name":"stderr","time":91.643504622,"data":"Some weights of BertForSequenceClassification were not initialized from the model checkpoint at indolem/indobertweet-base-uncased and are newly initialized: ['classifier.bias', 'classifier.weight']\n"}
+,{"stream_name":"stderr","time":91.643509879,"data":"You should probably TRAIN this model on a down-stream task to be able to use it for predictions and inference.\n"}
+,{"stream_name":"stderr","time":92.00481491,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":92.004859357,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":92.004870928,"data":"\n"}
+,{"stream_name":"stderr","time":92.004876697,"data":"/usr/local/lib/python3.12/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead\n"}
+,{"stream_name":"stderr","time":92.004882437,"data":"  warnings.warn(\n"}
+,{"stream_name":"stderr","time":93.024139797,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":93.024190905,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":93.024198873,"data":"\n"}
+,{"stream_name":"stderr","time":93.02420443,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":93.024210318,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":109.587691237,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":109.587733624,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":109.587740313,"data":"\n"}
+,{"stream_name":"stderr","time":109.587745644,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":109.587751862,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":125.525388753,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":125.525430295,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":125.525436462,"data":"\n"}
+,{"stream_name":"stderr","time":125.525441297,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":125.525446757,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":141.615287475,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":141.615329368,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":141.615335559,"data":"\n"}
+,{"stream_name":"stderr","time":141.615340518,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":141.615353941,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":157.866610936,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":157.866647713,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stderr","time":157.866654317,"data":"\n"}
+,{"stream_name":"stderr","time":157.866659043,"data":"/usr/local/lib/python3.12/dist-packages/torch/utils/checkpoint.py:232: UserWarning: None of the inputs have requires_grad=True. Gradients will be None\n"}
+,{"stream_name":"stderr","time":157.866664275,"data":"  check_backward_validity(args)\n"}
+,{"stream_name":"stdout","time":174.759465089,"data":"[+] Finished training in 82.4s\n"}
+,{"stream_name":"stderr","time":196.09489508,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":196.094971811,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":196.09497956,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":196.095021321,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":196.095209808,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":196.095227322,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":196.095612953,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":196.095629603,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":196.095635537,"data":"Exception encountered at \"In [4]\":\n"}
+,{"stream_name":"stderr","time":196.095641167,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":196.095645807,"data":"ValueError                                Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":196.095650853,"data":"/tmp/ipykernel_23/2563851615.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":196.095655543,"data":"    310 print(\"# STARTING PHASE 1: LEGACY REPRODUCTION\")\n"}
+,{"stream_name":"stderr","time":196.095660097,"data":"    311 print(\"#\" * 75)\n"}
+,{"stream_name":"stderr","time":196.095685342,"data":"--\u003e 312 legacy_res = run_single_trial(\n"}
+,{"stream_name":"stderr","time":196.095697518,"data":"    313     trial_name=\"legacy_reproduction\",\n"}
+,{"stream_name":"stderr","time":196.095700233,"data":"    314     text_col=\"text_with_emoticon\",\n"}
+,{"stream_name":"stderr","time":196.095702713,"data":"\n"}
+,{"stream_name":"stderr","time":196.095704993,"data":"/tmp/ipykernel_23/2563851615.py in run_single_trial(trial_name, text_col, lr, lora_r, lora_alpha, lora_dropout, trial_dir)\n"}
+,{"stream_name":"stderr","time":196.095707607,"data":"    253     y_te_true = np.array(test_df[\"label\"].tolist())\n"}
+,{"stream_name":"stderr","time":196.095710414,"data":"    254 \n"}
+,{"stream_name":"stderr","time":196.095712685,"data":"--\u003e 255     tr_m = compute_split_metrics(y_tr_true, y_tr_pred)\n"}
+,{"stream_name":"stderr","time":196.095715109,"data":"    256     va_m = compute_split_metrics(y_va_true, y_va_pred)\n"}
+,{"stream_name":"stderr","time":196.095717458,"data":"    257     te_m = compute_split_metrics(y_te_true, y_te_pred)\n"}
+,{"stream_name":"stderr","time":196.095719973,"data":"\n"}
+,{"stream_name":"stderr","time":196.095722191,"data":"/tmp/ipykernel_23/2563851615.py in compute_split_metrics(y_true, y_pred)\n"}
+,{"stream_name":"stderr","time":196.095724639,"data":"     98         \"accuracy\": round(float(accuracy_score(y_true, y_pred)), 4),\n"}
+,{"stream_name":"stderr","time":196.095727217,"data":"     99         \"macro_f1\": round(float(f1_score(y_true, y_pred, average=\"macro\", zero_division=0)), 4),\n"}
+,{"stream_name":"stderr","time":196.095729779,"data":"--\u003e 100         \"precision\": round(float(precision_score(y_true, y_pred)), 4),\n"}
+,{"stream_name":"stderr","time":196.095732265,"data":"    101         \"recall\": round(float(recall_score(y_true, y_pred)), 4),\n"}
+,{"stream_name":"stderr","time":196.095734771,"data":"    102     }\n"}
+,{"stream_name":"stderr","time":196.095737065,"data":"\n"}
+,{"stream_name":"stderr","time":196.095739339,"data":"/usr/local/lib/python3.12/dist-packages/sklearn/utils/_param_validation.py in wrapper(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":196.095741776,"data":"    214                     )\n"}
+,{"stream_name":"stderr","time":196.095744099,"data":"    215                 ):\n"}
+,{"stream_name":"stderr","time":196.095746427,"data":"--\u003e 216                     return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":196.095748815,"data":"    217             except InvalidParameterError as e:\n"}
+,{"stream_name":"stderr","time":196.095751148,"data":"    218                 # When the function is just a wrapper around an estimator, we allow\n"}
+,{"stream_name":"stderr","time":196.095753579,"data":"\n"}
+,{"stream_name":"stderr","time":196.09575585,"data":"/usr/local/lib/python3.12/dist-packages/sklearn/metrics/_classification.py in precision_score(y_true, y_pred, labels, pos_label, average, sample_weight, zero_division)\n"}
+,{"stream_name":"stderr","time":196.095758423,"data":"   2245     array([0.5, 1. , 1. ])\n"}
+,{"stream_name":"stderr","time":196.095760726,"data":"   2246     \"\"\"\n"}
+,{"stream_name":"stderr","time":196.095763099,"data":"-\u003e 2247     p, _, _, _ = precision_recall_fscore_support(\n"}
+,{"stream_name":"stderr","time":196.09576552,"data":"   2248         y_true,\n"}
+,{"stream_name":"stderr","time":196.095768314,"data":"   2249         y_pred,\n"}
+,{"stream_name":"stderr","time":196.095782687,"data":"\n"}
+,{"stream_name":"stderr","time":196.095784802,"data":"/usr/local/lib/python3.12/dist-packages/sklearn/utils/_param_validation.py in wrapper(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":196.095787069,"data":"    187             global_skip_validation = get_config()[\"skip_parameter_validation\"]\n"}
+,{"stream_name":"stderr","time":196.095792135,"data":"    188             if global_skip_validation:\n"}
+,{"stream_name":"stderr","time":196.09579441,"data":"--\u003e 189                 return func(*args, **kwargs)\n"}
+,{"stream_name":"stderr","time":196.095796652,"data":"    190 \n"}
+,{"stream_name":"stderr","time":196.095798759,"data":"    191             func_sig = signature(func)\n"}
+,{"stream_name":"stderr","time":196.095800942,"data":"\n"}
+,{"stream_name":"stderr","time":196.095803053,"data":"/usr/local/lib/python3.12/dist-packages/sklearn/metrics/_classification.py in precision_recall_fscore_support(y_true, y_pred, beta, labels, pos_label, average, warn_for, sample_weight, zero_division)\n"}
+,{"stream_name":"stderr","time":196.095807038,"data":"   1828     \"\"\"\n"}
+,{"stream_name":"stderr","time":196.095809219,"data":"   1829     _check_zero_division(zero_division)\n"}
+,{"stream_name":"stderr","time":196.095811498,"data":"-\u003e 1830     labels = _check_set_wise_labels(y_true, y_pred, average, labels, pos_label)\n"}
+,{"stream_name":"stderr","time":196.095813802,"data":"   1831 \n"}
+,{"stream_name":"stderr","time":196.095815893,"data":"   1832     # Calculate tp_sum, pred_sum, true_sum ###\n"}
+,{"stream_name":"stderr","time":196.095818112,"data":"\n"}
+,{"stream_name":"stderr","time":196.095820204,"data":"/usr/local/lib/python3.12/dist-packages/sklearn/metrics/_classification.py in _check_set_wise_labels(y_true, y_pred, average, labels, pos_label)\n"}
+,{"stream_name":"stderr","time":196.095822745,"data":"   1611             if y_type == \"multiclass\":\n"}
+,{"stream_name":"stderr","time":196.095825056,"data":"   1612                 average_options.remove(\"samples\")\n"}
+,{"stream_name":"stderr","time":196.095827431,"data":"-\u003e 1613             raise ValueError(\n"}
+,{"stream_name":"stderr","time":196.095829696,"data":"   1614                 \"Target is %s but average='binary'. Please \"\n"}
+,{"stream_name":"stderr","time":196.095832102,"data":"   1615                 \"choose another average setting, one of %r.\" % (y_type, average_options)\n"}
+,{"stream_name":"stderr","time":196.095834437,"data":"\n"}
+,{"stream_name":"stderr","time":196.095836541,"data":"ValueError: Target is multiclass but average='binary'. Please choose another average setting, one of [None, 'micro', 'macro', 'weighted'].\n"}
+,{"stream_name":"stderr","time":196.095838951,"data":"\n"}
+,{"stream_name":"stderr","time":198.314292901,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":198.314324821,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":198.476063606,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":198.476093344,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":199.10783592,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":199.442516504,"data":"[NbConvertApp] Writing 117074 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":201.927254948,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":202.860075759,"data":"[NbConvertApp] Writing 476072 bytes to __results__.html\n"}
+]

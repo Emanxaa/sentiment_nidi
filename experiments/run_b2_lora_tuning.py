@@ -124,8 +124,8 @@ def compute_split_metrics(y_true: np.ndarray, y_pred: np.ndarray) -> Dict[str, f
     return {
         "accuracy": round(float(accuracy_score(y_true, y_pred)), 4),
         "macro_f1": round(float(f1_score(y_true, y_pred, average="macro", zero_division=0)), 4),
-        "precision": round(float(precision_score(y_true, y_pred)), 4),
-        "recall": round(float(recall_score(y_true, y_pred)), 4),
+        "precision": round(float(precision_score(y_true, y_pred, average="macro", zero_division=0)), 4),
+        "recall": round(float(recall_score(y_true, y_pred, average="macro", zero_division=0)), 4),
     }
 
 def plot_confusion_matrix(y_true: np.ndarray, y_pred: np.ndarray, output_path: Path, title: str) -> None:
