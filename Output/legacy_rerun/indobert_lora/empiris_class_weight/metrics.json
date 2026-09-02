@@ -1,0 +1,12 @@
+{
+    "experiment": "empiris_class_weight",
+    "source": "baseline/B03_indobert/hasil_indobertweet_lora_class_weight.csv (legacy verified)",
+    "metrics": {
+        "accuracy": 0.741,
+        "macro_f1": 0.7114,
+        "macro_precision": 0.7027,
+        "macro_recall": 0.7375,
+        "neutral_recall": 0.655,
+        "neutral_f1": 0.582
+    }
+}

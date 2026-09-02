@@ -1,0 +1,12 @@
+{
+    "experiment": "empiris_baseline",
+    "metrics": {
+        "accuracy": 0.7873,
+        "macro_f1": 0.7345,
+        "macro_precision": 0.7424,
+        "macro_recall": 0.7292,
+        "neutral_recall": 0.5265,
+        "neutral_f1": 0.5679
+    },
+    "checkpoint": "checkpoint-780"
+}

@@ -1,0 +1,11 @@
+{
+    "experiment": "empiris_baseline",
+    "metrics": {
+        "accuracy": 0.7434,
+        "macro_f1": 0.6659,
+        "macro_precision": 0.6822,
+        "macro_recall": 0.6648,
+        "neutral_recall": 0.3543,
+        "neutral_f1": 0.4271
+    }
+}

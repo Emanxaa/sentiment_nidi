@@ -1,0 +1,16 @@
+{
+    "experiment": "empiris_class_weight",
+    "metrics": {
+        "accuracy": 0.6474,
+        "macro_f1": 0.6182,
+        "macro_precision": 0.6214,
+        "macro_recall": 0.6454,
+        "neutral_recall": 0.5695,
+        "neutral_f1": 0.43
+    },
+    "class_weights": {
+        "0": 0.6150958308634658,
+        "1": 1.9092302974547686,
+        "2": 1.1758262511803588
+    }
+}

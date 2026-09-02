@@ -1,0 +1,11 @@
+{
+    "experiment": "simulasi_631",
+    "metrics": {
+        "accuracy": 0.7185,
+        "macro_f1": 0.5142,
+        "macro_precision": 0.4771,
+        "macro_recall": 0.5608,
+        "neutral_recall": 0.0,
+        "neutral_f1": 0.0
+    }
+}

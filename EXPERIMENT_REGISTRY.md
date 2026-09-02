@@ -24,6 +24,7 @@
 | **IB-B2-LR**  | IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=16, a=32, d=0.1 | Sweep [1e-5..2e-4] | Best 55.16% (Val: 52.55%) | 68.67% | **COMPLETED (LR Winner: 2e-4)** |
 | **IB-B2-LORA**| IndoBERT-LoRA | `processed_text_v2` | None (Natural) | Sweep 6 Configs | 2e-4 | 55.16% (Val: 52.55%) | 68.67% | **COMPLETED (LoRA Winner: 8/16/0.05)**|
 | **IB-B2-OPT** | IndoBERT-LoRA | `processed_text_v2` | None (Natural) | r=8, a=16, d=0.05 | 2e-4 | 55.16% (Val: 52.55%) | 68.67% | **COMPLETED (Official B2 Baseline)** |
+| **IB-B2.5-FOR**| IndoBERT-LoRA | `text_bert` vs `v2` | None (Natural) | Forensic Audit | 2e-4 | 73.45% (Checkpoint-780) | 78.73% | **COMPLETED (Forensic Audit & Verification)** |
 | **IB-B3-CW**  | IndoBERT-LoRA | Winning Input | Class Weight | Optimal Config | Optimal | — | — | PLANNED (B3 Balancing) |
 | **IB-B4-ROS** | IndoBERT-LoRA | Winning Input | Random Oversampling | Optimal Config | Optimal | — | — | PLANNED (B4 Balancing) |
 | **IB-B5-RUS** | IndoBERT-LoRA | Winning Input | Random Undersampling| Optimal Config | Optimal | — | — | PLANNED (B5 Balancing) |
