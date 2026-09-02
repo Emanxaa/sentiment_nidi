@@ -1,0 +1,181 @@
+{
+    "aggregated_metrics": {
+        "accuracy": {
+            "mean": 0.6705,
+            "std": 0.0231
+        },
+        "precision": {
+            "mean": 0.6325,
+            "std": 0.0132
+        },
+        "recall": {
+            "mean": 0.6373,
+            "std": 0.0045
+        },
+        "macro_f1": {
+            "mean": 0.6271,
+            "std": 0.0116
+        }
+    },
+    "comparisons": {
+        "baseline": {
+            "accuracy": 0.7245,
+            "macro_f1": 0.6495,
+            "precision": 0.6728,
+            "recall": 0.6378
+        },
+        "class_weight": {
+            "accuracy": 0.6592,
+            "macro_f1": 0.627,
+            "precision": 0.6312,
+            "recall": 0.6515
+        },
+        "random_oversampling": {
+            "accuracy": 0.6705,
+            "macro_f1": 0.6271,
+            "precision": 0.6325,
+            "recall": 0.6373
+        },
+        "delta_vs_baseline": {
+            "accuracy": -0.054,
+            "macro_f1": -0.0224,
+            "precision": -0.0403,
+            "recall": -0.0005
+        }
+    },
+    "seeds": {
+        "42": {
+            "accuracy": 0.6694,
+            "macro_f1": 0.6267,
+            "precision": 0.6433,
+            "recall": 0.6333,
+            "validation_macro_f1": 0.6036,
+            "training_time": 117.61,
+            "train_metrics": {
+                "accuracy": 0.8669,
+                "macro_f1": 0.8679,
+                "precision": 0.8714,
+                "recall": 0.8669
+            },
+            "val_metrics": {
+                "accuracy": 0.6503,
+                "macro_f1": 0.6036,
+                "precision": 0.6294,
+                "recall": 0.6042
+            },
+            "test_metrics": {
+                "accuracy": 0.6694,
+                "macro_f1": 0.6267,
+                "precision": 0.6433,
+                "recall": 0.6333
+            },
+            "sample_counts": {
+                "original_total": 8648,
+                "original_train": 6226,
+                "balanced_train": 10122,
+                "val": 692,
+                "test": 1730
+            },
+            "seed": 42
+        },
+        "123": {
+            "accuracy": 0.6942,
+            "macro_f1": 0.6389,
+            "precision": 0.6365,
+            "recall": 0.6422,
+            "validation_macro_f1": 0.6227,
+            "training_time": 111.49,
+            "train_metrics": {
+                "accuracy": 0.8507,
+                "macro_f1": 0.8503,
+                "precision": 0.8503,
+                "recall": 0.8507
+            },
+            "val_metrics": {
+                "accuracy": 0.6821,
+                "macro_f1": 0.6227,
+                "precision": 0.6209,
+                "recall": 0.6249
+            },
+            "test_metrics": {
+                "accuracy": 0.6942,
+                "macro_f1": 0.6389,
+                "precision": 0.6365,
+                "recall": 0.6422
+            },
+            "sample_counts": {
+                "original_total": 8648,
+                "original_train": 6226,
+                "balanced_train": 10122,
+                "val": 692,
+                "test": 1730
+            },
+            "seed": 123
+        },
+        "456": {
+            "accuracy": 0.648,
+            "macro_f1": 0.6158,
+            "precision": 0.6178,
+            "recall": 0.6363,
+            "validation_macro_f1": 0.6277,
+            "training_time": 102.43,
+            "train_metrics": {
+                "accuracy": 0.8651,
+                "macro_f1": 0.8647,
+                "precision": 0.8655,
+                "recall": 0.8651
+            },
+            "val_metrics": {
+                "accuracy": 0.6604,
+                "macro_f1": 0.6277,
+                "precision": 0.6284,
+                "recall": 0.6457
+            },
+            "test_metrics": {
+                "accuracy": 0.648,
+                "macro_f1": 0.6158,
+                "precision": 0.6178,
+                "recall": 0.6363
+            },
+            "sample_counts": {
+                "original_total": 8648,
+                "original_train": 6226,
+                "balanced_train": 10122,
+                "val": 692,
+                "test": 1730
+            },
+            "seed": 456
+        }
+    },
+    "runtimes_sec": {
+        "42": 131.48,
+        "123": 122.43,
+        "456": 109.97
+    },
+    "total_runtime_sec": 363.88,
+    "ros_metadata": {
+        "original_class_counts": {
+            "negative": 3374,
+            "neutral": 1087,
+            "positive": 1765,
+            "total": 6226
+        },
+        "balanced_class_counts": {
+            "negative": 3374,
+            "neutral": 3374,
+            "positive": 3374,
+            "total": 10122
+        },
+        "duplication_ratio": {
+            "negative": 1.0,
+            "neutral": 3.104,
+            "positive": 1.9116
+        },
+        "seeds_evaluated": [
+            42,
+            123,
+            456
+        ],
+        "target_per_class": 3374
+    }
+}

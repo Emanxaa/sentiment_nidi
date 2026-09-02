@@ -1,0 +1,25 @@
+{
+    "original_class_counts": {
+        "negative": 3374,
+        "neutral": 1087,
+        "positive": 1765,
+        "total": 6226
+    },
+    "balanced_class_counts": {
+        "negative": 3374,
+        "neutral": 3374,
+        "positive": 3374,
+        "total": 10122
+    },
+    "duplication_ratio": {
+        "negative": 1.0,
+        "neutral": 3.104,
+        "positive": 1.9116
+    },
+    "seeds_evaluated": [
+        42,
+        123,
+        456
+    ],
+    "target_per_class": 3374
+}

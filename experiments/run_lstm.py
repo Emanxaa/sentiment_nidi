@@ -73,20 +73,31 @@ def load_config(config_path: str | Path) -> dict:
         return yaml.safe_load(f)
 
 
-def run_pipeline(config_path: str | Path = "configs/lstm_config.yaml") -> dict:
+def run_pipeline(
+    config_path: str | Path = "configs/lstm_config.yaml",
+    seed: int | None = None,
+    output_base_dir: Path | None = None
+) -> dict:
     """
-    Execute the full M1 LSTM training pipeline.
+    Execute the full LSTM training pipeline for a given seed.
     """
     config = load_config(config_path)
-    seed = config.get("seed", 42)
+    if seed is None:
+        seed = config.get("seed", 42)
+    else:
+        config["seed"] = seed
+
     set_seed(seed)
 
     # 1. Output directory setup
-    output_dir = PROJECT_ROOT / "Output" / "empirical" / "baseline" / f"seed{seed}"
+    if output_base_dir is None:
+        output_dir = PROJECT_ROOT / "Output" / "empirical" / "baseline" / f"seed{seed}"
+    else:
+        output_dir = Path(output_base_dir) / f"seed{seed}"
     output_dir.mkdir(parents=True, exist_ok=True)
 
     print("=" * 70)
-    print("       MILESTONE M1 -- REUSABLE LSTM TRAINING PIPELINE")
+    print("       LSTM TRAINING PIPELINE")
     print("=" * 70)
     print(f"[*] Output Directory : {output_dir.resolve()}")
     print(f"[*] Seed             : {seed}")
@@ -356,15 +367,21 @@ def print_summary(
 
 
 def main() -> None:
-    parser = argparse.ArgumentParser(description="Milestone M1 -- LSTM Training Pipeline")
+    parser = argparse.ArgumentParser(description="LSTM Training Pipeline")
     parser.add_argument(
         "--config",
         type=str,
         default="configs/lstm_config.yaml",
         help="Path to YAML configuration file"
     )
+    parser.add_argument(
+        "--seed",
+        type=int,
+        default=None,
+        help="Random seed override"
+    )
     args = parser.parse_args()
-    run_pipeline(args.config)
+    run_pipeline(args.config, seed=args.seed)
 
 
 if __name__ == "__main__":

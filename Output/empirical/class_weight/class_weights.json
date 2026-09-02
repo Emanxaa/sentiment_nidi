@@ -1,0 +1,41 @@
+{
+    "negative": 0.615096,
+    "neutral": 1.90923,
+    "positive": 1.175826,
+    "formula": "w_c = N / (K * N_c)",
+    "per_seed_weights": {
+        "42": {
+            "negative": 0.615096,
+            "neutral": 1.90923,
+            "positive": 1.175826,
+            "raw_counts": {
+                "negative": 3374,
+                "neutral": 1087,
+                "positive": 1765,
+                "total": 6226
+            }
+        },
+        "123": {
+            "negative": 0.615096,
+            "neutral": 1.90923,
+            "positive": 1.175826,
+            "raw_counts": {
+                "negative": 3374,
+                "neutral": 1087,
+                "positive": 1765,
+                "total": 6226
+            }
+        },
+        "456": {
+            "negative": 0.615096,
+            "neutral": 1.90923,
+            "positive": 1.175826,
+            "raw_counts": {
+                "negative": 3374,
+                "neutral": 1087,
+                "positive": 1765,
+                "total": 6226
+            }
+        }
+    }
+}

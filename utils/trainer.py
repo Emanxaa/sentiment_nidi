@@ -29,7 +29,8 @@ def train_lstm_model(
     val_loader: DataLoader,
     config: dict,
     output_dir: str | Path,
-    device: torch.device | None = None
+    device: torch.device | None = None,
+    class_weights: torch.Tensor | None = None
 ) -> Tuple[nn.Module, pd.DataFrame, float]:
     """
     Train LSTM model with mixed precision, early stopping, and checkpointing.
@@ -41,6 +42,7 @@ def train_lstm_model(
         config: Configuration dictionary.
         output_dir: Directory where best_model.pt should be saved.
         device: PyTorch device (auto-detected if None).
+        class_weights: Optional 1D Tensor of class weights for CrossEntropyLoss.
 
     Returns:
         Tuple of (best_model, history_df, training_time_seconds)
@@ -63,7 +65,10 @@ def train_lstm_model(
         torch.backends.cudnn.benchmark = True
 
     model = model.to(device)
-    criterion = nn.CrossEntropyLoss()
+    if class_weights is not None:
+        criterion = nn.CrossEntropyLoss(weight=class_weights.to(device))
+    else:
+        criterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.Adam(model.parameters(), lr=learning_rate)
 
     # Initialize AMP Scaler
