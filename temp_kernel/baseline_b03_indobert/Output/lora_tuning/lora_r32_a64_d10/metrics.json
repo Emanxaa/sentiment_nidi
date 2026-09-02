@@ -1,0 +1,27 @@
+{
+    "trial_name": "LoRA: r=32, a=64, d=0.1",
+    "text_column": "processed_text_v2",
+    "learning_rate": 0.0002,
+    "lora_r": 32,
+    "lora_alpha": 64,
+    "lora_dropout": 0.1,
+    "runtime_sec": 88.05,
+    "train_metrics": {
+        "accuracy": 0.6829,
+        "macro_f1": 0.5546,
+        "precision": 0.6699,
+        "recall": 0.561
+    },
+    "val_metrics": {
+        "accuracy": 0.6705,
+        "macro_f1": 0.5255,
+        "precision": 0.6338,
+        "recall": 0.5417
+    },
+    "test_metrics": {
+        "accuracy": 0.6867,
+        "macro_f1": 0.5516,
+        "precision": 0.6478,
+        "recall": 0.5601
+    }
+}
