@@ -1,0 +1,15 @@
+{
+  "id": "emanuelembuaijdak/thesis-01-preprocessing-data-v2",
+  "title": "Thesis 01 Preprocessing Data V2",
+  "code_file": "01_preprocessing_data_baru_v2.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "false",
+  "enable_gpu": "false",
+  "enable_internet": "true",
+  "dataset_sources": [
+    "emanuelembuaijdak/thesis-indobert-processed-data"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}

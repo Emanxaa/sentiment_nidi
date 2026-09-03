@@ -1,0 +1,53 @@
+[{"stream_name":"stderr","time":8.23714765,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.23727774,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.23728316,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.23728564,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":8.945294266,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.945361466,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.945366666,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.945369837,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":11.68938179,"data":"Memeriksa /kaggle/input:\n"}
+,{"stream_name":"stdout","time":11.68944816,"data":"  /kaggle/input/datasets/emanuelembuaijdak/thesis-indobert-processed-data -\u003e ['indobert_p2_tapt_test_predictions.csv', 'indobert_b03_predictions.csv', 'scenario_111.csv', 'colloquial-indonesian-lexicon.csv', 'banjir_processed_v2.csv']\n"}
+,{"stream_name":"stdout","time":11.68945337,"data":"[find_file] Ditemukan di Kaggle: /kaggle/input/datasets/emanuelembuaijdak/thesis-indobert-processed-data/data_preprocessed_with_emoticon.pkl\n"}
+,{"stream_name":"stdout","time":11.68945617,"data":"[find_file] Ditemukan di Kaggle: /kaggle/input/datasets/emanuelembuaijdak/thesis-indobert-processed-data/data_preprocessed_with_emoticon.csv\n"}
+,{"stream_name":"stdout","time":11.68945848,"data":"Memuat pkl dari /kaggle/input/datasets/emanuelembuaijdak/thesis-indobert-processed-data/data_preprocessed_with_emoticon.pkl ...\n"}
+,{"stream_name":"stdout","time":11.974097314,"data":"Data dimuat: 8648 baris, kolom: ['text', 'clean_text', 'created_at', 'keyword', 'processed_text', 'sentimen', 'label', 'emoticon', 'text_with_emoticon_raw', 'text_with_emoticon', 'clean_text_lstm', 'text_bert']\n"}
+,{"stream_name":"stdout","time":11.974162884,"data":"[find_file] Ditemukan di Kaggle: /kaggle/input/datasets/emanuelembuaijdak/thesis-indobert-processed-data/split_data.pkl\n"}
+,{"stream_name":"stdout","time":11.974168774,"data":"Memuat split_data.pkl dari /kaggle/input/datasets/emanuelembuaijdak/thesis-indobert-processed-data/split_data.pkl ...\n"}
+,{"stream_name":"stdout","time":22.294978708,"data":"Top kata negatif\n"}
+,{"stream_name":"stdout","time":22.301562748,"data":"Top kata netral\n"}
+,{"stream_name":"stdout","time":22.305966159,"data":"Top kata positif\n"}
+,{"stream_name":"stderr","time":23.357294337,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":23.357329777,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":23.357337167,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":23.357342757,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":23.359239937,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":23.359263517,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":23.359268837,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":23.359273147,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":23.359295997,"data":"Exception encountered at \"In [7]\":\n"}
+,{"stream_name":"stderr","time":23.359300217,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":23.359303407,"data":"ModuleNotFoundError                       Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":23.359306337,"data":"/tmp/ipykernel_16/1514265407.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":23.359309577,"data":"      2 import numpy as np\n"}
+,{"stream_name":"stderr","time":23.359312277,"data":"      3 \n"}
+,{"stream_name":"stderr","time":23.359315147,"data":"----\u003e 4 from bertopic import BERTopic\n"}
+,{"stream_name":"stderr","time":23.359318047,"data":"      5 from sentence_transformers import SentenceTransformer\n"}
+,{"stream_name":"stderr","time":23.359321037,"data":"      6 from umap import UMAP\n"}
+,{"stream_name":"stderr","time":23.359323777,"data":"\n"}
+,{"stream_name":"stderr","time":23.359326737,"data":"ModuleNotFoundError: No module named 'bertopic'\n"}
+,{"stream_name":"stderr","time":23.359329427,"data":"\n"}
+,{"stream_name":"stderr","time":25.705779173,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":25.705848553,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":25.883711624,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":25.883770884,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":26.494520588,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":26.852745652,"data":"[NbConvertApp] Writing 1872953 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":29.275981966,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":30.153371733,"data":"[NbConvertApp] Support files will be in __results___files/\n"}
+,{"stream_name":"stderr","time":30.153429653,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":30.153773593,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":30.154346723,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":30.154523873,"data":"[NbConvertApp] Making directory __results___files\n"}
+,{"stream_name":"stderr","time":30.154934693,"data":"[NbConvertApp] Writing 658288 bytes to __results__.html\n"}
+]

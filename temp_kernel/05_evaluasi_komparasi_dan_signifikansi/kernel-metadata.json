@@ -1,0 +1,15 @@
+{
+  "id": "emanuelembuaijdak/thesis-05-evaluasi-komparasi-dan-signifikansi",
+  "title": "Thesis - 05 Evaluasi Komparasi dan Signifikansi",
+  "code_file": "05_evaluasi_komparasi_dan_signifikansi.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "false",
+  "enable_gpu": "false",
+  "enable_internet": "true",
+  "dataset_sources": [
+    "emanuelembuaijdak/thesis-indobert-processed-data"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}

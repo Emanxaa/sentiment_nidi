@@ -1,0 +1,27 @@
+[{"stream_name":"stderr","time":7.20795876,"data":"/usr/local/lib/python3.12/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":7.208034655,"data":"  validate(nb)\n"}
+,{"stream_name":"stderr","time":7.255836848,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":7.255877762,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":7.255884501,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 113, in execute_notebook\n"}
+,{"stream_name":"stderr","time":7.255894117,"data":"    kernel_name = papermill_engines.nb_kernel_name(engine_name=engine_name, nb=nb, name=kernel_name)\n"}
+,{"stream_name":"stderr","time":7.256824555,"data":"                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":7.256855299,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/engines.py\", line 53, in nb_kernel_name\n"}
+,{"stream_name":"stderr","time":7.256860404,"data":"    return self.get_engine(engine_name).nb_kernel_name(nb, name)\n"}
+,{"stream_name":"stderr","time":7.256865037,"data":"           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":7.256867791,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/engines.py\", line 386, in nb_kernel_name\n"}
+,{"stream_name":"stderr","time":7.256870631,"data":"    return nb_kernel_name(nb, name)\n"}
+,{"stream_name":"stderr","time":7.256873264,"data":"           ^^^^^^^^^^^^^^^^^^^^^^^^\n"}
+,{"stream_name":"stderr","time":7.256875991,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/utils.py\", line 52, in nb_kernel_name\n"}
+,{"stream_name":"stderr","time":7.2568786450000005,"data":"    raise ValueError(\"No kernel name found in notebook and no override provided.\")\n"}
+,{"stream_name":"stderr","time":7.256881171,"data":"ValueError: No kernel name found in notebook and no override provided.\n"}
+,{"stream_name":"stderr","time":9.915195109,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":9.915235151,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":10.142632926,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":10.142690267,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":10.90488461,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":10.905433507,"data":"/usr/local/lib/python3.12/dist-packages/nbformat/__init__.py:96: MissingIDFieldWarning: Cell is missing an id field, this will become a hard error in future nbformat versions. You may want to use `normalize()` on your notebooks before validations (available since nbformat 5.1.4). Previous versions of nbformat are fixing this issue transparently, and will stop doing so in the future.\n"}
+,{"stream_name":"stderr","time":10.905451319,"data":"  validate(nb)\n"}
+,{"stream_name":"stderr","time":11.319418085,"data":"[NbConvertApp] Writing 4840 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":14.257318343,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":15.841385523,"data":"[NbConvertApp] Writing 286602 bytes to __results__.html\n"}
+]

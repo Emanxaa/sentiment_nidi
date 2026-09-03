@@ -37,6 +37,7 @@ OWNER = "emanuelembuaijdak"
 SRC_MODULES_BY_FAMILY = {
     "hf_lora": ["config.py", "data.py", "model.py", "metrics.py", "trainer_factory.py", "summary.py"],
     "hf_lora_sweep": ["config.py", "data.py", "model.py", "metrics.py", "trainer_factory.py", "summary.py"],
+    "hf_lora_v2_suite": ["config.py", "data.py", "model.py", "metrics.py", "trainer_factory.py", "summary.py"],
     "hf_tapt_lora": ["config.py", "data.py", "model.py", "metrics.py", "trainer_factory.py", "summary.py"],
     "keras_lstm": ["config.py", "keras_data.py", "keras_model.py", "metrics.py", "summary.py"],
     "keras_bilstm": ["config.py", "keras_data.py", "keras_model.py", "metrics.py", "summary.py"],
@@ -676,6 +677,263 @@ summary = experiment_summary(
 )
 """
 
+def _dataset_cell_v2_suite(config: dict) -> str:
+    return """\
+# =====================================================
+# DATASET (banjir_processed_v2.csv + processed_text_v2)
+# =====================================================
+import pandas as pd
+
+CSV_V2 = CONFIG.get("dataset_csv", "banjir_processed_v2.csv")
+COL_V2 = CONFIG.get("text_col", "processed_text_v2")
+COL_LABEL_V2 = CONFIG.get("label_col", "label")
+
+df = load_dataframe(csv_name=CSV_V2, col_text=COL_V2, col_label=COL_LABEL_V2)
+split = split_data(df, test_size=0.2, val_size=0.1, random_state=42, col_text=COL_V2, col_label=COL_LABEL_V2)
+
+max_len = CONFIG.get("params", {}).get("max_length", 128)
+tokenizer = load_tokenizer()
+
+
+def make_encoded_ds(texts, labels):
+    enc = tokenizer(
+        list(texts),
+        truncation=True,
+        padding="max_length",
+        max_length=max_len,
+        return_tensors="pt",
+    )
+    return EncodedDataset(enc, labels)
+
+
+train_dataset = make_encoded_ds(split["X_train"], split["y_train"])
+val_dataset = make_encoded_ds(split["X_val"], split["y_val"])
+test_dataset = make_encoded_ds(split["X_test"], split["y_test"])
+print(f"Train {len(train_dataset)} | Val {len(val_dataset)} | Test {len(test_dataset)}")
+print("Distribusi train:", pd.Series(split['y_train']).value_counts().sort_index().to_dict())
+print("Distribusi val  :", pd.Series(split['y_val']).value_counts().sort_index().to_dict())
+print("Distribusi test :", pd.Series(split['y_test']).value_counts().sort_index().to_dict())
+"""
+
+
+def _suite_cell(config: dict) -> str:
+    return """\
+# =====================================================
+# SUITE: 4 VARIAN EMPIRIS + 5 SIMULASI x 3 SEEDS (27 RUNS)
+# =====================================================
+import gc
+import os
+import shutil
+import time
+
+import numpy as np
+import pandas as pd
+import torch
+from sklearn.metrics import accuracy_score, precision_recall_fscore_support
+from transformers import EarlyStoppingCallback, TrainingArguments, set_seed
+
+p = CONFIG["params"]
+LR = p["learning_rate"]
+EPOCHS = p["epochs"]
+BS = p["batch_size"]
+WARMUP = p["warmup_ratio"]
+WD = p["weight_decay"]
+PATIENCE = p.get("patience", 2)
+SEEDS = CONFIG["seeds"]
+EMPIRICAL_VARIANTS = CONFIG["empirical_variants"]
+SIMULATIONS = CONFIG["simulations"]
+SIM_STRATEGIES = CONFIG["sim_strategies"]
+
+results_rows = []
+
+
+def run_suite_trial(part, run_id, texts_tr, y_tr, strategy, scenario_id, seed):
+    set_seed(seed)
+    torch.cuda.empty_cache()
+
+    texts_b, y_b, cw = apply_balancing(texts_tr, y_tr, strategy, seed)
+    tr_ds = make_encoded_ds(texts_b, y_b)
+    print("\\n" + "=" * 70)
+    print(f"RUN: {run_id} | strategy={strategy} | seed={seed}")
+    print(f"Train n={len(y_b)} | distribusi: {pd.Series(y_b).value_counts().sort_index().to_dict()}")
+    if cw is not None:
+        print(f"Class weights: {cw}")
+    print("=" * 70)
+
+    model = build_indobertweet_lora(
+        dropout=p["dropout"],
+        r=p["lora_r"],
+        lora_alpha=p["lora_alpha"],
+    )
+
+    out_dir = f"./results_{run_id}"
+    training_args = TrainingArguments(
+        output_dir=out_dir,
+        learning_rate=LR,
+        per_device_train_batch_size=BS,
+        per_device_eval_batch_size=BS,
+        num_train_epochs=EPOCHS,
+        warmup_ratio=WARMUP,
+        weight_decay=WD,
+        eval_strategy="epoch",
+        save_strategy="epoch",
+        load_best_model_at_end=True,
+        metric_for_best_model="f1_macro",
+        greater_is_better=True,
+        logging_steps=50,
+        report_to="none",
+        save_total_limit=1,
+        fp16=torch.cuda.is_available(),
+        seed=seed,
+    )
+
+    trainer = build_trainer(
+        loss="weighted_ce" if strategy == "class_weight" else "cross_entropy",
+        class_weight=cw,
+        model=model,
+        args=training_args,
+        train_dataset=tr_ds,
+        eval_dataset=val_dataset,
+        compute_metrics=compute_metrics,
+        callbacks=[EarlyStoppingCallback(early_stopping_patience=PATIENCE)],
+    )
+
+    t0 = time.time()
+    trainer.train()
+    runtime_sec = round(time.time() - t0, 2)
+    eval_result = trainer.evaluate()
+
+    preds_test = trainer.predict(test_dataset)
+    logits = preds_test.predictions
+    y_pred = np.argmax(logits, axis=1)
+
+    y_true = split["y_test"]
+    precision_macro, recall_macro, f1_macro, _ = precision_recall_fscore_support(
+        y_true, y_pred, average="macro", zero_division=0
+    )
+    accuracy = accuracy_score(y_true, y_pred)
+    _, recall_netral, f1_netral, _ = precision_recall_fscore_support(
+        y_true, y_pred, labels=[1], average="macro", zero_division=0
+    )
+
+    maj = pd.Series(split["y_val"]).mode()[0]
+    p_maj = float((split["y_val"] == maj).mean())
+    f1_maj = (2 * p_maj / (1 + p_maj)) / 3
+    val_f1 = eval_result["eval_f1_macro"]
+    status = "COLLAPSE" if val_f1 <= f1_maj + 1e-6 else "OK"
+
+    fname = f"pred_{run_id}.csv"
+    prediction_frame(split["X_test"], y_true, logits).to_csv(fname, index=False)
+
+    if os.path.exists(out_dir):
+        shutil.rmtree(out_dir, ignore_errors=True)
+    del model, trainer, tr_ds
+    torch.cuda.empty_cache()
+    gc.collect()
+
+    row = {
+        "part": part,
+        "scenario": scenario_id,
+        "strategy": strategy,
+        "seed": seed,
+        "train_n": int(len(y_b)),
+        "val_accuracy": round(float(eval_result["eval_accuracy"]), 4),
+        "val_macro_f1": round(float(val_f1), 4),
+        "test_accuracy": round(float(accuracy), 4),
+        "test_macro_f1": round(float(f1_macro), 4),
+        "test_precision_macro": round(float(precision_macro), 4),
+        "test_recall_macro": round(float(recall_macro), 4),
+        "recall_netral": round(float(recall_netral), 4),
+        "f1_netral": round(float(f1_netral), 4),
+        "status": status,
+        "runtime_sec": runtime_sec,
+    }
+    results_rows.append(row)
+    print(f"  -> Test Acc={accuracy*100:.2f}% | Macro F1={f1_macro*100:.2f}% | "
+          f"Recall Netral={recall_netral*100:.2f}% | {status} | {runtime_sec}s")
+    return row
+
+
+# ========== PART A: VARIAN EMPIRIS ==========
+print("\\n" + "#" * 75)
+print("# PART A: VARIAN EMPIRIS (Baseline, Class Weight, ROS, RUS)")
+print("#" * 75)
+for variant in EMPIRICAL_VARIANTS:
+    for seed in SEEDS:
+        run_id = f"emp_{variant}_s{seed}"
+        run_suite_trial("empiris", run_id, split["X_train"], split["y_train"], variant, "empiris", seed)
+
+emp_df = pd.DataFrame([r for r in results_rows if r["part"] == "empiris"])
+emp_df.to_csv("exp_indobert_v2_empiris_results.csv", index=False)
+print("\\n=== HASIL EMPIRIS (TEST) ===")
+print(emp_df.sort_values("test_macro_f1", ascending=False).to_string(index=False))
+
+# ========== PART B: SKENARIO SIMULASI KETIMPANGAN ==========
+print("\\n" + "#" * 75)
+print("# PART B: SIMULASI KETIMPANGAN (1:1:1, 6:3:1, 8:1:1) [+ROS pada 6:3:1 & 8:1:1]")
+print("#" * 75)
+for sim in SIMULATIONS:
+    sc_id = sim["id"]
+    X_sc, y_sc = build_simulated_scenario(split["X_train"], split["y_train"], sim["targets"], seed=42)
+    print(f"\\nSkenario {sc_id} ({sim['ratio']}): n={len(y_sc)} | "
+          f"distribusi: {pd.Series(y_sc).value_counts().sort_index().to_dict()}")
+    for strat in SIM_STRATEGIES:
+        for seed in SEEDS:
+            run_id = f"sim_{sc_id}_{strat}_s{seed}"
+            run_suite_trial("simulasi", run_id, X_sc, y_sc, strat, sc_id, seed)
+
+sim_df = pd.DataFrame([r for r in results_rows if r["part"] == "simulasi"])
+sim_df.to_csv("exp_indobert_v2_simulasi_results.csv", index=False)
+print("\\n=== HASIL SIMULASI (TEST) ===")
+print(sim_df.sort_values(["scenario", "strategy", "test_macro_f1"], ascending=[True, True, False]).to_string(index=False))
+
+# ========== MASTER + AGREGASI MEAN+-STD ==========
+master_df = pd.DataFrame(results_rows)
+master_df.to_csv("exp_indobert_v2_suite_results.csv", index=False)
+print("\\n=== MASTER SUITE RESULTS (27 RUNS) ===")
+print(master_df.to_string(index=False))
+
+agg = (
+    master_df.groupby(["part", "scenario", "strategy"])
+    .agg(
+        n_seeds=("seed", "count"),
+        accuracy_mean=("test_accuracy", "mean"),
+        accuracy_std=("test_accuracy", lambda s: s.std(ddof=1)),
+        macro_f1_mean=("test_macro_f1", "mean"),
+        macro_f1_std=("test_macro_f1", lambda s: s.std(ddof=1)),
+        recall_netral_mean=("recall_netral", "mean"),
+        f1_netral_mean=("f1_netral", "mean"),
+    )
+    .reset_index()
+)
+agg.to_csv("exp_indobert_v2_suite_summary.csv", index=False)
+print("\\n=== RANGKUMAN MEAN +- STD (3 SEEDS) ===")
+print(agg.to_string(index=False))
+"""
+
+
+def _suite_summary_cell(config: dict) -> str:
+    return """\
+# =====================================================
+# SAVE ARTIFACT + AUTO EXPERIMENT SUMMARY
+# =====================================================
+base_agg = agg[(agg["part"] == "empiris") & (agg["strategy"] == "baseline")]
+metrics = {
+    "total_runs": int(len(master_df)),
+    "empiris_baseline_accuracy_mean": float(base_agg["accuracy_mean"].iloc[0]) if len(base_agg) else None,
+    "empiris_baseline_macro_f1_mean": float(base_agg["macro_f1_mean"].iloc[0]) if len(base_agg) else None,
+    "empiris_baseline_recall_netral_mean": float(base_agg["recall_netral_mean"].iloc[0]) if len(base_agg) else None,
+}
+summary = experiment_summary(
+    exp_id="exp_indobert_v2",
+    config=CONFIG,
+    metrics=metrics,
+    csv_path="exp_indobert_v2_suite_results.csv",
+    out_path="exp_indobert_v2_suite_summary.json",
+)
+"""
+
+
 def build_notebook(config: dict) -> nbformat.NotebookNode:
     family = config.get("family", "hf_lora")
     if family in ("keras_lstm", "keras_bilstm"):
@@ -702,6 +960,17 @@ def build_notebook(config: dict) -> nbformat.NotebookNode:
             new_code_cell(_training_hf_sweep_cell(config)),
             new_code_cell(_eval_cell(config)),
             new_code_cell(_summary_cell(config)),
+        ]
+    elif family == "hf_lora_v2_suite":
+        cells = [
+            new_code_cell(PIN_CELL_HF),
+            new_code_cell(GPU_CELL),
+            new_code_cell(_src_cell(family)),
+            new_code_cell(_config_cell(config)),
+            new_code_cell(SEED_CELL),
+            new_code_cell(_dataset_cell_v2_suite(config)),
+            new_code_cell(_suite_cell(config)),
+            new_code_cell(_suite_summary_cell(config)),
         ]
     elif family == "hf_tapt_lora":
         cells = [

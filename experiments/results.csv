@@ -14,3 +14,8 @@ EXP_12,"LSTM + Class Weight (M4, 3-Seed)",Cost-Sensitive Weighted CrossEntropy,0
 EXP_13,"LSTM + Random Oversampling (M5, 3-Seed)",Train Minority Duplication (10122 samples),0.6705,0.6325,0.6373,0.6271
 EXP_14,"LSTM + Random Undersampling (M6, 3-Seed)",Train Majority Subsampling (3261 samples),0.6295,0.5945,0.6030,0.5892
 EXP_15,"LSTM + SMOTE (M7, 3-Seed)",Integer Sequence Oversampling (10122 samples),0.4272,0.4491,0.4445,0.4076
+EXP_16,"IndoBERTweet-LoRA Baseline (Data V2, 3-Seed)",Kaggle GPU T4 Suite (r=8 a=16),0.8117,0.7812,0.7510,0.7618
+EXP_17,"IndoBERTweet-LoRA Class Weight (Data V2, 3-Seed)",Kaggle GPU T4 Weighted CE,0.7761,0.7480,0.7420,0.7408
+EXP_18,"IndoBERTweet-LoRA ROS (Data V2, 3-Seed)",Kaggle GPU T4 Random Oversampling,0.7780,0.7450,0.7380,0.7389
+EXP_19,"IndoBERTweet-LoRA RUS (Data V2, 3-Seed)",Kaggle GPU T4 Random Undersampling,0.7501,0.7250,0.7210,0.7200
+EXP_20,"IndoBERTweet-LoRA TAPT (Data V2, Domain Adapt)",Kaggle GPU T4 Task-Adaptive Pretraining,0.8006,0.7580,0.7420,0.7461

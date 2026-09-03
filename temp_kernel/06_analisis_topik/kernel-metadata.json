@@ -1,0 +1,15 @@
+{
+  "id": "emanuelembuaijdak/thesis-06-analisis-topik-lda",
+  "title": "Thesis 06 Analisis Topik LDA",
+  "code_file": "06_analisis_topik.ipynb",
+  "language": "python",
+  "kernel_type": "notebook",
+  "is_private": "false",
+  "enable_gpu": "false",
+  "enable_internet": "true",
+  "dataset_sources": [
+    "emanuelembuaijdak/thesis-indobert-processed-data"
+  ],
+  "competition_sources": [],
+  "kernel_sources": []
+}

@@ -1,0 +1,55 @@
+exp_id: exp_indobert_v2
+family: hf_lora_v2_suite
+title: Thesis IndoBERT v2
+description: >
+  Suite lengkap IndoBERTweet-LoRA pada Data Baru V2 (banjir_processed_v2.csv /
+  processed_text_v2) dengan konfigurasi optimal B2 (lr 2e-4, r=8, a=16, d=0.05).
+  4 varian empiris (Baseline, Class Weight, ROS, RUS) + 5 simulasi ketimpangan
+  (1:1:1, 6:3:1, 6:3:1+ROS, 8:1:1, 8:1:1+ROS), masing-masing 3 seed (42/123/456).
+dataset_csv: banjir_processed_v2.csv
+text_col: processed_text_v2
+label_col: label
+params:
+  learning_rate: 0.0002
+  epochs: 5
+  batch_size: 16
+  warmup_ratio: 0.1
+  weight_decay: 0.01
+  max_length: 128
+  dropout: 0.05
+  lora_r: 8
+  lora_alpha: 16
+  patience: 2
+seeds:
+  - 42
+  - 123
+  - 456
+empirical_variants:
+  - baseline
+  - class_weight
+  - ros
+  - rus
+simulations:
+  - id: scenario_111
+    ratio: "1:1:1"
+    targets:
+      0: 1000
+      1: 1000
+      2: 1000
+  - id: scenario_631
+    ratio: "6:3:1"
+    targets:
+      0: 3000
+      2: 1500
+      1: 500
+  - id: scenario_811
+    ratio: "8:1:1"
+    targets:
+      0: 3200
+      1: 400
+      2: 400
+sim_strategies:
+  - baseline
+  - ros
+dataset_sources:
+  - emanuelembuaijdak/thesis-indobert-processed-data

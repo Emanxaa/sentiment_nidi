@@ -1,0 +1,38 @@
+[{"stream_name":"stderr","time":10.2401743,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":10.240261344,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":10.240268282,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":10.240294626,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":11.155959997,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":11.156002444,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":11.156009191,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":11.156014442,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stdout","time":14.425435168,"data":"\u001b[31mERROR: Could not open requirements file: [Errno 2] No such file or directory: 'requirements.txt'\u001b[0m\u001b[31m\r\n"}
+,{"stream_name":"stdout","time":14.59110942,"data":"\u001b[0mNote: you may need to restart the kernel to use updated packages.\n"}
+,{"stream_name":"stderr","time":19.600763866,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":19.600802027,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":19.600808224,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":19.600916027,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":19.600925654,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":19.601140696999998,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":19.601211127,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":19.60121737,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":19.60122117,"data":"Exception encountered at \"In [3]\":\n"}
+,{"stream_name":"stderr","time":19.601225027,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":19.601228828,"data":"ModuleNotFoundError                       Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":19.601232832,"data":"/tmp/ipykernel_16/683095483.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":19.601237044,"data":"     14 \n"}
+,{"stream_name":"stderr","time":19.601240706,"data":"     15 # Tambahkan ini — import Sastrawi setelah install\n"}
+,{"stream_name":"stderr","time":19.60124504,"data":"---\u003e 16 from Sastrawi.Stemmer.StemmerFactory import StemmerFactory\n"}
+,{"stream_name":"stderr","time":19.601248566,"data":"     17 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory\n"}
+,{"stream_name":"stderr","time":19.601252355,"data":"\n"}
+,{"stream_name":"stderr","time":19.601255869,"data":"ModuleNotFoundError: No module named 'Sastrawi'\n"}
+,{"stream_name":"stderr","time":19.601260072,"data":"\n"}
+,{"stream_name":"stderr","time":22.483234564,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":22.483296958,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":22.69477896,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":22.69481206,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":23.427035221,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":23.910673748,"data":"[NbConvertApp] Writing 387397 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":26.966827336,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":28.131667547,"data":"[NbConvertApp] Writing 629914 bytes to __results__.html\n"}
+]

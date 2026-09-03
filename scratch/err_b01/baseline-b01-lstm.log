@@ -1,0 +1,51 @@
+[{"stream_name":"stderr","time":8.690327985,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":8.690391588,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":8.690398965,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":8.690403924,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":9.475780946,"data":"0.00s - Debugger warning: It seems that frozen modules are being used, which may\n"}
+,{"stream_name":"stderr","time":9.475826861,"data":"0.00s - make the debugger miss breakpoints. Please pass -Xfrozen_modules=off\n"}
+,{"stream_name":"stderr","time":9.475831307,"data":"0.00s - to python to disable frozen modules.\n"}
+,{"stream_name":"stderr","time":9.475834704,"data":"0.00s - Note: Debugging will proceed. Set PYDEVD_DISABLE_FILE_VALIDATION=1 to disable this validation.\n"}
+,{"stream_name":"stderr","time":15.014686259,"data":"Traceback (most recent call last):\n"}
+,{"stream_name":"stderr","time":15.014718658,"data":"  File \"\u003cstring\u003e\", line 1, in \u003cmodule\u003e\n"}
+,{"stream_name":"stderr","time":15.014726138,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 131, in execute_notebook\n"}
+,{"stream_name":"stderr","time":15.014830358,"data":"    raise_for_execution_errors(nb, output_path)\n"}
+,{"stream_name":"stderr","time":15.014867007,"data":"  File \"/usr/local/lib/python3.12/dist-packages/papermill/execute.py\", line 251, in raise_for_execution_errors\n"}
+,{"stream_name":"stderr","time":15.015146052,"data":"    raise error\n"}
+,{"stream_name":"stderr","time":15.015203395,"data":"papermill.exceptions.PapermillExecutionError: \n"}
+,{"stream_name":"stderr","time":15.015211894,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":15.015218462,"data":"Exception encountered at \"In [2]\":\n"}
+,{"stream_name":"stderr","time":15.015224631,"data":"---------------------------------------------------------------------------\n"}
+,{"stream_name":"stderr","time":15.015230578,"data":"FileNotFoundError                         Traceback (most recent call last)\n"}
+,{"stream_name":"stderr","time":15.015236451,"data":"/tmp/ipykernel_16/1930615565.py in \u003ccell line: 0\u003e()\n"}
+,{"stream_name":"stderr","time":15.015242526,"data":"      3 import pandas as pd\n"}
+,{"stream_name":"stderr","time":15.015248132,"data":"      4 \n"}
+,{"stream_name":"stderr","time":15.015253619,"data":"----\u003e 5 data_new = pd.read_pickle(\"data_preprocessed_with_emoticon.pkl\")\n"}
+,{"stream_name":"stderr","time":15.015259584,"data":"      6 with open(\"split_data.pkl\", \"rb\") as file:\n"}
+,{"stream_name":"stderr","time":15.015265709,"data":"      7     split_data = pickle.load(file)\n"}
+,{"stream_name":"stderr","time":15.015271224,"data":"\n"}
+,{"stream_name":"stderr","time":15.015276754,"data":"/usr/local/lib/python3.12/dist-packages/pandas/io/pickle.py in read_pickle(filepath_or_buffer, compression, storage_options)\n"}
+,{"stream_name":"stderr","time":15.01528298,"data":"    183     \"\"\"\n"}
+,{"stream_name":"stderr","time":15.015288897,"data":"    184     excs_to_catch = (AttributeError, ImportError, ModuleNotFoundError, TypeError)\n"}
+,{"stream_name":"stderr","time":15.015294616,"data":"--\u003e 185     with get_handle(\n"}
+,{"stream_name":"stderr","time":15.015299979,"data":"    186         filepath_or_buffer,\n"}
+,{"stream_name":"stderr","time":15.015305037,"data":"    187         \"rb\",\n"}
+,{"stream_name":"stderr","time":15.015323829,"data":"\n"}
+,{"stream_name":"stderr","time":15.015327442,"data":"/usr/local/lib/python3.12/dist-packages/pandas/io/common.py in get_handle(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)\n"}
+,{"stream_name":"stderr","time":15.015330853,"data":"    880         else:\n"}
+,{"stream_name":"stderr","time":15.015333906,"data":"    881             # Binary mode\n"}
+,{"stream_name":"stderr","time":15.015336983,"data":"--\u003e 882             handle = open(handle, ioargs.mode)\n"}
+,{"stream_name":"stderr","time":15.015340171,"data":"    883         handles.append(handle)\n"}
+,{"stream_name":"stderr","time":15.01534319,"data":"    884 \n"}
+,{"stream_name":"stderr","time":15.015346062,"data":"\n"}
+,{"stream_name":"stderr","time":15.015348819,"data":"FileNotFoundError: [Errno 2] No such file or directory: 'data_preprocessed_with_emoticon.pkl'\n"}
+,{"stream_name":"stderr","time":15.015351971,"data":"\n"}
+,{"stream_name":"stderr","time":17.920267779,"data":"/usr/local/lib/python3.12/dist-packages/mistune.py:435: SyntaxWarning: invalid escape sequence '\\|'\n"}
+,{"stream_name":"stderr","time":17.920310246,"data":"  cells[i][c] = re.sub('\\\\\\\\\\|', '|', cell)\n"}
+,{"stream_name":"stderr","time":18.129646755,"data":"/usr/local/lib/python3.12/dist-packages/nbconvert/filters/filter_links.py:36: SyntaxWarning: invalid escape sequence '\\_'\n"}
+,{"stream_name":"stderr","time":18.129677782,"data":"  text = re.sub(r'_', '\\_', text) # Escape underscores in display text\n"}
+,{"stream_name":"stderr","time":18.887571816,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to notebook\n"}
+,{"stream_name":"stderr","time":19.415041553000002,"data":"[NbConvertApp] Writing 411641 bytes to __notebook__.ipynb\n"}
+,{"stream_name":"stderr","time":22.607141548,"data":"[NbConvertApp] Converting notebook __notebook__.ipynb to html\n"}
+,{"stream_name":"stderr","time":23.878557076,"data":"[NbConvertApp] Writing 676653 bytes to __results__.html\n"}
+]
