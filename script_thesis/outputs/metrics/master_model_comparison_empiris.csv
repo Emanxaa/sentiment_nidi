@@ -1,0 +1,7 @@
+ID Model,Strategi Model,Accuracy (%),Macro F1 (%),Macro Recall (%),Recall Netral (%),F1 Netral (%)
+01_lstm_vanilla,LSTM Natural Baseline,72.95,56.4,59.02,7.62,13.26
+02_lstm_class_weight,LSTM Class Weighting,73.01,68.58,69.84,54.64,51.16
+03_lstm_random_oversampling,LSTM Random Oversampling (ROS),72.08,56.55,58.79,8.94,16.07
+04_lstm_random_undersampling,LSTM Random Undersampling (RUS),69.13,61.42,61.15,33.44,36.86
+05_lstm_smote,LSTM SMOTE Sequences,65.78,51.33,53.36,7.95,11.85
+06_indobert_lora,IndoBERTweet-LoRA Vanilla (Argmax),78.61,73.27,72.86,51.99,56.07

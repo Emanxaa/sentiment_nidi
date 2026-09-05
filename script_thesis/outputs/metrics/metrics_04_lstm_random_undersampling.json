@@ -1,14 +1,37 @@
 {
     "model_id": "04_lstm_random_undersampling",
     "strategy": "LSTM Random Undersampling (RUS)",
-    "test_accuracy": 64.86,
-    "macro_precision": 55.51,
-    "macro_recall": 56.95,
-    "macro_f1": 56.06,
-    "recall_negatif": 72.47,
-    "recall_netral": 21.19,
-    "recall_positif": 77.19,
-    "f1_negatif": 74.33,
-    "f1_netral": 22.34,
-    "f1_positif": 71.51
+    "empiris": {
+        "test_accuracy": 69.13,
+        "macro_f1": 61.42,
+        "macro_recall": 61.15,
+        "recall_netral": 33.44,
+        "f1_netral": 36.86
+    },
+    "simulasi": {
+        "scenario_111": {
+            "scenario_name": "Skenario A (1:1:1)",
+            "test_accuracy": 66.3,
+            "macro_f1": 53.64,
+            "macro_recall": 54.75,
+            "recall_netral": 13.25,
+            "f1_netral": 17.51
+        },
+        "scenario_631": {
+            "scenario_name": "Skenario B (6:3:1)",
+            "test_accuracy": 63.35,
+            "macro_f1": 52.0,
+            "macro_recall": 55.55,
+            "recall_netral": 11.92,
+            "f1_netral": 16.71
+        },
+        "scenario_811": {
+            "scenario_name": "Skenario C (8:1:1)",
+            "test_accuracy": 61.33,
+            "macro_f1": 43.98,
+            "macro_recall": 49.64,
+            "recall_netral": 0.0,
+            "f1_netral": 0.0
+        }
+    }
 }

@@ -1,14 +1,37 @@
 {
     "model_id": "06_indobert_lora",
     "strategy": "IndoBERTweet-LoRA Vanilla (Argmax)",
-    "test_accuracy": 78.61,
-    "macro_precision": 73.94,
-    "macro_recall": 72.86,
-    "macro_f1": 73.27,
-    "recall_negatif": 86.34,
-    "recall_netral": 51.99,
-    "recall_positif": 80.24,
-    "f1_negatif": 85.47,
-    "f1_netral": 56.07,
-    "f1_positif": 78.25
+    "empiris": {
+        "test_accuracy": 78.61,
+        "macro_f1": 73.27,
+        "macro_recall": 72.86,
+        "recall_netral": 51.99,
+        "f1_netral": 56.07
+    },
+    "simulasi": {
+        "scenario_111": {
+            "scenario_name": "Skenario A (1:1:1)",
+            "test_accuracy": 74.53,
+            "macro_f1": 71.17,
+            "macro_recall": 71.25,
+            "recall_netral": 67.99,
+            "f1_netral": 54.55
+        },
+        "scenario_631": {
+            "scenario_name": "Skenario B (6:3:1)",
+            "test_accuracy": 80.6,
+            "macro_f1": 73.45,
+            "macro_recall": 68.94,
+            "recall_netral": 40.29,
+            "f1_netral": 45.01
+        },
+        "scenario_811": {
+            "scenario_name": "Skenario C (8:1:1)",
+            "test_accuracy": 78.52,
+            "macro_f1": 70.2,
+            "macro_recall": 66.8,
+            "recall_netral": 36.86,
+            "f1_netral": 41.96
+        }
+    }
 }

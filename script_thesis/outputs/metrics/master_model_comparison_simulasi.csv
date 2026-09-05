@@ -1,0 +1,7 @@
+Strategi Model,Empiris F1 (%),1:1:1 F1 (%),6:3:1 F1 (%),8:1:1 F1 (%),Empiris Rec Netral (%),8:1:1 Rec Netral (%)
+LSTM Natural Baseline,56.4,55.05,51.24,44.32,7.62,0.33
+LSTM Class Weighting,68.58,55.05,61.0,55.69,54.64,25.17
+LSTM Random Oversampling (ROS),56.55,55.05,62.64,59.31,8.94,36.42
+LSTM Random Undersampling (RUS),61.42,53.64,52.0,43.98,33.44,0.0
+LSTM SMOTE Sequences,51.33,55.05,47.41,37.12,7.95,9.93
+IndoBERTweet-LoRA Vanilla (Argmax),73.27,71.17,73.45,70.2,51.99,36.86

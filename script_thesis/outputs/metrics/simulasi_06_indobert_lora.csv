@@ -1,0 +1,4 @@
+,scenario_name,test_accuracy,macro_f1,macro_recall,recall_netral,f1_netral
+scenario_111,Skenario A (1:1:1),74.53,71.17,71.25,67.99,54.55
+scenario_631,Skenario B (6:3:1),80.6,73.45,68.94,40.29,45.01
+scenario_811,Skenario C (8:1:1),78.52,70.2,66.8,36.86,41.96

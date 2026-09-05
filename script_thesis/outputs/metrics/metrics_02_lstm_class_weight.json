@@ -1,14 +1,37 @@
 {
     "model_id": "02_lstm_class_weight",
     "strategy": "LSTM Class Weighting",
-    "test_accuracy": 71.04,
-    "macro_precision": 65.19,
-    "macro_recall": 67.06,
-    "macro_f1": 65.82,
-    "recall_negatif": 74.28,
-    "recall_netral": 47.68,
-    "recall_positif": 79.23,
-    "f1_negatif": 79.18,
-    "f1_netral": 45.5,
-    "f1_positif": 72.78
+    "empiris": {
+        "test_accuracy": 73.01,
+        "macro_f1": 68.58,
+        "macro_recall": 69.84,
+        "recall_netral": 54.64,
+        "f1_netral": 51.16
+    },
+    "simulasi": {
+        "scenario_111": {
+            "scenario_name": "Skenario A (1:1:1)",
+            "test_accuracy": 66.99,
+            "macro_f1": 55.05,
+            "macro_recall": 57.81,
+            "recall_netral": 13.58,
+            "f1_netral": 18.55
+        },
+        "scenario_631": {
+            "scenario_name": "Skenario B (6:3:1)",
+            "test_accuracy": 63.47,
+            "macro_f1": 61.0,
+            "macro_recall": 62.4,
+            "recall_netral": 59.27,
+            "f1_netral": 39.0
+        },
+        "scenario_811": {
+            "scenario_name": "Skenario C (8:1:1)",
+            "test_accuracy": 65.78,
+            "macro_f1": 55.69,
+            "macro_recall": 54.54,
+            "recall_netral": 25.17,
+            "f1_netral": 26.76
+        }
+    }
 }
