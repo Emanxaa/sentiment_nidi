@@ -1,0 +1,14 @@
+{
+    "model_id": "02_lstm_class_weight",
+    "strategy": "LSTM Class Weighting",
+    "test_accuracy": 71.04,
+    "macro_precision": 65.19,
+    "macro_recall": 67.06,
+    "macro_f1": 65.82,
+    "recall_negatif": 74.28,
+    "recall_netral": 47.68,
+    "recall_positif": 79.23,
+    "f1_negatif": 79.18,
+    "f1_netral": 45.5,
+    "f1_positif": 72.78
+}

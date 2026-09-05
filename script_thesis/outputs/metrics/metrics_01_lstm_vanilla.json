@@ -1,0 +1,14 @@
+{
+    "model_id": "01_lstm_vanilla",
+    "strategy": "LSTM Natural Baseline",
+    "test_accuracy": 73.06,
+    "macro_precision": 64.88,
+    "macro_recall": 60.84,
+    "macro_f1": 58.53,
+    "recall_negatif": 87.51,
+    "recall_netral": 11.92,
+    "recall_positif": 83.1,
+    "f1_negatif": 83.29,
+    "f1_netral": 19.25,
+    "f1_positif": 73.05
+}

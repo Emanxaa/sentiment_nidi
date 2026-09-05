@@ -1,0 +1,14 @@
+{
+    "model_id": "04_lstm_random_undersampling",
+    "strategy": "LSTM Random Undersampling (RUS)",
+    "test_accuracy": 64.86,
+    "macro_precision": 55.51,
+    "macro_recall": 56.95,
+    "macro_f1": 56.06,
+    "recall_negatif": 72.47,
+    "recall_netral": 21.19,
+    "recall_positif": 77.19,
+    "f1_negatif": 74.33,
+    "f1_netral": 22.34,
+    "f1_positif": 71.51
+}

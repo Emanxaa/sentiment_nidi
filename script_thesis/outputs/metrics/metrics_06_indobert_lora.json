@@ -1,0 +1,14 @@
+{
+    "model_id": "06_indobert_lora",
+    "strategy": "IndoBERTweet-LoRA Vanilla (Argmax)",
+    "test_accuracy": 78.61,
+    "macro_precision": 73.94,
+    "macro_recall": 72.86,
+    "macro_f1": 73.27,
+    "recall_negatif": 86.34,
+    "recall_netral": 51.99,
+    "recall_positif": 80.24,
+    "f1_negatif": 85.47,
+    "f1_netral": 56.07,
+    "f1_positif": 78.25
+}

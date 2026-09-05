@@ -1,0 +1,14 @@
+{
+    "model_id": "05_lstm_smote",
+    "strategy": "LSTM SMOTE Sequences",
+    "test_accuracy": 64.39,
+    "macro_precision": 57.4,
+    "macro_recall": 58.96,
+    "macro_f1": 57.82,
+    "recall_negatif": 68.94,
+    "recall_netral": 32.78,
+    "recall_positif": 75.15,
+    "f1_negatif": 73.83,
+    "f1_netral": 31.99,
+    "f1_positif": 67.64
+}
