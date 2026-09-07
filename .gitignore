@@ -7,3 +7,22 @@ __pycache__/
 
 # Jupyter
 .ipynb_checkpoints/
+
+# Model & checkpoint
+*.pt
+*.bin
+*.safetensors
+*.ckpt
+*.pkl
+
+# Kaggle & temporary
+.kaggle-outputs/
+staging_kaggle_data/
+temp_kernel/
+
+# Training outputs
+script_thesis/outputs/
+
+# Cache
+__pycache__/
+.ipynb_checkpoints/

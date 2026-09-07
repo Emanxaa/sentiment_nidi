@@ -10,7 +10,7 @@ Alur komprehensif penelitian terbagi dalam empat tahapan utama:
 1. **Pengadaan dan Pembersihan Data (Preprocessing Modular)**: Pembersihan regex komprehensif, normalisasi leksikon kata gaul/slang, dan standardisasi label sentimen.
 2. **Partisi Data Bebas Kebocoran (*Zero Data Leakage*)**: Pembagian partisi data train, validation, dan test set dengan kunci acak terkunci `seed=42`.
 3. **Pembentukan 3 Skenario Simulasi Ketimpangan Data Latih**: Pembangunan skenario Seimbang (1:1:1), Moderat (6:3:1), dan Ekstrem (8:1:1) dari partisi data latih murni.
-4. **Eksperimen Pemodelan & Uji Signifikansi**: Pelatihan varian LSTM (Vanilla, Class Weighting, ROS, RUS, SMOTE) dan IndoBERTweet-LoRA Vanilla, evaluasi matriks konfusi, dan uji inferensial McNemar's Test.
+4. **Eksperimen Pemodelan, Tuning, Adaptasi Domain, & Uji Signifikansi**: Pelatihan varian LSTM (Vanilla/Nonbalancing, Class Weighting, ROS, RUS, SMOTE), IndoBERTweet-LoRA Vanilla, eksplorasi optimasi hiperparameter (*P1 Hyperparameter Sweep*), dan adaptasi domain mendalam *Task-Adaptive Pretraining* (*P2 TAPT via Masked Language Modeling*), diiringi evaluasi matriks konfusi komparatif serta uji inferensial McNemar's Test.
 
 ---
 
@@ -112,6 +112,25 @@ Model IndoBERTweet merupakan model bahasa pra-latih Transformer (*encoder-only*)
   $$W = W_0 + \Delta W = W_0 + \frac{\alpha}{r} (B \cdot A)$$
   di mana $A \in \mathbb{R}^{r \times k}$ diinisialisasi secara Gaussian, $B \in \mathbb{R}^{d \times r}$ diinisialisasi nol, peringkat rank $r = 16$, skala $\alpha = 32$, dan modul target adaptasi difokuskan pada matriks perhatian *query* dan *value*.
 * **Hyperparameter Pelatihan**: Laju pembelajaran (*learning rate*) $\alpha = 2 \times 10^{-4}$, ukuran batch = 16, dropout = 0.3, panjang sekuens maksimum = 128 token, dan evaluasi berbasis Macro F1.
+
+### 3.6.3 Eksplorasi Hyperparameter Sweep IndoBERTweet-LoRA (Fase P1)
+Untuk menguji apakah performa IndoBERTweet-LoRA dapat dimaksimalkan tanpa modifikasi arsitektur dasar, dilakukan eksplorasi sistematik terhadap ruang hiperparameter (*Hyperparameter Sweep*) sebanyak 10 uji coba (*trials*). Eksplorasi mencakup variasi kombinasi:
+* *Learning Rate* ($\alpha$): $1 \times 10^{-4}, 2 \times 10^{-4}, 3 \times 10^{-4}, 5 \times 10^{-4}$
+* *Warmup Ratio*: 0.06 dan 0.10
+* *Weight Decay*: 0.01 dan 0.05
+* *Max Sequence Length*: 64 dan 128 token
+
+Eksperimen ini bertujuan menemukan batas optimum tuning hiperparameter (*hyperparameter ceiling*) dan menguji apakah variasi parameter dapat secara signifikan meningkatkan kemampuan model dalam mendeteksi kelas minoritas Netral.
+
+### 3.6.4 Domain Adaptation melalui Task-Adaptive Pretraining / TAPT (Fase P2)
+Mengingat teks media sosial kebencanaan banjir memiliki leksikon lokal spesifik yang sangat padat (seperti toponimi sungai lokal: Ciliwung, Cisadane, Bengawan Solo; istilah hidrologis lokal: debit air, TMA, posko pengungsian; serta singkatan bahasa gaul daerah), representasi umum model IndoBERTweet dapat mengalami hambatan representasi (*representation bottleneck*).
+
+Untuk mengatasi kendala tersebut, diterapkan pendekatan **Task-Adaptive Pretraining (TAPT)**:
+1. **Unsupervised Domain Adaptation**: Menggunakan seluruh teks tweet dari korpus banjir ($N = 8.648$ tweet) tanpa label sentimen untuk mengadaptasi representasi bahasa ke domain kebencanaan lokal.
+2. **Masked Language Modeling (MLM)**: Model dilatih kembali selama 3 epoch dengan probabilitas *masking* 15% pada token teks menggunakan strategi *dynamic masking*.
+3. **Downstream LoRA Fine-Tuning**: Bobot representasi yang telah menginternalisasi leksikon domain banjir kemudian diadaptasi untuk klasifikasi sentimen 3-kelas menggunakan LoRA ($r=16, \alpha=32$).
+
+Tahap ini dirancang untuk membuktikan hipotesis bahwa adaptasi representasi bahasa domain-spesifik jauh lebih efektif dalam mendongkrak Macro F1 dan Akurasi dibandingkan sekadar melakukan tuning hiperparameter pada data hilir (*downstream*).
 
 ---
 
