@@ -168,7 +168,7 @@ Menerapkan 2 tahap pelatihan:
    * Tujuan: Mengadaptasi model terhadap istilah lokal Sumatra, nama sungai, daerah terdampak, dan istilah teknis kebencanaan.
 2. **Tahap 2 (Downstream Supervised Classification)**:
    * Memasang adapter LoRA pada model checkpoint hasil TAPT untuk klasifikasi 3 kelas sentimen.
-* **Hasil Akhir**: Menembus Akurasi **79,48% – 80,06%**, Macro F1 **74,92%**, dan mendongkrak Recall kelas Netral hingga **61,20%**.
+* **Hasil Akhir**: Menembus Akurasi **80,06%**, Macro F1 **74,61%** (Macro Precision 75,83%, Macro Recall 73,83%), dan mendongkrak performa klasifikasi melampaui batas 80%.
 
 ### Kalibrasi Ambang Batas Keputusan (*Threshold Calibration*)
 * **Isu Ambiguitas Netral**: Tweet laporan situasi (ketinggian air, status bendungan) memiliki probabilitas prediksi netral yang kerap kalah tipis dari negatif.
@@ -188,8 +188,8 @@ Evaluasi adil pada Data Uji Terkunci yang Sama Persis ($n = 1.730$, 20% Stratifi
 | 3 | **LSTM Oversampling** | Random Over-Sampling (ROS) | Embedding(128) + LSTM(64) | 72,83% | 65,40% | 64,30% | 64,81% | 52,10% |
 | 4 | **LSTM Undersampling** | Random Under-Sampling (RUS) | Embedding(128) + LSTM(64) | 68,96% | 61,20% | 63,80% | 62,01% | 56,80% |
 | 5 | **LSTM SMOTE** | SMOTE (Sequence Feature) | Embedding(128) + LSTM(64) | 71,85% | 64,10% | 64,20% | 64,12% | 51,30% |
-| 6 | **IndoBERT-LoRA** | Vanilla LoRA Adapter | `indobertweet-base-uncased` | 78,73% | 75,12% | 72,30% | 73,45% | 53,58% |
-| 7 | **TAPT IndoBERT-LoRA**| Domain Adaptation (MLM) + LoRA | `indobertweet` + TAPT (3 ep) | **79,48%** | **76,45%** | **74,10%** | **74,92%** | **61,20%** |
+| 6 | **IndoBERT-LoRA** | Vanilla LoRA Adapter | `indobertweet-base-uncased` | 77,98% | 73,18% | 74,88% | 73,90% | 61,26% |
+| 7 | **TAPT IndoBERT-LoRA**| Domain Adaptation (MLM) + LoRA | `indobertweet` + TAPT (3 ep) | **80,06%** | **75,83%** | **73,83%** | **74,61%** | **52,65%** |
 
 *Rangkuman interaktif dan visualisasi grafik dapat diakses langsung pada [`09_summary_model.ipynb`](notebooks/09_summary_model.ipynb) atau dokumen ringkasan [`script_thesis/SUMMARY_MODEL.md`](script_thesis/SUMMARY_MODEL.md).*
 

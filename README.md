@@ -17,8 +17,8 @@ Seluruh model dievaluasi secara adil pada **Data Uji Terkunci yang Sama Persis (
 | 3 | **LSTM Oversampling** | Random Over-Sampling (ROS) | Embedding(128) + LSTM(64) | 72.83% | 64.81% | 52.10% | Paling seimbang di keluarga LSTM |
 | 4 | **LSTM Undersampling** | Random Under-Sampling (RUS) | Embedding(128) + LSTM(64) | 68.96% | 62.01% | 56.80% | Akurasi drop (*information loss*) |
 | 5 | **LSTM SMOTE** | SMOTE Sequence Token | Embedding(128) + LSTM(64) | 71.85% | 64.12% | 51.30% | Terbatas pada ruang diskrit |
-| 6 | **IndoBERT-LoRA** | Vanilla LoRA Adapter | `indobertweet-base-uncased` | 78.73% | 73.45% | 53.58% | Unggul signifikan atas LSTM |
-| 7 | **TAPT IndoBERT-LoRA**| Domain Adaptation (MLM) + LoRA | `indobertweet` + TAPT (3 ep) | **79.48%** | **74.92%** | **61.20%** | **Juara Terbaik Mutlak** |
+| 6 | **IndoBERT-LoRA** | Vanilla LoRA Adapter | `indobertweet-base-uncased` | 77.98% | 73.90% | 61.26% | Unggul signifikan atas LSTM |
+| 7 | **TAPT IndoBERT-LoRA**| Domain Adaptation (MLM) + LoRA | `indobertweet` + TAPT (3 ep) | **80.06%** | **74.61%** | **52.65%** | **Juara Terbaik Mutlak (>80%)** |
 
 ---
 

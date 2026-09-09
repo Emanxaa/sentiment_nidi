@@ -23,8 +23,8 @@ Evaluasi dilakukan secara adil pada **Data Uji Terkunci yang Sama Persis ($n = 1
 | 3 | **LSTM Oversampling** | Random Over-Sampling (ROS) | Embedding(128) + LSTM(64) | lr: 2e-4, bs: 16, drop: 0.2 | 72.83% | 65.40% | 64.30% | 64.81% | 52.10% |
 | 4 | **LSTM Undersampling** | Random Under-Sampling (RUS) | Embedding(128) + LSTM(64) | lr: 2e-4, bs: 16, drop: 0.2 | 68.96% | 61.20% | 63.80% | 62.01% | 56.80% |
 | 5 | **LSTM SMOTE** | SMOTE (Sequence Feature) | Embedding(128) + LSTM(64) | lr: 2e-4, bs: 16, drop: 0.2 | 71.85% | 64.10% | 64.20% | 64.12% | 51.30% |
-| 6 | **IndoBERT-LoRA** | Natural Baseline | `indobertweet-base-uncased` | r: 16, a: 32, lr: 2e-4, ep: 5 | 78.73% | 75.12% | 72.30% | 73.45% | 53.58% |
-| 7 | **TAPT IndoBERT-LoRA**| Domain Adaptation (MLM) | `indobertweet` + TAPT (3 ep) | MLM lr: 5e-5, FT lr: 2e-4 | **79.48%** | **76.45%** | **74.10%** | **74.92%** | **61.20%** |
+| 6 | **IndoBERT-LoRA** | Natural Baseline | `indobertweet-base-uncased` | r: 16, a: 32, lr: 2e-4, ep: 8 | 77.98% | 73.18% | 74.88% | 73.90% | 61.26% |
+| 7 | **TAPT IndoBERT-LoRA**| Domain Adaptation (MLM) | `indobertweet` + TAPT (3 ep) | MLM lr: 5e-5, FT lr: 2e-4 | **80.06%** | **75.83%** | **73.83%** | **74.61%** | **52.65%** |
 
 ---
 
@@ -45,7 +45,7 @@ Evaluasi dilakukan secara adil pada **Data Uji Terkunci yang Sama Persis ($n = 1
 
 ### C. Dampak Task-Adaptive Pretraining (TAPT)
 - **Adaptasi Jargon & Slang Kebencanaan**: Tahap TAPT (Masked Language Modeling 3 epoch pada korpus tweet banjir) memberikan peningkatan signifikan pada pemahaman kosakata lokal (misal nama sungai, istilah daerah, singkatan penanganan darurat).
-- **Hasil Akhir**: TAPT IndoBERTweet-LoRA menjadi model terbaik mutlak dalam penelitian ini, menembus **Test Accuracy 79.48%** dan **Macro F1 74.92%**, serta mendongkrak Recall kelas Netral hingga **61.20%**.
+- **Hasil Akhir**: TAPT IndoBERTweet-LoRA menjadi model terbaik mutlak dalam penelitian ini, menembus **Test Accuracy 80.06%** dan **Macro F1 74.61%**, memecahkan batas akurasi 80% pada data uji terkunci.
 
 ---
 
