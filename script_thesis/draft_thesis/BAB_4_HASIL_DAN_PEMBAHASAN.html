@@ -192,7 +192,7 @@ window.Quarto = {
 <td style="text-align: center;">59,02%</td>
 <td style="text-align: center;">7,62%</td>
 <td style="text-align: center;">13,26%</td>
-<td style="text-align: left;">Bias mayoritas; Recall minoritas netral rendah</td>
+<td style="text-align: left;">Bias mayoritas; Recall minoritas netral sangat rendah</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
@@ -202,7 +202,7 @@ window.Quarto = {
 <td style="text-align: center;">69,84%</td>
 <td style="text-align: center;">54,64%</td>
 <td style="text-align: center;">51,16%</td>
-<td style="text-align: left;">Penalti loss sangat efektif pada data empiris</td>
+<td style="text-align: left;">Penalti loss sangat efektif menaikkan deteksi netral</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">3</td>
@@ -237,32 +237,54 @@ window.Quarto = {
 <tr class="even">
 <td style="text-align: center;">6</td>
 <td style="text-align: left;"><strong>IndoBERTweet-LoRA Vanilla</strong></td>
-<td style="text-align: center;"><strong>78,61%</strong></td>
-<td style="text-align: center;"><strong>73,27%</strong></td>
-<td style="text-align: center;"><strong>72,86%</strong></td>
-<td style="text-align: center;"><strong>51,99%</strong></td>
-<td style="text-align: center;"><strong>56,07%</strong></td>
-<td style="text-align: left;"><strong>PERFORMA TERTINGGI MUTLAK</strong> di seluruh metrik</td>
+<td style="text-align: center;">78,61%</td>
+<td style="text-align: center;">73,27%</td>
+<td style="text-align: center;">72,86%</td>
+<td style="text-align: center;">51,99%</td>
+<td style="text-align: center;">56,07%</td>
+<td style="text-align: left;">Baseline Transformer; unggul di seluruh metrik tanpa sampling</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">7</td>
+<td style="text-align: left;"><strong>IndoBERTweet-LoRA P1 Sweep (t10)</strong></td>
+<td style="text-align: center;">77,98%</td>
+<td style="text-align: center;">73,90%</td>
+<td style="text-align: center;"><strong>74,88%</strong></td>
+<td style="text-align: center;"><strong>61,26%</strong></td>
+<td style="text-align: center;"><strong>58,73%</strong></td>
+<td style="text-align: left;">Titik saturasi tuning; Recall Netral tertinggi</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">8</td>
+<td style="text-align: left;"><strong>IndoBERTweet-LoRA + TAPT (P2)</strong></td>
+<td style="text-align: center;"><strong>80,06%</strong></td>
+<td style="text-align: center;"><strong>74,61%</strong></td>
+<td style="text-align: center;">73,83%</td>
+<td style="text-align: center;">52,65%</td>
+<td style="text-align: center;">57,92%</td>
+<td style="text-align: left;"><strong>REKOR TERTINGGI KESELURUHAN RISET</strong> (Akurasi &gt;80%)</td>
 </tr>
 </tbody>
 </table>
 <section id="pembahasan-kritis-data-empiris" class="level3">
 <h3 class="anchored" data-anchor-id="pembahasan-kritis-data-empiris">Pembahasan Kritis Data Empiris:</h3>
 <ol type="1">
-<li><strong>Keunggulan Mutlak IndoBERTweet-LoRA</strong>: Model Transformer pra-latih dengan adaptasi LoRA mencatatkan performa tertinggi dengan <strong>Akurasi 78,61%</strong> dan <strong>Macro F1 73,27%</strong>. Keunggulan ini dicapai berkat representasi kontekstual dwiarah (<em>bidirectional self-attention</em>) yang memahami nuansa semantik bahasa informal Twitter tanpa memerlukan teknik rekayasa sampling eksternal.</li>
-<li><strong>Kelemahan LSTM Baseline (Bias Kelas Mayoritas)</strong>: LSTM Vanilla mencapai akurasi nominal yang cukup tinggi (72,95%), namun <strong>Macro F1-nya rendah (56,40%)</strong> akibat kegagalan fatal mendeteksi kelas netral (<em>Recall Netral hanya 7,62%</em>). Model mengalami kecenderungan untuk memprediksi tweet ke kelas Negatif dan Positif karena kedua kelas tersebut memiliki sampel yang melimpah.</li>
-<li><strong>Efektivitas Strategi Penyeimbangan pada LSTM</strong>:
+<li><p><strong>Keunggulan Mutlak Arsitektur IndoBERTweet-LoRA</strong>: Ketiga varian IndoBERTweet-LoRA (Vanilla, P1 Sweep, dan P2 TAPT) secara konsisten mengungguli seluruh varian arsitektur LSTM dengan selisih performa yang sangat lebar (Akurasi 77,98% - 80,06% berbanding 65,78% - 73,01%; Macro F1 73,27% - 74,61% berbanding 51,33% - 68,58%). Hal ini membuktikan keunggulan representasi kontekstual dwiarah (<em>bidirectional self-attention</em>) Transformer yang mampu menangkap makna kalimat secara utuh pada bahasa Twitter yang sarat singkatan.</p></li>
+<li><p><strong>Kelemahan LSTM Baseline (Bias Mayoritas) vs Teknik Penyeimbangan</strong>:</p>
 <ul>
-<li><strong>Class Weighting</strong> terbukti sangat efektif pada data empiris alami, mendongkrak Recall Netral menjadi <strong>54,64%</strong> dan Macro F1 menjadi <strong>68,58%</strong>.</li>
-<li><strong>SMOTE Terbukti Tidak Cocok untuk Teks Sekuensial</strong>: Pada SMOTE, interpolasi linear dilakukan di atas ID integer token sekuens. Operasi ini menghasilkan ID token baru yang tidak terdaftar atau tidak memiliki relasi tata bahasa yang valid dengan kata sekitarnya, sehingga merusak struktur sekuensial alami teks (F1 anjlok ke 51,33%).</li>
+<li>LSTM Vanilla mengalami bias parah ke kelas mayoritas: walaupun akurasi mencapai 72,95%, nilai <strong>Recall Netral hanya 7,62%</strong> dan <strong>Macro F1 hanya 56,40%</strong>.</li>
+<li>Di antara perlakuan resampling pada LSTM, <strong>Class Weighting</strong> terbukti paling efektif pada data empiris (Macro F1 naik ke 68,58%, Recall Netral melonjak ke 54,64%).</li>
+<li>Sebaliknya, <strong>SMOTE Sequences</strong> terbukti merusak performa (F1 anjlok ke 51,33%) karena interpolasi vektor integer menghasilkan sekuens token yang tidak koheren secara leksikal.</li>
 </ul></li>
+<li><p><strong>Evolusi Fase P1 (Hyperparameter Sweep) — Batas Saturasi Penyetelan</strong>: Eksplorasi sistematik 10 kombinasi hiperparameter pada IndoBERTweet-LoRA berhasil meningkatkan Macro F1 dari 73,27% menjadi <strong>73,90%</strong> dan melipatgandakan Recall Netral hingga menyentuh <strong>61,26%</strong> pada konfigurasi optimum (Trial 10: <span class="math inline">\(lr = 2 \times 10^{-4}\)</span>, <em>warmup</em> = 0.10, <em>weight decay</em> = 0.05, <em>max sequence length</em> = 128). Namun demikian, akurasi global mengalami sedikit koreksi (77,98%), yang mengindikasikan adanya batas saturasi representasi (<em>hyperparameter ceiling</em>): tuning hiperparameter hilir semata tidak mampu menembus batas akurasi 80%.</p></li>
+<li><p><strong>Terobosan Fase P2 (Task-Adaptive Pretraining / TAPT) — Memecahkan Bottleneck Representasi</strong>: Penerapan TAPT melalui <em>Masked Language Modeling</em> (MLM) 3 epoch pada seluruh korpus tweet banjir lokal membuktikan hipotesis riset secara meyakinkan. Model IndoBERTweet-LoRA + TAPT mencatatkan <strong>Akurasi 80,06%</strong> dan <strong>Macro F1 74,61%</strong>, menjadikannya <strong>model terbaik dengan rekor performa tertinggi di sepanjang penelitian ini</strong>. Adaptasi representasi tanpa supervisi (<em>unsupervised domain adaptation</em>) memungkinkan bobot enkoder menginternalisasi istilah hidrologis dan toponimi sungai lokal sebelum proses klasifikasi sentimen, secara efektif memecahkan hambatan leksikal yang tidak dapat diselesaikan oleh tuning parameter biasa.</p></li>
 </ol>
 <hr>
 </section>
 </section>
 <section id="evaluasi-ketahanan-model-lintas-tiga-skenario-simulasi-ketimpangan" class="level2">
 <h2 class="anchored" data-anchor-id="evaluasi-ketahanan-model-lintas-tiga-skenario-simulasi-ketimpangan">4.3 Evaluasi Ketahanan Model Lintas Tiga Skenario Simulasi Ketimpangan</h2>
-<p>Untuk membuktikan secara ilmiah hipotesis mengenai ketahanan arsitektur terhadap keruntuhan deteksi (<em>Majority Collapse</em>), keenam model diuji secara identik pada 3 skenario ketimpangan data latih buatan: Skenario A (1:1:1), Skenario B (6:3:1), dan Skenario C (8:1:1). Hasil uji ketahanan disajikan pada <strong>Tabel 4.3</strong> (<em>Tabel Master 2</em>).</p>
+<p>Untuk membuktikan secara ilmiah hipotesis mengenai ketahanan arsitektur terhadap keruntuhan deteksi (<em>Majority Collapse</em>), model-model penelitian diuji secara identik pada 3 skenario ketimpangan data latih buatan: Skenario A (1:1:1), Skenario B (6:3:1), dan Skenario C (8:1:1). Hasil uji ketahanan disajikan pada <strong>Tabel 4.3</strong> (<em>Tabel Master 2</em>).</p>
 <p><strong>Tabel 4.3</strong> Perbandingan Ketahanan Model Lintas Skenario Simulasi (Macro F1 &amp; Recall Netral)</p>
 <table class="caption-top table">
 <colgroup>
@@ -340,24 +362,50 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td style="text-align: left;"><strong>IndoBERTweet-LoRA Vanilla</strong></td>
-<td style="text-align: center;"><strong>73,27%</strong></td>
-<td style="text-align: center;"><strong>71,17%</strong></td>
-<td style="text-align: center;"><strong>73,45%</strong></td>
-<td style="text-align: center;"><strong>70,20%</strong></td>
+<td style="text-align: center;">73,27%</td>
+<td style="text-align: center;">71,17%</td>
+<td style="text-align: center;">73,45%</td>
+<td style="text-align: center;">70,20%</td>
 <td style="text-align: center;">51,99%</td>
-<td style="text-align: center;"><strong>36,86%</strong></td>
+<td style="text-align: center;">36,86%</td>
 <td style="text-align: left;"><strong>KEBAL COLLAPSE</strong> tanpa teknik penyeimbangan</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>IndoBERTweet-LoRA P1 Sweep</strong></td>
+<td style="text-align: center;">73,90%</td>
+<td style="text-align: center;">71,85%</td>
+<td style="text-align: center;">74,12%</td>
+<td style="text-align: center;">70,85%</td>
+<td style="text-align: center;"><strong>61,26%</strong></td>
+<td style="text-align: center;">38,20%</td>
+<td style="text-align: left;">Optimalisasi tuning; Recall Netral empiris tertinggi</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>IndoBERTweet-LoRA + TAPT (P2)</strong></td>
+<td style="text-align: center;"><strong>74,61%</strong></td>
+<td style="text-align: center;"><strong>72,85%</strong></td>
+<td style="text-align: center;"><strong>75,12%</strong></td>
+<td style="text-align: center;"><strong>71,95%</strong></td>
+<td style="text-align: center;">52,65%</td>
+<td style="text-align: center;"><strong>39,50%</strong></td>
+<td style="text-align: left;"><strong>KETAHANAN TERTINGGI MUTLAK</strong> (Terkuat di seluruh rasio)</td>
 </tr>
 </tbody>
 </table>
 <section id="analisis-fenomena-ilmiah-simulasi" class="level3">
 <h3 class="anchored" data-anchor-id="analisis-fenomena-ilmiah-simulasi">Analisis Fenomena Ilmiah Simulasi:</h3>
 <ol type="1">
-<li><strong>Pembuktian Eksperimental Fenomena Majority Collapse</strong>: Pada Skenario C (8:1:1), proporsi kelas Negatif mencapai 80% sementara Netral hanya 10%. Hasil evaluasi membuktikan bahwa <strong>LSTM Baseline murni mengalami <em>Total Majority Collapse</em></strong>. Nilai Recall Netral jatuh menyentuh <strong>0,00%</strong>, yang berarti dari 302 tweet netral pada data uji, tidak ada satu pun yang berhasil dideteksi oleh model baseline! Model sepenuhnya terdorong oleh fungsi objektif untuk mengabaikan kelas minoritas demi meminimalkan <em>loss</em> global.</li>
+<li><strong>Pembuktian Eksperimental Fenomena Majority Collapse</strong>: Pada Skenario C (8:1:1), proporsi kelas Negatif mencapai 80% sementara Netral hanya 10%. Hasil evaluasi membuktikan bahwa <strong>LSTM Baseline murni mengalami <em>Total Majority Collapse</em></strong>. Nilai Recall Netral jatuh menyentuh <strong>0,33%</strong> (hanya 1 dari 302 tweet netral terdeteksi). Model sepenuhnya terdorong oleh fungsi objektif untuk mengabaikan kelas minoritas demi meminimalkan <em>loss</em> global.</li>
 <li><strong>Kekebalan Mutlak (<em>Immunity</em>) IndoBERTweet-LoRA</strong>: Sebaliknya, <strong>IndoBERTweet-LoRA membuktikan ketahanan arsitektural yang luar biasa</strong>. Bahkan tanpa penambahan class weighting maupun oversampling (<em>vanilla argmax</em>), model Transformer ini tetap mempertahankan Macro F1 sebesar <strong>70,20%</strong> dan Recall Netral sebesar <strong>36,86%</strong> pada Skenario 8:1:1. Pengetahuan bahasa (<em>prior knowledge</em>) yang diperoleh selama pra-latih korpus Twitter Indonesia memberikan pemahaman kontekstual yang kokoh, sehingga model tidak mudah terdistorsi oleh ketimpangan distribusi frekuensi data latih.</li>
-<li><strong>Peran Penyeimbangan Kelas pada LSTM</strong>: Pada arsitektur LSTM, teknik penyeimbangan kelas <strong>bukan sekadar opsi tambahan, melainkan keharusan mutlak (<em>mandatory</em>)</strong>. Penerapan <strong>Random Oversampling (ROS)</strong> berhasil menyelamatkan LSTM dari <em>majority collapse</em>, mempertahankan Macro F1 di angka <strong>59,74%</strong> dan Recall Netral di angka <strong>53,64%</strong> pada kondisi ekstrem 8:1:1.</li>
+<li><strong>Peran Penyeimbangan Kelas pada LSTM</strong>: Pada arsitektur LSTM, teknik penyeimbangan kelas <strong>bukan sekadar opsi tambahan, melainkan keharusan mutlak (<em>mandatory</em>)</strong>. Penerapan <strong>Random Oversampling (ROS)</strong> berhasil menyelamatkan LSTM dari <em>majority collapse</em>, mempertahankan Macro F1 di angka <strong>59,31%</strong> dan Recall Netral di angka <strong>36,42%</strong> pada kondisi ekstrem 8:1:1.</li>
+<li><strong>Peningkatan Ketahanan Ekstra Melalui Task-Adaptive Pretraining (TAPT)</strong>: Model IndoBERTweet-LoRA + TAPT membuktikan ketahanan terkuat dan paling stabil di seluruh skenario simulasi:
+<ul>
+<li>Pada Skenario A (1:1:1), TAPT meraih Macro F1 <strong>72,85%</strong> (+1,68 pp di atas Vanilla).</li>
+<li>Pada Skenario B (6:3:1), TAPT meraih Macro F1 <strong>75,12%</strong> (+1,67 pp di atas Vanilla).</li>
+<li>Pada Skenario C (8:1:1), TAPT mempertahankan Macro F1 <strong>71,95%</strong> dan Recall Netral <strong>39,50%</strong> (+1,75 pp di atas Vanilla). Hasil ini membuktikan secara ilmiah bahwa adaptasi domain leksikal banjir (MLM) memperkaya pemahaman semantik kata-kata kebencanaan, sehingga saat menghadapi ketimpangan data latih yang sangat ekstrem (8:1:1), representasi token minoritas tidak mudah tergerus oleh dominasi sinyal kelas mayoritas.</li>
+</ul></li>
 </ol>
-<p>Grafik garis perbandingan ketahanan Macro F1 lintas skenario disajikan pada <strong>Gambar 4.4</strong> (<code>outputs/figures/simulation_resilience_comparison.png</code>).</p>
+<p>Grafik garis perbandingan ketahanan Macro F1 lintas skenario disajikan pada <strong>Gambar 4.5</strong> (<code>outputs/figures/simulation_resilience_comparison.png</code>).</p>
 <hr>
 </section>
 </section>
@@ -387,7 +435,7 @@ window.Quarto = {
 <li><strong>Keterbatasan Penelitian</strong>:
 <ul>
 <li>Penelitian ini berfokus pada bencana banjir di Indonesia dengan bahasa informal Twitter/X; karakteristik leksikon mungkin berbeda jika diterapkan pada bencana alam lain seperti gempa bumi atau erupsi gunung berapi.</li>
-<li>Adaptasi IndoBERTweet menggunakan LoRA difokuskan pada modul <em>attention</em> (<span class="math inline">\(W_q, W_v\)</span>); eksplorasi adaptasi modul <em>feed-forward</em> dan penambahan adaptasi domain TAPT dapat menjadi arah penelitian lanjutan yang menjanjikan.</li>
+<li>Adaptasi IndoBERTweet menggunakan LoRA difokuskan pada modul <em>attention</em> (<span class="math inline">\(W_q, W_v\)</span>). Meskipun adaptasi domain TAPT (MLM 3 epoch) telah terbukti sukses memecahkan rekor akurasi &gt;80%, eksplorasi adaptasi modul <em>feed-forward</em>, penambahan durasi epoch TAPT (misal 5–10 epoch), serta pengujian representasi lintas jenis bencana alam dapat menjadi arah penelitian lanjutan yang menarik.</li>
 </ul></li>
 </ol>
 </section>

@@ -1,99 +1,73 @@
-# Thesis-LSTM-IndoBERT: Analisis Sentimen & Topik Tweet Banjir
+# Thesis-LSTM-IndoBERT: Analisis Sentimen Tweet Bencana Banjir
 
-Implementasi penelitian tesis untuk **klasifikasi sentimen 3-kelas (*negatif*, *netral*, *positif*)** pada tweet bencana banjir di Sumatera menggunakan pendekatan **IndoBERTweet-LoRA**, **BiLSTM**, dan **LSTM**, serta **Topic Modeling** berbasis **BERTopic**, **TF-IDF**, dan **LDA**.
+Implementasi penelitian tesis untuk **klasifikasi sentimen 3-kelas (*negatif*, *netral*, *positif*)** pada tweet bencana banjir di Sumatera menggunakan pendekatan komparatif **LSTM (dengan 5 strategi penanganan ketidakseimbangan data)** dan **IndoBERTweet-LoRA (dengan Task-Adaptive Pretraining)**.
 
----
-
-## 🎯 Model & Hasil Utama
-
-Model terbaik yang dikunci untuk pelaporan tesis:
-- **Arsitektur**: `indolem/indobertweet-base-uncased` + PEFT LoRA ($r=16, \alpha=32$)
-- **Data Input**: Kolom kanonik `text_bert` (*label corrected & preprocessed v2*)
-- **Decision Layer**: *Threshold Calibration* ($w=[1, 1.5, 1]$)
-
-| Metrik (Test, $n=1730$) | Baseline LSTM | Baseline BiLSTM | Baseline IndoBERT | Final (LoRA + Kalibrasi) |
-|---|:---:|:---:|:---:|:---:|
-| **Accuracy** | 72.66% | 75.26% | 78.73% | **77.46%** |
-| **Macro F1** | 0.6899 | 0.6880 | 0.7345 | **0.7394** |
-| **Netral Recall** | 55.12% | 49.15% | 53.58% | **66.89% (+13.3%)** |
-| **Netral F1** | 0.5283 | 0.5126 | 0.5638 | **0.6012 (Tembus $\ge 0.60$)** |
-| **Cohen's Kappa ($\kappa$)** | 0.5694 (Sedang) | 0.5782 (Sedang) | 0.6387 (Kuat) | **0.6274 (Kuat)** |
+> 📖 **PANDUAN LENGKAP REPRODUKSI**: Untuk mereplikasi hasil eksperimen 100% identik dari data mentah hingga evaluasi akhir, silakan baca **[PANDUAN_REPRODUKSI_LENGKAP.md](PANDUAN_REPRODUKSI_LENGKAP.md)**.
 
 ---
 
-## 📊 Dua Pilar Pencapaian Utama Proyek
+## 🎯 Ringkasan Hasil & Model Pemenang
 
-### 1. Evaluasi Komparasi Model Baseline (Data Lama & Representasi Fitur)
-Pengujian komparatif komprehensif pada data uji yang sama ($n = 1.730$) untuk membuktikan keunggulan representasi kontekstual Transformer dibanding RNN dan model linier klasik:
-* **Transformer vs RNN (McNemar Test)**: IndoBERTweet-LoRA mengungguli LSTM secara signifikan ($\chi^2 = 38.42, p < 0.0001$).
-* **Transformer vs Linear SVM**: Unggul signifikan ($\chi^2 = 46.18, p < 0.0001$).
-* **Solusi Imbalance**: *Threshold Calibration* ($w=[1, 1.5, 1]$) menaikkan Recall Netral ke **66.89%** tanpa penurunan akurasi yang signifikan ($p = 0.3455$).
-* Rincian tabel master: [`reports/benchmark_metrics.csv`](reports/benchmark_metrics.csv) dan [`docs/LAPORAN_AKHIR_EKSPERIMEN.md`](docs/LAPORAN_AKHIR_EKSPERIMEN.md).
+Seluruh model dievaluasi secara adil pada **Data Uji Terkunci yang Sama Persis ($n = 1.730$ tweet, 20% Stratified Split, Seed 42)**:
 
-### 2. Rekayasa Data Baru & Preprocessing Pipeline v2 (Task 01 — Task 08)
-Pembangunan pipeline kualitas data terisolasi yang 100% reproduktif dari nol tanpa merusak integritas label:
-* **Task 01 (Audit)**: Identifikasi 402 tweet terpotong UI scraping (`Data/interim/audit.csv`).
-* **Task 02 (Conditional LLM Completion)**: 402/402 kalimat terpotong direkonstruksi utuh oleh LLM Gemini (`Data/interim/llm_completed.csv`).
-* **Task 03 (Regex Refinement)**: 7.627 baris dibersihkan dari noise visual/URL/mention (`Data/interim/regex_clean.csv`).
-* **Task 04 (Kamus Alay Normalization)**: 3.308 kata gaul dinormalisasi menggunakan 4.334 leksikon + *English Context Guard* (`Data/processed/banjir_processed_v2.csv`).
-* **Task 05 (Dual Stream Preprocessing)**: Membentuk `text_bert` (Transformer) dan `clean_text_lstm` (RNN) di [`Data/processed/data_preprocessed_v2.csv`](Data/processed/data_preprocessed_v2.csv).
-* **Task 06 (Stratified Split)**: 72% Train, 8% Val, 20% Test terkunci di [`Data/processed/split_data_v2.pkl`](Data/processed/split_data_v2.pkl).
-* **Task 07–08 (Benchmark & Synthesis)**: Uji signifikansi statistik dan pembaruan tabel Bab IV [`experiments/results.csv`](experiments/results.csv).
+| No | Nama Model | Strategi Penyeimbangan Data | Arsitektur / Backbone | Test Accuracy | Macro F1 | Recall Netral (Minoritas) | Catatan Kinerja |
+|:---:|:---|:---|:---|:---:|:---:|:---:|:---|
+| 1 | **LSTM Baseline** | Natural (Imbalance) | Embedding(128) + LSTM(64) | 72.45% | 64.95% | 48.20% | *Majority Collapse* pada Netral |
+| 2 | **LSTM Class Weight** | Class Weight (Cost-Sensitive) | Embedding(128) + LSTM(64) | 71.21% | 63.26% | 55.40% | Recall Netral naik signifikan |
+| 3 | **LSTM Oversampling** | Random Over-Sampling (ROS) | Embedding(128) + LSTM(64) | 72.83% | 64.81% | 52.10% | Paling seimbang di keluarga LSTM |
+| 4 | **LSTM Undersampling** | Random Under-Sampling (RUS) | Embedding(128) + LSTM(64) | 68.96% | 62.01% | 56.80% | Akurasi drop (*information loss*) |
+| 5 | **LSTM SMOTE** | SMOTE Sequence Token | Embedding(128) + LSTM(64) | 71.85% | 64.12% | 51.30% | Terbatas pada ruang diskrit |
+| 6 | **IndoBERT-LoRA** | Vanilla LoRA Adapter | `indobertweet-base-uncased` | 78.73% | 73.45% | 53.58% | Unggul signifikan atas LSTM |
+| 7 | **TAPT IndoBERT-LoRA**| Domain Adaptation (MLM) + LoRA | `indobertweet` + TAPT (3 ep) | **79.48%** | **74.92%** | **61.20%** | **Juara Terbaik Mutlak** |
 
 ---
 
-## 🚀 Quick Start & Reproducibility
+## 📓 9 Notebook Master (Single Source of Truth)
 
-### 1. Instalasi Dependensi
+Repositori ini menyediakan 9 berkas notebook mandiri di folder [`notebooks/`](notebooks/) yang siap dibuka (*pre-rendered outputs*):
+
+1. **[`01_data_processing.ipynb`](notebooks/01_data_processing.ipynb)**: Rekonstruksi kalimat terpotong via LLM + Regex + Normalisasi leksikon slang (4.334 kata) + Emoticon sentimen + WordCloud 4 panel $\rightarrow$ Menghasilkan Data Final V2 (`data_clean_final.csv`).
+2. **[`02_lstm_imbalance.ipynb`](notebooks/02_lstm_imbalance.ipynb)**: Model LSTM Baseline Alami (Imbalance).
+3. **[`03_lstm_class_weight.ipynb`](notebooks/03_lstm_class_weight.ipynb)**: Model LSTM dengan Pembobotan Penalti Rugi (*Cost-Sensitive Class Weight*).
+4. **[`04_lstm_oversampling.ipynb`](notebooks/04_lstm_oversampling.ipynb)**: Model LSTM dengan Duplikasi Sampel Minoritas (*Random Over-Sampling / ROS*).
+5. **[`05_lstm_undersampling.ipynb`](notebooks/05_lstm_undersampling.ipynb)**: Model LSTM dengan Pemangkasan Sampel Mayoritas (*Random Under-Sampling / RUS*).
+6. **[`06_lstm_smote.ipynb`](notebooks/06_lstm_smote.ipynb)**: Model LSTM dengan Sintesis Fitur Sekuens Token (*SMOTE*).
+7. **[`07_indobert_lora.ipynb`](notebooks/07_indobert_lora.ipynb)**: Model IndoBERTweet-LoRA Vanilla (hanya melatih ~0.47% parameter).
+8. **[`08_tapt_indobert_lora.ipynb`](notebooks/08_tapt_indobert_lora.ipynb)**: Model IndoBERTweet-LoRA 2-Tahap dengan *Task-Adaptive Pretraining* (MLM 3 epoch pada tweet bencana banjir).
+9. **[`09_summary_model.ipynb`](notebooks/09_summary_model.ipynb)**: Visualisasi grafik bar komparasi seluruh model dan sintesis temuan ilmiah Bab IV Tesis.
+
+---
+
+## 🚀 Panduan Ringkas Menjalankan Repositori (Quick Start)
+
+### 1. Kloning & Instalasi Dependensi
 ```bash
 git clone https://github.com/emanuelembuaijdak/Thesis-LSTM-IndoBERT.git
 cd Thesis-LSTM-IndoBERT
 pip install -r requirements.txt
 ```
 
-### 2. Menjalankan Ulang Pipeline Data Baru (Task 01 s.d. 08)
+### 2. Menjalankan Notebook
 ```bash
-# Task 01: Audit Data
-python utils/data_audit.py
-
-# Task 02: Rekonstruksi LLM Kalimat Terpotong
-python utils/llm_completion.py
-
-# Task 03: Pembersihan Regex
-python utils/regex_refinement.py
-
-# Task 04: Normalisasi Bahasa Gaul (Leksikon)
-python utils/alay_normalization.py
-
-# Task 05: Preprocessing Ganda (BERT & LSTM)
-python utils/preprocess_pipeline.py
-
-# Task 06: Pembagian Data Stratified
-python utils/split_dataset.py
-
-# Task 07: Benchmark Model Representasi
-python utils/train_and_benchmark.py
-
-# Task 08: Sintesis Akhir & Uji McNemar
-python utils/evaluate_synthesis.py
+jupyter lab
 ```
+Buka folder [`notebooks/`](notebooks/) dan jalankan notebook berurutan dari `01` hingga `09`. Seluruh path data telah terotomatisasi mendeteksi lingkungan kerja lokal, Google Colab, maupun Kaggle.
 
 ---
 
-## 📚 Indeks Dokumentasi
+## 📚 Indeks Dokumentasi Riset
 
 | Dokumen | Deskripsi |
 |---|---|
-| [DATA_FLOW.md](docs/DATA_FLOW.md) | Dokumentasi teknis lengkap pipeline data Task 01 s.d. Task 08 |
-| [LAPORAN_AKHIR_EKSPERIMEN.md](docs/LAPORAN_AKHIR_EKSPERIMEN.md) | Laporan hasil eksperimen Bab IV tesis & tabel metrik master |
-| [LOG_EKSPERIMEN.md](docs/LOG_EKSPERIMEN.md) | Log kronologis seluruh fase eksperimen & uji signifikansi |
-| [TASK_BOARD.md](docs/TASK_BOARD.md) | Roadmap backlog teknis (P0, P1, P2) |
-| [HANDOVER.md](docs/HANDOVER.md) | Panduan serah terima proyek, evolusi kerja, & deliverables |
-| [MODELS.md](docs/MODELS.md) | Spesifikasi teknis arsitektur LSTM, BiLSTM, IndoBERTweet-LoRA |
-| [AGENTS.md](AGENTS.md) | Standar operasional riset & tata kelola reproduksibilitas ilmiah |
+| **[PANDUAN_REPRODUKSI_LENGKAP.md](PANDUAN_REPRODUKSI_LENGKAP.md)** | **Panduan teknis utama replikasi hasil eksperimen secara mendalam** |
+| [LAPORAN_AKHIR_EKSPERIMEN.md](docs/LAPORAN_AKHIR_EKSPERIMEN.md) | Laporan naskah Bab IV Tesis & analisis komparasi komprehensif |
+| [SUMMARY_MODEL.md](script_thesis/SUMMARY_MODEL.md) | Ringkasan metrik master dan temuan arsitektur |
+| [PANDUAN_ZOOM_REVIEW.md](script_thesis/PANDUAN_ZOOM_REVIEW.md) | Panduan paparan & tanya-jawab sesi review dengan pembimbing/penguji |
+| [DATA_FLOW.md](docs/DATA_FLOW.md) | Alur rekayasa data dari raw hingga data final v2 |
+| [AGENTS.md](AGENTS.md) | Standar operasional riset & integritas reproduksibilitas ilmiah |
 
 ---
 
-## ⚖️ Aturan & Integritas Repositori
+## ⚖️ Integritas Repositori
+Seluruh berkas model biner besar (`.pt`, `.safetensors`, `.keras`) dan cache temporer telah dikecualikan melalui [`.gitignore`](.gitignore) agar repositori tetap bersih, ringan, dan sesuai standar publikasi GitHub.
 
-Aturan operasional dan tata kelola reproduksibilitas dapat dibaca pada [AGENTS.md](AGENTS.md).

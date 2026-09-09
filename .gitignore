@@ -1,28 +1,80 @@
-# API key & secret (jangan pernah dikomit)
-.env
+# ==============================================================================
+# Thesis-LSTM-IndoBERT - Git Ignore Configuration
+# Memastikan repositori tetap bersih, ringan, dan siap dipublikasikan di GitHub
+# ==============================================================================
 
-# Python
+# --- Lingkungan & Kredensial ---
+.env
+.env.*
+*.secret
+
+# --- Python & Cache ---
 __pycache__/
 *.py[cod]
+*$py.class
+*.so
+.pytest_cache/
 
-# Jupyter
+# --- Virtual Environment ---
+venv/
+.venv/
+env/
+ENV/
+
+# --- Jupyter Notebook Cache & Checkpoints ---
 .ipynb_checkpoints/
+*-checkpoint.ipynb
+.virtual_documents/
 
-# Model & checkpoint
+# --- Model Weights, Checkpoints & Binary Dumps (Ukuran Besar) ---
 *.pt
+*.pth
 *.bin
 *.safetensors
 *.ckpt
+*.keras
+*.h5
 *.pkl
+optimizer.pt
+scheduler.pt
+checkpoint-*/
+*checkpoint*/
 
-# Kaggle & temporary
+# --- Direktori Model Output Berat ---
+Output/simulated/
+Output/empirical/
+Output/hparam_search/
+Output/lora_tuning/
+Output/indobert_lora/
+Output/indobert_input_selection/
+Output/tapt_checkpoint/
+Output/forensics/
+baseline/
+legacy_notebooks/
+script_thesis/outputs/
+
+# --- Direktori Staging & Temporary Kaggle ---
 .kaggle-outputs/
 staging_kaggle_data/
 temp_kernel/
+kaggle_dataset/
 
-# Training outputs
-script_thesis/outputs/
+# --- Tooling & Editor Scratch ---
+scratch/
+.commandcode/
+.kilo/
+.project-memory/
+*.bak
+*.tmp
+*.log
 
-# Cache
-__pycache__/
-.ipynb_checkpoints/
+# --- IDE Settings ---
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# --- OS Specific ---
+.DS_Store
+Thumbs.db
+
