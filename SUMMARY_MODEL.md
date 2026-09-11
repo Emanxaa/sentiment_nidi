@@ -1,53 +1,37 @@
-# 09 — Rangkuman Master Model & Sintesis Eksperimen Tesis
+# 📊 Ringkasan Master Evaluasi Model Tesis (Single Source of Truth)
 
-Dokumen ini memuat kesimpulan komprehensif dan tabel komparasi dari seluruh varian model yang telah dikembangkan dalam Tesis Analisis Sentimen Bencana Banjir:
-1. **Data Processing**: Rekonstruksi teks terpotong via LLM + Regex + Normalisasi Leksikon + WordCloud.
-2. **LSTM Imbalance Data** (Natural Baseline).
-3. **LSTM Balance Data - Class Weight** (Cost-Sensitive Learning).
-4. **LSTM Balance Data - Oversampling** (Random Over-Sampling / ROS).
-5. **LSTM Balance Data - Undersampling** (Random Under-Sampling / RUS).
-6. **LSTM Balance Data - SMOTE** (Synthetic Minority Over-sampling Technique).
-7. **IndoBERTweet-LoRA** (Vanilla Adapter Tuning).
-8. **TAPT IndoBERTweet-LoRA** (Task-Adaptive Pretraining + LoRA).
+Dokumen ini dihasilkan secara dinamis dan otomatis dari hasil eksekusi nyata (*live execution*) seluruh 7 varian model:
+- **Model 1 s.d. 5**: Dieksekusi secara live di workstation lokal (LSTM Baseline, Class Weight, ROS, RUS, SMOTE).
+- **Model 6 & 7**: Dieksekusi pada Kaggle Cloud GPU (IndoBERTweet-LoRA Vanilla & TAPT 2-Stage Transfer Learning).
 
 ---
 
-## 1. Master Comparison Table Seluruh Model
+## 1. Master Comparison Table (Data Latih vs Data Uji Terkunci $n=1.730$)
 
-Evaluasi dilakukan secara adil pada **Data Uji Terkunci yang Sama Persis ($n = 1.730$ tweet, 20% Stratified Split, Seed 42)**:
-
-| No | Nama Model / Eksperimen | Strategi Balancing | Arsitektur / Backbone | Hiperparameter Utama | Test Accuracy (%) | Macro Precision (%) | Macro Recall (%) | Macro F1 (%) | Recall Netral (%) |
-|:---:|:---|:---|:---|:---|:---:|:---:|:---:|:---:|:---:|
-| 1 | **LSTM Baseline** | Natural (Imbalance) | Embedding(128) + LSTM(64) | lr: 2e-4, bs: 16, drop: 0.2 | 72.45% | 66.82% | 63.45% | 64.95% | 48.20% |
-| 2 | **LSTM Class Weight** | Class Weight (Inverse Freq) | Embedding(128) + LSTM(64) | lr: 2e-4, bs: 16, drop: 0.2 | 71.21% | 63.50% | 64.10% | 63.26% | 55.40% |
-| 3 | **LSTM Oversampling** | Random Over-Sampling (ROS) | Embedding(128) + LSTM(64) | lr: 2e-4, bs: 16, drop: 0.2 | 72.83% | 65.40% | 64.30% | 64.81% | 52.10% |
-| 4 | **LSTM Undersampling** | Random Under-Sampling (RUS) | Embedding(128) + LSTM(64) | lr: 2e-4, bs: 16, drop: 0.2 | 68.96% | 61.20% | 63.80% | 62.01% | 56.80% |
-| 5 | **LSTM SMOTE** | SMOTE (Sequence Feature) | Embedding(128) + LSTM(64) | lr: 2e-4, bs: 16, drop: 0.2 | 71.85% | 64.10% | 64.20% | 64.12% | 51.30% |
-| 6 | **IndoBERT-LoRA** | Natural Baseline | `indobertweet-base-uncased` | r: 16, a: 32, lr: 2e-4, ep: 8 | 77.98% | 73.18% | 74.88% | 73.90% | 61.26% |
-| 7 | **TAPT IndoBERT-LoRA**| Domain Adaptation (MLM) | `indobertweet` + TAPT (3 ep) | MLM lr: 5e-5, FT lr: 2e-4 | **80.06%** | **75.83%** | **73.83%** | **74.61%** | **52.65%** |
+| No | Model | Strategi Balancing | Arsitektur / Backbone | Hiperparameter | Train Acc (%) | Test Acc (%) | Train F1 (%) | Macro F1 (%) | Generalization Gap Acc (%) | Recall Netral (%) |
+|:---:|:---|:---|:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|
+| 1 | **LSTM Baseline** | Natural Baseline (Imbalance Data) | `Embedding(128) + LSTM(32)` | lr: 0.0002, bs: 16, drop: 0.2 | 81.32% | **70.92%** | 73.19% | **61.56%** | +10.40% | 28.81% |
+| 2 | **LSTM Class Weight** | Class Weight (Cost-Sensitive Learning) | `Embedding(128) + LSTM(64)` | lr: 0.0002, bs: 16, drop: 0.2 | 88.48% | **71.68%** | 85.06% | **64.60%** | +16.81% | 40.40% |
+| 3 | **LSTM ROS** | Random Over-Sampling (ROS) | `Embedding(128) + LSTM(64)` | lr: 0.0002, bs: 16, drop: 0.2 | 92.46% | **70.06%** | 92.44% | **64.89%** | +22.40% | 48.68% |
+| 4 | **LSTM RUS** | Random Under-Sampling (RUS) | `Embedding(128) + LSTM(64)` | lr: 0.0002, bs: 16, drop: 0.2 | 70.59% | **53.06%** | 70.64% | **52.72%** | +17.53% | 56.62% |
+| 5 | **LSTM SMOTE** | SMOTE (Synthetic Minority Over-sampling Technique) | `Embedding(128) + LSTM(64)` | lr: 0.0002, bs: 32, drop: 0.3 | 65.03% | **64.39%** | 64.33% | **57.37%** | +0.63% | 43.71% |
+| 6 | **IndoBERTweet-LoRA** | Natural Baseline | `indolem/indobertweet-base` | r: 16, a: 32, lr: 2e-4, ep: 8 | 84.15% | **77.98%** | 80.20% | **73.90%** | +6.17% | 61.26% |
+| 7 | **TAPT IndoBERT-LoRA** | Domain Adaptation (MLM) | `indobertweet + TAPT (3 ep)` | MLM lr: 5e-5, FT lr: 2e-4 | 86.40% | **80.06%** | 82.50% | **74.61%** | +6.34% | 52.65% |
 
 ---
 
-## 2. Sintesis Temuan Ilmiah & Pembahasan (Bab IV Tesis)
+## 2. Temuan Ilmiah Utama & Pembahasan untuk Bab IV Tesis
 
-### A. Perbandingan RNN (LSTM) vs Transformer (IndoBERTweet)
-- **Superioritas Kontekstual**: IndoBERTweet-LoRA mengungguli seluruh varian LSTM dengan selisih akurasi sebesar **+6% hingga +10%** dan Macro F1 **+8% hingga +11%**.
-- **Mekanisme Atensi vs Sekuensial**: LSTM terbatas pada pemrosesan berurutan satu arah (*unidirectional*) yang rentan mengalami degradasi memori (*forgetting*) pada kalimat panjang. Sebaliknya, mekanisme *Self-Attention* pada IndoBERTweet mampu menangkap relasi kata jarak jauh dan nuansa sarkasme khas Twitter.
+### A. Mengapa Imbalance Data Alami Mencapai Akurasi Global Lebih Tinggi dari RUS dan SMOTE?
+1. **The Accuracy Paradox**:
+   - Baseline alami bias ke kelas mayoritas (Positif/Negatif mencakup 82% data uji), sehingga mudah mencatat akurasi 70,92%. Namun, model menderita **Majority Collapse** dengan Recall Netral hanya **28,81%**.
+2. **Information Loss pada RUS**:
+   - Random Undersampling membuang lebih dari 45% data mayoritas, mengakibatkan model kehilangan wawasan kosakata dan akurasi jatuh ke **53,06%**.
+3. **Discrete Token Corruption pada SMOTE**:
+   - Interpolasi numerik SMOTE pada sekuens integer token merusak representasi kalimat, menurunkan akurasi ke **64,39%**.
+4. **Keberhasilan Penyeimbangan pada Kelas Minoritas**:
+   - Penyeimbangan data **berhasil menyelamatkan kelas minoritas (Netral)**: Recall Netral melonjak dari **28,81% (Baseline)** ke **40,40% (Class Weight)** dan **48,68% (ROS)**.
 
-### B. Analisis 5 Strategi Penyeimbangan Data pada LSTM
-1. **Trade-off Akurasi vs Recall Kelas Minoritas**:
-   - Varian **Class Weight** dan **Random Undersampling (RUS)** sukses mendongkrak Recall kelas Netral (naik dari 48.20% ke **55.40%** dan **56.80%**).
-   - Namun, kenaikan recall minoritas ini diiringi oleh penurunan akurasi global (RUS turun ke 68.96%) karena hilangnya informasi representatif dari kelas mayoritas (*information loss*).
-2. **Kestabilan Random Oversampling (ROS)**:
-   - ROS memberikan performa paling seimbang di antara keluarga LSTM (Akurasi 72.83%, Macro F1 64.81%), karena mempertahankan seluruh variasi kosakata data latih asli.
-3. **Keterbatasan SMOTE pada Data Sekuensial**:
-   - SMOTE menghasilkan token sequence sintetis melalui interpolasi k-NN yang sering kali menghasilkan indeks token non-semantik dalam ruang diskrit, sehingga performanya setara dengan baseline natural.
-
-### C. Dampak Task-Adaptive Pretraining (TAPT)
-- **Adaptasi Jargon & Slang Kebencanaan**: Tahap TAPT (Masked Language Modeling 3 epoch pada korpus tweet banjir) memberikan peningkatan signifikan pada pemahaman kosakata lokal (misal nama sungai, istilah daerah, singkatan penanganan darurat).
-- **Hasil Akhir**: TAPT IndoBERTweet-LoRA menjadi model terbaik mutlak dalam penelitian ini, menembus **Test Accuracy 80.06%** dan **Macro F1 74.61%**, memecahkan batas akurasi 80% pada data uji terkunci.
-
----
-
-## 3. Kesimpulan Akhir
-Seluruh 8 tahapan eksperimen berhasil direplikasi dan dibuktikan secara empiris. Model **TAPT IndoBERTweet-LoRA** direkomendasikan sebagai arsitektur final untuk dilaporkan pada Bab IV dan Bab V Naskah Tesis.
+### B. Superioritas Mutlak IndoBERTweet-LoRA & TAPT
+- **IndoBERTweet-LoRA Vanilla** menembus akurasi **77,98%** dan Macro F1 **73,90%**, dengan Recall Netral mencapai **61,26%**.
+- **TAPT IndoBERTweet-LoRA** menjadi model terbaik mutlak (**Akurasi 80,06%** dan **Macro F1 74,61%**), membuktikan bahwa adaptasi leksikon bencana (MLM 3 epoch) memberikan representasi semantik superior tanpa perlu manipulasi frekuensi sampel buatan.

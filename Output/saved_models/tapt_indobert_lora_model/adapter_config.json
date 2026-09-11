@@ -1,0 +1,10 @@
+{
+  "r": 16,
+  "lora_alpha": 32,
+  "target_modules": [
+    "query",
+    "value"
+  ],
+  "peft_type": "LORA",
+  "tapt": true
+}
