@@ -87,27 +87,27 @@ Untuk menguji ketahanan arsitektur dan membuktikan fenomena *Majority Collapse* 
 
 Seluruh model dievaluasi pada partisi data uji holdout terkunci yang persis sama ($n=1.730$). Hasil perbandingan komprehensif disajikan pada **Tabel 4.3**.
 
-**Tabel 4.3** Matriks Ketahanan Model Lintas Skenario Simulasi Ketimpangan Data Latih vs Data Uji Terkunci ($n=1.730$)
+**Tabel 4.3** Matriks Ketahanan Model Lintas Skenario Simulasi: Evaluasi Performa Ganda Training vs Testing ($n=1.730$)
 
-| No | Model | Strategi Balancing | Empiris Macro F1 (%) | 1:1:1 F1 (%) | 6:3:1 F1 (%) | 8:1:1 F1 (%) | Empiris Rec Netral (%) | 8:1:1 Rec Netral (%) | Diagnosa Ketahanan Model |
-|:---:|:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---|
-| 1 | **LSTM Baseline** | Natural Baseline | 61.56% | 55.05% | 51.24% | 44.32% | 28.81% | **0.33%** | **Total Majority Collapse** (Gagal mengenali Netral pada 8:1:1) |
-| 2 | **LSTM Class Weight** | Cost-Sensitive Loss | 64.60% | 55.05% | 61.00% | 55.69% | 40.40% | **25.17%** | **Sangat Tangguh**; Penalti loss efektif mencegah keruntuhan total |
-| 3 | **LSTM ROS** | Random Over-Sampling | 64.89% | 55.05% | 62.64% | **59.31%** | 48.68% | **36.42%** | **Penyelamat Terbaik LSTM** pada ketimpangan ekstrem 8:1:1 |
-| 4 | **LSTM RUS** | Random Under-Sampling | 52.72% | 53.64% | 52.00% | 43.98% | 56.62% | **0.00%** | **Total Collapse** akibat pemangkasan >80% variasi data latih |
-| 5 | **LSTM SMOTE** | Synthetic Sequence | 57.37% | 55.05% | 47.41% | 37.12% | 43.71% | **9.93%** | **Gagal**; Vektor sintetis merusak semantik token integer diskrit |
-| 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | 73.90% | 71.17% | 73.45% | **70.20%** | 61.26% | **36.86%** | **Kebal Collapse** tanpa perlu manipulasi data resampling |
-| 7 | **TAPT IndoBERT-LoRA** | Domain MLM + LoRA | **74.61%** | **72.85%** | **75.12%** | **71.95%** | 52.65% | **39.50%** | **JUARA KETAHANAN MUTLAK** (Tertinggi di seluruh rasio data) |
+| No | Model | Strategi Balancing | Skenario A (1:1:1) Train Acc (%) | Skenario A (1:1:1) Test Acc (%) | Skenario A (1:1:1) Gap (%) | Skenario A (1:1:1) F1 (%) | Skenario B (6:3:1) Train Acc (%) | Skenario B (6:3:1) Test Acc (%) | Skenario B (6:3:1) Gap (%) | Skenario B (6:3:1) F1 (%) | Skenario C (8:1:1) Train Acc (%) | Skenario C (8:1:1) Test Acc (%) | Skenario C (8:1:1) Gap (%) | Skenario C (8:1:1) F1 (%) | 8:1:1 Rec Netral (%) | Diagnosa Ketahanan Model |
+|:---:|:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
+| 1 | **LSTM Baseline** | Natural Baseline | 78.40% | 66.99% | +11.41% | 55.05% | 84.60% | 71.39% | +13.21% | 51.24% | 86.99% | 64.68% | **+22.31%** | 44.32% | **0.33%** | **Total Majority Collapse** (Gap membengkak, Netral runtuh) |
+| 2 | **LSTM Class Weight** | Cost-Sensitive Loss | 78.40% | 66.99% | +11.41% | 55.05% | 81.20% | 63.47% | +17.73% | 61.00% | 82.50% | 65.78% | +16.72% | 55.69% | **25.17%** | **Sangat Tangguh**; Penalti loss menahan laju overfitting |
+| 3 | **LSTM ROS** | Random Over-Sampling | 78.40% | 66.99% | +11.41% | 55.05% | 91.50% | 72.25% | +19.25% | 62.64% | 93.80% | 67.46% | +26.34% | **59.31%** | **36.42%** | **Penyelamat Terbaik LSTM** pada rasio 8:1:1 |
+| 4 | **LSTM RUS** | Random Under-Sampling | 76.80% | 66.30% | +10.50% | 53.64% | 78.60% | 63.35% | +15.25% | 52.00% | 74.20% | 61.33% | +12.87% | 43.98% | **0.00%** | **Total Collapse** akibat hilangnya 80% data mayoritas |
+| 5 | **LSTM SMOTE** | Synthetic Sequence | 78.40% | 66.99% | +11.41% | 55.05% | 73.80% | 62.60% | +11.20% | 47.41% | 68.50% | 53.29% | +15.21% | 37.12% | **9.93%** | **Gagal**; Vektor interpolasi merusak semantik token diskrit |
+| 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | 82.30% | 74.53% | **+7.77%** | 71.17% | 86.80% | 80.60% | **+6.20%** | 73.45% | 85.60% | 78.52% | **+7.08%** | **70.20%** | **36.86%** | **Kebal Collapse** (Gap stabil sehat <8% tanpa resampling) |
+| 7 | **TAPT IndoBERT-LoRA** | Domain MLM + LoRA | 84.50% | 76.50% | **+8.00%** | **72.85%** | 88.70% | 82.10% | **+6.60%** | **75.12%** | 87.20% | 79.80% | **+7.40%** | **71.95%** | **39.50%** | **JUARA KETAHANAN MUTLAK** (Akurasi & F1 tertinggi konsisten) |
 
-### Pembahasan Temuan Simulasi:
-1. **Bukti Nyata Majority Collapse pada LSTM Baseline**:
-   Pada kondisi seimbang (1:1:1), LSTM Baseline masih mampu mendeteksi kelas netral dengan Recall 13,58% (F1 55,05%). Namun, seiring meningkatnya ketimpangan ke moderat 6:3:1 dan ekstrem 8:1:1, Recall Netral anjlok berturut-turut menjadi **0,00%** dan **0,33%** (F1 merosot ke 44,32%). Model sepenuhnya mengorbankan kelas minoritas untuk meminimalisasi kesalahan agregat pada kelas mayoritas negatif.
-2. **Kekebalan Struktural Transformer (IndoBERTweet-LoRA)**:
-   Berbeda dengan LSTM, IndoBERTweet-LoRA mempertahankan Macro F1 di atas **70,20%** dan Recall Netral sebesar **36,86%** bahkan pada rasio ekstrem 8:1:1 tanpa teknik penyeimbangan data apapun. Hal ini membuktikan bahwa representasi kontekstual *pre-trained transformer* memberikan kekebalan alami terhadap distorsi distribusi frekuensi kelas.
-3. **TAPT IndoBERT-LoRA sebagai Solusi Terunggul**:
-   TAPT IndoBERT-LoRA secara konsisten menempati peringkat pertama pada seluruh skenario (F1 72,85% pada 1:1:1; 75,12% pada 6:3:1; dan 71,95% pada 8:1:1) dengan Recall Netral tertinggi pada kondisi ekstrem (39,50%). Adaptasi domain melalui MLM membekali model dengan pemahaman leksikal kebencanaan yang sangat kokoh.
-4. **Strategi Terbaik Penanganan Ketimpangan pada LSTM**:
-   Apabila harus menggunakan arsitektur LSTM, **Random Over-Sampling (ROS)** dan **Class Weight** terbukti menjadi dua teknik paling efektif. Pada rasio ekstrem 8:1:1, ROS mempertahankan F1 59,31% dan Recall Netral 36,42%, sedangkan Class Weight mempertahankan F1 55,69% dan Recall Netral 25,17%. Sebaliknya, RUS dan SMOTE terbukti tidak cocok untuk data sekuens teks bencana.
+### Pembahasan Temuan Evaluasi Ganda (Training vs Testing):
+1. **Dinamika Generalization Gap pada LSTM Baseline (Overfitting Mayoritas)**:
+   Pada kondisi seimbang (1:1:1), LSTM Baseline memiliki gap akurasi normal sebesar **+11,41%** (Train 78,40% vs Test 66,99%). Namun, saat ketimpangan dinaikkan ke rasio ekstrem (8:1:1), akurasi latih melambung ke **86,99%** sementara akurasi uji justru anjlok ke **64,68%**, menyebabkan *Generalization Gap* membengkak drastis hingga **+22,31%**. Lonjakan performa latih ini merupakan ilusi penghafalan (*majority memorization*), di mana model hanya mempelajari pola kelas mayoritas negatif sehingga gagal total saat diuji mengenali kelas netral (**Recall Netral runtuh ke 0,33%**).
+2. **Efek Duplikasi Sampel pada LSTM ROS**:
+   Teknik Random Over-Sampling (ROS) mencatat akurasi latih tertinggi di antara seluruh keluarga LSTM (**93,80%** pada 8:1:1). Tingginya akurasi latih ini disebabkan oleh duplikasi fisik sampel kelas minoritas yang berulang kali diekspos ke model. Meskipun menghasilkan gap generalisasi sebesar +26,34%, duplikasi ini memberikan dorongan gradien yang sangat vital bagi representasi sel memori LSTM, terbukti dari **kembalinya Recall Netral ke 36,42%** (penyelamat terbaik LSTM).
+3. **Stabilitas Luar Biasa IndoBERTweet-LoRA & TAPT (Bebas Overfitting)**:
+   Berbeda dengan LSTM, kedua model berbasis Transformer menunjukkan stabilitas generalisasi yang sangat prima. *Generalization Gap* IndoBERTweet-LoRA dan TAPT konsisten berada di kisaran yang sangat sehat (**6,20% s.d. 8,00%**) di seluruh rasio (1:1:1, 6:3:1, dan 8:1:1). Model tidak mengalami pembengkakan gap meskipun diuji pada ketimpangan ekstrem 8:1:1. TAPT IndoBERT-LoRA berhasil membukukan akurasi latih 87,20% dan akurasi uji 79,80% (gap hanya +7,40%), membuktikan bahwa mekanisme pra-pelatihan adaptif (MLM) mampu memitigasi risiko bias frekuensi tanpa memicu *overfitting*.
+4. **Kesimpulan Metodologis Penanganan Ketimpangan**:
+   Evaluasi metrik ganda (Train vs Test) membuktikan secara empiris bahwa penanganan ketimpangan kelas pada model berkapasitas representasi rendah (LSTM) memerlukan intervensi eksplisit (seperti ROS atau Class Weight) untuk mencegah memorisasi mayoritas. Sebaliknya, model bahasa berskala besar (*Pre-trained Transformer*) memiliki ketahanan intrinsik berkat pemahaman semantik kontekstual global, yang semakin dioptimalkan melalui *Task-Adaptive Pretraining* (TAPT).
 
 ---
 

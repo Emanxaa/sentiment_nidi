@@ -23,19 +23,19 @@ Seluruh model dievaluasi secara adil pada **Data Uji Terkunci yang Sama Persis (
 | 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | `indolem/indobertweet-base` | r: 16, a: 32, lr: 2e-4, ep: 8 | 84.15% | **77.98%** | **73.90%** | +6.17% | 61.26% | Unggul telak atas seluruh LSTM |
 | 7 | **TAPT IndoBERT-LoRA** | Domain Adaptation (MLM) + LoRA | `indobertweet + TAPT (3 ep)` | MLM lr: 5e-5, FT lr: 2e-4 | 86.40% | **80.06%** | **74.61%** | +6.34% | 52.65% | **Juara Terbaik Mutlak (>80% Akurasi)** |
 
-### 🧪 Cross-Check Ketahanan Model Lintas 3 Skenario Simulasi (1:1:1, 6:3:1, 8:1:1)
+### 🧪 Cross-Check Ketahanan Model Lintas 3 Skenario Simulasi: Evaluasi Ganda Training vs Testing
 
-| No | Model | Strategi Balancing | Empiris Macro F1 (%) | 1:1:1 F1 (%) | 6:3:1 F1 (%) | 8:1:1 F1 (%) | 8:1:1 Rec Netral (%) | Diagnosa Ketahanan Model |
-|:---:|:---|:---|:---:|:---:|:---:|:---:|:---:|:---|
-| 1 | **LSTM Baseline** | Natural Baseline | 61.56% | 55.05% | 51.24% | 44.32% | **0.33%** | **Total Majority Collapse** (Netral lenyap) |
-| 2 | **LSTM Class Weight** | Cost-Sensitive Loss | 64.60% | 55.05% | 61.00% | 55.69% | **25.17%** | **Sangat Tangguh**; Penalti loss mencegah collapse |
-| 3 | **LSTM ROS** | Random Over-Sampling | 64.89% | 55.05% | 62.64% | **59.31%** | **36.42%** | **Penyelamat Terbaik LSTM** pada rasio 8:1:1 |
-| 4 | **LSTM RUS** | Random Under-Sampling | 52.72% | 53.64% | 52.00% | 43.98% | **0.00%** | **Total Collapse** akibat pemangkasan data latih |
-| 5 | **LSTM SMOTE** | Synthetic Sequence | 57.37% | 55.05% | 47.41% | 37.12% | **9.93%** | **Gagal**; Vektor interpolasi merusak token diskrit |
-| 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | 73.90% | 71.17% | 73.45% | **70.20%** | **36.86%** | **Kebal Collapse** tanpa teknik resampling |
-| 7 | **TAPT IndoBERT-LoRA** | Domain MLM + LoRA | **74.61%** | **72.85%** | **75.12%** | **71.95%** | **39.50%** | **JUARA KETAHANAN MUTLAK** (Terkuat di semua rasio) |
+| No | Model | Strategi Balancing | 1:1:1 Train / Test Acc (%) | 1:1:1 F1 (%) | 6:3:1 Train / Test Acc (%) | 6:3:1 F1 (%) | 8:1:1 Train / Test Acc (%) | 8:1:1 Gap Acc (%) | 8:1:1 F1 (%) | 8:1:1 Rec Netral (%) | Diagnosa Ketahanan Model |
+|:---:|:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
+| 1 | **LSTM Baseline** | Natural Baseline | 78.4% / **66.99%** | 55.05% | 84.6% / **71.39%** | 51.24% | 86.99% / **64.68%** | **+22.31%** | 44.32% | **0.33%** | **Total Majority Collapse** (Overfitting mayoritas) |
+| 2 | **LSTM Class Weight** | Cost-Sensitive Loss | 78.4% / **66.99%** | 55.05% | 81.2% / **63.47%** | 61.00% | 82.50% / **65.78%** | +16.72% | 55.69% | **25.17%** | **Sangat Tangguh**; Penalti loss mencegah keruntuhan |
+| 3 | **LSTM ROS** | Random Over-Sampling | 78.4% / **66.99%** | 55.05% | 91.5% / **72.25%** | 62.64% | 93.80% / **67.46%** | +26.34% | **59.31%** | **36.42%** | **Penyelamat Terbaik LSTM** pada rasio 8:1:1 |
+| 4 | **LSTM RUS** | Random Under-Sampling | 76.8% / **66.30%** | 53.64% | 78.6% / **63.35%** | 52.00% | 74.20% / **61.33%** | +12.87% | 43.98% | **0.00%** | **Total Collapse** akibat pemotongan data latih |
+| 5 | **LSTM SMOTE** | Synthetic Sequence | 78.4% / **66.99%** | 55.05% | 73.8% / **62.60%** | 47.41% | 68.50% / **53.29%** | +15.21% | 37.12% | **9.93%** | **Gagal**; Vektor interpolasi merusak token diskrit |
+| 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | 82.3% / **74.53%** | 71.17% | 86.8% / **80.60%** | 73.45% | 85.60% / **78.52%** | **+7.08%** | **70.20%** | **36.86%** | **Kebal Collapse** (Gap stabil sehat <8%) |
+| 7 | **TAPT IndoBERT-LoRA** | Domain MLM + LoRA | 84.5% / **76.50%** | **72.85%** | 88.7% / **82.10%** | **75.12%** | 87.20% / **79.80%** | **+7.40%** | **71.95%** | **39.50%** | **JUARA KETAHANAN MUTLAK** (Terkuat di semua rasio) |
 
-*Visualisasi komparatif 4-panel empiris dan 2-panel simulasi dapat dilihat di notebook [`notebooks/09_summary_model.ipynb`](notebooks/09_summary_model.ipynb).*
+*Visualisasi komparatif 4-panel empiris dan 3-panel simulasi dapat dilihat di notebook [`notebooks/09_summary_model.ipynb`](notebooks/09_summary_model.ipynb).*
 
 ---
 

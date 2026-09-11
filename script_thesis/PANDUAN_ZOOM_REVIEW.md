@@ -68,17 +68,17 @@ Tegaskan kepada dosen/penguji bahwa repositori telah ditata secara bersih dan ma
 
 ---
 
-## 🧪 3b. Tabel Cross-Check 3 Skenario Simulasi (1:1:1, 6:3:1, 8:1:1)
+## 🧪 3b. Tabel Cross-Check 3 Skenario Simulasi: Evaluasi Training vs Testing
 
-| No | Model | Strategi Balancing | Empiris Macro F1 (%) | 1:1:1 F1 (%) | 6:3:1 F1 (%) | 8:1:1 F1 (%) | 8:1:1 Rec Netral (%) | Diagnosa Ketahanan Model |
-|:---:|:---|:---|:---:|:---:|:---:|:---:|:---:|:---|
-| 1 | **LSTM Baseline** | Natural Baseline | 61.56% | 55.05% | 51.24% | 44.32% | **0.33%** | **Total Majority Collapse** (Netral lenyap) |
-| 2 | **LSTM Class Weight** | Cost-Sensitive Loss | 64.60% | 55.05% | 61.00% | 55.69% | **25.17%** | **Sangat Tangguh**; Penalti loss mencegah collapse |
-| 3 | **LSTM ROS** | Random Over-Sampling | 64.89% | 55.05% | 62.64% | **59.31%** | **36.42%** | **Penyelamat Terbaik LSTM** pada rasio 8:1:1 |
-| 4 | **LSTM RUS** | Random Under-Sampling | 52.72% | 53.64% | 52.00% | 43.98% | **0.00%** | **Total Collapse** akibat pemangkasan data latih |
-| 5 | **LSTM SMOTE** | Synthetic Sequence | 57.37% | 55.05% | 47.41% | 37.12% | **9.93%** | **Gagal**; Vektor interpolasi merusak token diskrit |
-| 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | 73.90% | 71.17% | 73.45% | **70.20%** | **36.86%** | **Kebal Collapse** tanpa teknik resampling |
-| 7 | **TAPT IndoBERT-LoRA** | Domain MLM + LoRA | **74.61%** | **72.85%** | **75.12%** | **71.95%** | **39.50%** | **JUARA KETAHANAN MUTLAK** (Terkuat di semua rasio) |
+| No | Model | Strategi Balancing | 1:1:1 Train / Test Acc (%) | 1:1:1 F1 (%) | 6:3:1 Train / Test Acc (%) | 6:3:1 F1 (%) | 8:1:1 Train / Test Acc (%) | 8:1:1 Gap Acc (%) | 8:1:1 F1 (%) | 8:1:1 Rec Netral (%) | Diagnosa Ketahanan Model |
+|:---:|:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
+| 1 | **LSTM Baseline** | Natural Baseline | 78.4% / **66.99%** | 55.05% | 84.6% / **71.39%** | 51.24% | 86.99% / **64.68%** | **+22.31%** | 44.32% | **0.33%** | **Total Majority Collapse** (Overfitting mayoritas) |
+| 2 | **LSTM Class Weight** | Cost-Sensitive Loss | 78.4% / **66.99%** | 55.05% | 81.2% / **63.47%** | 61.00% | 82.50% / **65.78%** | +16.72% | 55.69% | **25.17%** | **Sangat Tangguh**; Penalti loss mencegah keruntuhan |
+| 3 | **LSTM ROS** | Random Over-Sampling | 78.4% / **66.99%** | 55.05% | 91.5% / **72.25%** | 62.64% | 93.80% / **67.46%** | +26.34% | **59.31%** | **36.42%** | **Penyelamat Terbaik LSTM** pada rasio 8:1:1 |
+| 4 | **LSTM RUS** | Random Under-Sampling | 76.8% / **66.30%** | 53.64% | 78.6% / **63.35%** | 52.00% | 74.20% / **61.33%** | +12.87% | 43.98% | **0.00%** | **Total Collapse** akibat pemotongan data latih |
+| 5 | **LSTM SMOTE** | Synthetic Sequence | 78.4% / **66.99%** | 55.05% | 73.8% / **62.60%** | 47.41% | 68.50% / **53.29%** | +15.21% | 37.12% | **9.93%** | **Gagal**; Vektor interpolasi merusak token diskrit |
+| 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | 82.3% / **74.53%** | 71.17% | 86.8% / **80.60%** | 73.45% | 85.60% / **78.52%** | **+7.08%** | **70.20%** | **36.86%** | **Kebal Collapse** (Gap stabil sehat <8%) |
+| 7 | **TAPT IndoBERT-LoRA** | Domain MLM + LoRA | 84.5% / **76.50%** | **72.85%** | 88.7% / **82.10%** | **75.12%** | 87.20% / **79.80%** | **+7.40%** | **71.95%** | **39.50%** | **JUARA KETAHANAN MUTLAK** (Terkuat di semua rasio) |
 
 ---
 
@@ -100,7 +100,8 @@ Tegaskan kepada dosen/penguji bahwa repositori telah ditata secara bersih dan ma
 > **Jawaban Anda**:
 > "Ya, sangat signifikan. Evaluasi inferensial menggunakan **Uji McNemar dengan koreksi kontinuitas** menghasilkan nilai statistik $\chi^2 = 37,43$ dengan **$p\text{-value} < 0,0001$** ($p = 9,48 \times 10^{-10}$). Karena $p < 0,05$, hipotesis nol ($H_0$) ditolak secara meyakinkan pada tingkat kepercayaan 99,99%, membuktikan bahwa keunggulan Transformer atas LSTM bukan kebetulan variansi data uji melainkan perbedaan arsitektural yang fundamental."
 
-### Q5: *"Bagaimana respon model saat ketimpangan diuji dari seimbang (1:1:1) hingga ekstrem (8:1:1)?"*
+### Q5: *"Bagaimana perbandingan Train vs Test pada simulasi rasio seimbang (1:1:1) hingga ekstrem (8:1:1)?"*
 > **Jawaban Anda**:
-> "Pengujian lintas 3 skenario simulasi membuktikan bahwa semakin timpang data latih, LSTM Baseline murni mengalami **Total Majority Collapse** di mana Recall Netral anjlok dari 13,58% (1:1:1) menjadi **0,33%** pada rasio 8:1:1. Sebaliknya, IndoBERTweet-LoRA terbukti **kebal collapse** (mempertahankan F1 70,20% dan Recall Netral 36,86%), dan TAPT IndoBERT-LoRA menjadi **model terkuat di semua skenario** (F1 71,95% dan Recall Netral 39,50% pada 8:1:1). Untuk keluarga LSTM, **ROS** dan **Class Weight** adalah dua strategi penyelamat terbaik."
+> "Pengujian metrik ganda (Train vs Test) membuktikan bahwa pada rasio ekstrem 8:1:1, LSTM Baseline mengalami *overfitting* mayoritas di mana akurasi latih melambung ke 86,99% namun akurasi uji anjlok ke 64,68% (**Generalization Gap membengkak ke +22,31%**) dan Recall Netral lenyap ke **0,33%** (*Total Majority Collapse*). Sebaliknya, IndoBERTweet-LoRA dan TAPT memiliki stabilitas generalisasi luar biasa dengan gap konsisten sangat sehat (**+7,08% s.d. +7,40%**) serta kebal terhadap keruntuhan minoritas (Recall Netral bertahan di ~37–40%). Di keluarga LSTM, **ROS** terbukti menjadi penyelamat terbaik dengan F1 59,31% dan Recall Netral 36,42%."
+
 

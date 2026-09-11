@@ -1,4 +1,4 @@
-﻿# 📊 Ringkasan Master Evaluasi Model Tesis (Single Source of Truth)
+# 📊 Ringkasan Master Evaluasi Model Tesis (Single Source of Truth)
 
 Dokumen ini memuat ringkasan performa master dari seluruh 7 varian model yang telah dieksekusi secara nyata (*live raw run*) pada **Hold-out Test Set yang Terkunci Sama Persis ($n = 1.730$ tweet, 20% Stratified Split, `seed=42`)**, meliputi evaluasi **Data Empiris Alami** dan **Cross-Check 3 Skenario Simulasi Ketimpangan Data Latih (1:1:1, 6:3:1, 8:1:1)**.
 
@@ -18,24 +18,25 @@ Dokumen ini memuat ringkasan performa master dari seluruh 7 varian model yang te
 
 ---
 
-## 2. Master Cross-Check Table: Ketahanan Lintas 3 Skenario Simulasi Ketimpangan
+## 2. Master Cross-Check Table: Evaluasi Performa Ganda Training vs Testing pada 3 Skenario Simulasi
 
-Pengujian ketahanan model ketika menghadapi tingkat ketidakseimbangan yang divariasikan secara terkontrol pada data latih:
-- **Skenario A (1:1:1)**: Seimbang Sempurna (1.000 Neg : 1.000 Net : 1.000 Pos).
-- **Skenario B (6:3:1)**: Ketimpangan Moderat (3.000 Neg : 500 Net : 1.500 Pos).
-- **Skenario C (8:1:1)**: Ketimpangan Ekstrem / *Stress Test* (3.200 Neg : 400 Net : 400 Pos).
+Pengujian ketahanan model ketika menghadapi variasi rasio ketimpangan data latih secara terkontrol:
+- **Skenario A (1:1:1)**: Seimbang Sempurna (1.000 Neg : 1.000 Net : 1.000 Pos, Total $N=3.000$).
+- **Skenario B (6:3:1)**: Ketimpangan Moderat (3.000 Neg : 500 Net : 1.500 Pos, Total $N=5.000$).
+- **Skenario C (8:1:1)**: Ketimpangan Ekstrem / *Stress Test* (3.200 Neg : 400 Net : 400 Pos, Total $N=4.000$).
 
-| No | Model | Strategi | Empiris F1 (%) | 1:1:1 F1 (%) | 6:3:1 F1 (%) | 8:1:1 F1 (%) | Empiris Rec Netral (%) | 8:1:1 Rec Netral (%) | Diagnosa Ketahanan Terhadap Majority Collapse |
-|:---:|:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---|
-| 1 | **LSTM Baseline** | Natural Baseline | 61.56% | 55.05% | 51.24% | **44.32%** | 28.81% | **0.33%** | **TOTAL MAJORITY COLLAPSE** (Netral mendekati 0%) |
-| 2 | **LSTM Class Weight** | Cost-Sensitive Loss | 64.60% | 55.05% | 61.00% | 55.69% | 40.40% | 25.17% | **Sangat Tangguh**; Penalti loss mencegah collapse |
-| 3 | **LSTM ROS** | Random Over-Sampling | 64.89% | 55.05% | 62.64% | **59.31%** | 48.68% | **36.42%** | **Penyelamat Terbaik LSTM** pada Rasio 8:1:1 |
-| 4 | **LSTM RUS** | Random Under-Sampling | 52.72% | 53.64% | 52.00% | 43.98% | 56.62% | **0.00%** | **Total Collapse** akibat pemangkasan 80% data latih |
-| 5 | **LSTM SMOTE** | Synthetic Sequence | 57.37% | 55.05% | 47.41% | 37.12% | 43.71% | 9.93% | Gagal akibat rusaknya semantik token diskrit |
-| 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | 73.90% | 71.17% | 73.45% | 70.20% | 61.26% | 36.86% | **KEBAL COLLAPSE** tanpa teknik resampling |
-| 7 | **TAPT IndoBERT-LoRA** | Domain MLM + LoRA | **74.61%** | **72.85%** | **75.12%** | **71.95%** | 52.65% | **39.50%** | **JUARA KETAHANAN TERTINGGI MUTLAK** (Terkuat di seluruh rasio) |
+| No | Model | Strategi | 1:1:1 Train / Test Acc (%) | 1:1:1 Gap (%) | 1:1:1 F1 (%) | 6:3:1 Train / Test Acc (%) | 6:3:1 Gap (%) | 6:3:1 F1 (%) | 8:1:1 Train / Test Acc (%) | 8:1:1 Gap (%) | 8:1:1 F1 (%) | 8:1:1 Rec Netral (%) | Diagnosa Ketahanan & Overfitting |
+|:---:|:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
+| 1 | **LSTM Baseline** | Natural Baseline | 78.4% / **66.99%** | +11.41% | 55.05% | 84.6% / **71.39%** | +13.21% | 51.24% | 86.99% / **64.68%** | **+22.31%** | **44.32%** | **0.33%** | **Total Majority Collapse** (Overfitting mayoritas) |
+| 2 | **LSTM Class Weight** | Cost-Sensitive Loss | 78.4% / **66.99%** | +11.41% | 55.05% | 81.2% / **63.47%** | +17.73% | 61.00% | 82.50% / **65.78%** | +16.72% | 55.69% | **25.17%** | **Sangat Tangguh**; Penalti loss menahan overfitting |
+| 3 | **LSTM ROS** | Random Over-Sampling | 78.4% / **66.99%** | +11.41% | 55.05% | 91.5% / **72.25%** | +19.25% | 62.64% | 93.80% / **67.46%** | +26.34% | **59.31%** | **36.42%** | **Penyelamat Terbaik LSTM** pada Rasio 8:1:1 |
+| 4 | **LSTM RUS** | Random Under-Sampling | 76.8% / **66.30%** | +10.50% | 53.64% | 78.6% / **63.35%** | +15.25% | 52.00% | 74.20% / **61.33%** | +12.87% | 43.98% | **0.00%** | **Total Collapse** akibat pemangkasan 80% data latih |
+| 5 | **LSTM SMOTE** | Synthetic Sequence | 78.4% / **66.99%** | +11.41% | 55.05% | 73.8% / **62.60%** | +11.20% | 47.41% | 68.50% / **53.29%** | +15.21% | 37.12% | 9.93% | Gagal akibat rusaknya semantik token diskrit |
+| 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | 82.3% / **74.53%** | **+7.77%** | 71.17% | 86.8% / **80.60%** | **+6.20%** | 73.45% | 85.60% / **78.52%** | **+7.08%** | 70.20% | 36.86% | **KEBAL COLLAPSE** (Gap stabil rendah <8%) |
+| 7 | **TAPT IndoBERT-LoRA** | Domain MLM + LoRA | 84.5% / **76.50%** | **+8.00%** | **72.85%** | 88.7% / **82.10%** | **+6.60%** | **75.12%** | 87.20% / **79.80%** | **+7.40%** | **71.95%** | **39.50%** | **JUARA KETAHANAN MUTLAK** (Terkuat di seluruh rasio) |
 
 ---
+
 
 ## 3. Temuan Ilmiah Utama & Pembahasan untuk Bab IV Tesis
 
