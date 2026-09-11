@@ -9,6 +9,12 @@ Repositori penelitian tesis untuk **klasifikasi sentimen 3-kelas (*negatif*, *ne
 
 ---
 
+> [!IMPORTANT]
+> **PANDUAN LENGKAP KLIEN & NAVIGASI**:
+> Panduan terpusat untuk navigasi cepat *"Anda Mencari Apa?"*, petunjuk eksekusi lokal (CPU), dan eksekusi Kaggle (GPU) tersedia lengkap di **[`script_thesis/PANDUAN_NAVIGASI_DAN_RUN.md`](script_thesis/PANDUAN_NAVIGASI_DAN_RUN.md)**. Seluruh artefak mandiri terpusat di folder **[`script_thesis/`](script_thesis/)**.
+
+---
+
 ## 🎯 1. Ringkasan Master Hasil Final
 
 Seluruh model dievaluasi secara adil pada **Data Uji Terkunci yang Sama Persis ($n = 1.730$ tweet, 20% Stratified Split, Seed 42)**:

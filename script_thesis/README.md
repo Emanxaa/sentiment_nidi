@@ -9,6 +9,12 @@ Selamat datang di direktori **`script_thesis/`**. Folder ini dirancang sebagai *
 
 ---
 
+> [!IMPORTANT]
+> **PANDUAN LENGKAP NAVIGASI & EKSEKUSI**:
+> Jika Anda atau klien baru pertama kali membuka folder ini, silakan langsung membaca **[`PANDUAN_NAVIGASI_DAN_RUN.md`](PANDUAN_NAVIGASI_DAN_RUN.md)** untuk panduan cepat *"Anda Mencari Apa?"*, petunjuk instalasi lokal (CPU), petunjuk run di Kaggle (GPU), dan pemetaan seluruh file secara lengkap.
+
+---
+
 ## 🎯 1. Ringkasan Master Hasil Final (Data Uji Terkunci $n=1.730$)
 
 Seluruh model dievaluasi secara adil pada **Hold-out Test Set yang Sama Persis (20% Stratified Split, Seed 42)**:
