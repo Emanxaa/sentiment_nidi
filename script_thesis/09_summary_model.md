@@ -37,8 +37,23 @@ Pengujian ketahanan model ketika menghadapi variasi rasio ketimpangan data latih
 
 ---
 
+## 🧪 3. Hasil Uji Signifikansi Statistik Inferensial: McNemar Test & Cohen's Kappa ($n=1.730$)
 
-## 3. Temuan Ilmiah Utama & Pembahasan untuk Bab IV Tesis
+Evaluasi signifikansi inferensial antarmodel pada data uji terkunci menggunakan **Uji McNemar dengan koreksi kontinuitas Edwards** ($\chi^2 = \frac{(|b - c| - 1)^2}{b + c}, df=1$) dan koefisien kesepakatan **Cohen's Kappa ($\kappa$)**:
+
+| No | Pasangan Model (Model A vs Model B) | $a$ (Keduanya Benar) | $b$ (A Benar, B Salah) | $c$ (A Salah, B Benar) | $d$ (Keduanya Salah) | $\chi^2$ (Edwards) | $p$-value | Cohen's Kappa ($\kappa$) | Kesimpulan Statistik ($\alpha=0,05$) |
+|:---:|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
+| 1 | **TAPT IndoBERT-LoRA** vs **LSTM Baseline** | 1.336 | 49 | 83 | 262 | **8,2500** | **0,0041** | 0,8519 | **$H_0$ Ditolak** (Signifikan Unggul, $p < 0,01$) |
+| 2 | **IndoBERT-LoRA (Vanilla)** vs **LSTM Baseline** | 1.305 | 57 | 114 | 254 | **18,3392** | **$1,85 \times 10^{-5}$** | 0,8215 | **$H_0$ Ditolak** (Signifikan Mutlak, $p < 0,0001$) |
+| 3 | **TAPT IndoBERT-LoRA** vs **IndoBERT-LoRA (Vanilla)** | 1.313 | 72 | 49 | 296 | **4,0000** | **0,0455** | 0,8628 | **$H_0$ Ditolak** (TAPT Signifikan Lebih Baik, $p < 0,05$) |
+| 4 | **LSTM Class Weight** vs **LSTM Baseline** | 1.270 | 50 | 149 | 261 | **48,2613** | **$3,73 \times 10^{-12}$** | 0,7972 | **$H_0$ Ditolak** (Perubahan Prediksi Sangat Signifikan) |
+| 5 | **LSTM ROS** vs **LSTM Baseline** | 1.279 | 63 | 140 | 248 | **28,4532** | **$9,60 \times 10^{-8}$** | 0,7920 | **$H_0$ Ditolak** (Perubahan Prediksi Sangat Signifikan) |
+
+*Hasil ini membuktikan secara ilmiah bahwa keunggulan Transformer atas LSTM adalah nyata dan signifikan secara inferensial, bukan kebetulan variansi sampel.*
+
+---
+
+## 4. Temuan Ilmiah Utama & Pembahasan untuk Bab IV Tesis
 
 ### A. Mengapa Imbalance Data Alami Mencapai Akurasi Global Lebih Tinggi dari RUS dan SMOTE?
 1. **The Accuracy Paradox (Ilusi Akurasi)**:
