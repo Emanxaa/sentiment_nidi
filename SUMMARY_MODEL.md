@@ -6,15 +6,15 @@ Dokumen ini memuat ringkasan performa master dari seluruh 7 varian model yang te
 
 ## 1. Master Comparison Table: Data Empiris Alami ($n=1.730$)
 
-| No | Model | Strategi Balancing | Arsitektur / Backbone | Hiperparameter | Train Acc (%) | Test Acc (%) | Macro Precision (%) | Macro Recall (%) | Macro F1 (%) | Generalization Gap Acc (%) | Recall Netral (%) | Status & Karakteristik Model |
+| No | Model | Strategi Balancing | Arsitektur / Backbone | Hiperparameter | Train Acc (%) | Test Acc (%) | Gap Acc (%) | Train F1 (%) | Test F1 (%) | Gap F1 (%) | Recall Netral (%) | Status & Catatan |
 |:---:|:---|:---|:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
-| 1 | **LSTM Baseline** | Natural Baseline (Imbalance) | `Embedding(128) + LSTM(32)` | lr: 0.0002, bs: 16, drop: 0.2 | 81.32% | **70.92%** | 61.65% | 61.69% | **61.56%** | +10.40% | 28.81% | Bias kelas mayoritas (*Majority Collapse*) |
-| 2 | **LSTM Class Weight** | Class Weight (Cost-Sensitive) | `Embedding(128) + LSTM(64)` | lr: 0.0002, bs: 16, drop: 0.2 | 88.48% | **71.68%** | 64.88% | 64.35% | **64.60%** | +16.81% | 40.40% | Penalti loss; Recall Netral naik (+11.59%) |
-| 3 | **LSTM ROS** | Random Over-Sampling (ROS) | `Embedding(128) + LSTM(64)` | lr: 0.0002, bs: 16, drop: 0.2 | 92.46% | **70.06%** | 64.38% | 65.62% | **64.89%** | +22.40% | 48.68% | Recall Netral terbaik di keluarga LSTM |
-| 4 | **LSTM RUS** | Random Under-Sampling (RUS) | `Embedding(128) + LSTM(64)` | lr: 0.0002, bs: 16, drop: 0.2 | 70.59% | **53.06%** | 57.34% | 56.95% | **52.72%** | +17.53% | 56.62% | Akurasi drop parah (*information loss*) |
-| 5 | **LSTM SMOTE** | SMOTE (Sequence Feature) | `Embedding(128) + LSTM(64)` | lr: 0.0002, bs: 32, drop: 0.3 | 65.03% | **64.39%** | 61.05% | 57.07% | **57.37%** | +0.63% | 43.71% | Token sintetis merusak semantik diskrit |
-| 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | `indolem/indobertweet-base` | r: 16, a: 32, lr: 2e-4, ep: 8 | 84.15% | **77.98%** | 73.18% | 74.88% | **73.90%** | +6.17% | 61.26% | Unggul telak atas seluruh varian LSTM |
-| 7 | **TAPT IndoBERT-LoRA** | Domain Adaptation (MLM) + LoRA | `indobertweet + TAPT (3 ep)` | MLM lr: 5e-5, FT lr: 2e-4 | 86.40% | **80.06%** | 75.83% | 73.83% | **74.61%** | +6.34% | 52.65% | **JUARA TERBAIK MUTLAK RISET (>80%)** |
+| 1 | **LSTM Baseline** | Natural Baseline (Imbalance) | `Embedding(128) + LSTM(32)` | lr: 0.0002, bs: 16, drop: 0.2 | 81.32% | **70.92%** | +10.40% | 73.19% | **61.56%** | +11.63% | 28.81% | *Majority Collapse* pada kelas Netral |
+| 2 | **LSTM Class Weight** | Class Weight (Cost-Sensitive) | `Embedding(128) + LSTM(64)` | lr: 0.0002, bs: 16, drop: 0.2 | 88.48% | **71.68%** | +16.81% | 85.06% | **64.60%** | +20.46% | 40.40% | Penalti loss; Recall Netral naik (+11.59%) |
+| 3 | **LSTM ROS** | Random Over-Sampling (ROS) | `Embedding(128) + LSTM(64)` | lr: 0.0002, bs: 16, drop: 0.2 | 92.46% | **70.06%** | +22.40% | 92.44% | **64.89%** | +27.55% | 48.68% | Recall Netral tertinggi di LSTM (Overfitting F1 Gap +27%) |
+| 4 | **LSTM RUS** | Random Under-Sampling (RUS) | `Embedding(128) + LSTM(64)` | lr: 0.0002, bs: 16, drop: 0.2 | 70.59% | **53.06%** | +17.53% | 70.64% | **52.72%** | +17.92% | 56.62% | Akurasi drop parah (*information loss*) |
+| 5 | **LSTM SMOTE** | SMOTE (Sequence Feature) | `Embedding(128) + LSTM(64)` | lr: 0.0002, bs: 32, drop: 0.3 | 65.03% | **64.39%** | +0.63% | 64.33% | **57.37%** | +6.96% | 43.71% | Token sintetis merusak semantik diskrit |
+| 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | `indolem/indobertweet-base` | r: 16, a: 32, lr: 2e-4, ep: 8 | 84.15% | **77.98%** | +6.17% | 80.20% | **73.90%** | +6.30% | 61.26% | Unggul telak & gap generalisasi F1 sangat sehat (+6.3%) |
+| 7 | **TAPT IndoBERT-LoRA** | Domain Adaptation (MLM) + LoRA | `indobertweet + TAPT (3 ep)` | MLM lr: 5e-5, FT lr: 2e-4 | 86.40% | **80.06%** | +6.34% | 82.50% | **74.61%** | +7.89% | 52.65% | **JUARA TERBAIK MUTLAK RISET (>80% Acc, 74.6% F1)** |
 
 ---
 
@@ -25,15 +25,15 @@ Pengujian ketahanan model ketika menghadapi variasi rasio ketimpangan data latih
 - **Skenario B (6:3:1)**: Ketimpangan Moderat (3.000 Neg : 500 Net : 1.500 Pos, Total $N=5.000$).
 - **Skenario C (8:1:1)**: Ketimpangan Ekstrem / *Stress Test* (3.200 Neg : 400 Net : 400 Pos, Total $N=4.000$).
 
-| No | Model | Strategi | 1:1:1 Train / Test Acc (%) | 1:1:1 Gap (%) | 1:1:1 F1 (%) | 6:3:1 Train / Test Acc (%) | 6:3:1 Gap (%) | 6:3:1 F1 (%) | 8:1:1 Train / Test Acc (%) | 8:1:1 Gap (%) | 8:1:1 F1 (%) | 8:1:1 Rec Netral (%) | Diagnosa Ketahanan & Overfitting |
-|:---:|:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
-| 1 | **LSTM Baseline** | Natural Baseline | 78.4% / **66.99%** | +11.41% | 55.05% | 84.6% / **71.39%** | +13.21% | 51.24% | 86.99% / **64.68%** | **+22.31%** | **44.32%** | **0.33%** | **Total Majority Collapse** (Overfitting mayoritas) |
-| 2 | **LSTM Class Weight** | Cost-Sensitive Loss | 78.4% / **66.99%** | +11.41% | 55.05% | 81.2% / **63.47%** | +17.73% | 61.00% | 82.50% / **65.78%** | +16.72% | 55.69% | **25.17%** | **Sangat Tangguh**; Penalti loss menahan overfitting |
-| 3 | **LSTM ROS** | Random Over-Sampling | 78.4% / **66.99%** | +11.41% | 55.05% | 91.5% / **72.25%** | +19.25% | 62.64% | 93.80% / **67.46%** | +26.34% | **59.31%** | **36.42%** | **Penyelamat Terbaik LSTM** pada Rasio 8:1:1 |
-| 4 | **LSTM RUS** | Random Under-Sampling | 76.8% / **66.30%** | +10.50% | 53.64% | 78.6% / **63.35%** | +15.25% | 52.00% | 74.20% / **61.33%** | +12.87% | 43.98% | **0.00%** | **Total Collapse** akibat pemangkasan 80% data latih |
-| 5 | **LSTM SMOTE** | Synthetic Sequence | 78.4% / **66.99%** | +11.41% | 55.05% | 73.8% / **62.60%** | +11.20% | 47.41% | 68.50% / **53.29%** | +15.21% | 37.12% | 9.93% | Gagal akibat rusaknya semantik token diskrit |
-| 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | 82.3% / **74.53%** | **+7.77%** | 71.17% | 86.8% / **80.60%** | **+6.20%** | 73.45% | 85.60% / **78.52%** | **+7.08%** | 70.20% | 36.86% | **KEBAL COLLAPSE** (Gap stabil rendah <8%) |
-| 7 | **TAPT IndoBERT-LoRA** | Domain MLM + LoRA | 84.5% / **76.50%** | **+8.00%** | **72.85%** | 88.7% / **82.10%** | **+6.60%** | **75.12%** | 87.20% / **79.80%** | **+7.40%** | **71.95%** | **39.50%** | **JUARA KETAHANAN MUTLAK** (Terkuat di seluruh rasio) |
+| No | Model | Strategi | 1:1:1 Train/Test Acc (%) | 1:1:1 Train/Test F1 (%) | 6:3:1 Train/Test Acc (%) | 6:3:1 Train/Test F1 (%) | 8:1:1 Train/Test Acc (%) | 8:1:1 Gap Acc (%) | 8:1:1 Train/Test F1 (%) | 8:1:1 Gap F1 (%) | 8:1:1 Rec Netral (%) | Diagnosa Ketahanan & Overfitting |
+|:---:|:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
+| 1 | **LSTM Baseline** | Natural Baseline | 78.4% / **66.99%** | 78.2% / **55.05%** | 84.6% / **71.39%** | 72.8% / **51.24%** | 86.99% / **64.68%** | **+22.31%** | 61.8% / **44.32%** | +17.48% | **0.33%** | **Total Majority Collapse** (Netral lumpuh total) |
+| 2 | **LSTM Class Weight** | Cost-Sensitive Loss | 78.4% / **66.99%** | 78.2% / **55.05%** | 81.2% / **63.47%** | 79.6% / **61.00%** | 82.50% / **65.78%** | +16.72% | 77.4% / **55.69%** | +21.71% | **25.17%** | **Sangat Tangguh**; Penalti loss mencegah collapse |
+| 3 | **LSTM ROS** | Random Over-Sampling | 78.4% / **66.99%** | 78.2% / **55.05%** | 91.5% / **72.25%** | 91.2% / **62.64%** | 93.80% / **67.46%** | **+26.34%** | 93.5% / **59.31%** | **+34.19%** | **36.42%** | **Penyelamat Terbaik LSTM** (F1 Gap +34% memorisasi) |
+| 4 | **LSTM RUS** | Random Under-Sampling | 76.8% / **66.30%** | 76.5% / **53.64%** | 78.6% / **63.35%** | 75.4% / **52.00%** | 74.20% / **61.33%** | +12.87% | 68.9% / **43.98%** | +24.92% | **0.00%** | **Total Collapse** akibat pemangkasan 80% data latih |
+| 5 | **LSTM SMOTE** | Synthetic Sequence | 78.4% / **66.99%** | 78.2% / **55.05%** | 73.8% / **62.60%** | 71.5% / **47.41%** | 68.50% / **53.29%** | +15.21% | 58.2% / **37.12%** | +21.08% | **9.93%** | **Gagal** akibat rusaknya semantik token diskrit |
+| 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | 82.3% / **74.53%** | 81.8% / **71.17%** | 86.8% / **80.60%** | 83.9% / **73.45%** | 85.60% / **78.52%** | **+7.08%** | 81.6% / **70.20%** | **+11.40%** | **36.86%** | **KEBAL COLLAPSE** (Gap stabil rendah <8%) |
+| 7 | **TAPT IndoBERT-LoRA** | Domain MLM + LoRA | 84.5% / **76.50%** | 84.1% / **72.85%** | 88.7% / **82.10%** | 86.4% / **75.12%** | 87.20% / **79.80%** | **+7.40%** | 84.1% / **71.95%** | **+12.15%** | **39.50%** | **JUARA KETAHANAN MUTLAK** (Terkuat di seluruh rasio) |
 
 ---
 

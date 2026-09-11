@@ -1,8 +1,8 @@
-No,Model,Strategi Balancing,Arsitektur / Backbone,Hiperparameter,Train Accuracy (%),Train Macro F1 (%),Test Accuracy (%),Macro Precision (%),Macro Recall (%),Macro F1 (%),Generalization Gap Acc (%),Generalization Gap F1 (%),Recall Netral (%)
-1,LSTM Baseline,Natural Baseline (Imbalance Data),Embedding(128) + LSTM(32),"lr: 0.0002, bs: 16, drop: 0.2",81.32,73.19,70.92,61.65,61.69,61.56,10.4,11.62,28.81
-2,LSTM Class Weight,Class Weight (Cost-Sensitive Learning),Embedding(128) + LSTM(64),"lr: 0.0002, bs: 16, drop: 0.2",88.48,85.06,71.68,64.88,64.35,64.6,16.81,20.46,40.4
-3,LSTM ROS,Random Over-Sampling (ROS),Embedding(128) + LSTM(64),"lr: 0.0002, bs: 16, drop: 0.2",92.46,92.44,70.06,64.38,65.62,64.89,22.4,27.54,48.68
-4,LSTM RUS,Random Under-Sampling (RUS),Embedding(128) + LSTM(64),"lr: 0.0002, bs: 16, drop: 0.2",70.59,70.64,53.06,57.34,56.95,52.72,17.53,17.92,56.62
-5,LSTM SMOTE,SMOTE (Synthetic Minority Over-sampling Technique),Embedding(128) + LSTM(64),"lr: 0.0002, bs: 32, drop: 0.3",65.03,64.33,64.39,61.05,57.07,57.37,0.63,6.96,43.71
-6,IndoBERTweet-LoRA,Natural Baseline,indolem/indobertweet-base,"r: 16, a: 32, lr: 2e-4, ep: 8",84.15,80.2,77.98,73.18,74.88,73.9,6.17,6.3,61.26
-7,TAPT IndoBERT-LoRA,Domain Adaptation (MLM),indobertweet + TAPT (3 ep),"MLM lr: 5e-5, FT lr: 2e-4",86.4,82.5,80.06,75.83,73.83,74.61,6.34,7.89,52.65
+No,Model,Strategi Balancing,Arsitektur / Backbone,Hiperparameter,Train Acc (%),Test Acc (%),Gap Acc (%),Train Macro F1 (%),Test Macro F1 (%),Gap Macro F1 (%),Macro Precision (%),Macro Recall (%),Recall Netral (%)
+1,LSTM Baseline,Natural Baseline (Imbalance Data),Embedding(128) + LSTM(32),"lr: 0.0002, bs: 16, drop: 0.2",81.32,70.92,10.4,73.19,61.56,11.62,61.65,61.69,28.81
+2,LSTM Class Weight,Class Weight (Cost-Sensitive Learning),Embedding(128) + LSTM(64),"lr: 0.0002, bs: 16, drop: 0.2",88.48,71.68,16.81,85.06,64.6,20.46,64.88,64.35,40.4
+3,LSTM ROS,Random Over-Sampling (ROS),Embedding(128) + LSTM(64),"lr: 0.0002, bs: 16, drop: 0.2",92.46,70.06,22.4,92.44,64.89,27.54,64.38,65.62,48.68
+4,LSTM RUS,Random Under-Sampling (RUS),Embedding(128) + LSTM(64),"lr: 0.0002, bs: 16, drop: 0.2",70.59,53.06,17.53,70.64,52.72,17.92,57.34,56.95,56.62
+5,LSTM SMOTE,SMOTE (Synthetic Minority Over-sampling Technique),Embedding(128) + LSTM(64),"lr: 0.0002, bs: 32, drop: 0.3",65.03,64.39,0.63,64.33,57.37,6.96,61.05,57.07,43.71
+6,IndoBERTweet-LoRA,Natural Baseline,indolem/indobertweet-base,"r: 16, a: 32, lr: 2e-4, ep: 8",84.15,77.98,6.17,80.2,73.9,6.3,73.18,74.88,61.26
+7,TAPT IndoBERT-LoRA,Domain Adaptation (MLM),indobertweet + TAPT (3 ep),"MLM lr: 5e-5, FT lr: 2e-4",86.4,80.06,6.34,82.5,74.61,7.89,75.83,73.83,52.65
