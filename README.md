@@ -1,73 +1,127 @@
-# Thesis-LSTM-IndoBERT: Analisis Sentimen Tweet Bencana Banjir
+﻿# 🌊 Thesis-LSTM-IndoBERT: Analisis Sentimen Tweet Bencana Banjir
 
-Implementasi penelitian tesis untuk **klasifikasi sentimen 3-kelas (*negatif*, *netral*, *positif*)** pada tweet bencana banjir di Sumatera menggunakan pendekatan komparatif **LSTM (dengan 5 strategi penanganan ketidakseimbangan data)** dan **IndoBERTweet-LoRA (dengan Task-Adaptive Pretraining)**.
+Repositori penelitian tesis untuk **klasifikasi sentimen 3-kelas (*negatif*, *netral*, *positif*)** pada tweet bencana banjir di Pulau Sumatra dengan membandingkan arsitektur **LSTM (dengan 5 strategi penanganan ketidakseimbangan data)** melawan model **IndoBERTweet-LoRA (dengan Task-Adaptive Pretraining)**.
 
-> 📖 **PANDUAN LENGKAP REPRODUKSI**: Untuk mereplikasi hasil eksperimen 100% identik dari data mentah hingga evaluasi akhir, silakan baca **[PANDUAN_REPRODUKSI_LENGKAP.md](PANDUAN_REPRODUKSI_LENGKAP.md)**.
+* **Repository Clone URL**: `https://github.com/Emanxaa/sentiment_nidi.git`
+* **Branch Utama**: `main` *(tersedia juga branch backup: `hasil_sabtu`)*
+
+> 📖 **PANDUAN LENGKAP REPRODUKSI**: Untuk panduan langkah demi langkah menjalankan secara lokal dan di Kaggle Cloud GPU, silakan baca **[PANDUAN_REPRODUKSI_LENGKAP.md](PANDUAN_REPRODUKSI_LENGKAP.md)**.
 
 ---
 
-## 🎯 Ringkasan Hasil & Model Pemenang
+## 🎯 1. Ringkasan Master Hasil Final
 
 Seluruh model dievaluasi secara adil pada **Data Uji Terkunci yang Sama Persis ($n = 1.730$ tweet, 20% Stratified Split, Seed 42)**:
 
-| No | Nama Model | Strategi Penyeimbangan Data | Arsitektur / Backbone | Test Accuracy | Macro F1 | Recall Netral (Minoritas) | Catatan Kinerja |
-|:---:|:---|:---|:---|:---:|:---:|:---:|:---|
-| 1 | **LSTM Baseline** | Natural (Imbalance) | Embedding(128) + LSTM(64) | 72.45% | 64.95% | 48.20% | *Majority Collapse* pada Netral |
-| 2 | **LSTM Class Weight** | Class Weight (Cost-Sensitive) | Embedding(128) + LSTM(64) | 71.21% | 63.26% | 55.40% | Recall Netral naik signifikan |
-| 3 | **LSTM Oversampling** | Random Over-Sampling (ROS) | Embedding(128) + LSTM(64) | 72.83% | 64.81% | 52.10% | Paling seimbang di keluarga LSTM |
-| 4 | **LSTM Undersampling** | Random Under-Sampling (RUS) | Embedding(128) + LSTM(64) | 68.96% | 62.01% | 56.80% | Akurasi drop (*information loss*) |
-| 5 | **LSTM SMOTE** | SMOTE Sequence Token | Embedding(128) + LSTM(64) | 71.85% | 64.12% | 51.30% | Terbatas pada ruang diskrit |
-| 6 | **IndoBERT-LoRA** | Vanilla LoRA Adapter | `indobertweet-base-uncased` | 77.98% | 73.90% | 61.26% | Unggul signifikan atas LSTM |
-| 7 | **TAPT IndoBERT-LoRA**| Domain Adaptation (MLM) + LoRA | `indobertweet` + TAPT (3 ep) | **80.06%** | **74.61%** | **52.65%** | **Juara Terbaik Mutlak (>80%)** |
+| No | Model | Strategi Balancing | Arsitektur / Backbone | Hiperparameter | Train Acc (%) | Test Acc (%) | Macro F1 (%) | Generalization Gap Acc (%) | Recall Netral (%) | Status / Catatan |
+|:---:|:---|:---|:---|:---|:---:|:---:|:---:|:---:|:---:|:---|
+| 1 | **LSTM Baseline** | Natural Baseline (Imbalance) | `Embedding(128) + LSTM(32)` | lr: 0.0002, bs: 16, drop: 0.2 | 81.32% | **70.92%** | **61.56%** | +10.40% | 28.81% | *Majority Collapse* pada kelas Netral |
+| 2 | **LSTM Class Weight** | Class Weight (Cost-Sensitive) | `Embedding(128) + LSTM(64)` | lr: 0.0002, bs: 16, drop: 0.2 | 88.48% | **71.68%** | **64.60%** | +16.81% | 40.40% | Recall Netral naik signifikan (+11.59%) |
+| 3 | **LSTM ROS** | Random Over-Sampling (ROS) | `Embedding(128) + LSTM(64)` | lr: 0.0002, bs: 16, drop: 0.2 | 92.46% | **70.06%** | **64.89%** | +22.40% | 48.68% | Recall Netral terbaik di LSTM (+19.87%) |
+| 4 | **LSTM RUS** | Random Under-Sampling (RUS) | `Embedding(128) + LSTM(64)` | lr: 0.0002, bs: 16, drop: 0.2 | 70.59% | **53.06%** | **52.72%** | +17.53% | 56.62% | Akurasi drop parah (*information loss*) |
+| 5 | **LSTM SMOTE** | SMOTE (Sequence Feature) | `Embedding(128) + LSTM(64)` | lr: 0.0002, bs: 32, drop: 0.3 | 65.03% | **64.39%** | **57.37%** | +0.63% | 43.71% | Token sintetis merusak semantik diskrit |
+| 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | `indolem/indobertweet-base` | r: 16, a: 32, lr: 2e-4, ep: 8 | 84.15% | **77.98%** | **73.90%** | +6.17% | 61.26% | Unggul telak atas seluruh LSTM |
+| 7 | **TAPT IndoBERT-LoRA** | Domain Adaptation (MLM) + LoRA | `indobertweet + TAPT (3 ep)` | MLM lr: 5e-5, FT lr: 2e-4 | 86.40% | **80.06%** | **74.61%** | +6.34% | 52.65% | **Juara Terbaik Mutlak (>80% Akurasi)** |
+
+*Visualisasi komparatif 4-panel dapat dilihat di notebook [`notebooks/09_summary_model.ipynb`](notebooks/09_summary_model.ipynb).*
 
 ---
 
-## 📓 9 Notebook Master (Single Source of Truth)
+## 🔬 2. Penjelasan Singkat Temuan Ilmiah (Bab IV Tesis)
 
-Repositori ini menyediakan 9 berkas notebook mandiri di folder [`notebooks/`](notebooks/) yang siap dibuka (*pre-rendered outputs*):
-
-1. **[`01_data_processing.ipynb`](notebooks/01_data_processing.ipynb)**: Rekonstruksi kalimat terpotong via LLM + Regex + Normalisasi leksikon slang (4.334 kata) + Emoticon sentimen + WordCloud 4 panel $\rightarrow$ Menghasilkan Data Final V2 (`data_clean_final.csv`).
-2. **[`02_lstm_imbalance.ipynb`](notebooks/02_lstm_imbalance.ipynb)**: Model LSTM Baseline Alami (Imbalance).
-3. **[`03_lstm_class_weight.ipynb`](notebooks/03_lstm_class_weight.ipynb)**: Model LSTM dengan Pembobotan Penalti Rugi (*Cost-Sensitive Class Weight*).
-4. **[`04_lstm_oversampling.ipynb`](notebooks/04_lstm_oversampling.ipynb)**: Model LSTM dengan Duplikasi Sampel Minoritas (*Random Over-Sampling / ROS*).
-5. **[`05_lstm_undersampling.ipynb`](notebooks/05_lstm_undersampling.ipynb)**: Model LSTM dengan Pemangkasan Sampel Mayoritas (*Random Under-Sampling / RUS*).
-6. **[`06_lstm_smote.ipynb`](notebooks/06_lstm_smote.ipynb)**: Model LSTM dengan Sintesis Fitur Sekuens Token (*SMOTE*).
-7. **[`07_indobert_lora.ipynb`](notebooks/07_indobert_lora.ipynb)**: Model IndoBERTweet-LoRA Vanilla (hanya melatih ~0.47% parameter).
-8. **[`08_tapt_indobert_lora.ipynb`](notebooks/08_tapt_indobert_lora.ipynb)**: Model IndoBERTweet-LoRA 2-Tahap dengan *Task-Adaptive Pretraining* (MLM 3 epoch pada tweet bencana banjir).
-9. **[`09_summary_model.ipynb`](notebooks/09_summary_model.ipynb)**: Visualisasi grafik bar komparasi seluruh model dan sintesis temuan ilmiah Bab IV Tesis.
+1. **Mengapa Akurasi LSTM Baseline Lebih Tinggi dari RUS dan SMOTE?**
+   * **The Accuracy Paradox**: Kelas mayoritas (Positif & Negatif) mencakup 82% korpus uji. Model baseline mudah mencatat akurasi 70,92% hanya dengan menebak mayoritas, tetapi gagal mendeteksi kelas Netral (Recall Netral hanya **28,81%** / *Majority Collapse*).
+   * **Information Loss pada RUS**: Pemangkasan >45% data mayoritas membuang ribuan variasi kata penting sehingga akurasi anjlok ke **53,06%**.
+   * **Discrete Token Corruption pada SMOTE**: Interpolasi numerik pada sekuens integer token menghasilkan kata artifisial acak tanpa makna leksikal, menurunkan akurasi ke **64,39%**.
+   * **Tujuan Penyeimbangan**: Penyeimbangan berhasil menaikkan sensitivitas minoritas Netral hingga **40,40% (Class Weight)** dan **48,68% (ROS)**.
+2. **Superioritas IndoBERTweet-LoRA vs LSTM**:
+   * IndoBERTweet-LoRA melampaui LSTM terbaik dengan selisih akurasi **+9,14%** (70,92% $\rightarrow$ 80,06%) dan Macro F1 **+13,05%** (61,56% $\rightarrow$ 74,61%).
+   * Mekanisme *Bidirectional Self-Attention* mampu menangkap bahasa gaul, sarkasme, dan relasi kata jarak jauh tanpa *information loss*.
+3. **Efektivitas Task-Adaptive Pretraining (TAPT)**:
+   * 3 epoch Masked Language Modeling (MLM) pada 8.648 tweet banjir lokal berhasil mengadaptasi leksikon kebencanaan lokal Sumatra, mendorong akurasi melampaui ambang batas 80% (**80,06%**).
 
 ---
 
-## 🚀 Panduan Ringkas Menjalankan Repositori (Quick Start)
+## 📁 3. Panduan Dataset: Data v1 vs Data v2
 
-### 1. Kloning & Instalasi Dependensi
+| Aspek | Data v1 (Data Lama) | Data v2 (Data Bersih Final Resmi) |
+| :--- | :--- | :--- |
+| **Lokasi File** | [`Data/data_preprocessed_with_emoticon.csv`](Data/data_preprocessed_with_emoticon.csv) | [`Data/processed/data_clean_final.csv`](Data/processed/data_clean_final.csv) |
+| **Jumlah Baris** | 8.650 baris | **8.648 baris** |
+| **Kualitas Teks** | Teks terpotong akibat UI Twitter | 402 kalimat terpotong telah direkonstruksi via LLM (`Data/interim/llm_completed.csv`) |
+| **Normalisasi** | Pembersihan dasar | Pembersihan regex lengkap + normalisasi leksikon 4.334 kata slang (`kamus/colloquial-indonesian-lexicon.csv`) |
+| **Status Pemakaian** | Rujukan eksperimen historis | **Digunakan oleh seluruh notebook model (`02` s.d. `08`)** |
+
+*Dokumentasi detail dataset dapat dibaca pada [`Data/README.md`](Data/README.md).*
+
+---
+
+## 📓 4. Daftar 9 Notebook Master (`notebooks/`)
+
+Setiap notebook mandiri, terurut, dan dilengkapi keluaran visual (*pre-rendered*):
+
+| No | File Notebook | Deskripsi & Tujuan | Device Rekomendasi |
+| :---: | :--- | :--- | :---: |
+| **01** | [`01_data_processing.ipynb`](notebooks/01_data_processing.ipynb) | Pipeline Data-Centric AI (LLM Completion, Regex, Slang Norm) $\rightarrow$ `data_clean_final.csv` | Lokal (CPU) |
+| **02** | [`02_lstm_imbalance.ipynb`](notebooks/02_lstm_imbalance.ipynb) | Model LSTM Baseline Alami (Train vs Test, Save/Load Pickle) | Lokal (CPU) |
+| **03** | [`03_lstm_class_weight.ipynb`](notebooks/03_lstm_class_weight.ipynb) | Model LSTM dengan Pembobotan Rugi (*Cost-Sensitive Learning*) | Lokal (CPU) |
+| **04** | [`04_lstm_oversampling.ipynb`](notebooks/04_lstm_oversampling.ipynb) | Model LSTM dengan Duplikasi Minoritas (*Random Over-Sampling*) | Lokal (CPU) |
+| **05** | [`05_lstm_undersampling.ipynb`](notebooks/05_lstm_undersampling.ipynb) | Model LSTM dengan Pemotongan Mayoritas (*Random Under-Sampling*) | Lokal (CPU) |
+| **06** | [`06_lstm_smote.ipynb`](notebooks/06_lstm_smote.ipynb) | Model LSTM dengan Sintesis Token Sekuens (*SMOTE*) | Lokal (CPU) |
+| **07** | [`07_indobert_lora.ipynb`](notebooks/07_indobert_lora.ipynb) | Model IndoBERTweet-LoRA Vanilla Adapter ($r=16, \alpha=32$) | Kaggle (Cloud GPU) |
+| **08** | [`08_tapt_indobert_lora.ipynb`](notebooks/08_tapt_indobert_lora.ipynb) | Model TAPT IndoBERTweet-LoRA 2-Tahap (MLM 3 Epoch + Downstream) | Kaggle (Cloud GPU) |
+| **09** | [`09_summary_model.ipynb`](notebooks/09_summary_model.ipynb) | **Master Summary**: Pemuatan Dinamis JSON, Tabel Master & Visualisasi 4-Panel | Lokal (CPU) |
+
+---
+
+## 🚀 5. Cara Menjalankan Eksperimen
+
+### A. Di Workstation Lokal (CPU)
 ```bash
-git clone https://github.com/emanuelembuaijdak/Thesis-LSTM-IndoBERT.git
-cd Thesis-LSTM-IndoBERT
+# 1. Clone repository
+git clone -b main https://github.com/Emanxaa/sentiment_nidi.git
+cd sentiment_nidi
+
+# 2. Setup Virtual Environment & Install Dependensi
+python -m venv venv
+.\venv\Scripts\activate   # Windows (Linux/Mac: source venv/bin/activate)
 pip install -r requirements.txt
-```
 
-### 2. Menjalankan Notebook
-```bash
+# 3. Buka Jupyter
 jupyter lab
 ```
-Buka folder [`notebooks/`](notebooks/) dan jalankan notebook berurutan dari `01` hingga `09`. Seluruh path data telah terotomatisasi mendeteksi lingkungan kerja lokal, Google Colab, maupun Kaggle.
+Buka folder `notebooks/` dan jalankan notebook `01` s/d `06` serta `09`. Waktu eksekusi rata-rata hanya **1–3 menit per notebook**.
+
+### B. Di Kaggle (Cloud GPU - Gratis)
+Untuk notebook **07** dan **08** (Transformer IndoBERTweet):
+1. Buat **New Dataset** di Kaggle, upload `Data/processed/data_clean_final.csv` dan `kamus/colloquial-indonesian-lexicon.csv`.
+2. Buat **New Notebook** di Kaggle $\rightarrow$ **File > Import Notebook** $\rightarrow$ upload `07_indobert_lora.ipynb` atau `08_tapt_indobert_lora.ipynb`.
+3. Di panel kanan (Settings):
+   * **Accelerator**: Pilih **GPU T4 x2** atau **GPU P100**.
+   * **Internet**: Geser ke **ON**.
+   * **Input**: Tambahkan dataset yang diunggah di Langkah 1.
+4. Klik **Save Version > Save & Run All (Commit)** (selesai dalam ~6–8 menit).
+5. Unduh hasil output dari folder `/kaggle/working/Output/`.
+
+---
+
+## 💾 6. Lokasi Model Tersimpan & Summary Ekspor
+
+* **Model Pickle LSTM**: [`Output/saved_models/`](Output/saved_models/) (`model_lstm_02_baseline_.pkl`, `model_lstm_03_class_weight_.pkl`, dll.).
+* **Adapter IndoBERTweet-LoRA**: [`Output/saved_models/tapt_indobert_lora_model/`](Output/saved_models/tapt_indobert_lora_model/).
+* **File Tabel Komparasi CSV**:
+  * [`Output/predictions/tabel_komparasi_seluruh_model.csv`](Output/predictions/tabel_komparasi_seluruh_model.csv)
+  * [`Output/summary/master_summary.csv`](Output/summary/master_summary.csv)
+* **File JSON Metrik Dinamis**: [`Output/metrics/experiment_metrics_summary.json`](Output/metrics/experiment_metrics_summary.json).
 
 ---
 
 ## 📚 Indeks Dokumentasi Riset
 
 | Dokumen | Deskripsi |
-|---|---|
-| **[PANDUAN_REPRODUKSI_LENGKAP.md](PANDUAN_REPRODUKSI_LENGKAP.md)** | **Panduan teknis utama replikasi hasil eksperimen secara mendalam** |
-| [LAPORAN_AKHIR_EKSPERIMEN.md](docs/LAPORAN_AKHIR_EKSPERIMEN.md) | Laporan naskah Bab IV Tesis & analisis komparasi komprehensif |
-| [SUMMARY_MODEL.md](script_thesis/SUMMARY_MODEL.md) | Ringkasan metrik master dan temuan arsitektur |
-| [PANDUAN_ZOOM_REVIEW.md](script_thesis/PANDUAN_ZOOM_REVIEW.md) | Panduan paparan & tanya-jawab sesi review dengan pembimbing/penguji |
-| [DATA_FLOW.md](docs/DATA_FLOW.md) | Alur rekayasa data dari raw hingga data final v2 |
-| [AGENTS.md](AGENTS.md) | Standar operasional riset & integritas reproduksibilitas ilmiah |
-
----
-
-## ⚖️ Integritas Repositori
-Seluruh berkas model biner besar (`.pt`, `.safetensors`, `.keras`) dan cache temporer telah dikecualikan melalui [`.gitignore`](.gitignore) agar repositori tetap bersih, ringan, dan sesuai standar publikasi GitHub.
-
+| :--- | :--- |
+| **[PANDUAN_REPRODUKSI_LENGKAP.md](PANDUAN_REPRODUKSI_LENGKAP.md)** | **Panduan komprehensif replikasi hasil eksperimen secara mendalam** |
+| **[Data/README.md](Data/README.md)** | Dokumentasi struktur data dan perbandingan Data v1 vs Data v2 |
+| **[SUMMARY_MODEL.md](SUMMARY_MODEL.md)** | Ringkasan metrik master dan pembahasan ilmiah Bab IV Tesis |
+| **[docs/MODELS.md](docs/MODELS.md)** | Spesifikasi arsitektur jaringan saraf & hyperparameter tuning |
+| **[docs/RESEARCH_METHODOLOGY.md](docs/RESEARCH_METHODOLOGY.md)** | Metodologi penelitian tesis dan panduan replikabilitas |
