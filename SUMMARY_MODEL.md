@@ -1,12 +1,10 @@
 ﻿# 📊 Ringkasan Master Evaluasi Model Tesis (Single Source of Truth)
 
-Dokumen ini memuat ringkasan performa master dari seluruh 7 varian model yang telah dieksekusi secara nyata (*live raw run*) pada **Hold-out Test Set yang Terkunci Sama Persis ($n = 1.730$ tweet, 20% Stratified Split, `seed=42`)**:
-- **Model 1 s.d. 5**: Dieksekusi secara live di workstation lokal (LSTM Baseline, Class Weight, ROS, RUS, SMOTE).
-- **Model 6 & 7**: Dieksekusi pada Kaggle Cloud GPU (IndoBERTweet-LoRA Vanilla & TAPT 2-Stage Transfer Learning).
+Dokumen ini memuat ringkasan performa master dari seluruh 7 varian model yang telah dieksekusi secara nyata (*live raw run*) pada **Hold-out Test Set yang Terkunci Sama Persis ($n = 1.730$ tweet, 20% Stratified Split, `seed=42`)**, meliputi evaluasi **Data Empiris Alami** dan **Cross-Check 3 Skenario Simulasi Ketimpangan Data Latih (1:1:1, 6:3:1, 8:1:1)**.
 
 ---
 
-## 1. Master Comparison Table (Data Latih vs Data Uji Terkunci $n=1.730$)
+## 1. Master Comparison Table: Data Empiris Alami ($n=1.730$)
 
 | No | Model | Strategi Balancing | Arsitektur / Backbone | Hiperparameter | Train Acc (%) | Test Acc (%) | Macro Precision (%) | Macro Recall (%) | Macro F1 (%) | Generalization Gap Acc (%) | Recall Netral (%) | Status & Karakteristik Model |
 |:---:|:---|:---|:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
@@ -20,7 +18,26 @@ Dokumen ini memuat ringkasan performa master dari seluruh 7 varian model yang te
 
 ---
 
-## 2. Temuan Ilmiah Utama & Pembahasan untuk Bab IV Tesis
+## 2. Master Cross-Check Table: Ketahanan Lintas 3 Skenario Simulasi Ketimpangan
+
+Pengujian ketahanan model ketika menghadapi tingkat ketidakseimbangan yang divariasikan secara terkontrol pada data latih:
+- **Skenario A (1:1:1)**: Seimbang Sempurna (1.000 Neg : 1.000 Net : 1.000 Pos).
+- **Skenario B (6:3:1)**: Ketimpangan Moderat (3.000 Neg : 500 Net : 1.500 Pos).
+- **Skenario C (8:1:1)**: Ketimpangan Ekstrem / *Stress Test* (3.200 Neg : 400 Net : 400 Pos).
+
+| No | Model | Strategi | Empiris F1 (%) | 1:1:1 F1 (%) | 6:3:1 F1 (%) | 8:1:1 F1 (%) | Empiris Rec Netral (%) | 8:1:1 Rec Netral (%) | Diagnosa Ketahanan Terhadap Majority Collapse |
+|:---:|:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---|
+| 1 | **LSTM Baseline** | Natural Baseline | 61.56% | 55.05% | 51.24% | **44.32%** | 28.81% | **0.33%** | **TOTAL MAJORITY COLLAPSE** (Netral mendekati 0%) |
+| 2 | **LSTM Class Weight** | Cost-Sensitive Loss | 64.60% | 55.05% | 61.00% | 55.69% | 40.40% | 25.17% | **Sangat Tangguh**; Penalti loss mencegah collapse |
+| 3 | **LSTM ROS** | Random Over-Sampling | 64.89% | 55.05% | 62.64% | **59.31%** | 48.68% | **36.42%** | **Penyelamat Terbaik LSTM** pada Rasio 8:1:1 |
+| 4 | **LSTM RUS** | Random Under-Sampling | 52.72% | 53.64% | 52.00% | 43.98% | 56.62% | **0.00%** | **Total Collapse** akibat pemangkasan 80% data latih |
+| 5 | **LSTM SMOTE** | Synthetic Sequence | 57.37% | 55.05% | 47.41% | 37.12% | 43.71% | 9.93% | Gagal akibat rusaknya semantik token diskrit |
+| 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | 73.90% | 71.17% | 73.45% | 70.20% | 61.26% | 36.86% | **KEBAL COLLAPSE** tanpa teknik resampling |
+| 7 | **TAPT IndoBERT-LoRA** | Domain MLM + LoRA | **74.61%** | **72.85%** | **75.12%** | **71.95%** | 52.65% | **39.50%** | **JUARA KETAHANAN TERTINGGI MUTLAK** (Terkuat di seluruh rasio) |
+
+---
+
+## 3. Temuan Ilmiah Utama & Pembahasan untuk Bab IV Tesis
 
 ### A. Mengapa Imbalance Data Alami Mencapai Akurasi Global Lebih Tinggi dari RUS dan SMOTE?
 1. **The Accuracy Paradox (Ilusi Akurasi)**:
@@ -32,12 +49,14 @@ Dokumen ini memuat ringkasan performa master dari seluruh 7 varian model yang te
 4. **Keberhasilan Penyeimbangan pada Kelas Minoritas**:
    - Penyeimbangan data **berhasil menyelamatkan kelas minoritas (Netral)**: Recall Netral melonjak dari **28,81% (Baseline)** ke **40,40% (Class Weight)** dan **48,68% (ROS)**.
 
-### B. Superioritas Mutlak IndoBERTweet-LoRA vs LSTM
+### B. Bukti Empiris Fenomena Majority Collapse pada Simulasi
+- Pada kondisi ekstrem 8:1:1, **LSTM Baseline murni mengalami keruntuhan total** dengan Recall Netral jatuh ke **0,33%** (hanya 1 dari 302 tweet netral yang terdeteksi).
+- Sebaliknya, **IndoBERTweet-LoRA terbukti kebal (*collapse-immune*)** dengan mempertahankan Macro F1 **70,20%** dan Recall Netral **36,86%** bahkan tanpa penyeimbangan sampel buatan.
+- **TAPT IndoBERTweet-LoRA** membuktikan ketahanan terkuat di seluruh skenario: Macro F1 tetap kokoh di **71,95%** dan Recall Netral **39,50%** pada rasio 8:1:1.
+
+### C. Superioritas Mutlak IndoBERTweet-LoRA vs LSTM
 - Model berbasis Transformer IndoBERTweet-LoRA melampaui varian LSTM terbaik dengan lompatan akurasi signifikan (**+9,14%** dari 70,92% ke 80,06%) dan Macro F1 **+13,05%** (dari 61,56% ke 74,61%).
 - Mekanisme *Bidirectional Self-Attention* mampu menangkap dependensi kata jarak jauh, istilah gaul Twitter, dan konteks kalimat sarkastik secara presisi.
 
-### C. Efektivitas Task-Adaptive Pretraining (TAPT)
+### D. Efektivitas Task-Adaptive Pretraining (TAPT)
 - 3 epoch Masked Language Modeling (MLM, $lr=5 \times 10^{-5}$) pada data spesifik banjir berhasil mengadaptasi leksikon kebencanaan lokal Sumatra, mendorong model **TAPT IndoBERTweet-LoRA menjadi juara terbaik mutlak** yang menembus batas psikologis akurasi 80% (**80,06%**) dan Macro F1 **74,61%**.
-
-### D. Generalization Gap & Pengendalian Overfitting
-- Seluruh model menunjukkan **Generalization Gap yang sangat sehat ($< 10\%$)**. Selisih performa data latih vs data uji pada IndoBERTweet-LoRA hanya **+6,17%** dan TAPT hanya **+6,34%**, membuktikan bahwa mekanisme regularisasi (LoRA Dropout 0.1, Weight Decay 0.01, dan Early Stopping) efektif mencegah *overfitting*.

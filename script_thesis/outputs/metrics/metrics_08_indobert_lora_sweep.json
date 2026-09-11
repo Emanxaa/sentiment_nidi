@@ -1,0 +1,31 @@
+{
+    "model_id": "08_indobert_lora_sweep",
+    "strategy": "IndoBERTweet-LoRA P1 Sweep Optimal (t10)",
+    "empiris": {
+        "test_accuracy": 77.98,
+        "macro_f1": 73.9,
+        "macro_recall": 74.88,
+        "recall_netral": 61.26,
+        "f1_netral": 58.73
+    },
+    "simulasi": {
+        "scenario_111": {
+            "scenario_name": "Skenario A (1:1:1)",
+            "macro_f1": 71.85,
+            "test_accuracy": 75.1,
+            "recall_netral": 69.2
+        },
+        "scenario_631": {
+            "scenario_name": "Skenario B (6:3:1)",
+            "macro_f1": 74.12,
+            "test_accuracy": 81.2,
+            "recall_netral": 41.5
+        },
+        "scenario_811": {
+            "scenario_name": "Skenario C (8:1:1)",
+            "macro_f1": 70.85,
+            "test_accuracy": 78.9,
+            "recall_netral": 38.2
+        }
+    }
+}

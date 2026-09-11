@@ -1,0 +1,37 @@
+{
+    "model_id": "09_indobert_lora_tapt",
+    "strategy": "IndoBERTweet-LoRA + TAPT (MLM 3 Epoch)",
+    "empiris": {
+        "test_accuracy": 80.06,
+        "macro_f1": 74.61,
+        "macro_recall": 73.83,
+        "recall_netral": 52.65,
+        "f1_netral": 57.92
+    },
+    "simulasi": {
+        "scenario_111": {
+            "scenario_name": "Skenario A (1:1:1)",
+            "test_accuracy": 76.5,
+            "macro_f1": 72.85,
+            "macro_recall": 73.1,
+            "recall_netral": 70.4,
+            "f1_netral": 57.2
+        },
+        "scenario_631": {
+            "scenario_name": "Skenario B (6:3:1)",
+            "test_accuracy": 82.1,
+            "macro_f1": 75.12,
+            "macro_recall": 71.05,
+            "recall_netral": 43.8,
+            "f1_netral": 49.35
+        },
+        "scenario_811": {
+            "scenario_name": "Skenario C (8:1:1)",
+            "test_accuracy": 79.8,
+            "macro_f1": 71.95,
+            "macro_recall": 68.6,
+            "recall_netral": 39.5,
+            "f1_netral": 45.8
+        }
+    }
+}

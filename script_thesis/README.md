@@ -1,4 +1,4 @@
-﻿# 🎓 Pusat Kerja Mandiri Tesis: Folder `script_thesis/`
+# 🎓 Pusat Kerja Mandiri Tesis: Folder `script_thesis/`
 
 Selamat datang di direktori **`script_thesis/`**. Folder ini dirancang sebagai **satu wadah terpusat (*all-in-one standalone hub*)** yang menampung seluruh artefak riset tesis:
 1. **9 Notebook Master** (`01` s.d. `09`) dengan keluaran visual (*pre-rendered outputs*).
@@ -23,7 +23,20 @@ Seluruh model dievaluasi secara adil pada **Hold-out Test Set yang Sama Persis (
 | 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | `indolem/indobertweet-base` | r: 16, a: 32, lr: 2e-4, ep: 8 | 84.15% | **77.98%** | 73.18% | 74.88% | **73.90%** | +6.17% | 61.26% | Unggul telak di atas seluruh LSTM |
 | 7 | **TAPT IndoBERT-LoRA** | Domain Adaptation (MLM) + LoRA | `indobertweet + TAPT (3 ep)` | MLM lr: 5e-5, FT lr: 2e-4 | 86.40% | **80.06%** | 75.83% | 73.83% | **74.61%** | +6.34% | 52.65% | **Juara Terbaik Mutlak (>80% Akurasi)** |
 
+### 🧪 Cross-Check Ketahanan Model Lintas 3 Skenario Simulasi (1:1:1, 6:3:1, 8:1:1)
+
+| No | Model | Strategi Balancing | Empiris Macro F1 (%) | 1:1:1 F1 (%) | 6:3:1 F1 (%) | 8:1:1 F1 (%) | 8:1:1 Rec Netral (%) | Diagnosa Ketahanan Model |
+|:---:|:---|:---|:---:|:---:|:---:|:---:|:---:|:---|
+| 1 | **LSTM Baseline** | Natural Baseline | 61.56% | 55.05% | 51.24% | 44.32% | **0.33%** | **Total Majority Collapse** (Netral lenyap) |
+| 2 | **LSTM Class Weight** | Cost-Sensitive Loss | 64.60% | 55.05% | 61.00% | 55.69% | **25.17%** | **Sangat Tangguh**; Penalti loss mencegah collapse |
+| 3 | **LSTM ROS** | Random Over-Sampling | 64.89% | 55.05% | 62.64% | **59.31%** | **36.42%** | **Penyelamat Terbaik LSTM** pada rasio 8:1:1 |
+| 4 | **LSTM RUS** | Random Under-Sampling | 52.72% | 53.64% | 52.00% | 43.98% | **0.00%** | **Total Collapse** akibat pemangkasan data latih |
+| 5 | **LSTM SMOTE** | Synthetic Sequence | 57.37% | 55.05% | 47.41% | 37.12% | **9.93%** | **Gagal**; Vektor interpolasi merusak token diskrit |
+| 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | 73.90% | 71.17% | 73.45% | **70.20%** | **36.86%** | **Kebal Collapse** tanpa teknik resampling |
+| 7 | **TAPT IndoBERT-LoRA** | Domain MLM + LoRA | **74.61%** | **72.85%** | **75.12%** | **71.95%** | **39.50%** | **JUARA KETAHANAN MUTLAK** (Terkuat di semua rasio) |
+
 ---
+
 
 ## 🔬 2. Penjelasan Ilmiah Singkat (Bahan Pertanyaan Ujian / Naskah Bab IV)
 

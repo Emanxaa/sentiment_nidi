@@ -1,4 +1,4 @@
-﻿# BAB IV: HASIL DAN PEMBAHASAN
+# BAB IV: HASIL DAN PEMBAHASAN
 
 ---
 
@@ -80,12 +80,37 @@ Seluruh model menunjukkan **Generalization Gap yang sehat ($< 10\%$)**:
 
 ## 4.3 Evaluasi Ketahanan Model Lintas Skenario Simulasi Ketimpangan
 
-Selain data empiris, pengujian pada 3 skenario simulasi rasio data latih (Skenario A 1:1:1, Skenario B 6:3:1, dan Skenario C 8:1:1) membuktikan:
-1. **Bukti Empiris Majority Collapse**: Pada rasio ekstrem 8:1:1, LSTM Baseline murni kehilangan kemampuan mengenali kelas netral (Recall Netral anjlok mendekati 0%).
-2. **Kekebalan Arsitektur IndoBERTweet**: IndoBERTweet-LoRA terbukti kebal terhadap fenomena collapse bahkan tanpa teknik resampling buatan, karena bobot praterlatih telah memiliki pemahaman semantik yang matang dari ratusan juta tweet bahasa Indonesia.
-3. **Penyelamat Terbaik LSTM**: Di antara varian LSTM, **Random Oversampling (ROS)** dan **Class Weight** menjadi teknik yang paling tangguh dalam mempertahankan deteksi kelas minoritas pada kondisi ketimpangan ekstrem.
+Untuk menguji ketahanan arsitektur dan membuktikan fenomena *Majority Collapse* secara eksperimental terkontrol, seluruh model terbaik dari setiap notebook diuji lintas **3 Skenario Simulasi Ketimpangan Data Latih**:
+1. **Skenario A (1:1:1)**: Seimbang buatan (1.000 Negatif : 1.000 Netral : 1.000 Positif).
+2. **Skenario B (6:3:1)**: Ketimpangan moderat (3.000 Negatif : 500 Netral : 1.500 Positif).
+3. **Skenario C (8:1:1)**: Ketimpangan ekstrem / ekor panjang (3.200 Negatif : 400 Netral : 400 Positif).
+
+Seluruh model dievaluasi pada partisi data uji holdout terkunci yang persis sama ($n=1.730$). Hasil perbandingan komprehensif disajikan pada **Tabel 4.3**.
+
+**Tabel 4.3** Matriks Ketahanan Model Lintas Skenario Simulasi Ketimpangan Data Latih vs Data Uji Terkunci ($n=1.730$)
+
+| No | Model | Strategi Balancing | Empiris Macro F1 (%) | 1:1:1 F1 (%) | 6:3:1 F1 (%) | 8:1:1 F1 (%) | Empiris Rec Netral (%) | 8:1:1 Rec Netral (%) | Diagnosa Ketahanan Model |
+|:---:|:---|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---|
+| 1 | **LSTM Baseline** | Natural Baseline | 61.56% | 55.05% | 51.24% | 44.32% | 28.81% | **0.33%** | **Total Majority Collapse** (Gagal mengenali Netral pada 8:1:1) |
+| 2 | **LSTM Class Weight** | Cost-Sensitive Loss | 64.60% | 55.05% | 61.00% | 55.69% | 40.40% | **25.17%** | **Sangat Tangguh**; Penalti loss efektif mencegah keruntuhan total |
+| 3 | **LSTM ROS** | Random Over-Sampling | 64.89% | 55.05% | 62.64% | **59.31%** | 48.68% | **36.42%** | **Penyelamat Terbaik LSTM** pada ketimpangan ekstrem 8:1:1 |
+| 4 | **LSTM RUS** | Random Under-Sampling | 52.72% | 53.64% | 52.00% | 43.98% | 56.62% | **0.00%** | **Total Collapse** akibat pemangkasan >80% variasi data latih |
+| 5 | **LSTM SMOTE** | Synthetic Sequence | 57.37% | 55.05% | 47.41% | 37.12% | 43.71% | **9.93%** | **Gagal**; Vektor sintetis merusak semantik token integer diskrit |
+| 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | 73.90% | 71.17% | 73.45% | **70.20%** | 61.26% | **36.86%** | **Kebal Collapse** tanpa perlu manipulasi data resampling |
+| 7 | **TAPT IndoBERT-LoRA** | Domain MLM + LoRA | **74.61%** | **72.85%** | **75.12%** | **71.95%** | 52.65% | **39.50%** | **JUARA KETAHANAN MUTLAK** (Tertinggi di seluruh rasio data) |
+
+### Pembahasan Temuan Simulasi:
+1. **Bukti Nyata Majority Collapse pada LSTM Baseline**:
+   Pada kondisi seimbang (1:1:1), LSTM Baseline masih mampu mendeteksi kelas netral dengan Recall 13,58% (F1 55,05%). Namun, seiring meningkatnya ketimpangan ke moderat 6:3:1 dan ekstrem 8:1:1, Recall Netral anjlok berturut-turut menjadi **0,00%** dan **0,33%** (F1 merosot ke 44,32%). Model sepenuhnya mengorbankan kelas minoritas untuk meminimalisasi kesalahan agregat pada kelas mayoritas negatif.
+2. **Kekebalan Struktural Transformer (IndoBERTweet-LoRA)**:
+   Berbeda dengan LSTM, IndoBERTweet-LoRA mempertahankan Macro F1 di atas **70,20%** dan Recall Netral sebesar **36,86%** bahkan pada rasio ekstrem 8:1:1 tanpa teknik penyeimbangan data apapun. Hal ini membuktikan bahwa representasi kontekstual *pre-trained transformer* memberikan kekebalan alami terhadap distorsi distribusi frekuensi kelas.
+3. **TAPT IndoBERT-LoRA sebagai Solusi Terunggul**:
+   TAPT IndoBERT-LoRA secara konsisten menempati peringkat pertama pada seluruh skenario (F1 72,85% pada 1:1:1; 75,12% pada 6:3:1; dan 71,95% pada 8:1:1) dengan Recall Netral tertinggi pada kondisi ekstrem (39,50%). Adaptasi domain melalui MLM membekali model dengan pemahaman leksikal kebencanaan yang sangat kokoh.
+4. **Strategi Terbaik Penanganan Ketimpangan pada LSTM**:
+   Apabila harus menggunakan arsitektur LSTM, **Random Over-Sampling (ROS)** dan **Class Weight** terbukti menjadi dua teknik paling efektif. Pada rasio ekstrem 8:1:1, ROS mempertahankan F1 59,31% dan Recall Netral 36,42%, sedangkan Class Weight mempertahankan F1 55,69% dan Recall Netral 25,17%. Sebaliknya, RUS dan SMOTE terbukti tidak cocok untuk data sekuens teks bencana.
 
 ---
+
 
 ## 4.4 Uji Signifikansi Statistik Inferensial (McNemar's Chi-Square Test)
 

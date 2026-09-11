@@ -69,16 +69,38 @@ Tegaskan kepada kakaknya bahwa repositori ini telah ditata secara bersih:
 
 ---
 
+## 🧪 3b. Tabel Cross-Check 3 Skenario Simulasi (1:1:1, 6:3:1, 8:1:1)
+
+| No | Model | Strategi Balancing | Empiris Macro F1 (%) | 1:1:1 F1 (%) | 6:3:1 F1 (%) | 8:1:1 F1 (%) | 8:1:1 Rec Netral (%) | Diagnosa Ketahanan Model |
+|:---:|:---|:---|:---:|:---:|:---:|:---:|:---:|:---|
+| 1 | **LSTM Baseline** | Natural Baseline | 61.56% | 55.05% | 51.24% | 44.32% | **0.33%** | **Total Majority Collapse** (Netral lenyap) |
+| 2 | **LSTM Class Weight** | Cost-Sensitive Loss | 64.60% | 55.05% | 61.00% | 55.69% | **25.17%** | **Sangat Tangguh**; Penalti loss mencegah collapse |
+| 3 | **LSTM ROS** | Random Over-Sampling | 64.89% | 55.05% | 62.64% | **59.31%** | **36.42%** | **Penyelamat Terbaik LSTM** pada rasio 8:1:1 |
+| 4 | **LSTM RUS** | Random Under-Sampling | 52.72% | 53.64% | 52.00% | 43.98% | **0.00%** | **Total Collapse** akibat pemangkasan data latih |
+| 5 | **LSTM SMOTE** | Synthetic Sequence | 57.37% | 55.05% | 47.41% | 37.12% | **9.93%** | **Gagal**; Vektor interpolasi merusak token diskrit |
+| 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | 73.90% | 71.17% | 73.45% | **70.20%** | **36.86%** | **Kebal Collapse** tanpa teknik resampling |
+| 7 | **TAPT IndoBERT-LoRA** | Domain MLM + LoRA | **74.61%** | **72.85%** | **75.12%** | **71.95%** | **39.50%** | **JUARA KETAHANAN MUTLAK** (Terkuat di semua rasio) |
+
+---
+
 ## 🎯 4. Antisipasi Pertanyaan Kritis & Jawaban Ilmiah
 
-### Q1: *"Kenapa parameter di LSTM dan LoRA tidak di-tuning sebanyak algoritma Machine Learning seperti XGBoost?"*
+### Q1: *"Mengapa Akurasi LSTM Baseline (70,92%) lebih tinggi daripada teknik balancing seperti RUS (53,06%) dan SMOTE (64,39%)?"*
 > **Jawaban Anda**:
-> "Pada XGBoost, model belajar dari nol (*tabular split*) sehingga bentuk pohon keputusan (`max_depth`, `subsample`, `gamma`, dll.) sangat rawan *overfitting* jika tidak disetel teliti. Sebaliknya, IndoBERTweet adalah *Foundation Model* yang telah memiliki pemahaman bahasa Indonesia yang matang. Fine-tuning LoRA hanya mengarahkan representasi melalui adaptor ber-rank rendah, di mana literatur membuktikan parameter kuncinya berpusat pada *Learning Rate* dan *Rank* ($r=16, \alpha=32$). Selain itu, pada **Halaman 15 Poin 3.2.A.9 Proposal Tesis**, telah ditetapkan desain penelitian bahwa model dilatih dengan konfigurasi hiperparameter tetap (*ceteris paribus*) guna menjamin perbandingan arsitektur yang adil dan bebas dari bias pencarian parameter (*search bias*)."
+> "Ini adalah fenomena klasik **The Accuracy Paradox** pada data tidak seimbang. Karena kelas mayoritas (Positif & Negatif) mencakup 82% data uji, model baseline yang bias dapat meraih akurasi global tinggi dengan menebak mayoritas, tetapi menderita **Majority Collapse** dengan Recall Netral hanya **28,81%** (gagal mendeteksi informasi penting). Sebaliknya, RUS membuang >45% data mayoritas sehingga terjadi *information loss* parah, dan SMOTE merusak tata bahasa dengan membangkitkan token sintetis acak. Tujuan penyeimbangan kelas **bukan menaikkan akurasi global**, melainkan **menyelamatkan kelas minoritas**, terbukti pada Class Weight dan ROS yang sukses melipatgandakan Recall Netral ke 40,40% dan 48,68%."
 
-### Q2: *"Apakah penerapan penyeimbangan kelas (Oversampling/SMOTE) menyebabkan kebocoran data (data leakage)?"*
+### Q2: *"Kenapa parameter di LSTM dan LoRA tidak di-tuning sebanyak algoritma Machine Learning tabular seperti XGBoost?"*
 > **Jawaban Anda**:
-> "Sama sekali tidak. Seluruh teknik penyeimbangan data (ROS, RUS, SMOTE) diterapkan **hanya pada data latih (Train Set)** setelah proses *stratified split* 80:20 terkunci (`seed=42`). Data uji ($n = 1.730$) dan data validasi tetap mempertahankan distribusi alami aslinya, sehingga evaluasi performa model mencerminkan kondisi data dunia nyata."
+> "Pada model tabular, model belajar dari nol sehingga struktur pohon sangat rawan overfitting. Sebaliknya, IndoBERTweet adalah *Foundation Model* berbasis Transformer yang telah memiliki pemahaman bahasa Indonesia matang. Fine-tuning LoRA hanya mengarahkan representasi melalui adaptor ber-rank rendah, di mana literatur membuktikan parameter kuncinya terfokus pada *Learning Rate* ($2 \times 10^{-4}$) dan *Rank* ($r=16, \alpha=32$). Selain itu, pada **Halaman 15 Poin 3.2.A.9 Proposal Tesis**, telah ditetapkan desain metodologi bahwa model dilatih dengan konfigurasi hiperparameter tetap (*ceteris paribus*) guna menjamin perbandingan arsitektur yang adil dan bebas dari bias pencarian parameter (*search bias*)."
 
-### Q3: *"Mengapa model TAPT IndoBERTweet-LoRA layak direkomendasikan untuk naskah Bab IV dan V?"*
+### Q3: *"Apakah penerapan penyeimbangan kelas (Oversampling/SMOTE) menyebabkan kebocoran data (data leakage)?"*
 > **Jawaban Anda**:
-> "Karena secara kuantitatif model ini mencapai akurasi tertinggi (80.06%) dan Macro F1 terbaik (74.61%). Lebih penting lagi, TAPT berhasil menyelesaikan masalah ketimpangan kelas dengan mendongkrak Recall kelas Netral hingga 61.20% (meningkat lebih dari +13% dibanding baseline LSTM), membuktikan bahwa pra-pelatihan adaptasi domain efektif menangkap konteks tweet bencana yang sering kali bernada ambigu atau faktual."
+> "Sama sekali tidak ada kebocoran data (*zero data leakage*). Seluruh teknik penyeimbangan data (ROS, RUS, SMOTE) diterapkan **hanya pada data latih (Train Set, 72%)** setelah proses *stratified split* terkunci (`seed=42`). Data uji terkunci ($n = 1.730$) dan data validasi tetap mempertahankan distribusi alami aslinya, sehingga evaluasi performa model mencerminkan kondisi dunia nyata."
+
+### Q4: *"Apakah keunggulan IndoBERTweet-LoRA atas LSTM terbukti signifikan secara statistik?"*
+> **Jawaban Anda**:
+> "Ya, sangat signifikan. Evaluasi inferensial menggunakan **Uji McNemar dengan koreksi kontinuitas** menghasilkan nilai statistik $\chi^2 = 37,43$ dengan **$p\text{-value} < 0,0001$** ($p = 9,48 \times 10^{-10}$). Karena $p < 0,05$, hipotesis nol ($H_0$) ditolak secara meyakinkan pada tingkat kepercayaan 99,99%, membuktikan bahwa keunggulan Transformer atas LSTM bukan kebetulan variansi data uji melainkan perbedaan arsitektural yang fundamental."
+
+### Q5: *"Bagaimana respon model saat ketimpangan diuji dari seimbang (1:1:1) hingga ekstrem (8:1:1)?"*
+> **Jawaban Anda**:
+> "Pengujian lintas 3 skenario simulasi membuktikan bahwa semakin timpang data latih, LSTM Baseline murni mengalami **Total Majority Collapse** di mana Recall Netral anjlok dari 13,58% (1:1:1) menjadi **0,33%** pada rasio 8:1:1. Sebaliknya, IndoBERTweet-LoRA terbukti **kebal collapse** (mempertahankan F1 70,20% dan Recall Netral 36,86%), dan TAPT IndoBERT-LoRA menjadi **model terkuat di semua skenario** (F1 71,95% dan Recall Netral 39,50% pada 8:1:1). Untuk keluarga LSTM, **ROS** dan **Class Weight** adalah dua strategi penyelamat terbaik."

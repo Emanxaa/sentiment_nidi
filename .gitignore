@@ -51,7 +51,9 @@ Output/tapt_checkpoint/
 Output/forensics/
 baseline/
 legacy_notebooks/
-script_thesis/outputs/
+script_thesis/outputs/*
+!script_thesis/outputs/metrics/
+!script_thesis/outputs/figures/
 
 # --- Direktori Staging & Temporary Kaggle ---
 .kaggle-outputs/
