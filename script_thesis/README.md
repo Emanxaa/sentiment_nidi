@@ -64,14 +64,14 @@ script_thesis/
 ├── PANDUAN_ZOOM_REVIEW.md       # Panduan persiapan presentasi & review
 │
 ├── 01_data_processing.ipynb     # Pipeline Data-Centric AI (LLM, Regex, Slang Norm) -> Data v2
-├── 02_lstm_imbalance.ipynb      # LSTM Natural Baseline (Imbalance Data)
-├── 03_lstm_class_weight.ipynb   # LSTM + Cost-Sensitive Class Weight
-├── 04_lstm_oversampling.ipynb   # LSTM + Random Over-Sampling (ROS)
-├── 05_lstm_undersampling.ipynb  # LSTM + Random Under-Sampling (RUS)
-├── 06_lstm_smote.ipynb          # LSTM + SMOTE
-├── 07_indobert_lora.ipynb       # IndoBERTweet-LoRA Vanilla Adapter
-├── 08_tapt_indobert_lora.ipynb  # TAPT IndoBERTweet-LoRA (MLM 3 Epoch + Downstream)
-├── 09_summary_model.ipynb       # Master Summary: Pemuatan Dinamis JSON & Plot 4-Panel
+├── 02_lstm_imbalance.ipynb      # LSTM Natural Baseline [Empiris + Simulasi 1:1:1, 6:3:1, 8:1:1]
+├── 03_lstm_class_weight.ipynb   # LSTM + Cost-Sensitive Class Weight [Empiris + Simulasi]
+├── 04_lstm_oversampling.ipynb   # LSTM + Random Over-Sampling (ROS) [Empiris + Simulasi]
+├── 05_lstm_undersampling.ipynb  # LSTM + Random Under-Sampling (RUS) [Empiris + Simulasi]
+├── 06_lstm_smote.ipynb          # LSTM + SMOTE [Empiris + Simulasi]
+├── 07_indobert_lora.ipynb       # IndoBERTweet-LoRA Vanilla Adapter [Empiris + Simulasi]
+├── 08_tapt_indobert_lora.ipynb  # TAPT IndoBERTweet-LoRA (MLM 3 Epoch) [Empiris + Simulasi]
+├── 09_summary_model.ipynb       # Master Synthesis: Komparasi Empiris & 3 Skenario Simulasi
 │
 ├── data/                        # REPOSITORI DATA
 │   ├── README.md                # Panduan perbedaan Data v1 vs Data v2

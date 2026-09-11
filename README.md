@@ -76,14 +76,14 @@ Setiap notebook mandiri, terurut, dan dilengkapi keluaran visual (*pre-rendered*
 | No | File Notebook | Deskripsi & Tujuan | Device Rekomendasi |
 | :---: | :--- | :--- | :---: |
 | **01** | [`01_data_processing.ipynb`](notebooks/01_data_processing.ipynb) | Pipeline Data-Centric AI (LLM Completion, Regex, Slang Norm) $\rightarrow$ `data_clean_final.csv` | Lokal (CPU) |
-| **02** | [`02_lstm_imbalance.ipynb`](notebooks/02_lstm_imbalance.ipynb) | Model LSTM Baseline Alami (Train vs Test, Save/Load Pickle) | Lokal (CPU) |
-| **03** | [`03_lstm_class_weight.ipynb`](notebooks/03_lstm_class_weight.ipynb) | Model LSTM dengan Pembobotan Rugi (*Cost-Sensitive Learning*) | Lokal (CPU) |
-| **04** | [`04_lstm_oversampling.ipynb`](notebooks/04_lstm_oversampling.ipynb) | Model LSTM dengan Duplikasi Minoritas (*Random Over-Sampling*) | Lokal (CPU) |
-| **05** | [`05_lstm_undersampling.ipynb`](notebooks/05_lstm_undersampling.ipynb) | Model LSTM dengan Pemotongan Mayoritas (*Random Under-Sampling*) | Lokal (CPU) |
-| **06** | [`06_lstm_smote.ipynb`](notebooks/06_lstm_smote.ipynb) | Model LSTM dengan Sintesis Token Sekuens (*SMOTE*) | Lokal (CPU) |
-| **07** | [`07_indobert_lora.ipynb`](notebooks/07_indobert_lora.ipynb) | Model IndoBERTweet-LoRA Vanilla Adapter ($r=16, \alpha=32$) | Kaggle (Cloud GPU) |
-| **08** | [`08_tapt_indobert_lora.ipynb`](notebooks/08_tapt_indobert_lora.ipynb) | Model TAPT IndoBERTweet-LoRA 2-Tahap (MLM 3 Epoch + Downstream) | Kaggle (Cloud GPU) |
-| **09** | [`09_summary_model.ipynb`](notebooks/09_summary_model.ipynb) | **Master Summary**: Pemuatan Dinamis JSON, Tabel Master & Visualisasi 4-Panel | Lokal (CPU) |
+| **02** | [`02_lstm_imbalance.ipynb`](notebooks/02_lstm_imbalance.ipynb) | Model LSTM Baseline Alami [Empiris + Simulasi 1:1:1, 6:3:1, 8:1:1] | Lokal (CPU) |
+| **03** | [`03_lstm_class_weight.ipynb`](notebooks/03_lstm_class_weight.ipynb) | Model LSTM + Cost-Sensitive Learning [Empiris + Simulasi] | Lokal (CPU) |
+| **04** | [`04_lstm_oversampling.ipynb`](notebooks/04_lstm_oversampling.ipynb) | Model LSTM + Random Over-Sampling [Empiris + Simulasi] | Lokal (CPU) |
+| **05** | [`05_lstm_undersampling.ipynb`](notebooks/05_lstm_undersampling.ipynb) | Model LSTM + Random Under-Sampling [Empiris + Simulasi] | Lokal (CPU) |
+| **06** | [`06_lstm_smote.ipynb`](notebooks/06_lstm_smote.ipynb) | Model LSTM + SMOTE Synthetic Resampling [Empiris + Simulasi] | Lokal (CPU) |
+| **07** | [`07_indobert_lora.ipynb`](notebooks/07_indobert_lora.ipynb) | Model IndoBERTweet-LoRA Vanilla Adapter [Empiris + Simulasi] | Kaggle (Cloud GPU) |
+| **08** | [`08_tapt_indobert_lora.ipynb`](notebooks/08_tapt_indobert_lora.ipynb) | Model TAPT IndoBERTweet-LoRA 2-Tahap [Empiris + Simulasi] | Kaggle (Cloud GPU) |
+| **09** | [`09_summary_model.ipynb`](notebooks/09_summary_model.ipynb) | **Master Synthesis**: Komparasi Empiris & 3 Skenario Simulasi | Lokal (CPU) |
 
 ---
 
