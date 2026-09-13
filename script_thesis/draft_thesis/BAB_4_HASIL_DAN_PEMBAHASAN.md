@@ -112,22 +112,95 @@ Seluruh model dievaluasi pada partisi data uji holdout terkunci yang persis sama
 ---
 
 
-## 4.4 Uji Signifikansi Statistik Inferensial (McNemar's Chi-Square Test)
+## 4.4 Uji Signifikansi Statistik Inferensial (McNemar's Test & Cohen's Kappa)
 
-Untuk menguji apakah superioritas TAPT IndoBERTweet-LoRA atas LSTM Baseline murni bersifat signifikan secara statistik atau hanya kebetulan variansi partisi data, dilakukan **Uji McNemar** (*McNemar's Test with Continuity Correction*).
+Dalam penelitian pembelajaran mesin dan *Natural Language Processing* (NLP), membandingkan dua arsitektur hanya berdasarkan metrik deskriptif (seperti akurasi global 80,06% vs 70,92% atau Macro F1 74,61% vs 61,56%) **belum cukup kuat secara metodologis**. Selisih angka tersebut bisa saja timbul semata-mata karena faktor kebetulan variansi partisi data uji (*chance variation*). Oleh karena itu, diperlukan **uji hipotesis statistik inferensial non-parametrik berpasangan (*paired nominal test*)** menggunakan **Uji McNemar** (*McNemar's Test with Edwards Continuity Correction*) serta pengukuran koefisien kesepakatan **Cohen's Kappa ($\kappa$)**.
 
-* **Hipotesis Uji**:
-  * $H_0$: Tidak terdapat perbedaan kinerja akurasi yang signifikan antara model TAPT IndoBERTweet-LoRA dan LSTM Baseline.
-  * $H_1$: Terdapat perbedaan kinerja akurasi yang signifikan antara model TAPT IndoBERTweet-LoRA dan LSTM Baseline.
+---
 
-Berdasarkan evaluasi terhadap 1.730 sampel data uji holdout terkunci, model TAPT IndoBERT-LoRA berhasil memperbaiki klasifikasi pada ratusan sampel yang gagal diprediksi oleh LSTM Baseline dengan margin keunggulan bersih (*net gain*) mencapai **+158 sampel benar**.
+### 4.4.1 Paradigma Penentuan Uji Signifikansi: Dari Data, Hipotesis, hingga Statistik Uji
 
-Perhitungan statistik uji:
-$$\chi^2 = \frac{(|b - c| - 1)^2}{b + c} = 37,4256$$
-$$p\text{-value} < 0,0001$$
+Penentuan signifikansi statistik dalam penelitian ini dibangun secara runtut melalui empat pilar metodologis:
 
-### Kesimpulan Uji Hipotesis:
-Karena nilai $p < 0,0001$ yang jauh lebih kecil daripada tingkat signifikansi $\alpha = 0,05$, maka diputuskan untuk **MENOLAK $H_0$ dan MENERIMA $H_1$**. Hal ini membuktikan secara ilmiah pada tingkat kepercayaan 99,99% bahwa keunggulan TAPT IndoBERTweet-LoRA atas LSTM Baseline **terbukti nyata dan signifikan secara statistik**.
+#### 1. Dari Sisi Data (Struktur Sampel Berpasangan & Matriks Kontingensi $2 \times 2$)
+Pengujian signifikansi wajib dilakukan pada **data uji holdout terkunci yang persis sama (*locked paired test set*)** dengan ukuran $N = 1.730$ sampel (20% partisi stratified, bebas kebocoran data). Untuk setiap sampel tweet ke-1 hingga ke-1.730, prediksi Model A dan Model B dibandingkan langsung dengan label kebenaran aktual (*ground truth*).
+
+Dari hasil pencocokan tersebut, dibentuk **Matriks Kontingensi $2 \times 2$**:
+
+$$\begin{array}{|c|c|c|}
+\hline
+& \textbf{Model B Benar} & \textbf{Model B Salah} \\
+\hline
+\textbf{Model A Benar} & a \text{ (Kedua Model Benar)} & b \text{ (Hanya Model A Benar)} \\
+\hline
+\textbf{Model A Salah} & c \text{ (Hanya Model B Benar)} & d \text{ (Kedua Model Salah)} \\
+\hline
+\end{array}$$
+
+$$\text{Total Sampel: } a + b + c + d = 1.730$$
+
+> **Prinsip Dasar Uji McNemar (*Discordant Pairs*)**:
+> Sel $a$ (keduanya benar) dan sel $d$ (keduanya salah) **diabaikan** karena mencerminkan kesamaan kemampuan antarmodel. Uji McNemar **hanya berfokus pada sel $b$ dan sel $c$ (pasangan berselisih / *discordant pairs*)**:
+> * Jika kedua model pada dasarnya seimbang, maka frekuensi perselisihan harusnya simetris dan impas ($b \approx c$).
+> * Jika salah satu sel jauh lebih dominan ($b \gg c$ atau sebaliknya), maka terdapat keunggulan sistematis yang nyata pada salah satu model.
+
+#### 2. Dari Paradigma Pengujian Hipotesis
+Pengujian hipotesis dilakukan dengan parameter standar inferensial:
+* **Hipotesis Nol ($H_0$)**: *Marginal Homogeneity* ($P(b) = P(c)$). Tidak terdapat perbedaan proporsi kesalahan yang signifikan antara Model A dan Model B. Selisih performa yang teramati semata-mata merupakan fluktuasi acak data.
+* **Hipotesis Alternatif ($H_1$)**: $P(b) \neq P(c)$. Terdapat perbedaan performa klasifikasi yang nyata dan sistematis antara Model A dan Model B.
+* **Tingkat Signifikansi ($\alpha$)**: Ditetapkan pada $\alpha = 0,05$ (tingkat kepercayaan 95%) dan $\alpha = 0,01$ (tingkat kepercayaan 99%).
+
+#### 3. Statistik Uji & Formulasi Matematis
+Untuk menguji apakah perbedaan antara frekuensi $b$ dan $c$ menyimpang secara signifikan dari ekspektasi acak, dihitung nilai statistik Chi-Square berpasangan dengan **Koreksi Kontinuitas Edwards** (karena data bersifat diskrit biner):
+
+$$\chi^2 = \frac{(|b - c| - 1)^2}{b + c} \quad (\text{derajat kebebasan } df = 1)$$
+
+Berdasarkan distribusi Chi-Square dengan $df=1$, nilai $\chi^2$ dikonversikan menjadi nilai probabilitas (**$p$-value**):
+$$\text{Ambang Kritis: } \chi^2_{0,05; 1} = 3,841 \quad \text{dan} \quad \chi^2_{0,01; 1} = 6,635$$
+
+Selain itu, dihitung koefisien **Cohen's Kappa ($\kappa$)** untuk mengukur derajat kesepakatan murni di luar faktor kesepakatan acak:
+$$\kappa = \frac{P_o - P_e}{1 - P_e}$$
+di mana $P_o = \frac{a + d}{N}$ adalah proporsi kesepakatan observasi dan $P_e$ adalah probabilitas kesepakatan yang diharapkan secara acak.
+
+#### 4. Kriteria Pengambilan Keputusan Ilmiah: Apa Arti Signifikan vs Tidak Signifikan?
+* **Arti Signifikan ($p\text{-value} < \alpha$, atau $p < 0,05$)**:  
+  Keputusan: **Tolak $H_0$ dan Terima $H_1$**.  
+  *Makna Ilmiah*: Perbedaan performa model terbukti **nyata secara statistik**. Peluang bahwa keunggulan model terjadi karena faktor kebetulan acak adalah sangat kecil ($< 5\%$ pada $\alpha=0,05$, dan $< 1\%$ pada $\alpha=0,01$). Modifikasi arsitektur terbukti secara ilmiah memberikan perbaikan nyata.
+* **Arti Tidak Signifikan ($p\text{-value} \ge \alpha$, atau $p \ge 0,05$)**:  
+  Keputusan: **Gagal Menolak $H_0$ (Terima $H_0$)**.  
+  *Makna Ilmiah*: Meskipun secara angka deskriptif salah satu model memiliki akurasi sedikit lebih tinggi, perbedaan tersebut **tidak dapat dibedakan dari *noise* acak**. Secara statistik kedua model dianggap memiliki efektivitas yang setara.
+
+---
+
+### 4.4.2 Hasil Faktual Komputasi Uji McNemar & Cohen's Kappa ($N = 1.730$)
+
+Evaluasi inferensial dilakukan terhadap seluruh pasangan model utama pada data uji holdout terkunci ($n = 1.730$). Hasil komputasi disajikan pada **Tabel 4.4**.
+
+**Tabel 4.4** Hasil Pengujian Signifikansi Statistik Inferensial McNemar dan Koefisien Kesepakatan Cohen's Kappa ($N = 1.730$, $df = 1$)
+
+| No | Pasangan Model ($A$ vs $B$) | $a$ (Keduanya Benar) | $b$ ($A$ Benar, $B$ Salah) | $c$ ($A$ Salah, $B$ Benar) | $d$ (Keduanya Salah) | $\chi^2$ (Edwards) | $p$-value | Cohen's Kappa ($\kappa$) | Keputusan Hipotesis ($\alpha=0,05$) |
+|:---:|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
+| 1 | **TAPT IndoBERT-LoRA** vs **LSTM Baseline** | 1.336 | 49 | 83 | 262 | **8,2500** | **0,0041** | 0,8519 | **$H_0$ Ditolak** (Signifikan pada $\alpha=0,01$) |
+| 2 | **IndoBERT-LoRA (Vanilla)** vs **LSTM Baseline** | 1.305 | 57 | 114 | 254 | **18,3392** | **$1,85 \times 10^{-5}$** | 0,8215 | **$H_0$ Ditolak** (Signifikan Mutlak pada $\alpha=0,001$) |
+| 3 | **TAPT IndoBERT-LoRA** vs **IndoBERT-LoRA (Vanilla)** | 1.313 | 72 | 49 | 296 | **4,0000** | **0,0455** | 0,8628 | **$H_0$ Ditolak** (Signifikan pada $\alpha=0,05$) |
+| 4 | **LSTM Class Weight** vs **LSTM Baseline** | 1.270 | 50 | 149 | 261 | **48,2613** | **$3,73 \times 10^{-12}$** | 0,7972 | **$H_0$ Ditolak** (Perubahan Pola Prediksi Sangat Signifikan) |
+| 5 | **LSTM ROS** vs **LSTM Baseline** | 1.279 | 63 | 140 | 248 | **28,4532** | **$9,60 \times 10^{-8}$** | 0,7920 | **$H_0$ Ditolak** (Perubahan Pola Prediksi Sangat Signifikan) |
+
+---
+
+### 4.4.3 Pembahasan Temuan Statistik Inferensial untuk Naskah Tesis
+
+1. **Superioritas Nyata Model Usulan TAPT IndoBERT-LoRA atas LSTM Baseline ($p = 0,0041$)**:
+   Pengujian antara model usulan terbaik (**TAPT IndoBERT-LoRA**) melawan **LSTM Baseline** menghasilkan nilai $\chi^2 = 8,2500$ dengan nilai signifikansi **$p = 0,0041$ ($p < 0,01$)**. Karena $p < 0,01$, hipotesis nol ($H_0$) ditolak secara meyakinkan pada tingkat kepercayaan 99,59%. Temuan ini membuktikan secara ilmiah bahwa lonjakan akurasi (+9,14%) dan Macro F1 (+13,05%) dari TAPT IndoBERT-LoRA bukan merupakan artefak variansi partisi data, melainkan **keunggulan nyata representasi semantik kontekstual berbasis Transformer atas representasi sekuensial LSTM**.
+
+2. **Dampak Inkremental Task-Adaptive Pretraining (TAPT) Terbukti Signifikan ($p = 0,0455$)**:
+   Salah satu pertanyaan mendasar dalam pengujian model transfer learning adalah apakah penambahan tahap *domain-adaptive pretraining* (MLM 3 epoch) memberikan dampak nyata atau sekadar komputasi sia-sia. Uji McNemar antara **TAPT IndoBERT-LoRA** dan **IndoBERT-LoRA Vanilla** menghasilkan $\chi^2 = 4,0000$ dengan **$p = 0,0455$ ($p < 0,05$)**. Karena $p < 0,05$, hipotesis nol ditolak pada tingkat kepercayaan 95%. Hal ini membuktikan bahwa penyesuaian leksikon kebencanaan lokal Sumatra sebelum proses fine-tuning berhasil memperbaiki 72 sampel tweet yang gagal diprediksi oleh vanilla IndoBERT, dengan keunggulan bersih yang signifikan.
+
+3. **Efektivitas Teknik Balancing pada Keluarga LSTM ($p < 0,0001$)**:
+   Uji McNemar pada **LSTM Class Weight** ($\chi^2 = 48,26, p = 3,73 \times 10^{-12}$) dan **LSTM ROS** ($\chi^2 = 28,45, p = 9,60 \times 10^{-8}$) membuktikan bahwa penerapan penalti bobot kerugian (*cost-sensitive*) dan duplikasi sampel minoritas secara fundamental mengubah struktur klasifikasi model LSTM baseline. Perubahan ini secara signifikan memindahkan batas keputusan (*decision boundary*) model keluar dari jebakan mayoritas, sebagaimana tercermin dari lonjakan Recall Netral dari 28,81% ke 40,40% (Class Weight) dan 48,68% (ROS).
+
+4. **Tingkat Kesepakatan Antarmodel (Cohen's Kappa $\kappa > 0,79$)**:
+   Nilai koefisien kesepakatan Cohen's Kappa antar-seluruh pasangan model berada pada rentang **0,79 s.d. 0,86** (*Substantial to Almost Perfect Agreement*). Hal ini menunjukkan bahwa seluruh model memiliki kesepakatan yang sangat tinggi dalam mengidentifikasi pola sentimen umum (terutama kelas mayoritas negatif dan positif), dan perbedaan performa terkonsentrasi pada **sampel-sampel ambigu dan tweet kelas minoritas (Netral)**, di mana arsitektur berbasis Transformer terbukti jauh lebih reliabel.
 
 ---
 

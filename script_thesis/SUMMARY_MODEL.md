@@ -39,7 +39,23 @@ Pengujian ketahanan model ketika menghadapi variasi rasio ketimpangan data latih
 
 ## 🧪 3. Hasil Uji Signifikansi Statistik Inferensial: McNemar Test & Cohen's Kappa ($n=1.730$)
 
-Evaluasi signifikansi inferensial antarmodel pada data uji terkunci menggunakan **Uji McNemar dengan koreksi kontinuitas Edwards** ($\chi^2 = \frac{(|b - c| - 1)^2}{b + c}, df=1$) dan koefisien kesepakatan **Cohen's Kappa ($\kappa$)**:
+### A. Paradigma Penentuan Uji Signifikansi: Dari Data, Hipotesis, hingga Statistik Uji
+1. **Dari Sisi Data (Struktur Berpasangan & Matriks Kontingensi $2 \times 2$)**:
+   - Diuji pada $N = 1.730$ data uji holdout terkunci yang sama persis.
+   - Matriks Kontingensi: $a$ (Keduanya Benar), $b$ (Hanya Model A Benar), $c$ (Hanya Model B Benar), $d$ (Keduanya Salah).
+   - **Prinsip Discordant Pairs**: Uji McNemar mengabaikan $a$ dan $d$, dan **hanya membandingkan $b$ dan $c$**. Jika selisih $b$ dan $c$ simetris ($b \approx c$), kedua model impas. Jika $b \gg c$, model A terbukti lebih unggul secara sistematis.
+2. **Dari Paradigma Pengujian Hipotesis**:
+   - **$H_0$ (Hipotesis Nol)**: $P(b) = P(c)$. Tidak ada perbedaan nyata; perbedaan hanya kebetulan acak sampel.
+   - **$H_1$ (Hipotesis Alternatif)**: $P(b) \neq P(c)$. Ada perbedaan kemampuan yang nyata dan sistematis.
+   - **Ambang Signifikansi**: $\alpha = 0,05$ (kepercayaan 95%) dan $\alpha = 0,01$ (kepercayaan 99%).
+3. **Statistik Uji**:
+   - Rumus McNemar Edwards Continuity Correction: $\chi^2 = \frac{(|b - c| - 1)^2}{b + c}, \quad df = 1$.
+   - Cohen's Kappa ($\kappa$): Mengukur derajat kesepakatan murni di luar kesepakatan acak ($\kappa > 0,80$ = kesepakatan nyaris sempurna).
+4. **Hasil dan Interpretasi**:
+   - **Signifikan ($p < 0,05$)**: Tolak $H_0$. Keunggulan model terbukti secara ilmiah bukan karena faktor keberuntungan.
+   - **Tidak Signifikan ($p \ge 0,05$)**: Terima $H_0$. Perbedaan performa tidak dapat dibedakan dari noise acak.
+
+### B. Tabel Hasil Pengujian Empiris ($N = 1.730$)
 
 | No | Pasangan Model (Model A vs Model B) | $a$ (Keduanya Benar) | $b$ (A Benar, B Salah) | $c$ (A Salah, B Benar) | $d$ (Keduanya Salah) | $\chi^2$ (Edwards) | $p$-value | Cohen's Kappa ($\kappa$) | Kesimpulan Statistik ($\alpha=0,05$) |
 |:---:|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
