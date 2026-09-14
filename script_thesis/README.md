@@ -41,7 +41,7 @@ Seluruh model dievaluasi secara adil pada **Hold-out Test Set yang Sama Persis (
 | 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | 82.3% / **74.53%** | 71.17% | 86.8% / **80.60%** | 73.45% | 85.60% / **78.52%** | **+7.08%** | **70.20%** | **36.86%** | **Kebal Collapse** (Gap stabil sehat <8%) |
 | 7 | **TAPT IndoBERT-LoRA** | Domain MLM + LoRA | 84.5% / **76.50%** | **72.85%** | 88.7% / **82.10%** | **75.12%** | 87.20% / **79.80%** | **+7.40%** | **71.95%** | **39.50%** | **JUARA KETAHANAN MUTLAK** (Terkuat di semua rasio) |
 
-*Visualisasi komparatif 4-panel empiris dan 3-panel simulasi dapat dilihat di notebook [`09_summary_model.ipynb`](09_summary_model.ipynb).*
+*Visualisasi komparatif 4-panel empiris dan 3-panel simulasi dapat dilihat di notebook [`13_summary_model.ipynb`](13_summary_model.ipynb).*
 
 ---
 
@@ -76,8 +76,8 @@ script_thesis/
 ├── 05_lstm_undersampling.ipynb  # LSTM + Random Under-Sampling (RUS) [Empiris + Simulasi]
 ├── 06_lstm_smote.ipynb          # LSTM + SMOTE [Empiris + Simulasi]
 ├── 07_indobert_lora.ipynb       # IndoBERTweet-LoRA Vanilla Adapter [Empiris + Simulasi]
-├── 08_tapt_indobert_lora.ipynb  # TAPT IndoBERTweet-LoRA (MLM 3 Epoch) [Empiris + Simulasi]
-├── 09_summary_model.ipynb       # Master Synthesis: Komparasi Empiris & 3 Skenario Simulasi
+├── 12_tapt_indobert_lora.ipynb  # TAPT IndoBERTweet-LoRA (MLM 3 Epoch) [Empiris + Simulasi]
+├── 13_summary_model.ipynb       # Master Synthesis: Komparasi Empiris & 3 Skenario Simulasi
 │
 ├── data/                        # REPOSITORI DATA
 │   ├── README.md                # Panduan perbedaan Data v1 vs Data v2
@@ -116,7 +116,7 @@ Buka folder `script_thesis/` di Jupyter dan jalankan notebook pilihan Anda. Wakt
 ### B. Eksekusi Kaggle Cloud GPU (Tesla T4)
 Untuk notebook **07** dan **08** (Transformer IndoBERTweet):
 1. Buka Kaggle $\rightarrow$ **New Dataset** $\rightarrow$ upload `script_thesis/data/data_clean_final.csv` dan `script_thesis/data/colloquial-indonesian-lexicon.csv`.
-2. Buka Kaggle $\rightarrow$ **New Notebook** $\rightarrow$ **File > Import Notebook** $\rightarrow$ pilih `07_indobert_lora.ipynb` atau `08_tapt_indobert_lora.ipynb`.
+2. Buka Kaggle $\rightarrow$ **New Notebook** $\rightarrow$ **File > Import Notebook** $\rightarrow$ pilih `07_indobert_lora.ipynb` atau `12_tapt_indobert_lora.ipynb`.
 3. Di panel kanan Kaggle:
    * **Accelerator**: Pilih **GPU T4 x2**.
    * **Internet**: Geser ke **ON**.

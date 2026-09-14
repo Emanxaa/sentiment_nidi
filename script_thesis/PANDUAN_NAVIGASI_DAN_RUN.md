@@ -11,13 +11,13 @@ Gunakan tabel direktori ini untuk langsung menemukan apa yang Anda butuhkan tanp
 
 | Kebutuhan Anda | File / Folder yang Harus Dibuka | Deskripsi Singkat |
 | :--- | :--- | :--- |
-| **Melihat Hasil Final Tesis & Pemenang Model** | [`SUMMARY_MODEL.md`](SUMMARY_MODEL.md) atau [`09_summary_model.ipynb`](09_summary_model.ipynb) | Tabel master metrik lengkap, visualisasi komparasi 4-panel empiris, 3-panel simulasi, uji McNemar ($p<0.001$), dan Cohen's Kappa. |
+| **Melihat Hasil Final Tesis & Pemenang Model** | [`SUMMARY_MODEL.md`](SUMMARY_MODEL.md) atau [`13_summary_model.ipynb`](13_summary_model.ipynb) | Tabel master metrik lengkap, visualisasi komparasi 4-panel empiris, 3-panel simulasi, uji McNemar ($p<0.001$), dan Cohen's Kappa. |
 | **Melihat Penjelasan Detail Bab IV (Hasil & Pembahasan)** | [`draft_thesis/BAB_4_HASIL_DAN_PEMBAHASAN.md`](draft_thesis/BAB_4_HASIL_DAN_PEMBAHASAN.md) | Draf lengkap Bab IV siap salin ke Word, memuat Tabel 4.1 s.d. 4.3, analisis *Accuracy Paradox*, *Majority Collapse*, dan kegagalan SMOTE/RUS. |
 | **Melihat Rumus Matematis & Metodologi Bab III** | [`draft_thesis/BAB_3_METODOLOGI_PENELITIAN.md`](draft_thesis/BAB_3_METODOLOGI_PENELITIAN.md) | Formulasi matematika sel LSTM, Class Weight, SMOTE, LoRA ($W = W_0 + \frac{\alpha}{r}BA$), TAPT MLM, dan partisi 72:8:20 bebas leakage. |
 | **Memahami Pembersihan Data & Beda Data v1 vs v2** | [`data/README.md`](data/README.md) & [`01_data_processing.ipynb`](01_data_processing.ipynb) | Penjelasan pipeline Data-Centric AI (LLM completion, regex cleaning, slang normalization 4.334 leksikon) $\rightarrow$ `data_clean_final.csv`. |
-| **Mengecek Performa & Uji Simulasi Setiap Model** | Notebooks [`02`](02_lstm_imbalance.ipynb) s.d. [`08`](08_tapt_indobert_lora.ipynb) | Masing-masing memuat evaluasi data alami (Train vs Test) dan evaluasi ketahanan pada 3 skenario simulasi (1:1:1, 6:3:1, 8:1:1). |
-| **Menjalankan Ulang Notebook di Laptop Sendiri (CPU)** | Lihat **Bab 3 Panduan Ini** (di bawah) | Panduan langkah-demi-langkah setup virtual environment dan menjalankan notebook `01` s.d. `06` serta `09`. |
-| **Menjalankan Ulang Model Transformer di Kaggle (GPU)** | Lihat **Bab 4 Panduan Ini** (di bawah) | Panduan langkah-demi-langkah upload dataset ke Kaggle, aktivasi GPU T4 x2, dan menjalankan notebook `07` dan `08`. |
+| **Mengecek Performa & Uji Simulasi Setiap Model** | Notebooks [`02`](02_lstm_imbalance.ipynb) s.d. [`12`](12_tapt_indobert_lora.ipynb) | Masing-masing memuat evaluasi data alami (Train vs Test) dan evaluasi ketahanan pada 3 skenario simulasi (1:1:1, 6:3:1, 8:1:1). |
+| **Menjalankan Ulang Notebook di Laptop Sendiri (CPU)** | Lihat **Bab 3 Panduan Ini** (di bawah) | Panduan langkah-demi-langkah setup virtual environment dan menjalankan notebook `01` s.d. `06` serta `13`. |
+| **Menjalankan Ulang Model Transformer di Kaggle (GPU)** | Lihat **Bab 4 Panduan Ini** (di bawah) | Panduan langkah-demi-langkah upload dataset ke Kaggle, aktivasi GPU T4 x2, dan menjalankan notebook `07` s.d. `12`. |
 | **Persiapan Sidang Tesis / Zoom Review Dosen** | [`PANDUAN_ZOOM_REVIEW.md`](PANDUAN_ZOOM_REVIEW.md) | Skrip pemaparan 10 menit dan 5 jawaban ilmiah atas pertanyaan jebakan penguji. |
 | **Menyalin Naskah ke Format Microsoft Word** | [`draft_thesis/PANDUAN_PENYUSUNAN_WORD.md`](draft_thesis/PANDUAN_PENYUSUNAN_WORD.md) | Tips praktis menyalin Markdown ke Word/Google Docs secara rapi. |
 | **Mengambil File Model Tersimpan (.pkl / Adapter)** | Folder [`outputs/saved_models/`](outputs/saved_models/) | Berisi bobot model LSTM pickle, tokenizer pickle, dan adapter IndoBERTweet-LoRA. |
@@ -41,8 +41,12 @@ script_thesis/
 ├── 05_lstm_undersampling.ipynb        # LSTM + RUS [Empiris + Simulasi]
 ├── 06_lstm_smote.ipynb                # LSTM + SMOTE [Empiris + Simulasi]
 ├── 07_indobert_lora.ipynb             # IndoBERTweet-LoRA Vanilla [Empiris + Simulasi]
-├── 08_tapt_indobert_lora.ipynb        # TAPT IndoBERTweet-LoRA [Empiris + Simulasi]
-├── 09_summary_model.ipynb             # Master Synthesis: Plot 4-Panel & Uji Statistik
+├── 08_indobert_class_weight.ipynb     # IndoBERTweet-LoRA + Class Weight [Empiris + Simulasi]
+├── 09_indobert_oversampling.ipynb     # IndoBERTweet-LoRA + ROS [Empiris + Simulasi]
+├── 10_indobert_undersampling.ipynb    # IndoBERTweet-LoRA + RUS [Empiris + Simulasi]
+├── 11_indobert_smote.ipynb            # IndoBERTweet-LoRA + SMOTE [Empiris + Simulasi]
+├── 12_tapt_indobert_lora.ipynb        # TAPT IndoBERTweet-LoRA (Juara Riset) [Empiris + Simulasi]
+├── 13_summary_model.ipynb             # Master Synthesis 11 Model: Plot 4-Panel & Uji Statistik
 │
 ├── data/                              # REPOSITORI DATASET MANDIRI
 │   ├── README.md                      # Dokumentasi pembeda Data v1 vs Data v2

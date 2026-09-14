@@ -1,5 +1,5 @@
 {
-    "m02_baseline_": {
+    "m01_lstm_baseline": {
         "No": 1,
         "Model": "LSTM Baseline",
         "Strategi Balancing": "Natural Baseline (Imbalance Data)",
@@ -15,7 +15,7 @@
         "Generalization Gap F1 (%)": 11.62,
         "Recall Netral (%)": 28.81
     },
-    "m03_class_weight_": {
+    "m02_lstm_class_weight": {
         "No": 2,
         "Model": "LSTM Class Weight",
         "Strategi Balancing": "Class Weight (Cost-Sensitive Learning)",
@@ -31,7 +31,7 @@
         "Generalization Gap F1 (%)": 20.46,
         "Recall Netral (%)": 40.4
     },
-    "m04_ros_": {
+    "m03_lstm_ros": {
         "No": 3,
         "Model": "LSTM ROS",
         "Strategi Balancing": "Random Over-Sampling (ROS)",
@@ -47,7 +47,7 @@
         "Generalization Gap F1 (%)": 27.54,
         "Recall Netral (%)": 48.68
     },
-    "m05_rus_": {
+    "m04_lstm_rus": {
         "No": 4,
         "Model": "LSTM RUS",
         "Strategi Balancing": "Random Under-Sampling (RUS)",
@@ -63,10 +63,10 @@
         "Generalization Gap F1 (%)": 17.92,
         "Recall Netral (%)": 56.62
     },
-    "m06_smote_": {
+    "m05_lstm_smote": {
         "No": 5,
         "Model": "LSTM SMOTE",
-        "Strategi Balancing": "SMOTE (Synthetic Minority Over-sampling Technique)",
+        "Strategi Balancing": "SMOTE (Synthetic Sequence)",
         "Arsitektur / Backbone": "Embedding(128) + LSTM(64)",
         "Hiperparameter": "lr: 0.0002, bs: 32, drop: 0.3",
         "Train Accuracy (%)": 65.03,
@@ -79,7 +79,7 @@
         "Generalization Gap F1 (%)": 6.96,
         "Recall Netral (%)": 43.71
     },
-    "m06_indobert_lora": {
+    "m06_indobertweet_lora": {
         "No": 6,
         "Model": "IndoBERTweet-LoRA",
         "Strategi Balancing": "Natural Baseline",
@@ -95,10 +95,74 @@
         "Generalization Gap F1 (%)": 6.3,
         "Recall Netral (%)": 61.26
     },
-    "m07_tapt_indobert_lora": {
+    "m07_indobertweet_lora_cw": {
         "No": 7,
+        "Model": "IndoBERTweet-LoRA CW",
+        "Strategi Balancing": "Class Weight (Cost-Sensitive)",
+        "Arsitektur / Backbone": "indolem/indobertweet-base",
+        "Hiperparameter": "r: 8, a: 16, lr: 2e-4, ep: 5",
+        "Train Accuracy (%)": 85.2,
+        "Train Macro F1 (%)": 81.1,
+        "Test Accuracy (%)": 76.3,
+        "Macro Precision (%)": 72.35,
+        "Macro Recall (%)": 75.03,
+        "Macro F1 (%)": 73.1,
+        "Generalization Gap Acc (%)": 8.9,
+        "Generalization Gap F1 (%)": 8.0,
+        "Recall Netral (%)": 69.21
+    },
+    "m08_indobertweet_lora_ros": {
+        "No": 8,
+        "Model": "IndoBERTweet-LoRA ROS",
+        "Strategi Balancing": "Random Over-Sampling (ROS)",
+        "Arsitektur / Backbone": "indolem/indobertweet-base",
+        "Hiperparameter": "r: 8, a: 16, lr: 2e-4, ep: 5",
+        "Train Accuracy (%)": 89.45,
+        "Train Macro F1 (%)": 86.2,
+        "Test Accuracy (%)": 77.57,
+        "Macro Precision (%)": 73.06,
+        "Macro Recall (%)": 75.22,
+        "Macro F1 (%)": 73.93,
+        "Generalization Gap Acc (%)": 11.88,
+        "Generalization Gap F1 (%)": 12.27,
+        "Recall Netral (%)": 64.57
+    },
+    "m09_indobertweet_lora_rus": {
+        "No": 9,
+        "Model": "IndoBERTweet-LoRA RUS",
+        "Strategi Balancing": "Random Under-Sampling (RUS)",
+        "Arsitektur / Backbone": "indolem/indobertweet-base",
+        "Hiperparameter": "r: 8, a: 16, lr: 2e-4, ep: 5",
+        "Train Accuracy (%)": 80.12,
+        "Train Macro F1 (%)": 76.5,
+        "Test Accuracy (%)": 75.78,
+        "Macro Precision (%)": 71.74,
+        "Macro Recall (%)": 74.72,
+        "Macro F1 (%)": 72.67,
+        "Generalization Gap Acc (%)": 4.34,
+        "Generalization Gap F1 (%)": 3.83,
+        "Recall Netral (%)": 69.54
+    },
+    "m10_indobertweet_lora_smote": {
+        "No": 10,
+        "Model": "IndoBERTweet-LoRA SMOTE",
+        "Strategi Balancing": "SMOTE (Sentence Latent Space)",
+        "Arsitektur / Backbone": "indolem/indobertweet-base",
+        "Hiperparameter": "r: 8, a: 16, lr: 2e-4, ep: 5",
+        "Train Accuracy (%)": 82.5,
+        "Train Macro F1 (%)": 78.4,
+        "Test Accuracy (%)": 74.86,
+        "Macro Precision (%)": 70.82,
+        "Macro Recall (%)": 72.95,
+        "Macro F1 (%)": 71.35,
+        "Generalization Gap Acc (%)": 7.64,
+        "Generalization Gap F1 (%)": 7.05,
+        "Recall Netral (%)": 58.28
+    },
+    "m11_tapt_indobert_lora": {
+        "No": 11,
         "Model": "TAPT IndoBERT-LoRA",
-        "Strategi Balancing": "Domain Adaptation (MLM)",
+        "Strategi Balancing": "Domain Adaptation (MLM) + LoRA",
         "Arsitektur / Backbone": "indobertweet + TAPT (3 ep)",
         "Hiperparameter": "MLM lr: 5e-5, FT lr: 2e-4",
         "Train Accuracy (%)": 86.4,

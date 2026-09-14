@@ -41,7 +41,7 @@ Seluruh model dievaluasi secara adil pada **Data Uji Terkunci yang Sama Persis (
 | 6 | **IndoBERTweet-LoRA** | Vanilla LoRA Adapter | 82.3% / **74.53%** | 71.17% | 86.8% / **80.60%** | 73.45% | 85.60% / **78.52%** | **+7.08%** | **70.20%** | **36.86%** | **Kebal Collapse** (Gap stabil sehat <8%) |
 | 7 | **TAPT IndoBERT-LoRA** | Domain MLM + LoRA | 84.5% / **76.50%** | **72.85%** | 88.7% / **82.10%** | **75.12%** | 87.20% / **79.80%** | **+7.40%** | **71.95%** | **39.50%** | **JUARA KETAHANAN MUTLAK** (Terkuat di semua rasio) |
 
-*Visualisasi komparatif 4-panel empiris dan 3-panel simulasi dapat dilihat di notebook [`notebooks/09_summary_model.ipynb`](notebooks/09_summary_model.ipynb).*
+*Visualisasi komparatif 4-panel empiris dan 3-panel simulasi dapat dilihat di notebook [`notebooks/13_summary_model.ipynb`](notebooks/13_summary_model.ipynb).*
 
 ---
 
@@ -88,8 +88,8 @@ Setiap notebook mandiri, terurut, dan dilengkapi keluaran visual (*pre-rendered*
 | **05** | [`05_lstm_undersampling.ipynb`](notebooks/05_lstm_undersampling.ipynb) | Model LSTM + Random Under-Sampling [Empiris + Simulasi] | Lokal (CPU) |
 | **06** | [`06_lstm_smote.ipynb`](notebooks/06_lstm_smote.ipynb) | Model LSTM + SMOTE Synthetic Resampling [Empiris + Simulasi] | Lokal (CPU) |
 | **07** | [`07_indobert_lora.ipynb`](notebooks/07_indobert_lora.ipynb) | Model IndoBERTweet-LoRA Vanilla Adapter [Empiris + Simulasi] | Kaggle (Cloud GPU) |
-| **08** | [`08_tapt_indobert_lora.ipynb`](notebooks/08_tapt_indobert_lora.ipynb) | Model TAPT IndoBERTweet-LoRA 2-Tahap [Empiris + Simulasi] | Kaggle (Cloud GPU) |
-| **09** | [`09_summary_model.ipynb`](notebooks/09_summary_model.ipynb) | **Master Synthesis**: Komparasi Empiris & 3 Skenario Simulasi | Lokal (CPU) |
+| **08** | [`12_tapt_indobert_lora.ipynb`](notebooks/12_tapt_indobert_lora.ipynb) | Model TAPT IndoBERTweet-LoRA 2-Tahap [Empiris + Simulasi] | Kaggle (Cloud GPU) |
+| **09** | [`13_summary_model.ipynb`](notebooks/13_summary_model.ipynb) | **Master Synthesis**: Komparasi Empiris & 3 Skenario Simulasi | Lokal (CPU) |
 
 ---
 
@@ -114,7 +114,7 @@ Buka folder `notebooks/` dan jalankan notebook `01` s/d `06` serta `09`. Waktu e
 ### B. Di Kaggle (Cloud GPU - Gratis)
 Untuk notebook **07** dan **08** (Transformer IndoBERTweet):
 1. Buat **New Dataset** di Kaggle, upload `Data/processed/data_clean_final.csv` dan `kamus/colloquial-indonesian-lexicon.csv`.
-2. Buat **New Notebook** di Kaggle $\rightarrow$ **File > Import Notebook** $\rightarrow$ upload `07_indobert_lora.ipynb` atau `08_tapt_indobert_lora.ipynb`.
+2. Buat **New Notebook** di Kaggle $\rightarrow$ **File > Import Notebook** $\rightarrow$ upload `07_indobert_lora.ipynb` atau `12_tapt_indobert_lora.ipynb`.
 3. Di panel kanan (Settings):
    * **Accelerator**: Pilih **GPU T4 x2** atau **GPU P100**.
    * **Internet**: Geser ke **ON**.
