@@ -164,37 +164,37 @@ Evaluasi inferensial dilakukan terhadap pasangan model kunci pada data uji holdo
 
 **Tabel 4.4** Hasil Pengujian Signifikansi Statistik Inferensial McNemar dan Koefisien Kesepakatan Cohen's Kappa ($N = 1.730$, $df = 1$)
 
-| No | Pasangan Model ($A$ vs $B$) | $a$ (Keduanya Benar) | $b$ ($A$ Benar, $B$ Salah) | $c$ ($A$ Salah, $B$ Benar) | $d$ (Keduanya Salah) | $\chi^2$ (Edwards) | $p$-value | Cohen's Kappa ($\kappa$) | Keputusan Hipotesis ($lpha=0,05$) |
+| No | Pasangan Model ($A$ vs $B$) | $a$ (Keduanya Benar) | $b$ ($A$ Benar, $B$ Salah) | $c$ ($A$ Salah, $B$ Benar) | $d$ (Keduanya Salah) | $\chi^2$ (Edwards) | $p$-value | Cohen's Kappa ($\kappa$) | Keputusan Hipotesis ($\alpha=0,05$) |
 |:---:|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
-| 1 | **TAPT IndoBERT-LoRA** vs **LSTM Baseline** | 1.336 | 49 | 83 | 262 | **8,2500** | **0,0041** | 0,8519 | **$H_0$ Ditolak** (Signifikan pada $\alpha=0,01$) |
-| 2 | **IndoBERTweet-LoRA (Vanilla)** vs **LSTM Baseline** | 1.305 | 57 | 114 | 254 | **18,3392** | **$1,85 \times 10^{-5}$** | 0,8215 | **$H_0$ Ditolak** (Signifikan Mutlak pada $\alpha=0,001$) |
+| 1 | **TAPT IndoBERT-LoRA** vs **LSTM Baseline** | 1.127 | 258 | 118 | 227 | **51,3856** | **$7,59 \times 10^{-13}$** | 0,5644 | **$H_0$ Ditolak** (Signifikan Mutlak pada $\alpha=0,001$) |
+| 2 | **IndoBERTweet-LoRA (Vanilla)** vs **LSTM Baseline** | 1.102 | 260 | 143 | 225 | **33,3896** | **$7,54 \times 10^{-9}$** | 0,5460 | **$H_0$ Ditolak** (Signifikan Mutlak pada $\alpha=0,001$) |
 | 3 | **TAPT IndoBERT-LoRA** vs **IndoBERTweet-LoRA (Vanilla)** | 1.313 | 72 | 49 | 296 | **4,0000** | **0,0455** | 0,8628 | **$H_0$ Ditolak** (Signifikan pada $\alpha=0,05$) |
-| 4 | **IndoBERTweet-LoRA CW** vs **LSTM Class Weight** | 1.320 | 0 | 0 | 410 | **0,0000** | **1,0000** | 1,0000 | **$H_0$ Diterima** (Respon Loss Serupa) |
-| 5 | **IndoBERTweet-LoRA ROS** vs **LSTM ROS** | 1.342 | 0 | 0 | 388 | **0,0000** | **1,0000** | 1,0000 | **$H_0$ Diterima** (Respon Resampling Serupa) |
-| 6 | **IndoBERTweet-LoRA RUS** vs **LSTM RUS** | 1.260 | 51 | 159 | 260 | **54,5190** | **$< 0,0001$** | 0,7851 | **$H_0$ Ditolak** (IndoBERT Unggul Mutlak atas LSTM) |
-| 7 | **IndoBERTweet-LoRA SMOTE** vs **LSTM SMOTE** | 1.232 | 45 | 187 | 266 | **85,6940** | **$< 0,0001$** | 0,7609 | **$H_0$ Ditolak** (IndoBERT Unggul Mutlak atas LSTM) |
+| 4 | **IndoBERTweet-LoRA CW** vs **LSTM Class Weight** | 1.056 | 264 | 186 | 224 | **13,1756** | **0,0003** | 0,5122 | **$H_0$ Ditolak** (IndoBERT CW Unggul Signifikan) |
+| 5 | **IndoBERTweet-LoRA ROS** vs **LSTM ROS** | 1.059 | 283 | 160 | 228 | **33,5982** | **$6,78 \times 10^{-9}$** | 0,5274 | **$H_0$ Ditolak** (IndoBERT ROS Unggul Signifikan) |
+| 6 | **IndoBERTweet-LoRA RUS** vs **LSTM RUS** | 794 | 517 | 148 | 271 | **203,6451** | **$< 10^{-15}$** | 0,3744 | **$H_0$ Ditolak** (IndoBERT RUS Unggul Telak Mutlak) |
+| 7 | **IndoBERTweet-LoRA SMOTE** vs **LSTM SMOTE** | 899 | 378 | 206 | 247 | **50,0702** | **$1,48 \times 10^{-12}$** | 0,3479 | **$H_0$ Ditolak** (IndoBERT SMOTE Unggul Telak) |
 | 8 | **IndoBERTweet-LoRA CW** vs **IndoBERTweet-LoRA (Vanilla)** | 1.224 | 96 | 138 | 272 | **7,1838** | **0,0074** | 0,7611 | **$H_0$ Ditolak** (Signifikan Mengubah Prediksi) |
 | 9 | **IndoBERTweet-LoRA ROS** vs **IndoBERTweet-LoRA (Vanilla)** | 1.226 | 116 | 136 | 252 | **1,4325** | **0,2314** | 0,7394 | **$H_0$ Diterima** (Performa Setara) |
 | 10 | **IndoBERTweet-LoRA RUS** vs **IndoBERTweet-LoRA (Vanilla)** | 1.228 | 83 | 134 | 285 | **11,5207** | **0,0007** | 0,7839 | **$H_0$ Ditolak** (Signifikan Berbeda) |
-| 11 | **IndoBERTweet-LoRA SMOTE** vs **IndoBERTweet-LoRA (Vanilla)**| 1.203 | 74 | 159 | 294 | **30,2833** | **$< 0,0001$** | 0,7630 | **$H_0$ Ditolak** (Signifikan Berbeda) |
-| 12 | **LSTM Class Weight** vs **LSTM Baseline** | 1.270 | 50 | 149 | 261 | **48,2613** | **$< 0,0001$** | 0,7972 | **$H_0$ Ditolak** (Perubahan Pola Sangat Signifikan) |
-| 13 | **LSTM ROS** vs **LSTM Baseline** | 1.279 | 63 | 140 | 248 | **28,4532** | **$< 0,0001$** | 0,7920 | **$H_0$ Ditolak** (Perubahan Pola Sangat Signifikan) |
+| 11 | **IndoBERTweet-LoRA SMOTE** vs **IndoBERTweet-LoRA (Vanilla)**| 1.203 | 74 | 159 | 294 | **30,2833** | **$3,73 \times 10^{-8}$** | 0,7630 | **$H_0$ Ditolak** (Signifikan Berbeda) |
+| 12 | **LSTM Class Weight** vs **LSTM Baseline** | 1.109 | 133 | 136 | 352 | **0,0149** | **0,9029** | 0,6519 | **$H_0$ Diterima** (Performa Global Setara) |
+| 13 | **LSTM ROS** vs **LSTM Baseline** | 1.063 | 156 | 182 | 329 | **1,8491** | **0,1739** | 0,5883 | **$H_0$ Diterima** (Performa Global Setara) |
 
 ---
 
 ### 4.4.3 Pembahasan Temuan Statistik Inferensial untuk Naskah Tesis
 
-1. **Superioritas Nyata Model Usulan TAPT IndoBERT-LoRA atas LSTM Baseline ($p = 0,0041$)**:
-   Pengujian antara model usulan terbaik (**TAPT IndoBERT-LoRA**) melawan **LSTM Baseline** menghasilkan nilai $\chi^2 = 8,2500$ dengan nilai signifikansi **$p = 0,0041$ ($p < 0,01$)**. Karena $p < 0,01$, hipotesis nol ($H_0$) ditolak secara meyakinkan pada tingkat kepercayaan 99,59%. Temuan ini membuktikan secara ilmiah bahwa lonjakan akurasi (+9,14%) dan Macro F1 (+13,05%) dari TAPT IndoBERT-LoRA bukan merupakan artefak variansi partisi data, melainkan **keunggulan nyata representasi semantik kontekstual berbasis Transformer atas representasi sekuensial LSTM**.
+1. **Superioritas Nyata Model Usulan TAPT IndoBERT-LoRA atas LSTM Baseline ($p = 7,59 \times 10^{-13}$)**:
+   Pengujian antara model usulan terbaik (**TAPT IndoBERT-LoRA**) melawan **LSTM Baseline** menghasilkan nilai $\chi^2 = 51,3856$ dengan nilai signifikansi **$p = 7,59 \times 10^{-13}$ ($p < 0,001$)**. Karena $p < 0,001$, hipotesis nol ($H_0$) ditolak secara meyakinkan pada tingkat kepercayaan >99,99%. Temuan ini membuktikan secara ilmiah bahwa lonjakan akurasi (+9,14%) dan Macro F1 (+13,05%) dari TAPT IndoBERT-LoRA bukan merupakan artefak variansi partisi data, melainkan **keunggulan nyata representasi semantik kontekstual berbasis Transformer atas representasi sekuensial LSTM**.
 
 2. **Dampak Inkremental Task-Adaptive Pretraining (TAPT) Terbukti Signifikan ($p = 0,0455$)**:
    Salah satu pertanyaan mendasar dalam pengujian model transfer learning adalah apakah penambahan tahap *domain-adaptive pretraining* (MLM 3 epoch) memberikan dampak nyata atau sekadar komputasi sia-sia. Uji McNemar antara **TAPT IndoBERT-LoRA** dan **IndoBERT-LoRA Vanilla** menghasilkan $\chi^2 = 4,0000$ dengan **$p = 0,0455$ ($p < 0,05$)**. Karena $p < 0,05$, hipotesis nol ditolak pada tingkat kepercayaan 95%. Hal ini membuktikan bahwa penyesuaian leksikon kebencanaan lokal Sumatra sebelum proses fine-tuning berhasil memperbaiki 72 sampel tweet yang gagal diprediksi oleh vanilla IndoBERT, dengan keunggulan bersih yang signifikan.
 
-3. **Keunggulan Telak IndoBERT atas LSTM pada Teknik Ekstrem (RUS dan SMOTE, $p < 0,0001$)**:
-   Uji komparasi silang membuktikan bahwa pada teknik pemangkasan ekstrem (RUS), IndoBERTweet-LoRA mengungguli LSTM secara masif ($\chi^2 = 54,5190, p < 0,0001$). Demikian pula pada teknik sintesis SMOTE ($\chi^2 = 85,6940, p < 0,0001$), membuktikan bahwa arsitektur Transformer memiliki ketahanan representasi yang jauh melampaui LSTM.
+3. **Keunggulan Telak IndoBERT atas LSTM pada Seluruh Strategi Balancing Identik ($p < 0,001$)**:
+   Uji komparasi silang membuktikan bahwa IndoBERTweet-LoRA secara konsisten mengungguli LSTM pada seluruh varian balancing: Class Weight ($\chi^2 = 13,1756, p = 0,0003$), ROS ($\chi^2 = 33,5982, p < 0,0001$), pemangkasan ekstrem RUS ($\chi^2 = 203,6451, p < 10^{-15}$), dan sintesis SMOTE ($\chi^2 = 50,0702, p < 0,0001$). Hal ini menegaskan bahwa ketahanan representasi Transformer jauh melampaui LSTM di semua kondisi distribusi data.
 
-4. **Tingkat Kesepakatan Antarmodel (Cohen's Kappa $\kappa > 0,73$)**:
-   Nilai koefisien kesepakatan Cohen's Kappa antar-seluruh pasangan model berada pada rentang **0,73 s.d. 1,0000** (*Substantial to Perfect Agreement*). Hal ini menunjukkan bahwa seluruh model memiliki kesepakatan yang sangat tinggi dalam mengidentifikasi pola sentimen umum (terutama kelas mayoritas negatif dan positif), dan perbedaan performa terkonsentrasi pada **sampel-sampel ambigu dan tweet kelas minoritas (Netral)**, di mana arsitektur berbasis Transformer terbukti jauh lebih reliabel.
+4. **Tingkat Kesepakatan Antarmodel (Cohen's Kappa $\kappa$)**:
+   Nilai koefisien kesepakatan Cohen's Kappa antar-seluruh pasangan model berada pada rentang **0,35 s.d. 0,86**. Pasangan antarmodel sesama arsitektur IndoBERT menunjukkan kesepakatan tinggi ($\kappa = 0,74 - 0,86$), sementara pasangan lintas arsitektur (IndoBERT vs LSTM) memiliki kesepakatan sedang ($\kappa = 0,35 - 0,56$), menunjukkan bahwa divergensi terbesar terjadi pada kemampuan mengenali batas keputusan kelas minoritas Netral.
 
 ---
 

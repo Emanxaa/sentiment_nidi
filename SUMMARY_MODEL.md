@@ -70,21 +70,21 @@ eq P(c)$. Ada perbedaan kemampuan yang nyata dan sistematis.
 
 ### B. Tabel Hasil Pengujian Empiris ($N = 1.730$)
 
-| No | Pasangan Model (Model A vs Model B) | $a$ (Keduanya Benar) | $b$ (A Benar, B Salah) | $c$ (A Salah, B Benar) | $d$ (Keduanya Salah) | $\chi^2$ (Edwards) | $p$-value | Cohen's Kappa ($\kappa$) | Kesimpulan Statistik ($lpha=0,05$) |
+| No | Pasangan Model (Model A vs Model B) | $a$ (Keduanya Benar) | $b$ (A Benar, B Salah) | $c$ (A Salah, B Benar) | $d$ (Keduanya Salah) | $\chi^2$ (Edwards) | $p$-value | Cohen's Kappa ($\kappa$) | Kesimpulan Statistik ($\alpha=0,05$) |
 |:---:|:---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---|
-| 1 | **TAPT IndoBERT-LoRA** vs **LSTM Baseline** | 1.336 | 49 | 83 | 262 | **8,2500** | **0,0041** | 0,8519 | **$H_0$ Ditolak** (Signifikan pada $lpha=0,01$) |
-| 2 | **IndoBERTweet-LoRA (Vanilla)** vs **LSTM Baseline** | 1.305 | 57 | 114 | 254 | **18,3392** | **$1,85 	imes 10^{-5}$** | 0,8215 | **$H_0$ Ditolak** (Signifikan Mutlak pada $lpha=0,001$) |
-| 3 | **TAPT IndoBERT-LoRA** vs **IndoBERTweet-LoRA (Vanilla)** | 1.313 | 72 | 49 | 296 | **4,0000** | **0,0455** | 0,8628 | **$H_0$ Ditolak** (Signifikan pada $lpha=0,05$) |
-| 4 | **IndoBERTweet-LoRA CW** vs **LSTM Class Weight** | 1.320 | 0 | 0 | 410 | **0,0000** | **1,0000** | 1,0000 | **$H_0$ Diterima** (Respon Loss Serupa) |
-| 5 | **IndoBERTweet-LoRA ROS** vs **LSTM ROS** | 1.342 | 0 | 0 | 388 | **0,0000** | **1,0000** | 1,0000 | **$H_0$ Diterima** (Respon Resampling Serupa) |
-| 6 | **IndoBERTweet-LoRA RUS** vs **LSTM RUS** | 1.260 | 51 | 159 | 260 | **54,5190** | **$< 0,0001$** | 0,7851 | **$H_0$ Ditolak** (IndoBERT Unggul Mutlak atas LSTM) |
-| 7 | **IndoBERTweet-LoRA SMOTE** vs **LSTM SMOTE** | 1.232 | 45 | 187 | 266 | **85,6940** | **$< 0,0001$** | 0,7609 | **$H_0$ Ditolak** (IndoBERT Unggul Mutlak atas LSTM) |
+| 1 | **TAPT IndoBERT-LoRA** vs **LSTM Baseline** | 1.127 | 258 | 118 | 227 | **51,3856** | **$7,59 \times 10^{-13}$** | 0,5644 | **$H_0$ Ditolak** (Signifikan Mutlak pada $\alpha=0,001$) |
+| 2 | **IndoBERTweet-LoRA (Vanilla)** vs **LSTM Baseline** | 1.102 | 260 | 143 | 225 | **33,3896** | **$7,54 \times 10^{-9}$** | 0,5460 | **$H_0$ Ditolak** (Signifikan Mutlak pada $\alpha=0,001$) |
+| 3 | **TAPT IndoBERT-LoRA** vs **IndoBERTweet-LoRA (Vanilla)** | 1.313 | 72 | 49 | 296 | **4,0000** | **0,0455** | 0,8628 | **$H_0$ Ditolak** (Signifikan pada $\alpha=0,05$) |
+| 4 | **IndoBERTweet-LoRA CW** vs **LSTM Class Weight** | 1.056 | 264 | 186 | 224 | **13,1756** | **0,0003** | 0,5122 | **$H_0$ Ditolak** (IndoBERT CW Unggul Signifikan) |
+| 5 | **IndoBERTweet-LoRA ROS** vs **LSTM ROS** | 1.059 | 283 | 160 | 228 | **33,5982** | **$6,78 \times 10^{-9}$** | 0,5274 | **$H_0$ Ditolak** (IndoBERT ROS Unggul Signifikan) |
+| 6 | **IndoBERTweet-LoRA RUS** vs **LSTM RUS** | 794 | 517 | 148 | 271 | **203,6451** | **$< 10^{-15}$** | 0,3744 | **$H_0$ Ditolak** (IndoBERT RUS Unggul Telak Mutlak) |
+| 7 | **IndoBERTweet-LoRA SMOTE** vs **LSTM SMOTE** | 899 | 378 | 206 | 247 | **50,0702** | **$1,48 \times 10^{-12}$** | 0,3479 | **$H_0$ Ditolak** (IndoBERT SMOTE Unggul Telak) |
 | 8 | **IndoBERTweet-LoRA CW** vs **IndoBERTweet-LoRA (Vanilla)** | 1.224 | 96 | 138 | 272 | **7,1838** | **0,0074** | 0,7611 | **$H_0$ Ditolak** (Signifikan Mengubah Prediksi) |
 | 9 | **IndoBERTweet-LoRA ROS** vs **IndoBERTweet-LoRA (Vanilla)** | 1.226 | 116 | 136 | 252 | **1,4325** | **0,2314** | 0,7394 | **$H_0$ Diterima** (Performa Setara) |
 | 10 | **IndoBERTweet-LoRA RUS** vs **IndoBERTweet-LoRA (Vanilla)** | 1.228 | 83 | 134 | 285 | **11,5207** | **0,0007** | 0,7839 | **$H_0$ Ditolak** (Signifikan Berbeda) |
-| 11 | **IndoBERTweet-LoRA SMOTE** vs **IndoBERTweet-LoRA (Vanilla)**| 1.203 | 74 | 159 | 294 | **30,2833** | **$< 0,0001$** | 0,7630 | **$H_0$ Ditolak** (Signifikan Berbeda) |
-| 12 | **LSTM Class Weight** vs **LSTM Baseline** | 1.270 | 50 | 149 | 261 | **48,2613** | **$< 0,0001$** | 0,7972 | **$H_0$ Ditolak** (Perubahan Pola Sangat Signifikan) |
-| 13 | **LSTM ROS** vs **LSTM Baseline** | 1.279 | 63 | 140 | 248 | **28,4532** | **$< 0,0001$** | 0,7920 | **$H_0$ Ditolak** (Perubahan Pola Sangat Signifikan) |
+| 11 | **IndoBERTweet-LoRA SMOTE** vs **IndoBERTweet-LoRA (Vanilla)**| 1.203 | 74 | 159 | 294 | **30,2833** | **$3,73 \times 10^{-8}$** | 0,7630 | **$H_0$ Ditolak** (Signifikan Berbeda) |
+| 12 | **LSTM Class Weight** vs **LSTM Baseline** | 1.109 | 133 | 136 | 352 | **0,0149** | **0,9029** | 0,6519 | **$H_0$ Diterima** (Performa Global Setara) |
+| 13 | **LSTM ROS** vs **LSTM Baseline** | 1.063 | 156 | 182 | 329 | **1,8491** | **0,1739** | 0,5883 | **$H_0$ Diterima** (Performa Global Setara) |
 
 ---
 
